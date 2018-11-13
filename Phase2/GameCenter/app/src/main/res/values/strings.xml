@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SlidingTiles</string>
+
+    <string-array name="difficulty">
+        <item>3 * 3</item>item>
+        <item>4 * 4</item>item>
+        <item>5 * 5</item>item>
+    </string-array>
+    string-array>
+</resources>
