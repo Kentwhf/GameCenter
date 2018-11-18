@@ -60,36 +60,36 @@ public class BaseBottom implements Comparable<BaseBottom>, Serializable {
      */
     public BaseBottom() {
         switch (this.bottomtype) {
-            case MINE:
-                background = R.drawable.mine;
-                break;
-            case BLANK:
-                background = R.drawable.blank;
-                break;
-            case 1:
-                background = R.drawable.num_1;
-                break;
-            case 2:
-                background = R.drawable.num_2;
-                break;
-            case 3:
-                background = R.drawable.num_3;
-                break;
-            case 4:
-                background = R.drawable.num_4;
-                break;
-            case 5:
-                background = R.drawable.num_5;
-                break;
-            case 6:
-                background = R.drawable.num_6;
-                break;
-            case 7:
-                background = R.drawable.num_7;
-                break;
-            case 8:
-                background = R.drawable.num_8;
-                break;
+//            case MINE:
+//                background = R.drawable.mine;
+//                break;
+//            case BLANK:
+//                background = R.drawable.blank;
+//                break;
+//            case 1:
+//                background = R.drawable.num_1;
+//                break;
+//            case 2:
+//                background = R.drawable.num_2;
+//                break;
+//            case 3:
+//                background = R.drawable.num_3;
+//                break;
+//            case 4:
+//                background = R.drawable.num_4;
+//                break;
+//            case 5:
+//                background = R.drawable.num_5;
+//                break;
+//            case 6:
+//                background = R.drawable.num_6;
+//                break;
+//            case 7:
+//                background = R.drawable.num_7;
+//                break;
+//            case 8:
+//                background = R.drawable.num_8;
+//                break;
         }
     }
     @Override

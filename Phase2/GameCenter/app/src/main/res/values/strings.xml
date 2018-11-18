@@ -6,5 +6,6 @@
         <item>4 * 4</item>item>
         <item>5 * 5</item>item>
     </string-array>
+    <string name="title_activity_stone_henge_main">StoneHengeMainActivity</string>
     string-array>
 </resources>
