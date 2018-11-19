@@ -59,7 +59,9 @@ public class MineBoard extends Observable implements Serializable, Iterable<> {
     }
 
     /**
-     * Return the number of baseBottoms on the board.
+     * Return the number of baseBottoms on the board.KL,.
+     *
+     *
      *
      * @return the number of baseBottoms on the board
      */
