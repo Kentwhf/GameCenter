@@ -5,16 +5,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GridViewAdapter extends BaseAdapter {
 
     Context context;
-    ArrayList<String> list;
+    List<String> list;
     ;
 
-    public GridViewAdapter(Context context, ArrayList<String> buttons ) {
+    public GridViewAdapter(Context context, List<String> buttons ) {
         this.context = context;
         this.list = buttons;
     }
@@ -36,13 +38,22 @@ public class GridViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        final Button button;
+        Button button;
         if (convertView == null) {
             // if it's not recycled, initialize some attributes
             button = new Button(context);
-            button.setLayoutParams(new ViewGroup.LayoutParams(85, 85));
+            button.setLayoutParams(new ViewGroup.LayoutParams(100, 100));
             button.setPadding(8, 8, 8, 8);
             button.setText(list.get(position));
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, button.getText().toString(), Toast.LENGTH_LONG).show();
+                }
+            });
+
+
+
         } else button = (Button) convertView;
         return button;
     }

@@ -16,7 +16,6 @@ public class GameSelectionActivity extends AppCompatActivity {
         setupGame1ButtonListener();
         setupGame2ButtonListener();
         setupGame3ButtonListener();
-
         LogoutButtonListener();
     }
 
