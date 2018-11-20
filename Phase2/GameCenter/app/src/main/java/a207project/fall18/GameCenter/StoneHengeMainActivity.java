@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -15,6 +16,20 @@ public class StoneHengeMainActivity extends AppCompatActivity {
     "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
 
     ArrayList<String> buttons = new ArrayList<String>();
+
+
+    public static int GAME = 0;//判断游戏是否已经开始,0为未开始,1为已开始
+    private static int ROW = 19;
+    private static int COL = 14;
+    private static int NUM = 30;//雷的个数
+    private int num =30;
+    private LinearLayout gv;
+    private LinearLayout[] lay_out = new LinearLayout[ROW];
+    private static Base[][] base = new Base[ROW][COL];
+    private static int [] FKNUM={R.drawable.i0,R.drawable.i1,R.drawable.i2,
+            R.drawable.i3,R.drawable.i4,R.drawable.i5,R.drawable.i6,R.drawable.i7,R.drawable.i8};
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

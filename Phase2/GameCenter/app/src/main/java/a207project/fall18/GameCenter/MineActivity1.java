@@ -35,7 +35,8 @@ public class MineActivity1 extends AppCompatActivity {
     private LinearLayout gv;
     private LinearLayout[] lay_out = new LinearLayout[ROW];
     private static Base[][] base = new Base[ROW][COL];
-    private static int [] FKNUM={R.drawable.i0,R.drawable.i1,R.drawable.i2,R.drawable.i3,R.drawable.i4,R.drawable.i5,R.drawable.i6,R.drawable.i7,R.drawable.i8};
+    private static int [] FKNUM={R.drawable.i0,R.drawable.i1,R.drawable.i2,
+            R.drawable.i3,R.drawable.i4,R.drawable.i5,R.drawable.i6,R.drawable.i7,R.drawable.i8};
     private static TextView num_of_mine;
     //    private static TextView tv_time;
 //    private static Timer timer1;

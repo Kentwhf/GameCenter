@@ -55,13 +55,13 @@ public class Base extends android.support.v7.widget.AppCompatImageView {
                         setImageResource(R.drawable.block);
                         qizi = false;
                         canclick = true;//则将该方块设置为可点击状态
-                        MainActivity.handler.sendEmptyMessage(5);
+                        MineActivity1.handler.sendEmptyMessage(5);
                     } else {//如果未设置旗帜
                         if (canclick) {//判断是否可点击,true代表该方块可以点击
                             setImageResource(R.drawable.qizi);
                             qizi = true;
                             canclick = false;
-                            MainActivity.handler.sendEmptyMessage(4);
+                            MineActivity1.handler.sendEmptyMessage(4);
                         }
                     }
                 }
@@ -72,18 +72,18 @@ public class Base extends android.support.v7.widget.AppCompatImageView {
         setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (MainActivity.GAME == 0){
-                    MainActivity.GAME = 1;
-                    MainActivity.handler.sendEmptyMessage(0);//发送游戏开始初始化的信息
+                if (MineActivity1.GAME == 0){
+                    MineActivity1.GAME = 1;
+                    MineActivity1.handler.sendEmptyMessage(0);//发送游戏开始初始化的信息
 
                     if (getState() == -1){
-                        MainActivity.handler.sendEmptyMessage(1);//发送点击的为炸弹的信息
+                        MineActivity1.handler.sendEmptyMessage(1);//发送点击的为炸弹的信息
                     }
                     Message msg = new Message();
                     msg.what = 3;//继续发送第一次游戏的信息
                     msg.arg1 = ROW;
                     msg.arg2 = COL;
-                    MainActivity.handler.sendMessage(msg);
+                    MineActivity1.handler.sendMessage(msg);
                 }
                 else {
                     if (canclick) {
@@ -91,7 +91,7 @@ public class Base extends android.support.v7.widget.AppCompatImageView {
                         msg.what = 2;
                         msg.arg1 = ROW;
                         msg.arg2 = COL;
-                        MainActivity.handler.sendMessage(msg);
+                        MineActivity1.handler.sendMessage(msg);
                     }
                 }
             }
