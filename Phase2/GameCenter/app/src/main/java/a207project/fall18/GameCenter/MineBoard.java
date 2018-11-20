@@ -1,19 +1,19 @@
-package a207project.fall18.GameCenter;
-
-
-import android.database.Observable;
-import android.support.annotation.NonNull;
-
-import java.io.Serializable;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Stack;
-
-/**
- * The board for minesweeper game
- */
+//package a207project.fall18.GameCenter;
+//
+//
+//import android.database.Observable;
+//import android.support.annotation.NonNull;
+//
+//import java.io.Serializable;
+//import java.util.Arrays;
+//import java.util.Iterator;
+//import java.util.List;
+//import java.util.NoSuchElementException;
+//import java.util.Stack;
+//
+///**
+// * The board for minesweeper game
+// */
 //public class MineBoard extends Observable implements Serializable, Iterable<> {
 //    /**
 //     * The number of columns.
@@ -91,7 +91,7 @@ import java.util.Stack;
 //        BaseBottom t1 = baseBottoms[row1][col1];
 //        baseBottoms[row1][col1] = baseBottoms[row2][col2];
 //        baseBottoms[row2][col2] = t1;
-////
+//
 ////        setChanged();
 ////        notifyObservers();
 //    }
@@ -148,6 +148,6 @@ import java.util.Stack;
 //            throw new NoSuchElementException();
 //        }
 //    }
-//
+
 //}
-//
+

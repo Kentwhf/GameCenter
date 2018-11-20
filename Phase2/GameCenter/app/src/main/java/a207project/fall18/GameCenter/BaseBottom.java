@@ -58,8 +58,8 @@ public class BaseBottom implements Comparable<BaseBottom>, Serializable {
      * A bottom with a background id; look up and set the id.
      *
      */
-//    public BaseBottom() {
-//        switch (this.bottomtype) {
+    public BaseBottom() {
+        switch (this.bottomtype) {
 //            case MINE:
 //                background = R.drawable.mine;
 //                break;
@@ -90,8 +90,8 @@ public class BaseBottom implements Comparable<BaseBottom>, Serializable {
 //            case 8:
 //                background = R.drawable.num_8;
 //                break;
-//        }
-//    }
+        }
+    }
     @Override
     public int compareTo(@NonNull BaseBottom o) {
         return o.bottomtype - this.bottomtype;
