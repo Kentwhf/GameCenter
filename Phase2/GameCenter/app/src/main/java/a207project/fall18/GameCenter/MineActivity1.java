@@ -2,6 +2,7 @@ package a207project.fall18.GameCenter;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Looper;
@@ -23,7 +24,8 @@ import org.w3c.dom.Text;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MineActivity1 extends AppCompatActivity {
 
     public static int GAME = 0;//判断游戏是否已经开始,0为未开始,1为已开始
     private static int ROW = 19;
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private static Base[][] base = new Base[ROW][COL];
     private static int [] FKNUM={R.drawable.i0,R.drawable.i1,R.drawable.i2,R.drawable.i3,R.drawable.i4,R.drawable.i5,R.drawable.i6,R.drawable.i7,R.drawable.i8};
     private static TextView num_of_mine;
-//    private static TextView tv_time;
+    //    private static TextView tv_time;
 //    private static Timer timer1;
 //    private static Timer timer2;
 //    private static int time = 0;
@@ -102,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_mine_activity1);
         setTitle("MineSweeper");
 
         num_of_mine = (TextView) findViewById(R.id.num_of_mine);
@@ -328,3 +330,4 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 }
+
