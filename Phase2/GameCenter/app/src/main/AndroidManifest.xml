@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="a207project.fall18.GameCenter">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -26,10 +25,7 @@
         <activity android:name=".GameSelectionActivity" />
         <activity android:name=".ComplexityActivity" />
         <activity android:name=".ScoreboardActivity" />
-        <activity
-            android:name="a207project.fall18.GameCenter.StoneHengeMainActivity"
-            android:label="@string/title_activity_stone_henge_main"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".mine_activity1"></activity>
     </application>
 
 </manifest>
