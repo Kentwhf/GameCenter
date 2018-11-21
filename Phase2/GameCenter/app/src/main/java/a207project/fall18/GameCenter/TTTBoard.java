@@ -3,7 +3,7 @@ package a207project.fall18.GameCenter;
 import java.util.Set;
 import java.util.TreeSet;
 
-class TTTBoard {
+public class TTTBoard {
 
     /**
      * The int dim.

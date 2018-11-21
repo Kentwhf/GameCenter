@@ -6,7 +6,7 @@ import android.util.Log;
 /**
  * The tic tac toe game.
  */
-class Game {
+public class Game {
 
     static final int X = -1;
     static final int O = 1;

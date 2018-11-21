@@ -1,3 +1,4 @@
+package a207project.fall18.GameCenter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,11 +8,6 @@ import android.widget.Button;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
-import a207project.fall18.GameCenter.Board;
-import a207project.fall18.GameCenter.BoardManager;
-import a207project.fall18.GameCenter.GameActivity;
-import a207project.fall18.GameCenter.StartingActivity;
-import a207project.fall18.GameCenter.TicTacToeGameActivity;
 
 public class ttt_complexityActivity extends AppCompatActivity {
     /**
@@ -25,7 +21,8 @@ public class ttt_complexityActivity extends AppCompatActivity {
     /**
      * The board manager.
      */
-    private Game game;
+    public Game game;
+    public TTTBoard board;
 
     /**
      * Switch to game
@@ -49,7 +46,7 @@ public class ttt_complexityActivity extends AppCompatActivity {
     private void addEasyButtonListener() {
         Button Button1 = findViewById(R.id.button1);
         Button1.setOnClickListener((v) -> {
-            TTTBoard.dim = 3;
+            board.dim = 3;
             saveToFile(SAVE_FILENAME);
             saveToFile(TEMP_SAVE_FILENAME);
             switchToGame();
@@ -62,7 +59,7 @@ public class ttt_complexityActivity extends AppCompatActivity {
     private void addIntermediateButtonListener() {
         Button Button2 = findViewById(R.id.button2);
         Button2.setOnClickListener((v) -> {
-            TTTBoard.dim = 4;
+            board.dim = 4;
             saveToFile(SAVE_FILENAME);
             saveToFile(TEMP_SAVE_FILENAME);
             switchToGame();
@@ -75,7 +72,7 @@ public class ttt_complexityActivity extends AppCompatActivity {
     private void setupDifficultButton3Listener() {
         Button Button3 = findViewById(R.id.button3);
         Button3.setOnClickListener((v) -> {
-            TTTBoard.dim = 5;
+            board.dim = 5;
             saveToFile(SAVE_FILENAME);
             saveToFile(TEMP_SAVE_FILENAME);
             switchToGame();
@@ -91,7 +88,7 @@ public class ttt_complexityActivity extends AppCompatActivity {
         try {
             ObjectOutputStream outputStream = new ObjectOutputStream(
                     this.openFileOutput(fileName, MODE_PRIVATE));
-            outputStream.writeObject(TTTBoard);
+            outputStream.writeObject(board);
             outputStream.close();
         } catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
