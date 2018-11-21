@@ -45,6 +45,7 @@ public class GridViewAdapter extends BaseAdapter {
             button.setLayoutParams(new ViewGroup.LayoutParams(100, 100));
             button.setPadding(8, 8, 8, 8);
             button.setText(list.get(position));
+
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

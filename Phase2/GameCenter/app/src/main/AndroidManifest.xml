@@ -25,6 +25,7 @@
         <activity android:name=".GameSelectionActivity" />
         <activity android:name=".ComplexityActivity" />
         <activity android:name=".ScoreboardActivity" />
+        <activity android:name=".StoneHengeMainActivity" />
         <activity android:name=".MineActivity1"></activity>
     </application>
 
