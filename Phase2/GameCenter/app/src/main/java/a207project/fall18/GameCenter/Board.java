@@ -21,12 +21,13 @@ public class Board extends Observable implements Serializable, Iterable<Tile> {
      */
     static int NUM_ROWS;
     /**
-     * The number of cols.
+     * The number of rows.
      */
     static int NUM_COLS;
     /**
      * The tiles on the board in row-major order.
      */
+
 
     private Tile[][] tiles = new Tile[NUM_ROWS][NUM_COLS];
 

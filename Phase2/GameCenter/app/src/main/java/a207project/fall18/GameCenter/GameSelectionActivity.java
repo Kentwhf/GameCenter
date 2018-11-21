@@ -14,8 +14,6 @@ public class GameSelectionActivity extends AppCompatActivity {
         setTitle("Select Game");
 
         setupGame1ButtonListener();
-        setupGame2ButtonListener();
-        setupGame3ButtonListener();
         LogoutButtonListener();
     }
 
@@ -40,27 +38,4 @@ public class GameSelectionActivity extends AppCompatActivity {
             startActivity(i);
         });
     }
-
-    /**
-     * Button for SlidingTiles
-     */
-    private void setupGame2ButtonListener(){
-        Button Game2 = findViewById(R.id.Game2);
-        Game2.setOnClickListener((v) -> {
-            Intent i = new Intent(this, MineActivity1.class);
-            startActivity(i);
-        });
-    }
-
-    /**
-     * Button for StoneHenge
-     */
-    private void setupGame3ButtonListener(){
-        Button Game1 = findViewById(R.id.Game3);
-        Game1.setOnClickListener((v) -> {
-            Intent i = new Intent(this, StoneHengeMainActivity.class);
-            startActivity(i);
-        });
-    }
-
 }
