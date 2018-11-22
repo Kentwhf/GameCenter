@@ -9,29 +9,13 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 
-public class ttt_complexityActivity extends AppCompatActivity {
-    /**
-     * The main save file.
-     */
-    public static final String SAVE_FILENAME = "save_file.ser";
-    /**
-     * A temporary save file.
-     */
-    public static final String TEMP_SAVE_FILENAME = "save_file_tmp.ser";
+public class Ttt_complexityActivity extends AppCompatActivity {
+
     /**
      * The board manager.
      */
     public Game game;
     public TTTBoard board;
-
-    /**
-     * Switch to game
-     */
-    private void switchToGame() {
-        Intent tmp = new Intent(this, TicTacToeGameActivity.class);
-        saveToFile(StartingActivity.TEMP_SAVE_FILENAME);
-        startActivity(tmp);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +30,10 @@ public class ttt_complexityActivity extends AppCompatActivity {
     private void addEasyButtonListener() {
         Button Button1 = findViewById(R.id.button1);
         Button1.setOnClickListener((v) -> {
-            board.dim = 3;
-            saveToFile(SAVE_FILENAME);
-            saveToFile(TEMP_SAVE_FILENAME);
-            switchToGame();
+            board.setdim(3);
+            game = new Game(board.dim);
+            Intent i = new Intent(this, TicTacToeGameActivity.class);
+            startActivity(i);
         });
     }
 
@@ -59,10 +43,8 @@ public class ttt_complexityActivity extends AppCompatActivity {
     private void addIntermediateButtonListener() {
         Button Button2 = findViewById(R.id.button2);
         Button2.setOnClickListener((v) -> {
-            board.dim = 4;
-            saveToFile(SAVE_FILENAME);
-            saveToFile(TEMP_SAVE_FILENAME);
-            switchToGame();
+            board.setdim(4);
+            game = new Game(board.dim);
         });
     }
 
@@ -72,26 +54,8 @@ public class ttt_complexityActivity extends AppCompatActivity {
     private void setupDifficultButton3Listener() {
         Button Button3 = findViewById(R.id.button3);
         Button3.setOnClickListener((v) -> {
-            board.dim = 5;
-            saveToFile(SAVE_FILENAME);
-            saveToFile(TEMP_SAVE_FILENAME);
-            switchToGame();
+            board.setdim(5);
+            game = new Game(board.dim);
         });
-    }
-
-    /**
-     * Save the board manager to fileName.
-     *
-     * @param fileName the name of the file
-     */
-    public void saveToFile(String fileName) {
-        try {
-            ObjectOutputStream outputStream = new ObjectOutputStream(
-                    this.openFileOutput(fileName, MODE_PRIVATE));
-            outputStream.writeObject(board);
-            outputStream.close();
-        } catch (IOException e) {
-            Log.e("Exception", "File write failed: " + e.toString());
-        }
     }
 }

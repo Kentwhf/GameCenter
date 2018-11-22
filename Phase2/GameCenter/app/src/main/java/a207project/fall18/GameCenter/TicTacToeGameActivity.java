@@ -79,10 +79,10 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
 //            if (game.won) {
 //                DeclareResult(getString(R.string.win_human));
 //            }
-        }
-
-        if (!game.won && game.getBoard().isFull()) {
-            DeclareResult("It's a draw!");
+//        }
+//
+//        if (!game.won && game.getBoard().isFull()) {
+//            DeclareResult("It's a draw!");
         }
         player = player * -1;
     }
@@ -116,7 +116,7 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
 //        inflater.inflate(R.menu.game_menu, menu);
 //        return true;
 //    }
-
+//
 //    @Override
 //    public boolean onOptionsItemSelected(MenuItem item) {
 //        switch (item.getItemId()) {

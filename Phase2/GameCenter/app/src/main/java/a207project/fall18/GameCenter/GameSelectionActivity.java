@@ -46,7 +46,7 @@ public class GameSelectionActivity extends AppCompatActivity {
     private void setupGame2ButtonListener(){
         Button Game2 = findViewById(R.id.Game2);
         Game2.setOnClickListener((v) -> {
-            Intent i = new Intent(this, TicTacToeGameActivity.class);
+            Intent i = new Intent(this, Ttt_complexityActivity.class);
             startActivity(i);
         });
     }

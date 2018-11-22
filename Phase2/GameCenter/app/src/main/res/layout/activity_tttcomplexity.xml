@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="a207project.fall18.GameCenter.ttt_complexityActivity">
+    tools:context="a207project.fall18.GameCenter.Ttt_complexityActivity">
     android:background="@drawable/ic_launcher_background"
 
     <ImageView
@@ -63,3 +63,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>
