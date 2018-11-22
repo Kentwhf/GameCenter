@@ -53,7 +53,7 @@
                 android:id="@+id/Game2"
                 android:layout_width="match_parent"
                 android:layout_height="118dp"
-                android:background="@drawable/minesweeperlogo" />
+                android:background="@drawable/tictactoe_logo" />
         </LinearLayout>
     </ScrollView>
 
