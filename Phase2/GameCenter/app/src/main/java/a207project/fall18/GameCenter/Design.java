@@ -23,10 +23,15 @@ public  class Design {
     public Design() {}
 
     private int difficulty = 55;//难度简单表示法
+
     public int temp[][] =new int[9][9] ;//可供填写的数独数组
+
     final public int gamereset[][] = new int [9][9];
+
     private int temp1[] = new int[81];
+
     final public int shudushow[][] = new int[9][9];//生成的数独存档数组
+
     public int[][][] usedincludeself = new int[9][9][];
 
     public int[][] shudu() {
@@ -50,7 +55,10 @@ public  class Design {
             tem[i] = rand.nextInt(81);
         }
 
-        for(int i=0; i<difficulty; i++){temp1[tem[i]]=0;}
+        for(int i=0; i<difficulty; i++) {
+            temp1[tem[i]]=0;
+        }
+
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 temp[i][j] = temp1[g];
@@ -65,6 +73,7 @@ public  class Design {
 
 
     private int getTile(int x, int y) { return temp[x][y];}
+
     public String getTileString(int x, int y) {
         int a = getTile(x, y);
         if (a == 0) {
@@ -218,7 +227,7 @@ public  class Design {
         for( i = 0; i < 9;i++){
             for(j = 0;j < 9;j++){
                 if(used[i][j].length == 9&&temp[i][j] == 0) {
-                    setTile(i, j, getUnqueTile(used[i][j]));
+                    setTile(i, j, getUniqueTile(used[i][j]));
                     caculateAllusedTiles();
                 }
             }
@@ -239,7 +248,7 @@ public  class Design {
         return b;
     }
 
-    private int getUnqueTile(int used[]){
+    private int getUniqueTile(int used[]){
         int i;
         int numbers[] = new int[10];
         for( i = 0; i < 10;i++){

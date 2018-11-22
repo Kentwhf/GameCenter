@@ -26,7 +26,7 @@ public class KeyDialog extends Dialog{
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setTitle("请选择:");
+//        setTitle("请选择:");
         setContentView(R.layout.keypad);
         findViews();
 //        for(int i=0;i<used.length;i++){
@@ -34,9 +34,9 @@ public class KeyDialog extends Dialog{
 //                keys[used[i]-1].setVisibility(View.INVISIBLE);
 //            }
 //        }
-
         setListeners();
     }
+
     private void findViews(){
         keys[0]=findViewById(R.id.keypad_1);
         keys[1]=findViewById(R.id.keypad_2);
@@ -58,29 +58,23 @@ public class KeyDialog extends Dialog{
     private void setListeners(){
         for (int i=0;i<keys.length;i++){
             final int t;
-            if(i<9){t = i+1;}else t=0;
-            keys[i].setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    returnResult(t);
-                }
-            });
+            if (i < 9) {
+                t = i+1;
+            }else t=0;
+            keys[i].setOnClickListener(v -> returnResult(t));
         }
-        keys[11].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
-        keys[10].setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                shuduview.setSelectedTile(game.shudushow[shuduview.selectedX][shuduview.selectedY]);
+
+        // Go back to Sudoku board
+        keys[11].setOnClickListener(v -> dismiss());
+
+        // Hint
+        keys[10].setOnClickListener(v -> {
+            shuduview.setSelectedTile(game.shudushow[shuduview.selectedX][shuduview.selectedY]);
 //                game.setTile(shuduview.selectedX,shuduview.selectedY,
 //                        game.shudushow[shuduview.selectedX][shuduview.selectedY]);
 //                game.caculateAllusedTiles();
 //                shuduview.invalidate();
-                dismiss();
-            }
+            dismiss();
         });
     }
 }

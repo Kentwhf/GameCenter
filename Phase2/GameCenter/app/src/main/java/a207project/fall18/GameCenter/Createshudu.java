@@ -3,8 +3,10 @@ package a207project.fall18.GameCenter;
 public class Createshudu {
 
     private int[][] init;
+
     public Createshudu() {
     }
+
     public boolean startmain() {
         this.init = new int[9][9];
         for (int i = 0; i < 9; i++) {
@@ -20,10 +22,10 @@ public class Createshudu {
         return true;
     }
 
-
     public int getInit(int x, int y) {
         return init[x][y];
     }
+
     public int[] calculateUsed(int x, int y, int init[][]) {
         int c[] = new int[9];
         for (int i = 0; i < 9; i++) {

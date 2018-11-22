@@ -35,8 +35,8 @@ import java.io.File;
             shuduView.activity = this;
             game = getDesign(shuduView.game);
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-            toolbar.setTitle("数独游戏");
-            toolbar.setSubtitle("Sudoku");
+//            toolbar.setTitle("数独游戏");
+            toolbar.setTitle("Sudoku");
 //            toolbar.setLogo(R.mipmap.launcher);
             setSupportActionBar(toolbar);
 

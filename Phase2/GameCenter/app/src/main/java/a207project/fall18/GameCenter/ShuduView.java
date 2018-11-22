@@ -23,6 +23,7 @@ import android.widget.Toast;
  */
 public class ShuduView extends View {
 
+
     private float height;
     private float width;
     public Design game = new Design();
@@ -39,7 +40,7 @@ public class ShuduView extends View {
     int Celltype[][] = new int[9][9];//标记每个单元格数字应该显示的颜色
     int isDialogShow[][] = new int[9][9];//标记单元格是否可编辑
 
-
+    // Unknown init
     public ShuduView(Context context,AttributeSet attrs){
         super(context, attrs);
         game.setShuduView(this);
@@ -54,7 +55,7 @@ public class ShuduView extends View {
         newGame();
     }
 
-
+    // Test whether editable. Methods can be encapsulated to a single one.
     public void convertdialogshow(int a[][]){
         for (int i = 0; i < 9;i++)
             for (int j = 0;j < 9;j++){
@@ -66,7 +67,7 @@ public class ShuduView extends View {
             }
     }
 
-
+    // Colour marks
     public void convertshudutemp(int a[][]){
         for (int i = 0; i < 9;i++)
             for (int j = 0;j < 9;j++){
@@ -97,11 +98,11 @@ public class ShuduView extends View {
         game.InitArray();
         convertdialogshow(game.gamereset);
         long InitTime = System.currentTimeMillis() - InitBegin;
-        Toast t = Toast.makeText(this.getContext(),"计算"+count+"次"+"共用时"
-                        +(InitTime/1000)%60+"."+(InitTime/100)%10+(InitTime/10)%10+"秒",
-                Toast.LENGTH_LONG);
-        t.setGravity(Gravity.CENTER, 0, 0);
-        t.show();
+//        Toast t = Toast.makeText(this.getContext(),"计算"+count+"次"+"共用时"
+//                        +(InitTime/1000)%60+"."+(InitTime/100)%10+(InitTime/10)%10+"秒",
+//                Toast.LENGTH_LONG);
+//        t.setGravity(Gravity.CENTER, 0, 0);
+//        t.show();
         showed = 1;
         start= System.currentTimeMillis();
     }
@@ -113,7 +114,7 @@ public class ShuduView extends View {
         super.onSizeChanged(w, h, oldw, oldh);
     }
 
-
+    // Refactor needed
     @Override
     protected void onDraw(Canvas canvas) {
 
@@ -254,7 +255,6 @@ public class ShuduView extends View {
             keyDialog.show();
         }
         return true;
-
     }
 
     public void setSelectedTile(int tile) {
