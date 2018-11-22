@@ -58,7 +58,7 @@ public class GameSelectionActivity extends AppCompatActivity {
     private void setupGame3ButtonListener(){
         Button Game1 = findViewById(R.id.Game3);
         Game1.setOnClickListener((v) -> {
-            Intent i = new Intent(this, MainActivity.class);
+            Intent i = new Intent(this, SudokuMainActivity.class);
             startActivity(i);
         });
     }

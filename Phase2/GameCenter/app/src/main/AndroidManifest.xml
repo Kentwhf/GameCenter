@@ -28,7 +28,13 @@
         <activity android:name=".ScoreboardActivity" />
         <!-- <activity android:name=".StoneHengeMainActivity" /> -->
         <activity android:name=".MineActivity1" />
-        <activity android:name=".MainActivity" ></activity>
+        <!--<activity android:name=".MainActivity" />-->
+        <activity android:name=".SudokuChooseNumberActivity" />
+        <activity android:name=".SudokuGameActivity" />
+        <activity android:name=".SudokuGameDifficultyActivity" />
+        <activity android:name=".SudokuInstructionsActivity" />
+        <activity android:name=".SudokuMainActivity" />
+        <activity android:name=".SudokuNewBoardActivity"></activity>
     </application>
 
 </manifest>
