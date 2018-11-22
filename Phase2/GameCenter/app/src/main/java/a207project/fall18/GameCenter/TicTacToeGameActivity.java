@@ -77,13 +77,13 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
             field.setImageResource(boardImages.get(player));
 
 //            if (game.won) {
-//                DeclareResult(getString(R.string.win_human));
+//                DeclareResult("win!");
 //            }
-//        }
-//
+        }
+
 //        if (!game.won && game.getBoard().isFull()) {
 //            DeclareResult("It's a draw!");
-        }
+//        }
         player = player * -1;
     }
 
@@ -110,33 +110,4 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
         this.recreate();
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.game_menu, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.new_game:
-//                NewGame();
-//                return true;
-//            case R.id.board_3x3:
-//                dim = 3;
-//                NewGame();
-//                return true;
-//            case R.id.board_4x4:
-//                dim = 4;
-//                NewGame();
-//                return true;
-//            case R.id.board_5x5:
-//                dim = 5;
-//                NewGame();
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
 }

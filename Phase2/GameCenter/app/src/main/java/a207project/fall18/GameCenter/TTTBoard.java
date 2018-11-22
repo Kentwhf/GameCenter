@@ -8,7 +8,7 @@ public class TTTBoard {
     /**
      * The int dim.
      */
-    public static int dim;
+    static int dim;
     /**
      * The board which is consisted by col and row.
      */
@@ -32,7 +32,7 @@ public class TTTBoard {
     /**
      * Check The move or not.
      * @para fieldIdx.
-     * @param player.
+     * @para player.
      */
     public boolean move(int fieldIdx, @Game.FieldValue int player) {
         int row = fieldIdx / dim;
@@ -52,7 +52,4 @@ public class TTTBoard {
         return vacant.isEmpty();
     }
 
-    public static void setdim(int num) {
-        dim = num;
-    }
 }
