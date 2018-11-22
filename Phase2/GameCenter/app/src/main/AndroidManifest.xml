@@ -27,7 +27,7 @@
         <activity android:name=".ScoreboardActivity" />
         <activity android:name=".TicTacToeGameActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name="a207project.fall18.gamecenter.ttt_complexity_selection"></activity>
+        <activity android:name="a207project.fall18.GameCenter.Ttt_complexityActivity"></activity>
     </application>
 
 </manifest>

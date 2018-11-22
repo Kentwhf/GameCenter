@@ -45,6 +45,8 @@ public class Ttt_complexityActivity extends AppCompatActivity {
         Button2.setOnClickListener((v) -> {
             board.setdim(4);
             game = new Game(board.dim);
+            Intent i = new Intent(this, TicTacToeGameActivity.class);
+            startActivity(i);
         });
     }
 
@@ -56,6 +58,8 @@ public class Ttt_complexityActivity extends AppCompatActivity {
         Button3.setOnClickListener((v) -> {
             board.setdim(5);
             game = new Game(board.dim);
+            Intent i = new Intent(this, TicTacToeGameActivity.class);
+            startActivity(i);
         });
     }
 }
