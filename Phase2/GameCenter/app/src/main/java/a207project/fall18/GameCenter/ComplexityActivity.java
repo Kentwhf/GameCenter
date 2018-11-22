@@ -65,11 +65,8 @@ public class ComplexityActivity extends AppCompatActivity {
         Button Button1  = findViewById(R.id.button1);
         Button1.setOnClickListener((v) -> {
             Board.setNumRowsCols(3);
-            boardManager = new BoardManager();
-            saveToFile(SAVE_FILENAME);
-            saveToFile(TEMP_SAVE_FILENAME);
-            switchToGame();
-    });
+            setUpGame();
+        });
     }
 
     /**
@@ -79,10 +76,7 @@ public class ComplexityActivity extends AppCompatActivity {
         Button Button2  = findViewById(R.id.button2);
         Button2.setOnClickListener((v) -> {
             Board.setNumRowsCols(4);
-            boardManager = new BoardManager();
-            saveToFile(SAVE_FILENAME);
-            saveToFile(TEMP_SAVE_FILENAME);
-            switchToGame();
+            setUpGame();
         });
     }
 
@@ -93,10 +87,7 @@ public class ComplexityActivity extends AppCompatActivity {
         Button Button3  = findViewById(R.id.button3);
         Button3.setOnClickListener((v) -> {
             Board.setNumRowsCols(5);
-            boardManager = new BoardManager();
-            saveToFile(SAVE_FILENAME);
-            saveToFile(TEMP_SAVE_FILENAME);
-            switchToGame();
+            setUpGame();
         });
     }
 
@@ -114,5 +105,16 @@ public class ComplexityActivity extends AppCompatActivity {
         } catch (IOException e) {
             Log.e("Exception", "File write failed: " + e.toString());
         }
+    }
+
+
+    /**
+     * Setup procedures before the game
+     */
+    public void setUpGame(){
+        boardManager = new BoardManager();
+        saveToFile(SAVE_FILENAME);
+        saveToFile(TEMP_SAVE_FILENAME);
+        switchToGame();
     }
 }

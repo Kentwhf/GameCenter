@@ -21,11 +21,6 @@ public class MovementController {
             boardManager.touchMove(position);
             if (boardManager.puzzleSolved()) {
 
-                // Send current score here. Singleton needed.
-//                 SlidingTilesScore current = new SlidingTilesScore("");
-//                 SlidingTilesScore.scores.add(current);
-//                 Collections.sort(SlidingTilesScore.scores);
-
                 Toast.makeText(context, "YOU WIN!", Toast.LENGTH_SHORT).show();
             }
         } else {
