@@ -15,6 +15,7 @@ public class GameSelectionActivity extends AppCompatActivity {
 
         setupGame1ButtonListener();
         LogoutButtonListener();
+        setupGame2ButtonListener();
     }
 
     /**
@@ -35,6 +36,17 @@ public class GameSelectionActivity extends AppCompatActivity {
         Button Logout= findViewById(R.id.Logout);
         Logout.setOnClickListener((v) -> {
             Intent i = new Intent(this, SignInActivity.class);
+            startActivity(i);
+        });
+    }
+
+    /**
+     * Button for SlidingTiles
+     */
+    private void setupGame2ButtonListener(){
+        Button Game2 = findViewById(R.id.Game2);
+        Game2.setOnClickListener((v) -> {
+            Intent i = new Intent(this, MineActivity1.class);
             startActivity(i);
         });
     }
