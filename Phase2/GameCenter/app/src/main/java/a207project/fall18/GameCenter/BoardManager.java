@@ -5,11 +5,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import a207project.fall18.GameCenter.bean.Score;
+
 
 /**
  * Manage a board, including swapping tiles, checking for a win, and managing taps.
  */
-class BoardManager implements Serializable {
+public class BoardManager implements Serializable {
+
+    private Score score;
 
     /**
      * The board being managed.
@@ -105,6 +109,8 @@ class BoardManager implements Serializable {
         s.remove(s.size()-1);
         s.remove(s.size()-1);
         s.remove(s.size()-1);
+        int newScore = board.getCurrentscore() - 1;
+        board.setCurrentscore(newScore);
     }
 
     /**
@@ -146,6 +152,7 @@ class BoardManager implements Serializable {
                 s.add(col);
                 board.swapTiles(row, col, row, col + 1);
             }
+            board.scoring();
         }
     }
 
@@ -167,4 +174,8 @@ class BoardManager implements Serializable {
         Tile right = col == Board.NUM_COLS - 1 ? null : board.getTile(row, col + 1);
         return new Tile[]{above, below, left, right};
     }
+
+    public Score getScore(){return this.score;}
+    public void setScore(Score score){this.score = score;}
+
 }

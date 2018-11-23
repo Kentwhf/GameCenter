@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 
 public class ComplexityActivity extends AppCompatActivity {
+
+    private SavingManager savingManager;
     /**
      * The main save file.
      */
@@ -29,7 +31,8 @@ public class ComplexityActivity extends AppCompatActivity {
      */
     private void switchToGame() {
         Intent tmp = new Intent(this, GameActivity.class);
-        saveToFile(StartingActivity.TEMP_SAVE_FILENAME);
+        MyApplication.getInstance().setBoardManager(boardManager);
+//        saveToFile(StartingActivity.TEMP_SAVE_FILENAME);
         startActivity(tmp);
     }
     @Override
@@ -41,6 +44,8 @@ public class ComplexityActivity extends AppCompatActivity {
         addIntermediateButtonListener();
         setupDifficultButton3Listener();
         setupConfirmButtonListener();
+
+        savingManager = MyApplication.getInstance().getSavingManager();
     }
 
     /**
@@ -53,8 +58,10 @@ public class ComplexityActivity extends AppCompatActivity {
             if (undoInputTextField != null){
                 int time = Integer.parseInt(undoInputTextField.getText().toString());
                 boardManager.setCanUndoTime(time);} else{boardManager.setCanUndoTime(3);}
-            saveToFile(SAVE_FILENAME);
-            saveToFile(TEMP_SAVE_FILENAME);
+//            saveToFile(SAVE_FILENAME);
+//            saveToFile(TEMP_SAVE_FILENAME);
+            savingManager.addAutosavemap(MyApplication.getInstance().getUser(), boardManager);
+            MyApplication.getInstance().setBoardManager(boardManager);
         });
     }
 
@@ -66,8 +73,10 @@ public class ComplexityActivity extends AppCompatActivity {
         Button1.setOnClickListener((v) -> {
             Board.setNumRowsCols(3);
             boardManager = new BoardManager();
-            saveToFile(SAVE_FILENAME);
-            saveToFile(TEMP_SAVE_FILENAME);
+//            saveToFile(SAVE_FILENAME);
+//            saveToFile(TEMP_SAVE_FILENAME);
+            savingManager.addAutosavemap(MyApplication.getInstance().getUser(), boardManager);
+            MyApplication.getInstance().setBoardManager(boardManager);
             switchToGame();
     });
     }
@@ -80,8 +89,10 @@ public class ComplexityActivity extends AppCompatActivity {
         Button2.setOnClickListener((v) -> {
             Board.setNumRowsCols(4);
             boardManager = new BoardManager();
-            saveToFile(SAVE_FILENAME);
-            saveToFile(TEMP_SAVE_FILENAME);
+//            saveToFile(SAVE_FILENAME);
+//            saveToFile(TEMP_SAVE_FILENAME);
+            savingManager.addAutosavemap(MyApplication.getInstance().getUser(), boardManager);
+            MyApplication.getInstance().setBoardManager(boardManager);
             switchToGame();
         });
     }
@@ -94,8 +105,10 @@ public class ComplexityActivity extends AppCompatActivity {
         Button3.setOnClickListener((v) -> {
             Board.setNumRowsCols(5);
             boardManager = new BoardManager();
-            saveToFile(SAVE_FILENAME);
-            saveToFile(TEMP_SAVE_FILENAME);
+//            saveToFile(SAVE_FILENAME);
+//            saveToFile(TEMP_SAVE_FILENAME);
+            savingManager.addAutosavemap(MyApplication.getInstance().getUser(), boardManager);
+            MyApplication.getInstance().setBoardManager(boardManager);
             switchToGame();
         });
     }

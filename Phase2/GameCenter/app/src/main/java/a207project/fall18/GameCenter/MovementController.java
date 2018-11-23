@@ -20,6 +20,7 @@ public class MovementController {
         if (boardManager.isValidTap(position)) {
             boardManager.touchMove(position);
             if (boardManager.puzzleSolved()) {
+                MyApplication.getInstance().currentScore.setFinalScore(boardManager.getBoard().getCurrentscore());
 
                 // Send current score here. Singleton needed.
 //                 SlidingTilesScore current = new SlidingTilesScore("");

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -27,6 +28,8 @@ import static a207project.fall18.GameCenter.StartingActivity.SAVE_FILENAME;
  * The game activity.
  */
 public class GameActivity extends AppCompatActivity implements Observer, Serializable {
+
+    private SavingManager savingManager;
 
     /**
      * The board manager.
@@ -63,10 +66,13 @@ public class GameActivity extends AppCompatActivity implements Observer, Seriali
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loadFromFile(StartingActivity.TEMP_SAVE_FILENAME);
+//        loadFromFile(StartingActivity.TEMP_SAVE_FILENAME);
         createTileButtons(this);
         setContentView(R.layout.activity_main);
         addUndoButtonListener();
+
+        savingManager = MyApplication.getInstance().getSavingManager();
+        boardManager = MyApplication.getInstance().getBoardManager();
 
         // Add View to activity
         gridView = findViewById(R.id.grid);
@@ -137,7 +143,11 @@ public class GameActivity extends AppCompatActivity implements Observer, Seriali
             b.setBackgroundResource(board.getTile(row, col).getBackground());
             nextPos++;
         }
-        saveToFile(SAVE_FILENAME);
+
+        TextView scores = findViewById(R.id.Score);
+        scores.setText("Scores : " + board.getCurrentscore());
+        savingManager.addAutosavemap(MyApplication.getInstance().getUser(), boardManager);
+//        saveToFile(SAVE_FILENAME);
     }
 
     /**
@@ -146,7 +156,10 @@ public class GameActivity extends AppCompatActivity implements Observer, Seriali
     @Override
     protected void onPause() {
         super.onPause();
-        saveToFile(StartingActivity.TEMP_SAVE_FILENAME);
+        MyApplication.getInstance().currentScore.setFinalScore(boardManager.getBoard().getCurrentscore());
+        boardManager.setScore(MyApplication.getInstance().currentScore);
+        MyApplication.getInstance().setBoardManager(boardManager);
+//        saveToFile(StartingActivity.TEMP_SAVE_FILENAME);
     }
 
     /**

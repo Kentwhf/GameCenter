@@ -15,6 +15,8 @@ import java.util.Stack;
  */
 public class Board extends Observable implements Serializable, Iterable<Tile> {
 
+    private static int currentscore = 100 ;
+
     public static Stack s = new Stack();
     /**
      * The number of rows.
@@ -138,4 +140,19 @@ public class Board extends Observable implements Serializable, Iterable<Tile> {
             throw new NoSuchElementException();
         }
     }
+
+    public void scoring(){
+        if (this.currentscore >0 ){
+            this.currentscore -= 1;
+        }
+        setChanged();
+        notifyObservers();
+    }
+
+    public int getCurrentscore(){
+        return this.currentscore;
+    }
+    public void setCurrentscore(int score){this.currentscore = score;}
+
+
 }
