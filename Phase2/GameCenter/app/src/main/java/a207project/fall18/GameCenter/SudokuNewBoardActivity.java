@@ -49,7 +49,7 @@ public class SudokuNewBoardActivity extends AppCompatActivity implements CellGro
     }
 
     public void onContinueButtonClicked(View view) {
-        Intent intent = new Intent("me.kirkhorn.knut.GameDifficultyActivity");
+        Intent intent = new Intent(this, SudokuGameDifficultyActivity.class);
         intent.putExtra("newSudokuBoard", true);
         startActivityForResult(intent, 2);
     }
@@ -109,7 +109,7 @@ public class SudokuNewBoardActivity extends AppCompatActivity implements CellGro
         clickedCellId = cellId;
         clickedGroup = groupId;
         Log.i(TAG, "Clicked group " + groupId + ", cell " + cellId);
-        Intent intent = new Intent("me.kirkhorn.knut.ChooseNumberActivity");
+        Intent intent = new Intent(this, SudokuChooseNumberActivity.class);
         intent.putExtra("newSudokuBoard", true);
         startActivityForResult(intent, 1);
     }

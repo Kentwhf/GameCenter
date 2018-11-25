@@ -7,10 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 
-/**
- * Created by Knut on 22.11.2017.
- */
 
+/**
+ *
+ */
 public class SudokuGameDifficultyActivity extends AppCompatActivity {
     private boolean newBoard = false;
     private int selectedDifficulty = 0;
@@ -60,7 +60,7 @@ public class SudokuGameDifficultyActivity extends AppCompatActivity {
             setResult(RESULT_OK, intent);
             finish();
         } else {
-            Intent intent = new Intent("me.kirkhorn.knut.GameActivity");
+            Intent intent = new Intent(this, SudokuGameActivity.class);
             intent.putExtra("difficulty", selectedDifficulty);
             startActivity(intent);
         }

@@ -13,6 +13,8 @@ import android.widget.Spinner;
  * Created by Knut on 22.11.2017.
  */
 
+
+// Able to do a KeyDialog
 public class SudokuChooseNumberActivity extends AppCompatActivity {
     private int selectedNumber = 1;
     private boolean checkBoxChecked = false;

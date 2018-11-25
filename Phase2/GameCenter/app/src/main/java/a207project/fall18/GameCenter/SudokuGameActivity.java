@@ -18,12 +18,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
+
+import static java.security.AccessController.getContext;
 
 /**
- * Created by Knut on 19.11.2017.
+ *
  */
 
-public class SudokuGameActivity extends AppCompatActivity implements CellGroupFragment.OnFragmentInteractionListener {
+public class SudokuGameActivity extends AppCompatActivity implements CellGroupFragment.OnFragmentInteractionListener, Observer {
     private final String TAG = "GameActivity";
     private TextView clickedCell;
     private int clickedGroup;
@@ -35,17 +39,21 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sudoku_game);
+
         int difficulty = getIntent().getIntExtra("difficulty", 0);
         ArrayList<SudokuBoard> boards = readGameBoards(difficulty);
+
         startBoard = chooseRandomBoard(boards);
         currentBoard = new SudokuBoard();
+        currentBoard.addObserver(this);
         currentBoard.copyValues(startBoard.getGameCells());
 
-        int cellGroupFragments[] = new int[]{R.id.cellGroupFragment, R.id.cellGroupFragment2, R.id.cellGroupFragment3, R.id.cellGroupFragment4,
-                R.id.cellGroupFragment5, R.id.cellGroupFragment6, R.id.cellGroupFragment7, R.id.cellGroupFragment8, R.id.cellGroupFragment9};
-        for (int i = 1; i < 10; i++) {
-            CellGroupFragment thisCellGroupFragment = (CellGroupFragment) getSupportFragmentManager().findFragmentById(cellGroupFragments[i-1]);
-            thisCellGroupFragment.setGroupId(i);
+        int cellGroupFragments[] = new int[]{R.id.cellGroupFragment, R.id.cellGroupFragment2,
+                R.id.cellGroupFragment3, R.id.cellGroupFragment4, R.id.cellGroupFragment5,
+                R.id.cellGroupFragment6, R.id.cellGroupFragment7, R.id.cellGroupFragment8, R.id.cellGroupFragment9};
+        for (int i = 0; i < 9; i++) {
+            CellGroupFragment thisCellGroupFragment = (CellGroupFragment) getSupportFragmentManager().findFragmentById(cellGroupFragments[i]);
+            thisCellGroupFragment.setGroupId(i+1);
         }
 
         //Appear all values from the current board
@@ -57,9 +65,9 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
 
                 int fragmentNumber = (row * 3) + column;
                 tempCellGroupFragment = (CellGroupFragment) getSupportFragmentManager().findFragmentById(cellGroupFragments[fragmentNumber]);
+
                 int groupColumn = j % 3;
                 int groupRow = i % 3;
-
                 int groupPosition = (groupRow * 3) + groupColumn;
                 int currentValue = currentBoard.getValue(i, j);
 
@@ -70,6 +78,16 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
         }
     }
 
+
+
+//    @Override
+//    public void onResume(){
+//        super.onResume();
+//        currentBoard = currentBoard.updateBoard();
+//        currentBoard.addObserver(this);
+//    }
+
+    //Generalize a random board to start with
     private ArrayList<SudokuBoard> readGameBoards(int difficulty) {
         ArrayList<SudokuBoard> boards = new ArrayList<>();
         int fileId;
@@ -81,13 +99,90 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
             fileId = R.raw.hard;
         }
 
+//        InputStream inputStream = getResources().openRawResource(fileId);
+//        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+//        try {
+//            String line = bufferedReader.readLine();
+//            while (line != null) {
+//                SudokuBoard board = new SudokuBoard();
+//                // read all lines in the board and set values in the board.\
+//
+//                for (int i = 0; i < 9; i++) {
+//                    String rowCells[] = line.split(" ");
+//                    for (int j = 0; j < 9; j++) {
+//                        if (rowCells[j].equals("-")) {
+//                            board.setValue(i, j, 0);
+//                        } else {
+//                            board.setValue(i, j, Integer.parseInt(rowCells[j]));
+//                        }
+//                    }
+//                    line = bufferedReader.readLine();
+//                }
+//                boards.add(board);
+//                line = bufferedReader.readLine();
+//            }
+//            bufferedReader.close();
+//        } catch (IOException e) {
+//            Log.e(TAG, e.getMessage());
+//        }
+
+//        //reading from internal storage (/data/data/<package-name>/files)
+//        String fileName = "boards-";
+//        if (difficulty == 0) {
+//            fileName += "easy";
+//        } else if (difficulty == 1) {
+//            fileName += "normal";
+//        } else {
+//            fileName += "hard";
+//        }
+//
+//        FileInputStream fileInputStream;
+//        try {
+//            fileInputStream = this.openFileInput(fileName);
+//            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+//            BufferedReader internalBufferedReader = new BufferedReader(inputStreamReader);
+//            // Rremove redundant initializer
+//            internalBufferedReader.readLine();
+//            String line = internalBufferedReader.readLine();
+//            while (line != null) {
+//                SudokuBoard board = new SudokuBoard();
+//                // read all lines in the board
+//                for (int i = 0; i < 9; i++) {
+//                    String rowCells[] = line.split(" ");
+//                    for (int j = 0; j < 9; j++) {
+//                        if (rowCells[j].equals("-")) {
+//                            board.setValue(i, j, 0);
+//                        } else {
+//                            board.setValue(i, j, Integer.parseInt(rowCells[j]));
+//                        }
+//                    }
+//                    line = internalBufferedReader.readLine();
+//                    if (line == null) {
+//                        break;
+//                    }
+//                }
+//                boards.add(board);
+//                line = internalBufferedReader.readLine();
+//            }
+//            internalBufferedReader.close();
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        filereader(fileId, boards);
+        return boards;
+    }
+
+    private void filereader(int fileId, ArrayList<SudokuBoard> boards){
         InputStream inputStream = getResources().openRawResource(fileId);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
         try {
             String line = bufferedReader.readLine();
             while (line != null) {
                 SudokuBoard board = new SudokuBoard();
-                // read all lines in the board
+                // read all lines in the board and set values in the board.\
+
                 for (int i = 0; i < 9; i++) {
                     String rowCells[] = line.split(" ");
                     for (int j = 0; j < 9; j++) {
@@ -106,52 +201,7 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
         } catch (IOException e) {
             Log.e(TAG, e.getMessage());
         }
-
-        //reading from internal storage (/data/data/<package-name>/files)
-        String fileName = "boards-";
-        if (difficulty == 0) {
-            fileName += "easy";
-        } else if (difficulty == 1) {
-            fileName += "normal";
-        } else {
-            fileName += "hard";
-        }
-
-        FileInputStream fileInputStream;
-        try {
-            fileInputStream = this.openFileInput(fileName);
-            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
-            BufferedReader internalBufferedReader = new BufferedReader(inputStreamReader);
-            String line = internalBufferedReader.readLine();
-            line = internalBufferedReader.readLine();
-            while (line != null) {
-                SudokuBoard board = new SudokuBoard();
-                // read all lines in the board
-                for (int i = 0; i < 9; i++) {
-                    String rowCells[] = line.split(" ");
-                    for (int j = 0; j < 9; j++) {
-                        if (rowCells[j].equals("-")) {
-                            board.setValue(i, j, 0);
-                        } else {
-                            board.setValue(i, j, Integer.parseInt(rowCells[j]));
-                        }
-                    }
-                    line = internalBufferedReader.readLine();
-                    if (line == null) {
-                        break;
-                    }
-                }
-                boards.add(board);
-                line = internalBufferedReader.readLine();
-            }
-            internalBufferedReader.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return boards;
-    }
+    };
 
     private SudokuBoard chooseRandomBoard(ArrayList<SudokuBoard> boards) {
         int randomNumber = (int) (Math.random() * boards.size());
@@ -169,6 +219,7 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
                 R.id.cellGroupFragment5, R.id.cellGroupFragment6, R.id.cellGroupFragment7, R.id.cellGroupFragment8, R.id.cellGroupFragment9};
         for (int i = 0; i < 9; i++) {
             CellGroupFragment thisCellGroupFragment = (CellGroupFragment) getSupportFragmentManager().findFragmentById(cellGroupFragments[i]);
+            assert thisCellGroupFragment != null;
             if (!thisCellGroupFragment.checkGroupCorrect()) {
                 return false;
             }
@@ -176,8 +227,9 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
         return true;
     }
 
+    // Change it to real time interface. Checking if puzzle's been solve . Potentially observable
     public void onCheckBoardButtonClicked(View view) {
-        currentBoard.isBoardCorrect();
+//        currentBoard.isBoardCorrect();
         if(checkAllGroups() && currentBoard.isBoardCorrect()) {
             Toast.makeText(this, getString(R.string.board_correct), Toast.LENGTH_SHORT).show();
         } else {
@@ -190,12 +242,13 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
     }
 
     public void onShowInstructionsButtonClicked(View view) {
-        Intent intent = new Intent("me.kirkhorn.knut.InstructionsActivity");
+        Intent intent = new Intent( this, SudokuInstructionsActivity.class);
         startActivity(intent);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
+    // Method for current page to get some results from ChooseNumberActivity
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1 && resultCode == RESULT_OK) {
             int row = ((clickedGroup-1)/3)*3 + (clickedCellId/3);
@@ -235,10 +288,39 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
         clickedCellId = cellId;
         Log.i(TAG, "Clicked group " + groupId + ", cell " + cellId);
         if (!isStartPiece(groupId, cellId)) {
-            Intent intent = new Intent("me.kirkhorn.knut.ChooseNumberActivity");
-            startActivityForResult(intent, 1);
+//            Intent intent = new Intent(this, SudokuChooseNumberActivity.class);
+//            startActivityForResult(intent, 1);
+
+            int row = ((clickedGroup-1)/3)*3 + (clickedCellId/3);
+            int column = ((clickedGroup-1)%3)*3 + ((clickedCellId)%3);
+            KeyPadDialog keyPadDialog = new KeyPadDialog(this, currentBoard, new KeyPadDialog.PriorityListener() {
+                @Override
+                public void refreshPriorityUI(String string) {
+                    currentBoard.setValue(row, column, Integer.parseInt(string));
+                    clickedCell.setText(String.valueOf(string));
+                }
+            } );
+            keyPadDialog.show();
+
+
+
+//            int number = .getIntExtra("chosenNumber", 1);
+//            clickedCell.setText(String.valueOf(number));
+//            currentBoard.setValue(row, column, number);
+//            currentBoard = KeyPadDialog.getNewSudokuBoard();
         } else {
             Toast.makeText(this, getString(R.string.start_piece_error), Toast.LENGTH_SHORT).show();
         }
     }
+
+    @Override
+    public void update(Observable o, Object arg) {
+
+    }
+
+
+//    @Override
+//    public void update(Observable o, Object arg) {
+//        currentBoard = currentBoard.updateBoard();
+//    }
 }

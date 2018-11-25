@@ -34,11 +34,11 @@
     </TableRow>
     <TableRow>
         <Button android:id="@+id/keypad_10"
-            android:text="删除"></Button>
+            android:text="Remove"></Button>
         <Button android:id="@+id/keypad_11"
-            android:text="提示"></Button>
+            android:text="Hint"></Button>
         <Button android:id="@+id/keypad_12"
-            android:text="返回"></Button>
+            android:text="Go back"></Button>
 
 
     </TableRow>

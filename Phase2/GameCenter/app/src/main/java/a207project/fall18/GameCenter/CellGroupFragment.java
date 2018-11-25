@@ -28,29 +28,26 @@ public class CellGroupFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            //mParam1 = getArguments().getString(ARG_PARAM1);
-            //mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+//        if (getArguments() != null) {
+////            mParam1 = getArguments().getString(ARG_PARAM1);
+////            mParam2 = getArguments().getString(ARG_PARAM2);
+//        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Inflate the layout for this cell
         view = inflater.inflate(R.layout.fragment_cell_group, container, false);
 
         //Set textview click listeners
+        // 9 Grids
         int textViews[] = new int[]{R.id.textView1, R.id.textView2, R.id.textView3, R.id.textView4,
                 R.id.textView5, R.id.textView6, R.id.textView7, R.id.textView8, R.id.textView9};
-        for (int textView1 : textViews) {
-            TextView textView = view.findViewById(textView1);
-            textView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    mListener.onFragmentInteraction(groupId, Integer.parseInt(view.getTag().toString()), view);
-                }
-            });
+        for (int cell : textViews) {
+            TextView textView = view.findViewById(cell);
+            textView.setOnClickListener(view ->
+                    mListener.onFragmentInteraction(groupId, Integer.parseInt(view.getTag().toString()), view));
         }
         return view;
     }
@@ -64,21 +61,24 @@ public class CellGroupFragment extends Fragment {
                 R.id.textView5, R.id.textView6, R.id.textView7, R.id.textView8, R.id.textView9};
         TextView currentView = view.findViewById(textViews[position]);
         currentView.setText(String.valueOf(value));
+        // Distinguish originals and added
         currentView.setTextColor(Color.BLACK);
         currentView.setTypeface(null, Typeface.BOLD);
     }
 
+    // Mistaken Implementation
     public boolean checkGroupCorrect() {
         ArrayList<Integer> numbers = new ArrayList<>();
         int textViews[] = new int[]{R.id.textView1, R.id.textView2, R.id.textView3, R.id.textView4,
                 R.id.textView5, R.id.textView6, R.id.textView7, R.id.textView8, R.id.textView9};
-        for (int textView1 : textViews) {
-            TextView textView = view.findViewById(textView1);
-            int number = Integer.parseInt(textView.getText().toString());
-            if (numbers.contains(number)) {
+
+        for (int cell : textViews) {
+//            TextView textView = view.findViewById(cell);
+//            int number = Integer.parseInt(textView.getText().toString());
+            if (numbers.contains(cell)) {
                 return false;
             } else {
-                numbers.add(number);
+                numbers.add(cell);
             }
         }
         return true;
