@@ -34,6 +34,9 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
     private int clickedCellId;
     private SudokuBoard startBoard;
     private SudokuBoard currentBoard;
+    int cellGroupFragments[] = new int[]{R.id.cellGroupFragment, R.id.cellGroupFragment2,
+            R.id.cellGroupFragment3, R.id.cellGroupFragment4, R.id.cellGroupFragment5,
+            R.id.cellGroupFragment6, R.id.cellGroupFragment7, R.id.cellGroupFragment8, R.id.cellGroupFragment9};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +50,48 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
         currentBoard = new SudokuBoard();
         currentBoard.addObserver(this);
         currentBoard.copyValues(startBoard.getGameCells());
+        updateCells();
 
-        int cellGroupFragments[] = new int[]{R.id.cellGroupFragment, R.id.cellGroupFragment2,
-                R.id.cellGroupFragment3, R.id.cellGroupFragment4, R.id.cellGroupFragment5,
-                R.id.cellGroupFragment6, R.id.cellGroupFragment7, R.id.cellGroupFragment8, R.id.cellGroupFragment9};
+//        int cellGroupFragments[] = new int[]{R.id.cellGroupFragment, R.id.cellGroupFragment2,
+//                R.id.cellGroupFragment3, R.id.cellGroupFragment4, R.id.cellGroupFragment5,
+//                R.id.cellGroupFragment6, R.id.cellGroupFragment7, R.id.cellGroupFragment8, R.id.cellGroupFragment9};
+////        Comment to see if we actually need this.
+//        for (int i = 0; i < 9; i++) {
+//            CellGroupFragment thisCellGroupFragment = (CellGroupFragment) getSupportFragmentManager().findFragmentById(cellGroupFragments[i]);
+//            thisCellGroupFragment.setGroupId(i+1);
+//        }
+//
+//        //Appear all values from the current board
+//        CellGroupFragment tempCellGroupFragment;
+//        for (int i = 0; i < 9; i++) {
+//            for (int j = 0; j < 9; j++) {
+//                int column = j / 3;
+//                int row = i / 3;
+//
+//                int fragmentNumber = (row * 3) + column;
+//                tempCellGroupFragment = (CellGroupFragment) getSupportFragmentManager().findFragmentById(cellGroupFragments[fragmentNumber]);
+//
+//                int groupColumn = j % 3;
+//                int groupRow = i % 3;
+//                int groupPosition = (groupRow * 3) + groupColumn;
+//                int currentValue = currentBoard.getValue(i, j);
+//
+//                if (currentValue != 0) {
+//                    tempCellGroupFragment.setValue(groupPosition, currentValue);
+//                }
+//            }
+//        }
+    }
+
+    private void updateCells(){
+//        int cellGroupFragments[] = new int[]{R.id.cellGroupFragment, R.id.cellGroupFragment2,
+//                R.id.cellGroupFragment3, R.id.cellGroupFragment4, R.id.cellGroupFragment5,
+//                R.id.cellGroupFragment6, R.id.cellGroupFragment7, R.id.cellGroupFragment8, R.id.cellGroupFragment9};
+
         for (int i = 0; i < 9; i++) {
             CellGroupFragment thisCellGroupFragment = (CellGroupFragment) getSupportFragmentManager().findFragmentById(cellGroupFragments[i]);
             thisCellGroupFragment.setGroupId(i+1);
-        }
+    }
 
         //Appear all values from the current board
         CellGroupFragment tempCellGroupFragment;
@@ -69,23 +106,24 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
                 int groupColumn = j % 3;
                 int groupRow = i % 3;
                 int groupPosition = (groupRow * 3) + groupColumn;
-                int currentValue = currentBoard.getValue(i, j);
+                int currentValue = currentBoard.getValue(i, j); //Notice
 
                 if (currentValue != 0) {
-                    tempCellGroupFragment.setValue(groupPosition, currentValue);
+                    if (currentValue != startBoard.getValue(i, j)) {
+                        tempCellGroupFragment.markInput(groupPosition, currentValue);
+                    } else {tempCellGroupFragment.setValue(groupPosition, currentValue);}
                 }
             }
         }
+
     }
 
 
+    @Override
+    public void onResume(){
+        super.onResume();
 
-//    @Override
-//    public void onResume(){
-//        super.onResume();
-//        currentBoard = currentBoard.updateBoard();
-//        currentBoard.addObserver(this);
-//    }
+    }
 
     //Generalize a random board to start with
     private ArrayList<SudokuBoard> readGameBoards(int difficulty) {
@@ -297,7 +335,8 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
                 @Override
                 public void refreshPriorityUI(String string) {
                     currentBoard.setValue(row, column, Integer.parseInt(string));
-                    clickedCell.setText(String.valueOf(string));
+//                    clickedCell.setText(String.valueOf(string));
+//                    updateCells();
                 }
             } );
             keyPadDialog.show();
@@ -313,9 +352,13 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
         }
     }
 
+
+
+
+
     @Override
     public void update(Observable o, Object arg) {
-
+        updateCells();
     }
 
 

@@ -62,9 +62,22 @@ public class CellGroupFragment extends Fragment {
         TextView currentView = view.findViewById(textViews[position]);
         currentView.setText(String.valueOf(value));
         // Distinguish originals and added
+
         currentView.setTextColor(Color.BLACK);
         currentView.setTypeface(null, Typeface.BOLD);
     }
+
+    public void markInput(int position, int value){
+        int textViews[] = new int[]{R.id.textView1, R.id.textView2, R.id.textView3, R.id.textView4,
+                R.id.textView5, R.id.textView6, R.id.textView7, R.id.textView8, R.id.textView9};
+        TextView currentView = view.findViewById(textViews[position]);
+        currentView.setText(String.valueOf(value));
+
+        currentView.setTextColor(Color.GRAY);
+
+    }
+
+
 
     // Mistaken Implementation
     public boolean checkGroupCorrect() {
