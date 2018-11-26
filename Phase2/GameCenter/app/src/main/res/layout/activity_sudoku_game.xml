@@ -7,14 +7,16 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TableLayout
         android:layout_width="360dp"
-        android:layout_height="343dp"
-        android:layout_marginTop="68dp"
+        android:layout_height="406dp"
+        android:layout_marginTop="92dp"
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonShowInstructions"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintHorizontal_bias="0.631"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
         <!--android:layout_centerInParent="true"-->
         <!--android:layout_centerVertical="true"-->
         <!--android:layout_centerHorizontal="true"-->
@@ -29,7 +31,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
                 android:id="@+id/cellGroupFragment"
                 android:name="a207project.fall18.GameCenter.CellGroupFragment"
                 android:layout_width="92dp"
-                android:layout_height="106dp"
+                android:layout_height="120dp"
                 android:layout_weight="1"
                 android:tag="0" />
 
@@ -37,7 +39,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
                 android:id="@+id/cellGroupFragment2"
                 android:name="a207project.fall18.GameCenter.CellGroupFragment"
                 android:layout_width="92dp"
-                android:layout_height="106dp"
+                android:layout_height="120dp"
                 android:layout_weight="1"
                 android:tag="1" />
 
@@ -45,7 +47,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
                 android:id="@+id/cellGroupFragment3"
                 android:name="a207project.fall18.GameCenter.CellGroupFragment"
                 android:layout_width="92dp"
-                android:layout_height="106dp"
+                android:layout_height="120dp"
                 android:layout_weight="1"
                 android:tag="2" />
 
@@ -60,7 +62,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
                 android:id="@+id/cellGroupFragment4"
                 android:name="a207project.fall18.GameCenter.CellGroupFragment"
                 android:layout_width="92dp"
-                android:layout_height="106dp"
+                android:layout_height="120dp"
                 android:layout_weight="1"
                 android:tag="3" />
 
@@ -68,7 +70,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
                 android:id="@+id/cellGroupFragment5"
                 android:name="a207project.fall18.GameCenter.CellGroupFragment"
                 android:layout_width="92dp"
-                android:layout_height="106dp"
+                android:layout_height="120dp"
                 android:layout_weight="1"
                 android:tag="4" />
 
@@ -76,7 +78,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
                 android:id="@+id/cellGroupFragment6"
                 android:name="a207project.fall18.GameCenter.CellGroupFragment"
                 android:layout_width="92dp"
-                android:layout_height="106dp"
+                android:layout_height="120dp"
                 android:layout_weight="1"
                 android:tag="5" />
         </TableRow>
@@ -84,13 +86,13 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
         <TableRow
             android:id="@+id/tableRow3"
             android:layout_width="match_parent"
-            android:layout_height="117dp">
+            android:layout_height="match_parent">
 
             <fragment
                 android:id="@+id/cellGroupFragment7"
                 android:name="a207project.fall18.GameCenter.CellGroupFragment"
                 android:layout_width="92dp"
-                android:layout_height="106dp"
+                android:layout_height="120dp"
                 android:layout_weight="1"
                 android:tag="6" />
 
@@ -98,7 +100,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
                 android:id="@+id/cellGroupFragment8"
                 android:name="a207project.fall18.GameCenter.CellGroupFragment"
                 android:layout_width="92dp"
-                android:layout_height="106dp"
+                android:layout_height="120dp"
                 android:layout_weight="1"
                 android:tag="7" />
 
@@ -106,7 +108,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
                 android:id="@+id/cellGroupFragment9"
                 android:name="a207project.fall18.GameCenter.CellGroupFragment"
                 android:layout_width="92dp"
-                android:layout_height="106dp"
+                android:layout_height="120dp"
                 android:layout_weight="1"
                 android:tag="8" />
         </TableRow>
@@ -126,26 +128,28 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
     app:layout_constraintVertical_bias="0.965"
     android:layout_marginStart="16dp" />
 
-<Button
-    android:id="@+id/buttonShowInstructions"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="200dp"
-    android:onClick="onShowInstructionsButtonClicked"
-    android:text="@string/show_instructions"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.965"
-    android:layout_marginStart="200dp" />
+    <Button
+        android:id="@+id/buttonShowInstructions"
+        android:layout_width="123dp"
+        android:layout_height="60dp"
+        android:layout_marginLeft="244dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginRight="17dp"
+        android:onClick="onShowInstructionsButtonClicked"
+        android:text="@string/show_instructions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.968" />
 
     <Button
         android:id="@+id/buttonCheckBoard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="104dp"
-        android:layout_marginEnd="163dp"
-        android:layout_marginRight="163dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginRight="160dp"
 
         android:onClick="onCheckBoardButtonClicked"
         android:text="@string/check_board"
@@ -153,6 +157,6 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.816" />
+        app:layout_constraintVertical_bias="0.965" />
 
 </android.support.constraint.ConstraintLayout>

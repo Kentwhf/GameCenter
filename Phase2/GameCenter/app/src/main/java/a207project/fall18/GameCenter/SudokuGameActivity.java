@@ -284,40 +284,40 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
         startActivity(intent);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    @Override
-    // Method for current page to get some results from ChooseNumberActivity
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == 1 && resultCode == RESULT_OK) {
-            int row = ((clickedGroup-1)/3)*3 + (clickedCellId/3);
-            int column = ((clickedGroup-1)%3)*3 + ((clickedCellId)%3);
-
-            Button buttonCheckBoard = findViewById(R.id.buttonCheckBoard);
-            if (data.getBooleanExtra("removePiece", false)) {
-                clickedCell.setText("");
-                clickedCell.setBackground(getResources().getDrawable(R.drawable.table_border_cell));
-                currentBoard.setValue(row, column, 0);
-                buttonCheckBoard.setVisibility(View.INVISIBLE);
-            } else {
-                int number = data.getIntExtra("chosenNumber", 1);
-                clickedCell.setText(String.valueOf(number));
-                currentBoard.setValue(row, column, number);
-
-                boolean isUnsure = data.getBooleanExtra("isUnsure", false);
-                if (isUnsure) {
-                    clickedCell.setBackground(getResources().getDrawable(R.drawable.table_border_cell_unsure));
-                } else {
-                    clickedCell.setBackground(getResources().getDrawable(R.drawable.table_border_cell));
-                }
-
-                if (currentBoard.isBoardFull()) {
-                    buttonCheckBoard.setVisibility(View.VISIBLE);
-                } else {
-                    buttonCheckBoard.setVisibility(View.INVISIBLE);
-                }
-            }
-        }
-    }
+//    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+//    @Override
+//    // Method for current page to get some results from ChooseNumberActivity
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        if (requestCode == 1 && resultCode == RESULT_OK) {
+//            int row = ((clickedGroup-1)/3)*3 + (clickedCellId/3);
+//            int column = ((clickedGroup-1)%3)*3 + ((clickedCellId)%3);
+//
+//            Button buttonCheckBoard = findViewById(R.id.buttonCheckBoard);
+//            if (data.getBooleanExtra("removePiece", false)) {
+//                clickedCell.setText("");
+//                clickedCell.setBackground(getResources().getDrawable(R.drawable.table_border_cell));
+//                currentBoard.setValue(row, column, 0);
+//                buttonCheckBoard.setVisibility(View.INVISIBLE);
+//            } else {
+//                int number = data.getIntExtra("chosenNumber", 1);
+//                clickedCell.setText(String.valueOf(number));
+//                currentBoard.setValue(row, column, number);
+//
+//                boolean isUnsure = data.getBooleanExtra("isUnsure", false);
+//                if (isUnsure) {
+//                    clickedCell.setBackground(getResources().getDrawable(R.drawable.table_border_cell_unsure));
+//                } else {
+//                    clickedCell.setBackground(getResources().getDrawable(R.drawable.table_border_cell));
+//                }
+//
+//                if (currentBoard.isBoardFull()) {
+//                    buttonCheckBoard.setVisibility(View.VISIBLE);
+//                } else {
+//                    buttonCheckBoard.setVisibility(View.INVISIBLE);
+//                }
+//            }
+//        }
+//    }
 
     @Override
     public void onFragmentInteraction(int groupId, int cellId, View view) {

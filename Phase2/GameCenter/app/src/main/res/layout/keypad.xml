@@ -33,8 +33,10 @@
             android:text="9"></Button>
     </TableRow>
     <TableRow>
-        <Button android:id="@+id/keypad_10"
-            android:text="Remove"></Button>
+
+        <Button
+            android:id="@+id/keypad_10"
+            android:text="Undo"></Button>
         <Button android:id="@+id/keypad_11"
             android:text="Hint"></Button>
         <Button android:id="@+id/keypad_12"
