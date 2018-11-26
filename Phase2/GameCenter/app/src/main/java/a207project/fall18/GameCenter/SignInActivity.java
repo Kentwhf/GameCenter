@@ -18,7 +18,7 @@ import a207project.fall18.GameCenter.dao.UserDao;
  */
 public class SignInActivity extends AppCompatActivity {
 
-    private UserDao userAccountManager;
+//    private UserDao userAccountManager;
 
     private Button signin;
     private Button signup;
@@ -49,7 +49,7 @@ public class SignInActivity extends AppCompatActivity {
         signup.setOnClickListener(this::onClick);
 
 
-        userAccountManager = new UserDao(this);
+//        userAccountManager = new UserDao(this);
 
 //        if (userAccountManager == null){
 //            userAccountManager = new UserAccountManager(new HashMap<>());
@@ -80,7 +80,7 @@ public class SignInActivity extends AppCompatActivity {
         if(username.getText().toString().matches("") || password.getText().toString().matches("")){
             Toast.makeText(SignInActivity.this,"username/password is empty！",Toast.LENGTH_SHORT).show();
         }else{
-            boolean loginResult = userAccountManager.login(user);
+            boolean loginResult = MyApplication.getInstance().getUserDao().login(user);
             if(loginResult){
                 MyApplication.getInstance().setUser(user);
                 Toast.makeText(SignInActivity.this,"login success！",Toast.LENGTH_SHORT).show();

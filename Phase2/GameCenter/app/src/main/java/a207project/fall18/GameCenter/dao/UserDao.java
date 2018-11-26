@@ -27,7 +27,6 @@ public class UserDao extends Dao<User> {
         value.put("nickname", user.getNickname());
         long result = db.insert("User", null, value);
         db.close();
-        Log.v("shabi", String.valueOf(result));
         return result;
     }
 

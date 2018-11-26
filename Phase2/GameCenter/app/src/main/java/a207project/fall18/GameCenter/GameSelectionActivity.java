@@ -28,9 +28,10 @@ GameSelectionActivity extends AppCompatActivity {
         Button Game1 = findViewById(R.id.Game1);
         Game1.setOnClickListener((v) -> {
             MyApplication.getInstance().setGame("SlidingTiles");
-            Score STscore = new Score(MyApplication.getInstance().getUser(), "SlidingTiles");
-            MyApplication.getInstance().setScore(STscore);
-            MyApplication.getInstance().setSavingManager(new SavingManager(this, "SlidingTiles"));
+            MyApplication.getInstance().initSavingManager();
+//            Score STscore = new Score(MyApplication.getInstance().getUser(), "SlidingTiles");
+//            MyApplication.getInstance().setScore(STscore);
+//            MyApplication.getInstance().setSavingManager(new SavingManager(this, "SlidingTiles"));
             Intent i = new Intent(this, StartingActivity.class);
             startActivity(i);
         });

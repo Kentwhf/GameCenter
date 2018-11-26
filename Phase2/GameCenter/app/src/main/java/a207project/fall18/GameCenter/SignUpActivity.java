@@ -75,8 +75,8 @@ public class SignUpActivity extends AppCompatActivity {
             Toast.makeText(SignUpActivity.this,"password confirm fail",Toast.LENGTH_SHORT).show();
             return;
         }else{
-            UserDao userdao = new UserDao(this);
-            long registerResult = userdao.register(user);
+//            UserDao userdao = new UserDao(this);
+            long registerResult = MyApplication.getInstance().getUserDao().register(user);
             if(registerResult>0){
                 Toast.makeText(SignUpActivity.this,"Regist success！" + registerResult,Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, SignInActivity.class);

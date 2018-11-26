@@ -15,7 +15,7 @@ import java.util.Stack;
  */
 public class Board extends Observable implements Serializable, Iterable<Tile> {
 
-    private static int currentscore = 100 ;
+    private int currentscore = 100 ;
 
     public static Stack s = new Stack();
     /**

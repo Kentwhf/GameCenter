@@ -57,6 +57,8 @@ public class ScoreDao extends Dao<Score>{
             score.setFinalScore(finalScore);
             scoreList.add(score);
         }
+        cursor.close();
+        db.close();
         return scoreList;
     }
 }

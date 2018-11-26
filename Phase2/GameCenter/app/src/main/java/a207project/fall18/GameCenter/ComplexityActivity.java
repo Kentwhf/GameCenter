@@ -10,9 +10,13 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 
+import a207project.fall18.GameCenter.dao.SaveDao;
+
 public class ComplexityActivity extends AppCompatActivity {
 
-    private SavingManager savingManager;
+    private int undoTime = 3;
+
+    private SaveDao savingManager;
     /**
      * The main save file.
      */
@@ -31,7 +35,7 @@ public class ComplexityActivity extends AppCompatActivity {
      */
     private void switchToGame() {
         Intent tmp = new Intent(this, GameActivity.class);
-        MyApplication.getInstance().setBoardManager(boardManager);
+        MyApplication.getInstance().setBoardManager( boardManager);
 //        saveToFile(StartingActivity.TEMP_SAVE_FILENAME);
         startActivity(tmp);
     }
@@ -56,12 +60,18 @@ public class ComplexityActivity extends AppCompatActivity {
         Button3.setOnClickListener((v) -> {
             TextView undoInputTextField = findViewById(R.id.undoInput);
             if (undoInputTextField != null){
-                int time = Integer.parseInt(undoInputTextField.getText().toString());
-                boardManager.setCanUndoTime(time);} else{boardManager.setCanUndoTime(3);}
+                undoTime = Integer.parseInt(undoInputTextField.getText().toString());
+//                boardManager.setCanUndoTime(time);
+
+//                Log.v("shabi", String.valueOf(boardManager.can_undo_time));
+
+            }
+
+//            else{undoTime = 3;}
 //            saveToFile(SAVE_FILENAME);
 //            saveToFile(TEMP_SAVE_FILENAME);
-            savingManager.addAutosavemap(MyApplication.getInstance().getUser(), boardManager);
-            MyApplication.getInstance().setBoardManager(boardManager);
+//            savingManager.addAutosavemap(MyApplication.getInstance().getUser(), boardManager);
+//            MyApplication.getInstance().setBoardManager((BoardManager) boardManager.clone());
         });
     }
 
@@ -73,10 +83,14 @@ public class ComplexityActivity extends AppCompatActivity {
         Button1.setOnClickListener((v) -> {
             Board.setNumRowsCols(3);
             boardManager = new BoardManager();
+            boardManager.setCanUndoTime(undoTime);
 //            saveToFile(SAVE_FILENAME);
 //            saveToFile(TEMP_SAVE_FILENAME);
-            savingManager.addAutosavemap(MyApplication.getInstance().getUser(), boardManager);
+            savingManager.autoSave(boardManager);
             MyApplication.getInstance().setBoardManager(boardManager);
+
+//            Log.v("shabi", MyApplication.getInstance().boardManager.toString());
+
             switchToGame();
     });
     }
@@ -89,10 +103,11 @@ public class ComplexityActivity extends AppCompatActivity {
         Button2.setOnClickListener((v) -> {
             Board.setNumRowsCols(4);
             boardManager = new BoardManager();
+            boardManager.setCanUndoTime(undoTime);
 //            saveToFile(SAVE_FILENAME);
 //            saveToFile(TEMP_SAVE_FILENAME);
-            savingManager.addAutosavemap(MyApplication.getInstance().getUser(), boardManager);
-            MyApplication.getInstance().setBoardManager(boardManager);
+            savingManager.autoSave(boardManager);
+            MyApplication.getInstance().setBoardManager( boardManager);
             switchToGame();
         });
     }
@@ -105,10 +120,11 @@ public class ComplexityActivity extends AppCompatActivity {
         Button3.setOnClickListener((v) -> {
             Board.setNumRowsCols(5);
             boardManager = new BoardManager();
+            boardManager.setCanUndoTime(undoTime);
 //            saveToFile(SAVE_FILENAME);
 //            saveToFile(TEMP_SAVE_FILENAME);
-            savingManager.addAutosavemap(MyApplication.getInstance().getUser(), boardManager);
-            MyApplication.getInstance().setBoardManager(boardManager);
+            savingManager.autoSave( boardManager);
+            MyApplication.getInstance().setBoardManager((BoardManager) boardManager);
             switchToGame();
         });
     }
