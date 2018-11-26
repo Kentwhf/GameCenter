@@ -1,15 +1,18 @@
 package a207project.fall18.GameCenter;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Observable;
 
 /**
- * Created by Knut on 22.11.2017.
+ *
  */
 
 public class SudokuBoard extends Observable {
 
     private int[][] gameCells = new int[9][9];
+
 
 //    public SudokuBoard(){};
 
@@ -82,9 +85,9 @@ public class SudokuBoard extends Observable {
         return gameCells[row][column];
     }
 
-    public SudokuBoard updateBoard(){
-        return this;
-    }
+//    public SudokuBoard updateBoard(){
+//        return this;
+//    }
 
 //    @Override
 //    public String toString() {
@@ -109,4 +112,40 @@ public class SudokuBoard extends Observable {
 //        }
 //        return temp.toString();
 //    }
+
+    public boolean checkDupulicate(int row, int column){
+        ArrayList<Integer> horizontals = new ArrayList<>();
+        ArrayList<Integer> verticals = new ArrayList<>();
+        ArrayList<Integer> group = getTargetGroup(row,column);
+        group.remove((Integer)gameCells[row][column]);
+
+        for (int i: gameCells[row]) {horizontals.add(i);}
+        horizontals.remove((Integer)gameCells[row][column]);
+
+        for (int i = 0; i < gameCells.length; i++) {verticals.add(gameCells[i][column]);}
+        verticals.remove((Integer)gameCells[row][column]);
+
+        return horizontals.contains(gameCells[row][column]) || verticals.contains(gameCells[row][column]) ||
+                group.contains(gameCells[row][column]);
+    }
+
+    public ArrayList<Integer> getTargetGroup(int row, int column){
+
+        int temp1 = row;
+        int temp2 = column;
+
+//        int temp1 = row % 3;
+//        int temp2 = column % 3 ;
+
+        if (temp1 % 3 == 0){temp1++;};
+        if (temp1 % 3 == 2){temp1--;};
+        if (temp2 % 3 == 0){temp2++;};
+        if (temp2 % 3 == 2){temp2--;};
+
+
+        return new ArrayList<>(Arrays.asList(gameCells[temp1][temp2], gameCells[temp1][temp2-1],gameCells[temp1][temp2+1],
+                        gameCells[temp1+1][temp2], gameCells[temp1+1][temp2-1], gameCells[temp1+1][temp2+1],
+                        gameCells[temp1-1][temp2], gameCells[temp1-1][temp2-1], gameCells[temp1-1][temp2+1]));
+    }
+
 }

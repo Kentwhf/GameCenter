@@ -110,7 +110,7 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
 
                 if (currentValue != 0) {
                     if (currentValue != startBoard.getValue(i, j)) {
-                        tempCellGroupFragment.markInput(groupPosition, currentValue);
+                        tempCellGroupFragment.markInput(groupPosition, currentValue, currentBoard.checkDupulicate(i, j));
                     } else {tempCellGroupFragment.setValue(groupPosition, currentValue);}
                 }
             }

@@ -57,26 +57,36 @@ public class CellGroupFragment extends Fragment {
     }
 
     public void setValue(int position, int value) {
-        int textViews[] = new int[]{R.id.textView1, R.id.textView2, R.id.textView3, R.id.textView4,
-                R.id.textView5, R.id.textView6, R.id.textView7, R.id.textView8, R.id.textView9};
-        TextView currentView = view.findViewById(textViews[position]);
-        currentView.setText(String.valueOf(value));
+//        int textViews[] = new int[]{R.id.textView1, R.id.textView2, R.id.textView3, R.id.textView4,
+//                R.id.textView5, R.id.textView6, R.id.textView7, R.id.textView8, R.id.textView9};
+        getTextViews(position).setText(String.valueOf(value));
+        getTextViews(position).setTextColor(Color.BLACK);;
+        getTextViews(position).setTypeface(Typeface.SERIF, Typeface.BOLD);
         // Distinguish originals and added
 
-        currentView.setTextColor(Color.BLACK);
-        currentView.setTypeface(null, Typeface.BOLD);
+//        currentView.setTextColor(Color.BLACK);
+//        currentView.setTypeface(null, Typeface.BOLD);
     }
 
-    public void markInput(int position, int value){
+    public void markInput(int position, int value, boolean isDuplicate){
+//        int textViews[] = new int[]{R.id.textView1, R.id.textView2, R.id.textView3, R.id.textView4,
+//                R.id.textView5, R.id.textView6, R.id.textView7, R.id.textView8, R.id.textView9};
+        getTextViews(position).setText(String.valueOf(value));
+        if (isDuplicate){
+            getTextViews(position).setTextColor(Color.BLUE);
+            getTextViews(position).setTypeface(Typeface.SERIF, Typeface.BOLD);
+        } else getTextViews(position).setTextColor(Color.GRAY);;
+
+//        currentView.setText(String.valueOf(value));
+//        currentView.setTextColor(Color.GRAY);
+
+    }
+
+    public TextView getTextViews(int position){
         int textViews[] = new int[]{R.id.textView1, R.id.textView2, R.id.textView3, R.id.textView4,
                 R.id.textView5, R.id.textView6, R.id.textView7, R.id.textView8, R.id.textView9};
-        TextView currentView = view.findViewById(textViews[position]);
-        currentView.setText(String.valueOf(value));
-
-        currentView.setTextColor(Color.GRAY);
-
+        return view.findViewById(textViews[position]);
     }
-
 
 
     // Mistaken Implementation
