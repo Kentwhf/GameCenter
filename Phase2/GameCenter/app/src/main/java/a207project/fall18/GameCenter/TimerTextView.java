@@ -17,6 +17,8 @@ public class TimerTextView extends TextView {
     private static final int DEFAULT_INTERVAL = 1000;
 
     private Timer timer = new Timer();
+    private long startTime;
+    private long usedTime;
     private long endTime = 0;
     private long interval = DEFAULT_INTERVAL;
     private boolean isCanceled = false;
@@ -53,30 +55,31 @@ public class TimerTextView extends TextView {
         }
     }
 
-    public void setInterval(long interval) {
-        if (interval >= 0) {
-            this.interval = interval;
-            stopTimer();
-            startTimer();
-        }
+//    public void setInterval(long interval) {
+//        if (interval >= 0) {
+//            this.interval = interval;
+//            stopTimer();
+//            startTimer();
+//        }
+//    }
+
+    public long getStartTime() {
+        return startTime;
     }
 
-    public void setEndTime(long endTime) {
-        if (endTime >= 0) {
-            this.endTime = endTime;
-            stopTimer();
-            startTimer();
-        }
+    public void setStartTime(long startTime) {
+        this.startTime = startTime;
     }
 
-    private void startTimer() {
-        if (endTime == 0) {
-            return;
-        }
-        if (isCanceled) {
-            timer = new Timer();
-            isCanceled = false;
-        }
+
+    public void startTimer() {
+//        if (endTime == 0) {
+//            return;
+//        }
+//        if (!isCanceled) {
+//            timer = new Timer();
+//            isCanceled = false;
+//        }
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override public void run() {
                 if (null == getHandler()) {
@@ -84,27 +87,29 @@ public class TimerTextView extends TextView {
                 }
                 getHandler().post(new Runnable() {
                     @Override public void run() {
-                        setText(getDurationBreakdown(endTime - System.currentTimeMillis()));
+                        setText(getDurationBreakdown(System.currentTimeMillis() - startTime));
                     }
                 });
             }
         }, 0, interval);
     }
 
-    private void stopTimer() {
+    public void stopTimer() {
         timer.cancel();
         isCanceled = true;
     }
 
-    private String getDurationBreakdown(long diff) {
+    public String getDurationBreakdown(long diff) {
         long millis = diff;
         if (millis < 0) {
             return "00:00:00";
-        }
+       }
         long hours = TimeUnit.MILLISECONDS.toHours(millis);
         millis -= TimeUnit.HOURS.toMillis(hours);
+
         long minutes = TimeUnit.MILLISECONDS.toMinutes(millis);
         millis -= TimeUnit.MINUTES.toMillis(minutes);
+
         long seconds = TimeUnit.MILLISECONDS.toSeconds(millis);
 
 

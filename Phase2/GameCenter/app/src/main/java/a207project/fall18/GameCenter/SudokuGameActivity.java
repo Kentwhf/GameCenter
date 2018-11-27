@@ -32,6 +32,7 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
 //    private TextView clickedCell;
 //    private int clickedGroup;
 //    private int clickedCellId;
+    private TimerTextView timerTextView;
     private SudokuBoard startBoard;
     private SudokuBoard currentBoard;
     int cellGroupFragments[] = new int[]{R.id.cellGroupFragment, R.id.cellGroupFragment2,
@@ -53,7 +54,11 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
         updateCells();
 
         TimerTextView timerTextView =  (TimerTextView) findViewById(R.id.timer);
-        timerTextView.setEndTime(System.currentTimeMillis() + 60 * 1000);
+//        timerTextView.setEndTime(System.currentTimeMillis() + 60 * 1000);
+//        long temp = System.currentTimeMillis();
+        timerTextView.setStartTime(System.currentTimeMillis());
+        timerTextView.startTimer();
+
 
 //        int cellGroupFragments[] = new int[]{R.id.cellGroupFragment, R.id.cellGroupFragment2,
 //                R.id.cellGroupFragment3, R.id.cellGroupFragment4, R.id.cellGroupFragment5,
@@ -121,11 +126,15 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
     }
 
 
-    @Override
-    public void onResume(){
-        super.onResume();
-
-    }
+//    @Override
+//    public void onResume(){
+//        super.onResume();
+//        if (currentBoard.isBoardCorrect()) {
+//            timerTextView.stopTimer();
+//            String duration = timerTextView.getDurationBreakdown(System.currentTimeMillis() - timerTextView.getStartTime());
+//        }
+//
+//    }
 
     //Generalize a random board to start with
     private ArrayList<SudokuBoard> readGameBoards(int difficulty) {
@@ -255,8 +264,8 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
     }
 
     private boolean checkAllGroups() {
-        int cellGroupFragments[] = new int[]{R.id.cellGroupFragment, R.id.cellGroupFragment2, R.id.cellGroupFragment3, R.id.cellGroupFragment4,
-                R.id.cellGroupFragment5, R.id.cellGroupFragment6, R.id.cellGroupFragment7, R.id.cellGroupFragment8, R.id.cellGroupFragment9};
+//        int cellGroupFragments[] = new int[]{R.id.cellGroupFragment, R.id.cellGroupFragment2, R.id.cellGroupFragment3, R.id.cellGroupFragment4,
+//                R.id.cellGroupFragment5, R.id.cellGroupFragment6, R.id.cellGroupFragment7, R.id.cellGroupFragment8, R.id.cellGroupFragment9};
         for (int i = 0; i < 9; i++) {
             CellGroupFragment thisCellGroupFragment = (CellGroupFragment) getSupportFragmentManager().findFragmentById(cellGroupFragments[i]);
             assert thisCellGroupFragment != null;
@@ -272,6 +281,9 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
 //        currentBoard.isBoardCorrect();
         if(checkAllGroups() && currentBoard.isBoardCorrect()) {
             Toast.makeText(this, getString(R.string.board_correct), Toast.LENGTH_SHORT).show();
+            timerTextView.stopTimer();
+            String duration = timerTextView.getDurationBreakdown(System.currentTimeMillis() - timerTextView.getStartTime());
+            // Pass value to the model
         } else {
             Toast.makeText(this, getString(R.string.board_incorrect), Toast.LENGTH_SHORT).show();
         }
