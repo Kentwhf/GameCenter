@@ -34,16 +34,16 @@ public class SudokuBoard extends Observable {
         }
     }
 
-    public boolean isBoardFull() {
-        for (int i = 0; i < gameCells.length; i++) {
-            for (int j = 0; j < gameCells[i].length; j++) {
-                if (gameCells[i][j] == 0) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
+//    public boolean isBoardFull() {
+//        for (int i = 0; i < gameCells.length; i++) {
+//            for (int j = 0; j < gameCells[i].length; j++) {
+//                if (gameCells[i][j] == 0) {
+//                    return false;
+//                }
+//            }
+//        }
+//        return true;
+//    }
 
     // Can be rafactored
     public boolean isBoardCorrect() {

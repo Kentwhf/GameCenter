@@ -59,9 +59,11 @@ public class CellGroupFragment extends Fragment {
     public void setValue(int position, int value) {
 //        int textViews[] = new int[]{R.id.textView1, R.id.textView2, R.id.textView3, R.id.textView4,
 //                R.id.textView5, R.id.textView6, R.id.textView7, R.id.textView8, R.id.textView9};
-        getTextViews(position).setText(String.valueOf(value));
-        getTextViews(position).setTextColor(Color.BLACK);;
-        getTextViews(position).setTypeface(Typeface.SERIF, Typeface.BOLD);
+        if (value != 0){
+            getTextViews(position).setText(String.valueOf(value));
+            getTextViews(position).setTextColor(Color.BLACK);;
+            getTextViews(position).setTypeface(Typeface.SERIF, Typeface.BOLD);
+        } else {getTextViews(position).setText("");}
         // Distinguish originals and added
 
 //        currentView.setTextColor(Color.BLACK);

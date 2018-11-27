@@ -77,12 +77,13 @@ public class KeyPadDialog extends Dialog{
         keys[8]=findViewById(R.id.keypad_9);
         keys[9]=findViewById(R.id.keypad_10);
         keys[10]=findViewById(R.id.keypad_11);
+        keys[10].setVisibility(View.INVISIBLE);
         keys[11]=findViewById(R.id.keypad_12);
     }
 
 
     private void setResult(int cell){
-        listener.refreshPriorityUI( String.valueOf(cell));
+        listener.refreshPriorityUI(String.valueOf(cell));
 //        sudokuBoard.setValue(targetRow, targetCol, cell);
 //        Intent intent = new Intent();
 //        intent.putExtra("chosenNumber", cell);
@@ -93,7 +94,7 @@ public class KeyPadDialog extends Dialog{
 
     private void setKeysListeners(){
         for (int i=0; i < keys.length; i++){
-            final int cell;
+            int cell;
             if (i < 9) {
                 cell = i + 1;
             } else cell = 0;
@@ -101,7 +102,6 @@ public class KeyPadDialog extends Dialog{
         }
 //
         // Go back to Sudoku board
-
         keys[11].setOnClickListener(v -> dismiss());
 //
 //        // Hint

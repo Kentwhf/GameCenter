@@ -29,9 +29,9 @@ import static java.security.AccessController.getContext;
 
 public class SudokuGameActivity extends AppCompatActivity implements CellGroupFragment.OnFragmentInteractionListener, Observer {
     private final String TAG = "GameActivity";
-    private TextView clickedCell;
-    private int clickedGroup;
-    private int clickedCellId;
+//    private TextView clickedCell;
+//    private int clickedGroup;
+//    private int clickedCellId;
     private SudokuBoard startBoard;
     private SudokuBoard currentBoard;
     int cellGroupFragments[] = new int[]{R.id.cellGroupFragment, R.id.cellGroupFragment2,
@@ -51,6 +51,9 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
         currentBoard.addObserver(this);
         currentBoard.copyValues(startBoard.getGameCells());
         updateCells();
+
+        TimerTextView timerTextView =  (TimerTextView) findViewById(R.id.timer);
+        timerTextView.setEndTime(System.currentTimeMillis() + 60 * 1000);
 
 //        int cellGroupFragments[] = new int[]{R.id.cellGroupFragment, R.id.cellGroupFragment2,
 //                R.id.cellGroupFragment3, R.id.cellGroupFragment4, R.id.cellGroupFragment5,
@@ -108,11 +111,10 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
                 int groupPosition = (groupRow * 3) + groupColumn;
                 int currentValue = currentBoard.getValue(i, j); //Notice
 
-                if (currentValue != 0) {
                     if (currentValue != startBoard.getValue(i, j)) {
                         tempCellGroupFragment.markInput(groupPosition, currentValue, currentBoard.checkDupulicate(i, j));
                     } else {tempCellGroupFragment.setValue(groupPosition, currentValue);}
-                }
+
             }
         }
 
@@ -321,9 +323,9 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
 
     @Override
     public void onFragmentInteraction(int groupId, int cellId, View view) {
-        clickedCell = (TextView) view;
-        clickedGroup = groupId;
-        clickedCellId = cellId;
+        TextView clickedCell = (TextView) view;
+        int clickedGroup = groupId;
+        int clickedCellId = cellId;
         Log.i(TAG, "Clicked group " + groupId + ", cell " + cellId);
         if (!isStartPiece(groupId, cellId)) {
 //            Intent intent = new Intent(this, SudokuChooseNumberActivity.class);
@@ -334,7 +336,7 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
             KeyPadDialog keyPadDialog = new KeyPadDialog(this, currentBoard, new KeyPadDialog.PriorityListener() {
                 @Override
                 public void refreshPriorityUI(String string) {
-                    currentBoard.setValue(row, column, Integer.parseInt(string));
+                    currentBoard.setValue(row, column, (int)Integer.parseInt(string));
 //                    clickedCell.setText(String.valueOf(string));
 //                    updateCells();
                 }

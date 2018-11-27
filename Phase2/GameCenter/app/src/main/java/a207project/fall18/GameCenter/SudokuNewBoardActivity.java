@@ -19,7 +19,7 @@ import java.io.IOException;
 //import me.kirkhorn.knut.android_sudoku.model.SudokuBoard;
 
 /**
- * Created by Knut on 19.11.2017.
+ *
  */
 
 public class SudokuNewBoardActivity extends AppCompatActivity implements CellGroupFragment.OnFragmentInteractionListener {

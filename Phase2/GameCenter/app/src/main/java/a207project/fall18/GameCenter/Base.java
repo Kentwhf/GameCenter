@@ -17,7 +17,7 @@ public class Base extends android.support.v7.widget.AppCompatImageView {
     private boolean qizi = false;//判断是否已经设置的棋子，true代表已设置
     private int ROW;
     private int COL;
-    private int state=0;//方块周围的雷，-1代表为雷，0代表没有，等等
+    private int state=0;//方块周围雷，-1代表为雷，0代表没有，等等
 
 
     public void setCanclick(boolean canclick) {
