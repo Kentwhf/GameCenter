@@ -1,6 +1,7 @@
 package a207project.fall18.GameCenter;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 
@@ -71,6 +73,7 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
         }
         Random random = new Random();
         if (random.nextBoolean()) MoveOpponent();
+        setaddBackButtonListener();
     }
 
     @Override
@@ -130,6 +133,17 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
 
     public void NewGame() {
         this.recreate();
+    }
+
+    /**
+     * Intermediate version
+     */
+    private void setaddBackButtonListener() {
+        Button Game = findViewById(R.id.Game);
+        Game.setOnClickListener((v) -> {
+            Intent i = new Intent(this, GameSelectionActivity.class);
+            startActivity(i);
+        });
     }
 
 }
