@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="a207project.fall18.GameCenter">
 
-    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -26,15 +25,9 @@
         <activity android:name=".GameSelectionActivity" />
         <activity android:name=".ComplexityActivity" />
         <activity android:name=".ScoreboardActivity" />
-        <!-- <activity android:name=".StoneHengeMainActivity" /> -->
-        <activity android:name=".MineActivity1" />
-        <!--<activity android:name=".MainActivity" />-->
-        <activity android:name=".SudokuChooseNumberActivity" />
-        <activity android:name=".SudokuGameActivity" />
-        <activity android:name=".SudokuGameDifficultyActivity" />
-        <activity android:name=".SudokuInstructionsActivity" />
-        <activity android:name=".SudokuMainActivity" />
-        <activity android:name=".SudokuNewBoardActivity"></activity>
+        <activity android:name=".TicTacToeGameActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name="a207project.fall18.GameCenter.Ttt_complexityActivity"></activity>
     </application>
 
 </manifest>
