@@ -27,6 +27,7 @@ import java.util.Observer;
 
 import a207project.fall18.GameCenter.dao.SaveDao;
 
+
 import static a207project.fall18.GameCenter.StartingActivity.SAVE_FILENAME;
 
 /**
@@ -155,8 +156,9 @@ public class GameActivity extends AppCompatActivity implements Observer, Seriali
             nextPos++;
         }
 
-        TextView scores = findViewById(R.id.Score);
-        scores.setText("Scores : " + board.getCurrentscore());
+        // uncomment
+//        TextView scores = findViewById(R.id.Score);
+//        scores.setText("Scores : " + board.getCurrentscore());
         savingManager.autoSave(boardManager);
 //        saveToFile(SAVE_FILENAME);
     }

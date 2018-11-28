@@ -30,7 +30,8 @@ import a207project.fall18.GameCenter.dao.ScoreDao;
     private String TAG="ScoreActivity";
     private ListView listView;
     private List<Score> scoreList =new ArrayList<Score>();
-    private ScoreAdapter scoreAdapter;
+    //UNCOMENT
+//    private ScoreAdapter scoreAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +39,11 @@ import a207project.fall18.GameCenter.dao.ScoreDao;
         setContentView(R.layout.activity_scoreboard);
         ScoreDao scoreDao=new ScoreDao(this);
 
-        listView=findViewById(R.id.lv_score);
-
-        scoreList=scoreDao.query(MyApplication.getInstance().getGame());
-        scoreAdapter=new ScoreAdapter(this, scoreList);
-        listView.setAdapter(scoreAdapter);
+//        listView=findViewById(R.id.lv_score);
+//
+//        scoreList=scoreDao.query(MyApplication.getInstance().getGame());
+//        scoreAdapter=new ScoreAdapter(this, scoreList);
+//        listView.setAdapter(scoreAdapter);
     }
 
 
