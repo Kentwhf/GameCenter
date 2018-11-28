@@ -12,6 +12,7 @@ import android.widget.GridLayout;
 import android.widget.ImageView;
 
 import java.util.Hashtable;
+import java.util.Random;
 
 import a207project.fall18.GameCenter.R;
 
@@ -28,6 +29,7 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
      * The game with the num of the scale.
      */
     private static Game game = new Game(dim);
+    private static RandomPlayer computer = new RandomPlayer(game);
     @Game.FieldValue private int player = Game.X;
 
     @Override
@@ -36,6 +38,7 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_tictactoe_game);
 
         game = new Game(dim);
+        game.SwitchAI(computer);
         boardImages.put(Game.EMPTY, R.drawable.ttt_blank);
         boardImages.put(Game.X, R.drawable.ttt_x);
         boardImages.put(Game.O, R.drawable.ttt_o);
@@ -66,6 +69,8 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
             ImageView field = (ImageView) grid.getChildAt(i);
             field.setOnClickListener(this);
         }
+        Random random = new Random();
+        if (random.nextBoolean()) MoveOpponent();
     }
 
     @Override
@@ -76,15 +81,32 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
         if (game.Move(fieldIdx, player)) {
             field.setImageResource(boardImages.get(player));
 
-//            if (game.won) {
-//                DeclareResult("win!");
-//            }
+            if (game.won) {
+                DeclareResult("You Win!!");
+            }
+            else {
+                MoveOpponent();
+            }
         }
 
-//        if (!game.won && game.getBoard().isFull()) {
-//            DeclareResult("It's a draw!");
-//        }
-        player = player * -1;
+        if (!game.won && game.getBoard().isFull()) {
+            DeclareResult("It's a draw!");
+        }
+    }
+
+    private void MoveOpponent() {
+        @Game.FieldValue int opponent = player * -1;
+        int moveIdx = game.GetMove(opponent);
+
+        if (moveIdx >= 0) {
+            game.Move(moveIdx, opponent);
+            ImageView opponentField = findViewById(moveIdx);
+            opponentField.setImageResource(boardImages.get(opponent));
+
+            if (game.won) {
+                DeclareResult("You Lose!!");
+            }
+        }
     }
 
     public void DeclareResult(CharSequence message) {

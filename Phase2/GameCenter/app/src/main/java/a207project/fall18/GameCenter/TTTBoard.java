@@ -1,5 +1,6 @@
 package a207project.fall18.GameCenter;
 
+import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -13,7 +14,7 @@ public class TTTBoard {
      * The board which is consisted by col and row.
      */
     private int[][] board;
-    private Set<Integer> vacant;
+    private Set<Integer> board_tile;
 
     /**
      * The tic tac toe board.
@@ -23,9 +24,9 @@ public class TTTBoard {
         this.dim = dim;
         this.board = new int[dim][dim];
 
-        vacant = new TreeSet<>();
+        board_tile = new TreeSet<>();
         for (int i = 0; i < Math.pow(dim, 2); i++) {
-            vacant.add(i);
+            board_tile.add(i);
         }
     }
 
@@ -40,7 +41,7 @@ public class TTTBoard {
 
         if (board[row][col] == 0) {
             board[row][col] = player;
-            vacant.remove(fieldIdx);
+            board_tile.remove(fieldIdx);
 
             return true;
         }
@@ -49,7 +50,19 @@ public class TTTBoard {
     }
 
     boolean isFull() {
-        return vacant.isEmpty();
+        return board_tile.isEmpty();
     }
+
+    int getRandomEmpty() {
+        int rnd = new Random().nextInt(dim * dim);
+        Integer v = ((TreeSet<Integer>)board_tile).ceiling(rnd);
+
+        if (v == null) {
+            v = ((TreeSet<Integer>)board_tile).floor(rnd);
+        }
+
+        return v == null ? -1 : v;
+    }
+
 
 }
