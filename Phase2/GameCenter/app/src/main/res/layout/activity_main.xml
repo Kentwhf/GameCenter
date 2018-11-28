@@ -48,15 +48,4 @@
         android:layout_toEndOf="@+id/undo"
         android:layout_toRightOf="@+id/undo"
         android:text="VIP" />
-
-    <TextView
-        android:id="@+id/Score"
-        android:layout_width="76dp"
-        android:layout_height="36dp"
-        android:layout_alignTop="@+id/undo"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="147dp"
-        android:layout_marginRight="147dp" />
 </RelativeLayout>

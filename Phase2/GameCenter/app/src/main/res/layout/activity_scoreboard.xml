@@ -6,37 +6,6 @@
     android:layout_height="match_parent"
     tools:context="a207project.fall18.GameCenter.ScoreboardActivity">
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Score"
-        android:id="@+id/tv_title"
-        android:layout_alignParentTop="true"
-        android:textSize="20sp"
-        android:height="42sp"
-        android:gravity="center"
-        android:background="@color/colorPrimary"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/tv_title"
-        android:background="@color/gray1dp" />
-
-    <LinearLayout
-        android:id="@+id/email_login_form"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <ListView
-            android:id="@+id/lv_score"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-        </ListView>
-
-    </LinearLayout>
-
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="353dp"
@@ -70,8 +39,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical" >
-
-
 
             <TextView
                 android:id="@+id/ranking"
