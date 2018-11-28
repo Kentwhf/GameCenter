@@ -14,11 +14,15 @@ import android.widget.ImageView;
 import java.util.Hashtable;
 
 import a207project.fall18.GameCenter.R;
+import a207project.fall18.GameCenter.dao.SaveDao;
 
 /**
  * The tic tac toe game activity.
  */
 public class TicTacToeGameActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private SaveDao savingManager;
+
     private static Hashtable<Integer, Integer> boardImages = new Hashtable<>();
     /**
      * Dim of the board.
@@ -34,11 +38,16 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tictactoe_game);
+        savingManager = MyApplication.getInstance().getSavingManager();
 
         game = new Game(dim);
         boardImages.put(Game.EMPTY, R.drawable.ttt_blank);
         boardImages.put(Game.X, R.drawable.ttt_x);
         boardImages.put(Game.O, R.drawable.ttt_o);
+
+        savingManager.autoSave(game);
+
+
 
         GridLayout grid = findViewById(R.id.board);
         grid.setOnClickListener(this);

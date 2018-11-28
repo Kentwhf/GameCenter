@@ -3,10 +3,12 @@ package a207project.fall18.GameCenter;
 import android.support.annotation.IntDef;
 import android.util.Log;
 
+import java.io.Serializable;
+
 /**
  * The tic tac toe game.
  */
-public class Game {
+public class Game extends BoardManager implements Serializable {
 
     static final int X = -1;
     static final int O = 1;
@@ -24,7 +26,8 @@ public class Game {
         this.board = new TTTBoard(dim);
     }
 
-    public TTTBoard getBoard() {
+
+    public TTTBoard getTTTBoard() {
         return board;
     }
 
