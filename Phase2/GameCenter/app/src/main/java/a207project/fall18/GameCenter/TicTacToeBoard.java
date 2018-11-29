@@ -12,7 +12,7 @@ public class TicTacToeBoard extends Board{
     /**
      * The int dim.
      */
-    static int dim;
+    static int size;
     /**
      * The board which is consisted by col and row.
      */
@@ -24,7 +24,7 @@ public class TicTacToeBoard extends Board{
      * @param  dim the dimension of the board
      */
     TicTacToeBoard(int dim) {
-        this.dim = dim;
+        this.size = dim;
         this.board = new int[dim][dim];
 
         board_tile = new TreeSet<>();
@@ -40,8 +40,8 @@ public class TicTacToeBoard extends Board{
      * @return whether to move.
      */
     public boolean move(int fieldIdx,  int player) {
-        int row = fieldIdx / dim;
-        int col = fieldIdx % dim;
+        int row = fieldIdx / size;
+        int col = fieldIdx % size;
 
         if (board[row][col] == 0) {
             board[row][col] = player;
@@ -66,7 +66,7 @@ public class TicTacToeBoard extends Board{
      * @return  a random index of random tile which can be move.
      */
     int getRandomEmpty() {
-        int num = new Random().nextInt(dim * dim);
+        int num = new Random().nextInt(size * size);
         Integer i = ((TreeSet<Integer>)board_tile).ceiling(num);
 
         if (i == null) {

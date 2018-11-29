@@ -36,17 +36,17 @@ class TicTacToeScore {
     }
 
     private Hashtable<String, LineStatus> lines;
-    private int dim;
+    private int size;
 
     /**
      * TTT score which is scored by row, col, left diagonal, right diagonal.
-     * @param dim dim of board.
+     * @param size dim of board.
      */
-    TicTacToeScore(int dim) {
-        this.dim = dim;
+    TicTacToeScore(int size) {
+        this.size = size;
         lines = new Hashtable<>();
 
-        for (int i = 0; i < this.dim; i++) {
+        for (int i = 0; i < this.size; i++) {
             lines.put("R" + i, new LineStatus()); // rows
             lines.put("C" + i, new LineStatus()); // columns
         }
@@ -64,15 +64,15 @@ class TicTacToeScore {
     boolean Update(int fieldIdx, int player) {
         boolean won = false;
 
-        int row = fieldIdx / dim;
-        int col = fieldIdx % dim;
+        int row = fieldIdx / size;
+        int col = fieldIdx % size;
 
         ArrayList<String> lineKeys = new ArrayList<>();
         lineKeys.add("R" + row); // mark row line
         lineKeys.add("C" + col); // add col line
 
         if (row == col) { lineKeys.add("D1"); }
-        if (row + col + 1 == dim) { lineKeys.add("D2"); }
+        if (row + col + 1 == size) { lineKeys.add("D2"); }
 
         for (String key : lineKeys) {
             LineStatus lineStatus = lines.get(key);
@@ -85,7 +85,7 @@ class TicTacToeScore {
 
             lineStatus.count += player;
 
-            if (lineStatus.count * player >= dim) { won = true; }
+            if (lineStatus.count * player >= size) { won = true; }
         }
 
         return won;
@@ -103,7 +103,7 @@ class TicTacToeScore {
             LineStatus ls = entry.getValue();
 
             if (!(ls.state == EMPTY || ls.state == BLOCKED)) {
-                if (ls.count * ls.state == dim) {
+                if (ls.count * ls.state == size) {
                     return IntMax() * ls.state;
                 }
                 else {

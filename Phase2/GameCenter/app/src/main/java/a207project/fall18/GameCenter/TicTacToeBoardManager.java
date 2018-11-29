@@ -43,9 +43,9 @@ import android.util.Log;
     private TicTacToeRandomPlayer computer;
 
 
-    TicTacToeBoardManager(int dim) {
-        this.ticTacToeBoard = new TicTacToeBoard(dim);
-        this.TicTacToeScoreboard = new TicTacToeScore(dim);
+    TicTacToeBoardManager(int size) {
+        this.ticTacToeBoard = new TicTacToeBoard(size);
+        this.TicTacToeScoreboard = new TicTacToeScore(size);
     }
 
     public TicTacToeBoard getSlidingTilesBoard() {
