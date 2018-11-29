@@ -301,8 +301,6 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
         return true;
     }
 
-
-    // Change it to a listerner
     // Change it to real time interface. Checking if puzzle's been solve . Potentially observable
     public void onCheckBoardButtonClicked(View view) {
 //        currentBoard.isBoardCorrect();
