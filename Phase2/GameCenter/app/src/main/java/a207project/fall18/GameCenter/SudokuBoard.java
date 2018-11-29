@@ -1,31 +1,43 @@
 package a207project.fall18.GameCenter;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Observable;
 
 /**
- *
+ * A SudokuBoard Manager
  */
 
-public class SudokuBoard extends Observable {
+class SudokuBoard extends Observable {
 
     private int[][] gameCells = new int[9][9];
 
 
 //    public SudokuBoard(){};
 
+    /**
+     * @param row row
+     * @param column column
+     * @param value value being set
+     */
     public void setValue(int row, int column, int value) {
         gameCells[row][column] = value;
         setChanged();
         notifyObservers();
     }
 
+
+    /**
+     * @return returnr a Sudoku Bard
+     */
     public int[][] getGameCells() {
         return gameCells;
     }
 
+
+    /**
+     * @param newGameCells Copy a Sudoku Bard
+     */
     public void copyValues(int[][] newGameCells) {
         for (int i = 0; i < newGameCells.length; i++) {
             for (int j = 0; j < newGameCells[i].length; j++) {
@@ -45,6 +57,9 @@ public class SudokuBoard extends Observable {
 //        return true;
 //    }
 
+    /**
+     * @return return if the board is solved correctly
+     */
     // Can be rafactored
     public boolean isBoardCorrect() {
         // Check horizontal and vertical
@@ -81,6 +96,12 @@ public class SudokuBoard extends Observable {
         return true;
     }
 
+
+    /**
+     * @param row row
+     * @param column column
+     * @return get the value at a given and a given column in the Sudoku Board
+     */
     public int getValue(int row, int column) {
         return gameCells[row][column];
     }
@@ -113,6 +134,12 @@ public class SudokuBoard extends Observable {
 //        return temp.toString();
 //    }
 
+
+    /**
+     * @param row row
+     * @param column column
+     * @return return if there are duplicates of numbers
+     */
     public boolean checkDupulicate(int row, int column){
         ArrayList<Integer> horizontals = new ArrayList<>();
         ArrayList<Integer> verticals = new ArrayList<>();
@@ -129,6 +156,13 @@ public class SudokuBoard extends Observable {
                 group.contains(gameCells[row][column]);
     }
 
+
+    /**
+     * @param row row
+     * @param column column
+     * @return return an array list of integers that are in specific cell group. The cell gorup includes
+     * the cell at the given row and column
+     */
     public ArrayList<Integer> getTargetGroup(int row, int column){
 
         int temp1 = row;

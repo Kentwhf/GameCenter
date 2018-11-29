@@ -24,7 +24,7 @@ import java.util.Observer;
 import static java.security.AccessController.getContext;
 
 /**
- *
+ * Sodoku game activity
  */
 
 public class SudokuGameActivity extends AppCompatActivity implements CellGroupFragment.OnFragmentInteractionListener, Observer {
@@ -91,6 +91,9 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
 //        }
     }
 
+    /**
+     * Updates the Sudoku board
+     */
     private void updateCells(){
 //        int cellGroupFragments[] = new int[]{R.id.cellGroupFragment, R.id.cellGroupFragment2,
 //                R.id.cellGroupFragment3, R.id.cellGroupFragment4, R.id.cellGroupFragment5,
@@ -136,6 +139,10 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
 //
 //    }
 
+    /**
+     * @param difficulty an int that represents the difficulty of the game
+     * @return an array list of SudokuBoards with the same difficulty
+     */
     //Generalize a random board to start with
     private ArrayList<SudokuBoard> readGameBoards(int difficulty) {
         ArrayList<SudokuBoard> boards = new ArrayList<>();
@@ -223,6 +230,10 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
         return boards;
     }
 
+    /**
+     * @param fileId an int that represents the R file at certain difficulty
+     * @param boards an array list of Sudoku Boards that are able to be displayed
+     */
     private void filereader(int fileId, ArrayList<SudokuBoard> boards){
         InputStream inputStream = getResources().openRawResource(fileId);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -250,19 +261,33 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
         } catch (IOException e) {
             Log.e(TAG, e.getMessage());
         }
-    };
+    }
 
+    /**
+     * @param boards an array list of SudokuBoards
+     * @return an randomly selected Sudoku board
+     */
     private SudokuBoard chooseRandomBoard(ArrayList<SudokuBoard> boards) {
         int randomNumber = (int) (Math.random() * boards.size());
         return boards.get(randomNumber);
     }
 
+
+    /**
+     * @param group a selected group
+     * @param cell a selected cell
+     * @return if the selected is a starting piece
+     */
     private boolean isStartPiece(int group, int cell) {
         int row = ((group-1)/3)*3 + (cell/3);
         int column = ((group-1)%3)*3 + ((cell)%3);
         return startBoard.getValue(row, column) != 0;
     }
 
+
+    /**
+     * @return if layout CellGroupFragment has correct groups
+     */
     private boolean checkAllGroups() {
 //        int cellGroupFragments[] = new int[]{R.id.cellGroupFragment, R.id.cellGroupFragment2, R.id.cellGroupFragment3, R.id.cellGroupFragment4,
 //                R.id.cellGroupFragment5, R.id.cellGroupFragment6, R.id.cellGroupFragment7, R.id.cellGroupFragment8, R.id.cellGroupFragment9};
@@ -276,6 +301,8 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
         return true;
     }
 
+
+    // Change it to a listerner
     // Change it to real time interface. Checking if puzzle's been solve . Potentially observable
     public void onCheckBoardButtonClicked(View view) {
 //        currentBoard.isBoardCorrect();
