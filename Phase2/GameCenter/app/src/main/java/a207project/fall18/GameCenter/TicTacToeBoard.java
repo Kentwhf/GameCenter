@@ -21,14 +21,14 @@ public class TicTacToeBoard extends Board{
 
     /**
      * The tic tac toe board.
-     * @param  dim the dimension of the board
+     * @param  size the dimension of the board
      */
-    TicTacToeBoard(int dim) {
-        this.size = dim;
-        this.board = new int[dim][dim];
+    TicTacToeBoard(int size) {
+        this.size = size;
+        this.board = new int[size][size];
 
         board_tile = new TreeSet<>();
-        for (int i = 0; i < Math.pow(dim, 2); i++) {
+        for (int i = 0; i < Math.pow(size, 2); i++) {
             board_tile.add(i);
         }
     }
