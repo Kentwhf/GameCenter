@@ -43,15 +43,29 @@ import android.util.Log;
     private RandomPlayer computer;
 
 
+    /**
+     * A game which takes the dimension of the board and scoreboard.
+     * @param dim dim of the board
+     */
     Game(int dim) {
         this.board = new TTTBoard(dim);
         this.scoreBoard = new TTTScore(dim);
     }
 
+    /**
+     * Get the board.
+     * @return a board
+     */
     public TTTBoard getBoard() {
         return board;
     }
 
+    /**
+     * Update win or not, If not win, check move.
+     * @param fieldIdx Index of the Tile.
+     * @param player The Player.
+     * @return Move or not.
+     */
     boolean Move(int fieldIdx, @FieldValue int player) {
 
         if (board.move(fieldIdx, player)) {
@@ -65,12 +79,21 @@ import android.util.Log;
         return false;
     }
 
+    /**
+     * Get an available move.
+     * @param fieldValue Index of the Tile.
+     * @return the index of move.
+     */
     int GetMove(@FieldValue int fieldValue)
     {
         return computer.GetMove(fieldValue);
     }
 
 
+    /**
+     * Switch computer move.
+     * @param computer computer player.
+     */
     void SwitchAI(RandomPlayer computer) {
         RandomPlayer.game = this;
         this.computer = computer;
