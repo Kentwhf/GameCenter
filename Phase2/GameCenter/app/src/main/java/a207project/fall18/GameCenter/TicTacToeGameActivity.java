@@ -31,7 +31,13 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
      * The game with the num of the scale.
      */
     private static Game game = new Game(dim);
+    /**
+     * set a ai player which will random move.
+     */
     private static RandomPlayer computer = new RandomPlayer(game);
+    /**
+     * set the player.
+     */
     private int player = Game.X;
 
     @Override
@@ -98,6 +104,9 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+    /**
+     * update when computer move and check finish the game or not.
+     */
     private void MoveOpponent() {
         int opponent = player * -1;
         int moveIdx = game.GetMove(opponent);
@@ -137,7 +146,7 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
     }
 
     /**
-     * Intermediate version
+     * Back to the Game selection activity.
      */
     private void setaddBackButtonListener() {
         Button Game = findViewById(R.id.Game);

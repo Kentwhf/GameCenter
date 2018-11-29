@@ -218,7 +218,7 @@ public class BoardManager implements Serializable {
     /**
      * Return the current board.
      */
-    Board getBoard() {
+    public Board getBoard() {
         return board;
     }
 
