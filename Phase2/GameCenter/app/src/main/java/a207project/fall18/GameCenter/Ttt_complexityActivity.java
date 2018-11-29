@@ -22,6 +22,9 @@ public class Ttt_complexityActivity extends AppCompatActivity {
         setupDifficultButton3Listener();
     }
 
+    /**
+     * Initialize a Easy version of the TicTacToe.
+     */
     private void addEasyButtonListener() {
         Button Button1 = findViewById(R.id.button1);
         Button1.setOnClickListener((v) -> {
@@ -32,7 +35,7 @@ public class Ttt_complexityActivity extends AppCompatActivity {
     }
 
     /**
-     * Intermediate version
+     * Initialize a Intermediate version of the TicTacToe.
      */
     private void addIntermediateButtonListener() {
         Button Button2 = findViewById(R.id.button2);
@@ -44,7 +47,7 @@ public class Ttt_complexityActivity extends AppCompatActivity {
     }
 
     /**
-     * Hard version
+     * Initialize a Difficult version of the TicTacToe.
      */
     private void setupDifficultButton3Listener() {
         Button Button3 = findViewById(R.id.button3);

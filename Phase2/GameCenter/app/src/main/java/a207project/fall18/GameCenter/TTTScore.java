@@ -6,10 +6,25 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Map;
 
+/**
+ * TicTacToe score class
+ */
 class TTTScore {
+    /**
+     * int X = -1
+     */
     static final int X = Game.X;
+    /**
+     * int O = 1
+     */
     static final int O = Game.O;
+    /**
+     * int Empty = 0
+     */
     static final int EMPTY = Game.EMPTY;
+    /**
+     * int Blocked = 100
+     */
     static final int BLOCKED = 100;
 
     @IntDef({X, O, EMPTY, BLOCKED})
@@ -23,6 +38,10 @@ class TTTScore {
     private Hashtable<String, LineStatus> lines;
     private int dim;
 
+    /**
+     * TTT score which is scored by row, col, left diagonal, right diagonal.
+     * @param dim dim of board.
+     */
     TTTScore(int dim) {
         this.dim = dim;
         lines = new Hashtable<>();
@@ -36,7 +55,13 @@ class TTTScore {
         lines.put("D2", new LineStatus()); // diagonal right
     }
 
-     boolean Update(int fieldIdx, int player) {
+    /**
+     * Update the new board after move/click.
+     * @param fieldIdx Index of tile.
+     * @param player the player.
+     * @return win or not.
+     */
+    boolean Update(int fieldIdx, int player) {
         boolean won = false;
 
         int row = fieldIdx / dim;
@@ -67,6 +92,10 @@ class TTTScore {
     }
 
 
+    /**
+     * Get the score of current board
+     * @return score
+     */
      int GetScore() {
         int score = 0;
 
@@ -86,7 +115,11 @@ class TTTScore {
         return score;
     }
 
+    /**
+     * Set a max num
+     * @return max num.
+     */
     private static int IntMax() {
-        return 2000000000;
+        return 5000000;
     }
 }
