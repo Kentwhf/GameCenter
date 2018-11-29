@@ -17,16 +17,15 @@ GameSelectionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_selection);
         setTitle("Select Game");
 
-        setupGame1ButtonListener();
-        setupGame2ButtonListener();
-        setupGame3ButtonListener();
+        setupSlidingTilesGame1ButtonListener();
         LogoutButtonListener();
+        setupGame2ButtonListener();
     }
 
     /**
      * Button for SlidingTiles
      */
-    private void setupGame1ButtonListener(){
+    private void setupSlidingTilesGame1ButtonListener(){
         Button Game1 = findViewById(R.id.Game1);
         Game1.setOnClickListener((v) -> {
             MyApplication.getInstance().setGame("SlidingTiles");
@@ -56,20 +55,7 @@ GameSelectionActivity extends AppCompatActivity {
         Game2.setOnClickListener((v) -> {
             MyApplication.getInstance().setGame("TicTacToe");
             MyApplication.getInstance().initSavingManager();
-            Intent i = new Intent(this, ttt_complexityActivity.class);
-            startActivity(i);
-        });
-    }
-
-    /**
-     * Button for SlidingTiles
-     */
-    private void setupGame3ButtonListener(){
-        Button Game2 = findViewById(R.id.Game2);
-        Game2.setOnClickListener((v) -> {
-            MyApplication.getInstance().setGame("Sudoku");
-            MyApplication.getInstance().initSavingManager();
-            Intent i = new Intent(this, SudokuMainActivity.class);
+            Intent i = new Intent(this, Ttt_complexityActivity.class);
             startActivity(i);
         });
     }

@@ -34,13 +34,11 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_user);
         setTitle("Sign up!");
 
-
         RegisterButton = findViewById(R.id.Register);
-        //COMMENT
-//        username = findViewById(R.id.Username);
-//        nickname = findViewById(R.id.Nickname);
-//        password = findViewById(R.id.NPassword);
-//        verifypassword = findViewById(R.id.ConfirmPassword);
+        username = findViewById(R.id.Username);
+        nickname = findViewById(R.id.Nickname);
+        password = findViewById(R.id.NPassword);
+        verifypassword = findViewById(R.id.ConfirmPassword);
 //
 //        userAccountManager = new UserDao(this);
 

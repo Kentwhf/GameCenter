@@ -79,7 +79,6 @@ public class StartingActivity extends AppCompatActivity {
         loadButton.setOnClickListener(v -> {
 
             List<BoardManager> historicalFile = savingManager.query("get boardManager");
-            Log.v("shabi", historicalFile.get(0).toString());
 
             if (historicalFile != null){
 //                saveToFile(TEMP_SAVE_FILENAME);

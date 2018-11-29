@@ -27,6 +27,11 @@ public class MovementController {
 
 //                MyApplication.getInstance().currentScore.setFinalScore(boardManager.getBoard().getCurrentscore());
 
+                // Send current score here. Singleton needed.
+//                 SlidingTilesScore current = new SlidingTilesScore("");
+//                 SlidingTilesScore.scores.add(current);
+//                 Collections.sort(SlidingTilesScore.scores);
+
                 Toast.makeText(context, "YOU WIN!", Toast.LENGTH_SHORT).show();
             }
         } else {

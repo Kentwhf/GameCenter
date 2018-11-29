@@ -4,15 +4,19 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.Toast;
+
+import java.util.List;
+
+import a207project.fall18.GameCenter.dao.SaveDao;
 
 
-public class ttt_complexityActivity extends AppCompatActivity {
+public class Ttt_complexityActivity extends AppCompatActivity {
+
 
     /**
      * The board manager.
      */
-    public Game game;
-    public TTTBoard board;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,7 @@ public class ttt_complexityActivity extends AppCompatActivity {
             startActivity(i);
         });
     }
+
 
     /**
      * Hard version

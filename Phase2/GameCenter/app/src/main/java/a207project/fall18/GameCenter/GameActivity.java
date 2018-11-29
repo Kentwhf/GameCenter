@@ -3,8 +3,6 @@ package a207project.fall18.GameCenter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,7 +24,6 @@ import java.util.Observable;
 import java.util.Observer;
 
 import a207project.fall18.GameCenter.dao.SaveDao;
-
 
 import static a207project.fall18.GameCenter.StartingActivity.SAVE_FILENAME;
 
@@ -50,10 +47,10 @@ public class GameActivity extends AppCompatActivity implements Observer, Seriali
     /**
      * Constants for swiping directions. Should be an enum, probably.
      */
-//    public static final int UP = 1;
-//    public static final int DOWN = 2;
-//    public static final int LEFT = 3;
-//    public static final int RIGHT = 4;
+    public static final int UP = 1;
+    public static final int DOWN = 2;
+    public static final int LEFT = 3;
+    public static final int RIGHT = 4;
 
     // Grid View and calculated column height and width based on device size
     private GestureDetectGridView gridView;
@@ -90,7 +87,6 @@ public class GameActivity extends AppCompatActivity implements Observer, Seriali
         // Observer sets up desired dimensions as well as calls our display function
         gridView.getViewTreeObserver().addOnGlobalLayoutListener(
                 new ViewTreeObserver.OnGlobalLayoutListener() {
-                    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
                     @Override
                     public void onGlobalLayout() {
                         gridView.getViewTreeObserver().removeOnGlobalLayoutListener(
@@ -156,9 +152,8 @@ public class GameActivity extends AppCompatActivity implements Observer, Seriali
             nextPos++;
         }
 
-        // uncomment
-//        TextView scores = findViewById(R.id.Score);
-//        scores.setText("Scores : " + board.getCurrentscore());
+        TextView scores = findViewById(R.id.Score);
+        scores.setText("Scores : " + board.getCurrentscore());
         savingManager.autoSave(boardManager);
 //        saveToFile(SAVE_FILENAME);
     }
