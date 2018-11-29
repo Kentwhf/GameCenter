@@ -33,8 +33,8 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
 //    private int clickedGroup;
 //    private int clickedCellId;
     private TimerTextView timerTextView;
-    private SudokuBoard startBoard;
-    private SudokuBoard currentBoard;
+    private SudokuBoardManager startBoard;
+    private SudokuBoardManager currentBoard;
     int cellGroupFragments[] = new int[]{R.id.cellGroupFragment, R.id.cellGroupFragment2,
             R.id.cellGroupFragment3, R.id.cellGroupFragment4, R.id.cellGroupFragment5,
             R.id.cellGroupFragment6, R.id.cellGroupFragment7, R.id.cellGroupFragment8, R.id.cellGroupFragment9};
@@ -45,10 +45,10 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
         setContentView(R.layout.activity_sudoku_game);
 
         int difficulty = getIntent().getIntExtra("difficulty", 0);
-        ArrayList<SudokuBoard> boards = readGameBoards(difficulty);
+        ArrayList<SudokuBoardManager> boards = readGameBoards(difficulty);
 
         startBoard = chooseRandomBoard(boards);
-        currentBoard = new SudokuBoard();
+        currentBoard = new SudokuBoardManager();
         currentBoard.addObserver(this);
         currentBoard.copyValues(startBoard.getGameCells());
         updateCells();
@@ -141,11 +141,11 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
 
     /**
      * @param difficulty an int that represents the difficulty of the game
-     * @return an array list of SudokuBoards with the same difficulty
+     * @return an array list of SudokuBoardManagers with the same difficulty
      */
     //Generalize a random board to start with
-    private ArrayList<SudokuBoard> readGameBoards(int difficulty) {
-        ArrayList<SudokuBoard> boards = new ArrayList<>();
+    private ArrayList<SudokuBoardManager> readGameBoards(int difficulty) {
+        ArrayList<SudokuBoardManager> boards = new ArrayList<>();
         int fileId;
         if (difficulty == 1) {
             fileId = R.raw.normal;
@@ -160,7 +160,7 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
 //        try {
 //            String line = bufferedReader.readLine();
 //            while (line != null) {
-//                SudokuBoard board = new SudokuBoard();
+//                SudokuBoardManager board = new SudokuBoardManager();
 //                // read all lines in the board and set values in the board.\
 //
 //                for (int i = 0; i < 9; i++) {
@@ -201,7 +201,7 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
 //            internalBufferedReader.readLine();
 //            String line = internalBufferedReader.readLine();
 //            while (line != null) {
-//                SudokuBoard board = new SudokuBoard();
+//                SudokuBoardManager board = new SudokuBoardManager();
 //                // read all lines in the board
 //                for (int i = 0; i < 9; i++) {
 //                    String rowCells[] = line.split(" ");
@@ -234,13 +234,13 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
      * @param fileId an int that represents the R file at certain difficulty
      * @param boards an array list of Sudoku Boards that are able to be displayed
      */
-    private void filereader(int fileId, ArrayList<SudokuBoard> boards){
+    private void filereader(int fileId, ArrayList<SudokuBoardManager> boards){
         InputStream inputStream = getResources().openRawResource(fileId);
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
         try {
             String line = bufferedReader.readLine();
             while (line != null) {
-                SudokuBoard board = new SudokuBoard();
+                SudokuBoardManager board = new SudokuBoardManager();
                 // read all lines in the board and set values in the board.\
 
                 for (int i = 0; i < 9; i++) {
@@ -264,10 +264,10 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
     }
 
     /**
-     * @param boards an array list of SudokuBoards
+     * @param boards an array list of SudokuBoardManagers
      * @return an randomly selected Sudoku board
      */
-    private SudokuBoard chooseRandomBoard(ArrayList<SudokuBoard> boards) {
+    private SudokuBoardManager chooseRandomBoard(ArrayList<SudokuBoardManager> boards) {
         int randomNumber = (int) (Math.random() * boards.size());
         return boards.get(randomNumber);
     }
@@ -385,7 +385,7 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
 //            int number = .getIntExtra("chosenNumber", 1);
 //            clickedCell.setText(String.valueOf(number));
 //            currentBoard.setValue(row, column, number);
-//            currentBoard = KeyPadDialog.getNewSudokuBoard();
+//            currentBoard = KeyPadDialog.getNewSudokuBoardManager();
         } else {
             Toast.makeText(this, getString(R.string.start_piece_error), Toast.LENGTH_SHORT).show();
         }

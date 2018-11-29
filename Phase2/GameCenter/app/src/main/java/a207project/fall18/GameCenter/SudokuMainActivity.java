@@ -93,10 +93,10 @@ public class SudokuMainActivity extends AppCompatActivity {
 
 
 
-    public void onAddNewBoardButtonClicked(View view) {
-        Intent intent = new Intent(this, SudokuNewBoardActivity.class);
-        startActivity(intent);
-    }
+//    public void onAddNewBoardButtonClicked(View view) {
+//        Intent intent = new Intent(this, SudokuNewBoardActivity.class);
+//        startActivity(intent);
+//    }
 
     public void onShowInstructionsButtonClicked(View view) {
         Intent intent = new Intent(this, SudokuInstructionsActivity.class);

@@ -11,9 +11,9 @@ import java.security.AccessControlContext;
 
 public class KeyPadDialog extends Dialog{
 
-    private SudokuBoard sudokuBoard;
+    private SudokuBoardManager sudokuBoardManager;
     private final View keys[] = new View[12];
-//    private SudokuBoard sudokuBoard;
+//    private SudokuBoardManager sudokuBoardManager;
 //    private int targetRow;
 //    private int targetCol;
 
@@ -32,11 +32,11 @@ public class KeyPadDialog extends Dialog{
     private PriorityListener listener;
 
 
-    public KeyPadDialog(Context context, SudokuBoard sudokuBoard, PriorityListener listener) {
+    public KeyPadDialog(Context context, SudokuBoardManager sudokuBoardManager, PriorityListener listener) {
         super(context);
 //        this.targetRow = row;
 //        this.targetCol = col;
-        this.sudokuBoard = sudokuBoard;
+        this.sudokuBoardManager = sudokuBoardManager;
         this.listener = listener;
     }
 //    private final int used[];
@@ -84,7 +84,7 @@ public class KeyPadDialog extends Dialog{
 
     private void setResult(int cell){
         listener.refreshPriorityUI(String.valueOf(cell));
-//        sudokuBoard.setValue(targetRow, targetCol, cell);
+//        sudokuBoardManager.setValue(targetRow, targetCol, cell);
 //        Intent intent = new Intent();
 //        intent.putExtra("chosenNumber", cell);
 //        intent.putExtra("isUnsure", checkBoxChecked);
@@ -115,8 +115,8 @@ public class KeyPadDialog extends Dialog{
 //        });
     }
 
-//    public SudokuBoard getNewSudokuBoard(){
-//        return this.sudokuBoard;
+//    public SudokuBoardManager getNewSudokuBoardManager(){
+//        return this.sudokuBoardManager;
 //    }
 
 }

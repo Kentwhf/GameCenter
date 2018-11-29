@@ -13,15 +13,15 @@ class TTTScore {
     /**
      * int X = -1
      */
-    static final int X = Game.X;
+    static final int X = TicTacToeBoardManager.X;
     /**
      * int O = 1
      */
-    static final int O = Game.O;
+    static final int O = TicTacToeBoardManager.O;
     /**
      * int Empty = 0
      */
-    static final int EMPTY = Game.EMPTY;
+    static final int EMPTY = TicTacToeBoardManager.EMPTY;
     /**
      * int Blocked = 100
      */
