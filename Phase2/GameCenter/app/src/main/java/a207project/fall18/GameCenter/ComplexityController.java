@@ -4,22 +4,24 @@ import android.content.Intent;
 
 import a207project.fall18.GameCenter.dao.SaveDao;
 
-public class ComplexityController {
+class ComplexityController {
     private String game;
     private SaveDao savingManager;
     private BoardManager boardManager;
     private int undoTime;
 
-    public ComplexityController(int undoTime){
+    ComplexityController(int undoTime){
         game = MyApplication.getInstance().gameType;
         savingManager = MyApplication.getInstance().getSavingManager();
         this.undoTime = undoTime;
     }
 
+    BoardManager getBoardManager(){return this.boardManager;}
 
 
-    public void Easy(){
-        if (game == "SlidingTiles"){
+
+    void Easy(){
+        if (game.equals( "SlidingTiles" )){
             Board.setNumRowsCols(3);
             boardManager = new BoardManager();
             boardManager.setCanUndoTime(undoTime);
@@ -28,7 +30,7 @@ public class ComplexityController {
 
         }
 
-        else if(game == "TicTacToe"){
+        else if(game.equals( "TicTacToe" )){
             TicTacToeGameActivity.dim = 3;
 //            Intent i = new Intent(ComplexityActivity, TicTacToeGameActivity.class);
 //            startActivity(i);
@@ -40,8 +42,8 @@ public class ComplexityController {
 
     }
 
-    public void Intermediate(){
-        if (game == "SlidingTiles"){
+    void Intermediate(){
+        if (game.equals( "SlidingTiles" )){
             Board.setNumRowsCols(4);
             boardManager = new BoardManager();
             boardManager.setCanUndoTime(undoTime);
@@ -49,7 +51,7 @@ public class ComplexityController {
             MyApplication.getInstance().setBoardManager( boardManager);
         }
 
-        else if(game == "TicTacToe"){
+        else if(game.equals( "TicTacToe" )){
             TicTacToeGameActivity.dim = 4;
         }
 //
@@ -57,8 +59,8 @@ public class ComplexityController {
 
     }
 
-    public void Difficult(){
-        if (game == "SlidingTiles"){
+    void Difficult(){
+        if (game.equals( "SlidingTiles" )){
             Board.setNumRowsCols(5);
             boardManager = new BoardManager();
             boardManager.setCanUndoTime(undoTime);
@@ -66,7 +68,7 @@ public class ComplexityController {
             MyApplication.getInstance().setBoardManager((BoardManager) boardManager);
         }
 
-        else if(game == "TicTacToe"){
+        else if(game.equals( "TicTacToe" )){
             TicTacToeGameActivity.dim = 5;
         }
 

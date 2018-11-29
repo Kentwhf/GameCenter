@@ -32,7 +32,7 @@ public class ComplexityActivity extends AppCompatActivity {
     /**
      * The board manager.
      */
-    private BoardManager boardManager;
+
 
     /**
      * Switch to game
@@ -41,7 +41,7 @@ public class ComplexityActivity extends AppCompatActivity {
         Intent tmp ;
 
 //                new Intent(this, GameActivity.class);
-        MyApplication.getInstance().setBoardManager( boardManager);
+        MyApplication.getInstance().setBoardManager(controller.getBoardManager());
 //        saveToFile(StartingActivity.TEMP_SAVE_FILENAME);
         if (game == "SlidingTiles"){
             tmp = new Intent(this, GameActivity.class);
