@@ -120,6 +120,10 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+
+    /**
+     * @param message A CharSequence message popping out to tell whether win or not
+     */
     public void DeclareResult(CharSequence message) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage(message);
