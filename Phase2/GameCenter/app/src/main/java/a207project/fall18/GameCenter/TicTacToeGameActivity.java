@@ -32,7 +32,7 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
      */
     private static Game game = new Game(dim);
     private static RandomPlayer computer = new RandomPlayer(game);
-    @Game.FieldValue private int player = Game.X;
+    private int player = Game.X;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +74,7 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
         Random random = new Random();
         if (random.nextBoolean()) MoveOpponent();
         setaddBackButtonListener();
+        setTitle("TicTacToe");
     }
 
     @Override
@@ -98,7 +99,7 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
     }
 
     private void MoveOpponent() {
-        @Game.FieldValue int opponent = player * -1;
+        int opponent = player * -1;
         int moveIdx = game.GetMove(opponent);
 
         if (moveIdx >= 0) {
