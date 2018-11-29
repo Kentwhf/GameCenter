@@ -5,12 +5,14 @@ import android.content.Intent;
 import a207project.fall18.GameCenter.dao.SaveDao;
 
 public class ComplexityController {
-    private String game = MyApplication.getInstance().gameType;
-    private SaveDao savingManager = MyApplication.getInstance().getSavingManager();
+    private String game;
+    private SaveDao savingManager;
     private BoardManager boardManager;
     private int undoTime;
 
     public ComplexityController(int undoTime){
+        game = MyApplication.getInstance().gameType;
+        savingManager = MyApplication.getInstance().getSavingManager();
         this.undoTime = undoTime;
     }
 

@@ -38,7 +38,7 @@ public class ComplexityActivity extends AppCompatActivity {
      * Switch to game
      */
     private void switchToGame() {
-        Intent tmp = new Intent();
+        Intent tmp ;
 
 //                new Intent(this, GameActivity.class);
         MyApplication.getInstance().setBoardManager( boardManager);
