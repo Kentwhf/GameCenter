@@ -31,8 +31,14 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
      * The game with the num of the scale.
      */
     private static Game game = new Game(dim);
+    /**
+     * set a ai player which will random move.
+     */
     private static RandomPlayer computer = new RandomPlayer(game);
-    @Game.FieldValue private int player = Game.X;
+    /**
+     * set the player.
+     */
+    private int player = Game.X;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +80,7 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
         Random random = new Random();
         if (random.nextBoolean()) MoveOpponent();
         setaddBackButtonListener();
+        setTitle("TicTacToe");
     }
 
     @Override
@@ -97,8 +104,11 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+    /**
+     * update when computer move and check finish the game or not.
+     */
     private void MoveOpponent() {
-        @Game.FieldValue int opponent = player * -1;
+        int opponent = player * -1;
         int moveIdx = game.GetMove(opponent);
 
         if (moveIdx >= 0) {
@@ -136,7 +146,7 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
     }
 
     /**
-     * Intermediate version
+     * Back to the Game selection activity.
      */
     private void setaddBackButtonListener() {
         Button Game = findViewById(R.id.Game);

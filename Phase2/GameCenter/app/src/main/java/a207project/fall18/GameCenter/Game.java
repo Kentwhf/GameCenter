@@ -8,17 +8,38 @@ import android.util.Log;
  */
  class Game {
 
+    /**
+     * int of X = -1
+     */
     static final int X = -1;
+    /**
+     * int O = 1
+     */
     static final int O = 1;
+    /**
+     * int Empty = 0
+     */
     static final int EMPTY = 0;
 
     @IntDef({X, O, EMPTY})
     @interface FieldValue {
     }
 
+    /**
+     * A TTTBoard.
+     */
     private TTTBoard board;
+    /**
+     * A TTTScore board.
+     */
     private TTTScore scoreBoard;
+    /**
+     * set won = false
+     */
     boolean won = false;
+    /**
+     * set a random computer player.
+     */
     private RandomPlayer computer;
 
 
@@ -49,9 +70,6 @@ import android.util.Log;
         return computer.GetMove(fieldValue);
     }
 
-    TTTScore GetScoreBoardClone() {
-        return scoreBoard.Clone();
-    }
 
     void SwitchAI(RandomPlayer computer) {
         RandomPlayer.game = this;
