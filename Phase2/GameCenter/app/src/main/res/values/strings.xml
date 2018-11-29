@@ -6,5 +6,58 @@
         <item>4 * 4</item>item>
         <item>5 * 5</item>item>
     </string-array>
+    <string name="title_activity_stone_henge_main">StoneHengeMainActivity</string>
     string-array>
+
+    <!--<string name="app_name">数独</string>-->
+    <!--<string name="setting_title">菜单</string>-->
+    <!--<string name="showtheanswers">显示答案</string>-->
+    <!--<string name="app_detail">数独是流传已久的数字游戏，要求填入每一行，每一列的元素不重复,-->
+    <!--每个小九宫格元素也不重复,填完所有格子即完成游戏,-->
+    <!--严格的数独游戏要求答案是唯一的,由于数独的求解是NP问题,换言之,-->
+    <!--判断随机生成的数度谜题有没有唯一解的方法就是,解解看呗QAQ,-->
+    <!--作者必须在随机生成数独谜题的情况下,保证解的唯一性,会导致计算量不是固定的,-->
+    <!--所以可能要花一些时间才能计算出一个唯一解的数独，计算时间取决于设备性能-->
+    <!--</string>-->
+    <!--<string name="newgame">新游戏</string>-->
+    <!--<string name="information">游戏说明</string>-->
+    <!--<string name="undo">撤销输入</string>-->
+    <!--<string name="gamereset">重置游戏</string>-->
+    <!--<string name="exit">退出</string>-->
+
+    <!--<string name="app_name">Android-Sudoku</string>-->
+    <string name="sudoku">Sudoku</string>
+    <string name="norwegian_description">A picture of a norwegian flag</string>
+    <string name="british_description">A picture of a british flag</string>
+
+    <string name="new_game">Start New Game</string>
+    <string name="add_new_board">Add new board</string>
+    <string name="continue_new_board">Continue</string>
+    <string name="successful_new_board">New board saved</string>
+    <string name="fail_new_board">Failed to save new board</string>
+    <string name="show_instructions">Show instructions</string>
+    <string name="choose_language">Choose language:</string>
+
+    <string name="instructions">Instructions</string>
+    <string name="instructions_1">1. In Sudoku it is intended to place all the remaining pieces on the board. The numbers range from 1 to 9 (in 9x9 Sudoku).</string>
+    <string name="instructions_2">2. The board is separated into several squares, and inside each of them it is only allowed to place one of each number.</string>
+    <string name="instructions_3">3. It is only allowed to place one of each number at each row, both horizontal and vertical.</string>
+    <string name="go_back_button">Go back</string>
+
+    <string name="choose_difficulty">Choose difficulty:</string>
+    <string name="difficulty_easy">Easy</string>
+    <string name="difficulty_normal">Normal</string>
+    <string name="difficulty_hard">Hard</string>
+    <string name="start_game">Start Game</string>
+    <string name="choose_number">Choose number</string>
+    <string name="choose_a_number">Choose number to place:</string>
+    <string name="place_number">Place number</string>
+    <string name="piece_unsure">Mark piece as unsure</string>
+    <string name="remove_piece">Remove piece</string>
+    <string name="start_piece_error">Can not change start piece</string>
+    <string name="check_board">Check board</string>
+    <string name="board_correct">Board is correct</string>
+    <string name="board_incorrect">Board is not correct</string>
+
+
 </resources>

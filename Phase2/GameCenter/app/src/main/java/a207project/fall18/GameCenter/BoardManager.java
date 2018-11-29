@@ -1,15 +1,21 @@
 package a207project.fall18.GameCenter;
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import a207project.fall18.GameCenter.bean.Score;
+
 
 /**
  * Manage a board, including swapping tiles, checking for a win, and managing taps.
  */
-class BoardManager implements Serializable {
+public class BoardManager implements Serializable {
+
+    private Score score;
 
     /**
      * The board being managed.
@@ -20,7 +26,7 @@ class BoardManager implements Serializable {
 
     public int undo_time = 0;
 
-    public int can_undo_time = 3;
+    public int can_undo_time ;
 
     /**
      * Manage a board that has been pre-populated.
@@ -43,6 +49,7 @@ class BoardManager implements Serializable {
 
         Collections.shuffle(tiles);
         this.board = new Board(tiles);
+        score = new Score(MyApplication.getInstance().getUser(), "SlidingTiles");
     }
 
 
@@ -74,7 +81,9 @@ class BoardManager implements Serializable {
     }
 
     public void setCanUndoTime(int time) {
+
         this.can_undo_time = time;
+
     }
 
     /**
@@ -94,17 +103,23 @@ class BoardManager implements Serializable {
                 || (temp[3] != null && temp[3].getId() == blankId);
     }
 
-    public void undo() {
-        undoTimePlus();
-        int col1 = s.get(s.size()-3);
-        int row1 = s.get(s.size()-4);
-        int col2 = s.get(s.size()-1);
-        int row2 = s.get(s.size()-2);
-        board.swapTiles(row1, col1, row2, col2);
-        s.remove(s.size()-1);
-        s.remove(s.size()-1);
-        s.remove(s.size()-1);
-        s.remove(s.size()-1);
+    public boolean undo() {
+        if (undo_time < can_undo_time && board.getCurrentscore() < 100){
+            undoTimePlus();
+            int col1 = s.get(s.size()-3);
+            int row1 = s.get(s.size()-4);
+            int col2 = s.get(s.size()-1);
+            int row2 = s.get(s.size()-2);
+            board.swapTiles(row1, col1, row2, col2);
+            s.remove(s.size()-1);
+            s.remove(s.size()-1);
+            s.remove(s.size()-1);
+            s.remove(s.size()-1);
+            int newScore = board.getCurrentscore() + 1;
+            board.setCurrentscore(newScore);
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -146,6 +161,7 @@ class BoardManager implements Serializable {
                 s.add(col);
                 board.swapTiles(row, col, row, col + 1);
             }
+            board.scoring();
         }
     }
 
@@ -167,4 +183,23 @@ class BoardManager implements Serializable {
         Tile right = col == Board.NUM_COLS - 1 ? null : board.getTile(row, col + 1);
         return new Tile[]{above, below, left, right};
     }
+
+//    @Override
+//    public String toString(){
+//        return board.toString();
+//    }
+
+
+//    protected Object clone()  {
+//        try {
+//            BoardManager cloneBoardManager = (BoardManager) super.clone();
+//            return cloneBoardManager;
+//        } catch (CloneNotSupportedException ignore){}
+//
+//        return null;
+//    }
+
+    public Score getScore(){return this.score;}
+    public void setScore(){this.score.setFinalScore(board.getCurrentscore());}
+
 }

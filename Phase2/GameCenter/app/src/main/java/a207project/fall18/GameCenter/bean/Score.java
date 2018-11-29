@@ -1,6 +1,8 @@
 package a207project.fall18.GameCenter.bean;
 
-public class Score {
+import java.io.Serializable;
+
+public class Score implements Serializable {
     private int id;
     private int userId;
 //    private int gameId;
