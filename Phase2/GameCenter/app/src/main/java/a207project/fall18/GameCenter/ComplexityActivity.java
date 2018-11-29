@@ -73,6 +73,7 @@ public class ComplexityActivity extends AppCompatActivity {
         savingManager = MyApplication.getInstance().getSavingManager();
     }
 
+    // 使得只有是slidingtiles游戏时才出现set up undo button
     /**
      * Button for selecting number of undo moves
      */

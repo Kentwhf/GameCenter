@@ -20,8 +20,9 @@ public class ComplexityController {
 
 
 
-    // 简化三个难度的code啊！！！完全redundant, code smell
-    // 我建议 board.manager 写个 toString， 这里可以写个method调用，然后对应新建一个
+    // 简化三个难度的code. Redundant, code smell
+    // 可以 board.manager 写个 toString， 这里可以写个method调用，然后新建对应的manager. 然后在三个难度里call一次就好了
+    // 可以考虑新建static fields 3,4,5.
     public void Easy(){
         if (game.equals("SlidingTiles")){
             SlidingTilesBoard.setNumRowsCols(3);

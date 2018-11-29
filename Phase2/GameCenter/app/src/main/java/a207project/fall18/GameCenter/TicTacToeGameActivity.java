@@ -60,6 +60,7 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
                 field.setLayoutParams(params);
 
                 field.setScaleType(ImageView.ScaleType.FIT_XY);
+                //noinspection ConstantConditions
                 field.setImageResource(boardImages.get(TicTacToeBoardManager.EMPTY));
                 field.setId(row * dim + col);
                 grid.addView(field);
