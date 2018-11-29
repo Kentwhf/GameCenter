@@ -8,14 +8,14 @@ import a207project.fall18.GameCenter.dao.ScoreDao;
 
 
 public class MovementController {
-    private BoardManager boardManager = null;
+    private SlidingTilesBoardManager boardManager = null;
 
 //    private SlidingTilesScore slidingTilesScore = null;
 
     public MovementController() {
     }
 
-    public void setBoardManager(BoardManager boardManager) {
+    public void setBoardManager(SlidingTilesBoardManager boardManager) {
         this.boardManager = boardManager;
     }
 

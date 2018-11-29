@@ -34,12 +34,12 @@ public class StartingActivity extends AppCompatActivity {
     /**
      * The board manager.
      */
-    private SlidingTileBoardManager boardManager;
+    private SlidingTilesBoardManager boardManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        boardManager = new SlidingTileBoardManager();
+        boardManager = new SlidingTilesBoardManager();
 //        saveToFile(TEMP_SAVE_FILENAME);
         MyApplication.getInstance().setBoardManager(boardManager);
 

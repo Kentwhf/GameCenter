@@ -13,14 +13,14 @@ import a207project.fall18.GameCenter.bean.Score;
 /**
  * Manage a board, including swapping tiles, checking for a win, and managing taps.
  */
-public class SlidingTileBoardManager extends BoardManager implements Serializable {
+public class SlidingTilesBoardManager extends BoardManager implements Serializable {
 
     private Score score;
 
     /**
      * The board being managed.
      */
-    private Board board;
+    private SlidingTilesBoard board;
 
     public static ArrayList<Integer> s = new ArrayList<>();
 
@@ -33,22 +33,22 @@ public class SlidingTileBoardManager extends BoardManager implements Serializabl
      *
      * @param board the board
      */
-    SlidingTileBoardManager(Board board) {
+    SlidingTilesBoardManager(SlidingTilesBoard board) {
         this.board = board;
     }
 
     /**
      * Manage a new shuffled board.
      */
-    SlidingTileBoardManager() {
+    SlidingTilesBoardManager() {
         List<Tile> tiles = new ArrayList<>();
-        final int numTiles = Board.NUM_ROWS * Board.NUM_COLS;
+        final int numTiles = SlidingTilesBoard.NUM_ROWS * SlidingTilesBoard.NUM_COLS;
         for (int tileNum = 0; tileNum != numTiles; tileNum++) {
             tiles.add(new Tile(tileNum));
         }
 
         Collections.shuffle(tiles);
-        this.board = new Board(tiles);
+        this.board = new SlidingTilesBoard(tiles);
         score = new Score(MyApplication.getInstance().getUser(), "SlidingTiles");
     }
 
@@ -56,7 +56,7 @@ public class SlidingTileBoardManager extends BoardManager implements Serializabl
     /**
      * Return the current board.
      */
-    Board getBoard() {
+    SlidingTilesBoard getBoard() {
         return board;
     }
 
@@ -66,9 +66,9 @@ public class SlidingTileBoardManager extends BoardManager implements Serializabl
      * @return whether the tiles are in row-major order
      */
     boolean puzzleSolved() {
-        for (int i = 0; i < Board.NUM_ROWS; i++) {
-            for (int j = 0; j < Board.NUM_COLS; j++) {
-                if (board.getTile(i, j).getId() != i * Board.NUM_COLS + j + 1) {
+        for (int i = 0; i < SlidingTilesBoard.NUM_ROWS; i++) {
+            for (int j = 0; j < SlidingTilesBoard.NUM_COLS; j++) {
+                if (board.getTile(i, j).getId() != i * SlidingTilesBoard.NUM_COLS + j + 1) {
                     return false;
                 }
             }
@@ -128,8 +128,8 @@ public class SlidingTileBoardManager extends BoardManager implements Serializabl
      * @param position the position
      */
     void touchMove(int position) {
-        int row = position / Board.NUM_ROWS;
-        int col = position % Board.NUM_COLS;
+        int row = position / SlidingTilesBoard.NUM_ROWS;
+        int col = position % SlidingTilesBoard.NUM_COLS;
         int blankId = board.numTiles();
         Tile above = row == 0 ? null : board.getTile(row - 1, col);
         Tile below = row == Board.NUM_ROWS - 1 ? null : board.getTile(row + 1, col);
@@ -175,12 +175,12 @@ public class SlidingTileBoardManager extends BoardManager implements Serializabl
      */
     private Tile[] tileArray(int position) {
 
-        int row = position / Board.NUM_COLS;
-        int col = position % Board.NUM_COLS;
+        int row = position / SlidingTilesBoard.NUM_COLS;
+        int col = position % SlidingTilesBoard.NUM_COLS;
         Tile above = row == 0 ? null : board.getTile(row - 1, col);
-        Tile below = row == Board.NUM_ROWS - 1 ? null : board.getTile(row + 1, col);
+        Tile below = row == SlidingTilesBoard.NUM_ROWS - 1 ? null : board.getTile(row + 1, col);
         Tile left = col == 0 ? null : board.getTile(row, col - 1);
-        Tile right = col == Board.NUM_COLS - 1 ? null : board.getTile(row, col + 1);
+        Tile right = col == SlidingTilesBoard.NUM_COLS - 1 ? null : board.getTile(row, col + 1);
         return new Tile[]{above, below, left, right};
     }
 
