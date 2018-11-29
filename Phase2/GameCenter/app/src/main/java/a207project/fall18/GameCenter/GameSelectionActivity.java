@@ -65,7 +65,7 @@ GameSelectionActivity extends AppCompatActivity {
      * Button for SlidingTiles
      */
     private void setupGame3ButtonListener(){
-        Button Game3 = findViewById(R.id.Game2);
+        Button Game3 = findViewById(R.id.Game3);
         Game3.setOnClickListener((v) -> {
             MyApplication.getInstance().setGame("Sudoku");
             MyApplication.getInstance().initSavingManager();

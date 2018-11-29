@@ -52,11 +52,11 @@ public class SignInActivity extends AppCompatActivity {
         signup.setOnClickListener(this::onClick);
 
 
-        userAccountManager = new UserDao(this);
+//        userAccountManager = MyApplication.getInstance().getUserDao();
 
-        if (userAccountManager == null){
-            userAccountManager = new UserAccountManager(new HashMap<>());
-        }
+//        if (userAccountManager == null){
+//            userAccountManager = new UserAccountManager(new HashMap<>());
+
 //        loadFromFile();
     }
 

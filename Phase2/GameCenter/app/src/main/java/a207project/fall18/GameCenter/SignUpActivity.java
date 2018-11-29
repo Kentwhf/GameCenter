@@ -19,7 +19,7 @@ import a207project.fall18.GameCenter.dao.UserDao;
  */
 public class SignUpActivity extends AppCompatActivity {
 
-//    private UserDao userAccountManager;
+    private UserDao userAccountManager;
     private Button  RegisterButton;
     private EditText username;
     private EditText password;
@@ -48,9 +48,9 @@ public class SignUpActivity extends AppCompatActivity {
 
         RegisterButton.setOnClickListener(this::onClick);
 
-        if (userAccountManager == null){
-            userAccountManager = new UserAccountManager(new HashMap<>());
-        }
+//        if (userAccountManager == null){
+//            userAccountManager = new UserAccountManager(new HashMap<>());
+
 //        loadFromFile();
 
 

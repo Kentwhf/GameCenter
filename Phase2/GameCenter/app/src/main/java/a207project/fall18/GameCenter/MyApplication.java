@@ -34,8 +34,6 @@ public class MyApplication extends Application {
 
     public void initSavingManager(){
 
-        Log.v("shabi", "ihiuhlijojkno");
-
         savingManager = new SaveDao(this, gameType, user.getUsername());
     }
 
