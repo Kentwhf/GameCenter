@@ -54,14 +54,14 @@ public class TTTBoard {
     }
 
     int getRandomEmpty() {
-        int rnd = new Random().nextInt(dim * dim);
-        Integer v = ((TreeSet<Integer>)board_tile).ceiling(rnd);
+        int num = new Random().nextInt(dim * dim);
+        Integer i = ((TreeSet<Integer>)board_tile).ceiling(num);
 
-        if (v == null) {
-            v = ((TreeSet<Integer>)board_tile).floor(rnd);
+        if (i == null) {
+            i = ((TreeSet<Integer>)board_tile).floor(num);
         }
 
-        return v == null ? -1 : v;
+        return i == null ? -1 : i;
     }
 
 
