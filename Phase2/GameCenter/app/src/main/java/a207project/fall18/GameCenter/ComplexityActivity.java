@@ -32,7 +32,7 @@ public class ComplexityActivity extends AppCompatActivity {
     /**
      * The board manager.
      */
-    private BoardManager boardManager;
+//    private BoardManager boardManager;
 
     /**
      * Switch to game
@@ -41,17 +41,18 @@ public class ComplexityActivity extends AppCompatActivity {
         Intent tmp ;
 
 //                new Intent(this, GameActivity.class);
-        MyApplication.getInstance().setBoardManager( boardManager);
+        MyApplication.getInstance().setBoardManager( controller.getBoardManager());
 //        saveToFile(StartingActivity.TEMP_SAVE_FILENAME);
-        if (game == "SlidingTiles"){
-            tmp = new Intent(this, GameActivity.class);
-        }
-
-        else if (game == "TicTacToe"){
-            tmp = new Intent(this, TicTacToeGameActivity.class);
-        }
-        else{
-            tmp = new Intent(this, SudokuGameActivity.class);
+        switch (game) {
+            case "SlidingTiles":
+                tmp = new Intent(this, GameActivity.class);
+                break;
+            case "TicTacToe":
+                tmp = new Intent(this, TicTacToeGameActivity.class);
+                break;
+            default:
+                tmp = new Intent(this, SudokuGameActivity.class);
+                break;
         }
 
 

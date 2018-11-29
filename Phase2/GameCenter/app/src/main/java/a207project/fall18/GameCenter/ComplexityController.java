@@ -16,10 +16,12 @@ public class ComplexityController {
         this.undoTime = undoTime;
     }
 
+    public BoardManager getBoardManager(){return this.boardManager;}
+
 
 
     public void Easy(){
-        if (game == "SlidingTiles"){
+        if (game.equals("SlidingTiles")){
             Board.setNumRowsCols(3);
             boardManager = new BoardManager();
             boardManager.setCanUndoTime(undoTime);
@@ -28,7 +30,7 @@ public class ComplexityController {
 
         }
 
-        else if(game == "TicTacToe"){
+        else if(game.equals("TicTacToe")){
             TicTacToeGameActivity.dim = 3;
 //            Intent i = new Intent(ComplexityActivity, TicTacToeGameActivity.class);
 //            startActivity(i);
@@ -41,7 +43,7 @@ public class ComplexityController {
     }
 
     public void Intermediate(){
-        if (game == "SlidingTiles"){
+        if (game.equals("SlidingTiles")){
             Board.setNumRowsCols(4);
             boardManager = new BoardManager();
             boardManager.setCanUndoTime(undoTime);
@@ -49,7 +51,7 @@ public class ComplexityController {
             MyApplication.getInstance().setBoardManager( boardManager);
         }
 
-        else if(game == "TicTacToe"){
+        else if(game.equals("TicTacToe")){
             TicTacToeGameActivity.dim = 4;
         }
 //
@@ -58,7 +60,7 @@ public class ComplexityController {
     }
 
     public void Difficult(){
-        if (game == "SlidingTiles"){
+        if (game.equals("SlidingTiles")){
             Board.setNumRowsCols(5);
             boardManager = new BoardManager();
             boardManager.setCanUndoTime(undoTime);
