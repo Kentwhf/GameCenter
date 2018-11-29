@@ -1,27 +1,20 @@
 package a207project.fall18.GameCenter;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
-
-import static java.security.AccessController.getContext;
 
 /**
  * Sodoku game activity
@@ -50,7 +43,7 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
         startBoard = chooseRandomBoard(boards);
         currentBoard = new SudokuBoardManager();
         currentBoard.addObserver(this);
-        currentBoard.copyValues(startBoard.getGameCells());
+        currentBoard.copyValues(startBoard.getSudokuBoard());
         updateCells();
 
         TimerTextView timerTextView =  (TimerTextView) findViewById(R.id.timer);
@@ -370,7 +363,7 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
 
             int row = ((clickedGroup-1)/3)*3 + (clickedCellId/3);
             int column = ((clickedGroup-1)%3)*3 + ((clickedCellId)%3);
-            KeyPadDialog keyPadDialog = new KeyPadDialog(this, currentBoard, new KeyPadDialog.PriorityListener() {
+            KeypadDialog keypadDialog = new KeypadDialog(this, currentBoard, new KeypadDialog.PriorityListener() {
                 @Override
                 public void refreshPriorityUI(String string) {
                     currentBoard.setValue(row, column, (int)Integer.parseInt(string));
@@ -378,14 +371,14 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
 //                    updateCells();
                 }
             } );
-            keyPadDialog.show();
+            keypadDialog.show();
 
 
 
 //            int number = .getIntExtra("chosenNumber", 1);
 //            clickedCell.setText(String.valueOf(number));
 //            currentBoard.setValue(row, column, number);
-//            currentBoard = KeyPadDialog.getNewSudokuBoardManager();
+//            currentBoard = KeypadDialog.getNewSudokuBoardManager();
         } else {
             Toast.makeText(this, getString(R.string.start_piece_error), Toast.LENGTH_SHORT).show();
         }

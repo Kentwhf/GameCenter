@@ -6,7 +6,7 @@ import android.util.Log;
 import android.widget.Button;
 
 
-public class Ttt_complexityActivity extends AppCompatActivity {
+public class TicTacToeComplexityActivity extends AppCompatActivity {
 
     /**
      * The board manager.

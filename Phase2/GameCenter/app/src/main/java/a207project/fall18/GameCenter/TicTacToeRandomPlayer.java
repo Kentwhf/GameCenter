@@ -1,6 +1,6 @@
 package a207project.fall18.GameCenter;
 
- class SlidingTilesRandomPlayer {
+ class TicTacToeRandomPlayer {
 
 
      public void setTicTacToeBoardManager(TicTacToeBoardManager ticTacToeBoardManager) {
@@ -9,11 +9,11 @@ package a207project.fall18.GameCenter;
 
      private TicTacToeBoardManager ticTacToeBoardManager;
 
-    SlidingTilesRandomPlayer(TicTacToeBoardManager game) {
-        this.ticTacToeBoardManager = game;
+    TicTacToeRandomPlayer(TicTacToeBoardManager ticTacToeBoardManager) {
+        this.ticTacToeBoardManager = ticTacToeBoardManager;
     }
 
     public int GetMove(int player) {
-        return ticTacToeBoardManager.getBoard().getRandomEmpty();
+        return ticTacToeBoardManager.getSlidingTilesBoard().getRandomEmpty();
     }
 }

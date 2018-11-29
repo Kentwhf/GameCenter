@@ -2,14 +2,11 @@ package a207project.fall18.GameCenter;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import java.security.AccessControlContext;
 
-
-public class KeyPadDialog extends Dialog{
+public class KeypadDialog extends Dialog{
 
     private SudokuBoardManager sudokuBoardManager;
     private final View keys[] = new View[12];
@@ -32,7 +29,7 @@ public class KeyPadDialog extends Dialog{
     private PriorityListener listener;
 
 
-    public KeyPadDialog(Context context, SudokuBoardManager sudokuBoardManager, PriorityListener listener) {
+    public KeypadDialog(Context context, SudokuBoardManager sudokuBoardManager, PriorityListener listener) {
         super(context);
 //        this.targetRow = row;
 //        this.targetCol = col;

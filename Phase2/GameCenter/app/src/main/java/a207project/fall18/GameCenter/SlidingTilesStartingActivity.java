@@ -14,7 +14,7 @@ import a207project.fall18.GameCenter.dao.SaveDao;
 /**
  * The initial activity for the sliding puzzle tile game.
  */
-public class StartingActivity extends AppCompatActivity {
+public class SlidingTilesStartingActivity extends AppCompatActivity {
 
     private SaveDao savingManager;
     /**
@@ -28,18 +28,18 @@ public class StartingActivity extends AppCompatActivity {
     /**
      * The board manager.
      */
-    private SlidingTilesBoardManager boardManager;
+    private SlidingTilesBoardManager slidingTilesBoardManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        boardManager = new SlidingTilesBoardManager();
+        slidingTilesBoardManager = new SlidingTilesBoardManager();
 //        saveToFile(TEMP_SAVE_FILENAME);
-        MyApplication.getInstance().setBoardManager(boardManager);
+        MyApplication.getInstance().setBoardManager(slidingTilesBoardManager);
 
         savingManager = MyApplication.getInstance().getSavingManager();
 
-        setContentView(R.layout.activity_starting_);
+        setContentView(R.layout.activity_sliding_tiles_starting_);
         addStartButtonListener();
         addLoadButtonListener();
         addSaveButtonListener();
@@ -72,18 +72,18 @@ public class StartingActivity extends AppCompatActivity {
         Button loadButton = findViewById(R.id.LoadButton);
         loadButton.setOnClickListener(v -> {
 
-            List<BoardManager> historicalFile = savingManager.query("get boardManager");
+            List<BoardManager> historicalFile = savingManager.query("get slidingTilesBoardManager");
             Log.v("shabi", historicalFile.get(0).toString());
 
             if (historicalFile != null){
 //                saveToFile(TEMP_SAVE_FILENAME);
-                boardManager = (SlidingTilesBoardManager) historicalFile.get(0);
-                MyApplication.getInstance().setBoardManager( boardManager);// testing
+                slidingTilesBoardManager = (SlidingTilesBoardManager) historicalFile.get(0);
+                MyApplication.getInstance().setBoardManager(slidingTilesBoardManager);// testing
                 makeToastLoadedText();
                 switchToGame();
             }
             else{
-                Toast.makeText(StartingActivity.this,"No History！",Toast.LENGTH_SHORT).show();
+                Toast.makeText(SlidingTilesStartingActivity.this,"No History！",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -103,8 +103,8 @@ public class StartingActivity extends AppCompatActivity {
         saveButton.setOnClickListener(v -> {
 //            saveToFile(SAVE_FILENAME);
 //            saveToFile(TEMP_SAVE_FILENAME);
-            savingManager.autoSave( boardManager);
-            MyApplication.getInstance().setBoardManager( boardManager);
+            savingManager.autoSave(slidingTilesBoardManager);
+            MyApplication.getInstance().setBoardManager(slidingTilesBoardManager);
             makeToastSavedText();
         });
     }
@@ -122,7 +122,7 @@ public class StartingActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 //        loadFromFile(TEMP_SAVE_FILENAME);
-        boardManager = (SlidingTilesBoardManager)MyApplication.getInstance().getBoardManager();
+        slidingTilesBoardManager = (SlidingTilesBoardManager)MyApplication.getInstance().getBoardManager();
 
     }
 
@@ -131,14 +131,14 @@ public class StartingActivity extends AppCompatActivity {
      */
     private void switchToGame() {
         Intent tmp = new Intent(this, SlidingTilesGameActivity.class);
-//        saveToFile(StartingActivity.TEMP_SAVE_FILENAME);
-        MyApplication.getInstance().setBoardManager( boardManager);
+//        saveToFile(SlidingTilesStartingActivity.TEMP_SAVE_FILENAME);
+        MyApplication.getInstance().setBoardManager(slidingTilesBoardManager);
         startActivity(tmp);
     }
 
 //    private void switchToComplexity() {
 //        Intent tmp = new Intent(this, SignInActivity.class);
-//        saveToFile(StartingActivity.TEMP_SAVE_FILENAME);
+//        saveToFile(SlidingTilesStartingActivity.TEMP_SAVE_FILENAME);
 //        startActivity(tmp);
 //    }
 
@@ -153,7 +153,7 @@ public class StartingActivity extends AppCompatActivity {
 //            InputStream inputStream = this.openFileInput(fileName);
 //            if (inputStream != null) {
 //                ObjectInputStream input = new ObjectInputStream(inputStream);
-//                boardManager = (BoardManager) input.readObject();
+//                slidingTilesBoardManager = (BoardManager) input.readObject();
 //                inputStream.close();
 //            }
 //        } catch (FileNotFoundException e) {
@@ -175,7 +175,7 @@ public class StartingActivity extends AppCompatActivity {
 //        try {
 //            ObjectOutputStream outputStream = new ObjectOutputStream(
 //                    this.openFileOutput(fileName, MODE_PRIVATE));
-//            outputStream.writeObject(boardManager);
+//            outputStream.writeObject(slidingTilesBoardManager);
 //            outputStream.close();
 //        } catch (IOException e) {
 //            Log.e("Exception", "File write failed: " + e.toString());

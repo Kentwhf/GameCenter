@@ -28,7 +28,7 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
      * The game with the num of the scale.
      */
     private static TicTacToeBoardManager ticTacToeBoardManager = new TicTacToeBoardManager(dim);
-    private static SlidingTilesRandomPlayer computer = new SlidingTilesRandomPlayer(ticTacToeBoardManager);
+    private static TicTacToeRandomPlayer computer = new TicTacToeRandomPlayer(ticTacToeBoardManager);
     @TicTacToeBoardManager.FieldValue private int player = TicTacToeBoardManager.X;
 
 
@@ -92,7 +92,7 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
             }
         }
 
-        if (!ticTacToeBoardManager.won && ticTacToeBoardManager.getBoard().isFull()) {
+        if (!ticTacToeBoardManager.won && ticTacToeBoardManager.getSlidingTilesBoard().isFull()) {
             DeclareResult("It's a draw!");
         }
     }

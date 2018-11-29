@@ -53,16 +53,16 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
     // Display
     public void display() {
         updateTileButtons();
-        gridView.setAdapter(new SlidingTilesCustomAdapter(tileButtons, columnWidth, columnHeight));
+        gridView.setAdapter(new CustomAdapter(tileButtons, columnWidth, columnHeight));
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         boardManager = (SlidingTilesBoardManager) MyApplication.getInstance().getBoardManager();
-//        loadFromFile(StartingActivity.TEMP_SAVE_FILENAME);
+//        loadFromFile(SlidingTilesStartingActivity.TEMP_SAVE_FILENAME);
         createTileButtons(this);
-        setContentView(R.layout.activity_sliding_tiles_main);
+        setContentView(R.layout.activity_sliding_tiles_game);
         addUndoButtonListener();
 
         savingManager = MyApplication.getInstance().getSavingManager();
@@ -72,8 +72,8 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
         // Add View to activity
         gridView = findViewById(R.id.grid);
         gridView.setNumColumns(SlidingTilesBoard.NUM_COLS);
-        gridView.setBoardManager(boardManager);
-        boardManager.getBoard().addObserver(this);
+        gridView.setSlidingTilesBoardManager(boardManager);
+        boardManager.getSlidingTilesBoard().addObserver(this);
         // Observer sets up desired dimensions as well as calls our display function
         gridView.getViewTreeObserver().addOnGlobalLayoutListener(
                 new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -102,8 +102,8 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
                 updateTileButtons();
                 gridView = findViewById(R.id.grid);
                 gridView.setNumColumns(SlidingTilesBoard.NUM_COLS);
-                gridView.setBoardManager(boardManager);
-                boardManager.getBoard().addObserver(this);
+                gridView.setSlidingTilesBoardManager(boardManager);
+                boardManager.getSlidingTilesBoard().addObserver(this);
                 display();
             }
             else{
@@ -119,7 +119,7 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
      * @param context the context
      */
     private void createTileButtons(Context context) {
-        SlidingTilesBoard board = boardManager.getBoard();
+        SlidingTilesBoard board = boardManager.getSlidingTilesBoard();
         tileButtons = new ArrayList<>();
         for (int row = 0; row != SlidingTilesBoard.NUM_ROWS; row++) {
             for (int col = 0; col != SlidingTilesBoard.NUM_COLS; col++) {
@@ -134,7 +134,7 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
      * Update the backgrounds on the buttons to match the tiles.
      */
     private void updateTileButtons() {
-        SlidingTilesBoard board = boardManager.getBoard();
+        SlidingTilesBoard board = boardManager.getSlidingTilesBoard();
         int nextPos = 0;
         for (Button b : tileButtons) {
             int row = nextPos / SlidingTilesBoard.NUM_ROWS;
@@ -159,12 +159,12 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
 
         boardManager.setScore();
 
-//        MyApplication.getInstance().currentScore.setFinalScore(boardManager.getBoard().getCurrentscore());
+//        MyApplication.getInstance().currentScore.setFinalScore(boardManager.getSlidingTilesBoard().getCurrentscore());
 //        boardManager.setScore(MyApplication.getInstance().currentScore);
 
 
 //        MyApplication.getInstance().setSlidingTileBoardManager( boardManager);
-//        saveToFile(StartingActivity.TEMP_SAVE_FILENAME);
+//        saveToFile(SlidingTilesStartingActivity.TEMP_SAVE_FILENAME);
     }
 
 //    /**

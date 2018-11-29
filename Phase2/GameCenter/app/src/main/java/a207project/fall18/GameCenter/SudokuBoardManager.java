@@ -2,7 +2,6 @@ package a207project.fall18.GameCenter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Observable;
 
 /**
  * A SudokuBoard Manager
@@ -10,7 +9,7 @@ import java.util.Observable;
 
 class SudokuBoardManager extends BoardManager{
 
-    private int[][] gameCells = new int[9][9];
+    private int[][] SudokuBoard = new int[9][9];
 
 
 //    public SudokuBoard(){};
@@ -21,7 +20,7 @@ class SudokuBoardManager extends BoardManager{
      * @param value value being set
      */
     public void setValue(int row, int column, int value) {
-        gameCells[row][column] = value;
+        SudokuBoard[row][column] = value;
         setChanged();
         notifyObservers();
     }
@@ -30,8 +29,8 @@ class SudokuBoardManager extends BoardManager{
     /**
      * @return returnr a Sudoku Bard
      */
-    public int[][] getGameCells() {
-        return gameCells;
+    public int[][] getSudokuBoard() {
+        return SudokuBoard;
     }
 
 
@@ -41,15 +40,15 @@ class SudokuBoardManager extends BoardManager{
     public void copyValues(int[][] newGameCells) {
         for (int i = 0; i < newGameCells.length; i++) {
             for (int j = 0; j < newGameCells[i].length; j++) {
-                gameCells[i][j] = newGameCells[i][j];
+                SudokuBoard[i][j] = newGameCells[i][j];
             }
         }
     }
 
 //    public boolean isBoardFull() {
-//        for (int i = 0; i < gameCells.length; i++) {
-//            for (int j = 0; j < gameCells[i].length; j++) {
-//                if (gameCells[i][j] == 0) {
+//        for (int i = 0; i < SudokuBoard.length; i++) {
+//            for (int j = 0; j < SudokuBoard[i].length; j++) {
+//                if (SudokuBoard[i][j] == 0) {
 //                    return false;
 //                }
 //            }
@@ -63,12 +62,12 @@ class SudokuBoardManager extends BoardManager{
     // Can be rafactored
     public boolean isBoardCorrect() {
         // Check horizontal and vertical
-        for (int i = 0; i < gameCells.length; i++) {
+        for (int i = 0; i < SudokuBoard.length; i++) {
             ArrayList<Integer> horizontals = new ArrayList<>();
             ArrayList<Integer> verticals = new ArrayList<>();
-            for (int j = 0; j < gameCells[i].length; j++) {
-                int number1 = gameCells[i][j];
-                int number2 = gameCells[j][i];
+            for (int j = 0; j < SudokuBoard[i].length; j++) {
+                int number1 = SudokuBoard[i][j];
+                int number2 = SudokuBoard[j][i];
                 if ((horizontals.contains(number1) && (verticals.contains(number2)))) {
                     return false;
                 } else {
@@ -79,10 +78,10 @@ class SudokuBoardManager extends BoardManager{
         }
 
 //        // Check vertical
-//        for (int i = 0; i < gameCells.length; i++) {
+//        for (int i = 0; i < SudokuBoard.length; i++) {
 //            ArrayList<Integer> numbers = new ArrayList<>();
-//            for (int j = 0; j < gameCells[i].length; j++) {
-//                int number = gameCells[j][i];
+//            for (int j = 0; j < SudokuBoard[i].length; j++) {
+//                int number = SudokuBoard[j][i];
 //                if (numbers.contains(number)) {
 //                    return false;
 //                } else {
@@ -103,7 +102,7 @@ class SudokuBoardManager extends BoardManager{
      * @return get the value at a given and a given column in the Sudoku Board
      */
     public int getValue(int row, int column) {
-        return gameCells[row][column];
+        return SudokuBoard[row][column];
     }
 
 //    public SudokuBoard updateBoard(){
@@ -113,20 +112,20 @@ class SudokuBoardManager extends BoardManager{
 //    @Override
 //    public String toString() {
 //        StringBuilder temp = new StringBuilder();
-//        for (int i = 0; i < gameCells.length; i++) {
-//            for (int j = 0; j < gameCells[i].length; j++) {
+//        for (int i = 0; i < SudokuBoard.length; i++) {
+//            for (int j = 0; j < SudokuBoard[i].length; j++) {
 //                if (j == 0) {
 //                    temp.append("\n");
 //                }
 //
-//                int currentNumber = gameCells[i][j];
+//                int currentNumber = SudokuBoard[i][j];
 //                if (currentNumber == 0) {
 //                    temp.append("-");
 //                } else {
 //                    temp.append(currentNumber);
 //                }
 //
-//                if (j != (gameCells[i].length-1)) {
+//                if (j != (SudokuBoard[i].length-1)) {
 //                    temp.append(" ");
 //                }
 //            }
@@ -144,16 +143,16 @@ class SudokuBoardManager extends BoardManager{
         ArrayList<Integer> horizontals = new ArrayList<>();
         ArrayList<Integer> verticals = new ArrayList<>();
         ArrayList<Integer> group = getTargetGroup(row,column);
-        group.remove((Integer)gameCells[row][column]);
+        group.remove((Integer) SudokuBoard[row][column]);
 
-        for (int i: gameCells[row]) {horizontals.add(i);}
-        horizontals.remove((Integer)gameCells[row][column]);
+        for (int i: SudokuBoard[row]) {horizontals.add(i);}
+        horizontals.remove((Integer) SudokuBoard[row][column]);
 
-        for (int i = 0; i < gameCells.length; i++) {verticals.add(gameCells[i][column]);}
-        verticals.remove((Integer)gameCells[row][column]);
+        for (int i = 0; i < SudokuBoard.length; i++) {verticals.add(SudokuBoard[i][column]);}
+        verticals.remove((Integer) SudokuBoard[row][column]);
 
-        return horizontals.contains(gameCells[row][column]) || verticals.contains(gameCells[row][column]) ||
-                group.contains(gameCells[row][column]);
+        return horizontals.contains(SudokuBoard[row][column]) || verticals.contains(SudokuBoard[row][column]) ||
+                group.contains(SudokuBoard[row][column]);
     }
 
 
@@ -177,9 +176,9 @@ class SudokuBoardManager extends BoardManager{
         if (temp2 % 3 == 2){temp2--;};
 
 
-        return new ArrayList<>(Arrays.asList(gameCells[temp1][temp2], gameCells[temp1][temp2-1],gameCells[temp1][temp2+1],
-                        gameCells[temp1+1][temp2], gameCells[temp1+1][temp2-1], gameCells[temp1+1][temp2+1],
-                        gameCells[temp1-1][temp2], gameCells[temp1-1][temp2-1], gameCells[temp1-1][temp2+1]));
+        return new ArrayList<>(Arrays.asList(SudokuBoard[temp1][temp2], SudokuBoard[temp1][temp2-1], SudokuBoard[temp1][temp2+1],
+                        SudokuBoard[temp1+1][temp2], SudokuBoard[temp1+1][temp2-1], SudokuBoard[temp1+1][temp2+1],
+                        SudokuBoard[temp1-1][temp2], SudokuBoard[temp1-1][temp2-1], SudokuBoard[temp1-1][temp2+1]));
     }
 
 }

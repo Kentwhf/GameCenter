@@ -7,7 +7,7 @@ public class BoardManager extends Observable implements Serializable {
 
     public Board board;
 
-    public Board getBoard(){
+    public Board getSlidingTilesBoard(){
         return board;
     }
 }

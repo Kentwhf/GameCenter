@@ -38,7 +38,7 @@ public class ComplexityActivity extends AppCompatActivity {
 
 //                new Intent(this, SlidingTilesGameActivity.class);
         MyApplication.getInstance().setBoardManager( controller.getBoardManager());
-//        saveToFile(StartingActivity.TEMP_SAVE_FILENAME);
+//        saveToFile(SlidingTilesStartingActivity.TEMP_SAVE_FILENAME);
         switch (game) {
             case "SlidingTiles":
                 tmp = new Intent(this, SlidingTilesGameActivity.class);

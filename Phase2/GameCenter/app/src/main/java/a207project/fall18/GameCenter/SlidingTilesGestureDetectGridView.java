@@ -24,7 +24,7 @@ public class SlidingTilesGestureDetectGridView extends GridView {
     private boolean mFlingConfirmed = false;
     private float mTouchX;
     private float mTouchY;
-    private SlidingTilesBoardManager boardManager;
+    private SlidingTilesBoardManager slidingTilesBoardManager;
 
     public SlidingTilesGestureDetectGridView(Context context) {
         super(context);
@@ -101,8 +101,8 @@ public class SlidingTilesGestureDetectGridView extends GridView {
         return gDetector.onTouchEvent(ev);
     }
 
-    public void setBoardManager(SlidingTilesBoardManager boardManager) {
-        this.boardManager = boardManager;
-        mController.setBoardManager(boardManager);
+    public void setSlidingTilesBoardManager(SlidingTilesBoardManager slidingTilesBoardManager) {
+        this.slidingTilesBoardManager = slidingTilesBoardManager;
+        mController.setBoardManager(slidingTilesBoardManager);
     }
 }

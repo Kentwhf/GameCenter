@@ -1,31 +1,19 @@
 package a207project.fall18.GameCenter;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.Locale;
-
-import static android.preference.PreferenceManager.getDefaultSharedPreferences;
-import a207project.fall18.GameCenter.R;
 
 
-public class SudokuMainActivity extends AppCompatActivity {
+public class SudokuInitialActivity extends AppCompatActivity {
     private boolean currentEnglish = true;
-    private final String TAG = "SudokuMainActivity";
+    private final String TAG = "SudokuInitialActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sudoku_main);
+        setContentView(R.layout.activity_sudoku_initial);
 //        checkCurrentLocale();
     }
 

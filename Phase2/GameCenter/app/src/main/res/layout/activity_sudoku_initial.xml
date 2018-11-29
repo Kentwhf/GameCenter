@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="a207project.fall18.GameCenter.SudokuMainActivity">
+    tools:context="a207project.fall18.GameCenter.SudokuInitialActivity">
 
     <TextView
         android:layout_width="wrap_content"

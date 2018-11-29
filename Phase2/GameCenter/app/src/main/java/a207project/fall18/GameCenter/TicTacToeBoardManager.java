@@ -28,11 +28,11 @@ import android.util.Log;
     /**
      * A TicTacToeBoard.
      */
-    private TicTacToeBoard board;
+    private TicTacToeBoard ticTacToeBoard;
     /**
-     * A TTTScore board.
+     * A TTTScore ticTacToeBoard.
      */
-    private TicTacToeScore scoreBoard;
+    private TicTacToeScore TicTacToeScoreboard;
     /**
      * set won = false
      */
@@ -40,16 +40,16 @@ import android.util.Log;
     /**
      * set a random computer player.
      */
-    private SlidingTilesRandomPlayer computer;
+    private TicTacToeRandomPlayer computer;
 
 
     TicTacToeBoardManager(int dim) {
-        this.board = new TicTacToeBoard(dim);
-        this.scoreBoard = new TicTacToeScore(dim);
+        this.ticTacToeBoard = new TicTacToeBoard(dim);
+        this.TicTacToeScoreboard = new TicTacToeScore(dim);
     }
 
-    public TicTacToeBoard getBoard() {
-        return board;
+    public TicTacToeBoard getSlidingTilesBoard() {
+        return ticTacToeBoard;
     }
 
     /**
@@ -60,10 +60,10 @@ import android.util.Log;
      */
     boolean Move(int fieldIdx, @FieldValue int player) {
 
-        if (board.move(fieldIdx, player)) {
-            won = scoreBoard.Update(fieldIdx, player);
+        if (ticTacToeBoard.move(fieldIdx, player)) {
+            won = TicTacToeScoreboard.Update(fieldIdx, player);
             Log.d("field", "idx: " + fieldIdx + " val: " + player);
-            Log.d("field", "score: " + scoreBoard.GetScore());
+            Log.d("field", "score: " + TicTacToeScoreboard.GetScore());
 
             return true;
         }
@@ -86,7 +86,7 @@ import android.util.Log;
      * Switch computer move.
      * @param computer computer player.
      */
-    void SwitchAI(SlidingTilesRandomPlayer computer) {
+    void SwitchAI(TicTacToeRandomPlayer computer) {
         this.computer = computer;
         this.computer.setTicTacToeBoardManager(this);
     }
