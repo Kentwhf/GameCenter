@@ -56,7 +56,7 @@ GameSelectionActivity extends AppCompatActivity {
         Game2.setOnClickListener((v) -> {
             MyApplication.getInstance().setGame("TicTacToe");
             MyApplication.getInstance().initSavingManager();
-            Intent i = new Intent(this, Ttt_complexityActivity.class);
+            Intent i = new Intent(this, ComplexityActivity.class);
             startActivity(i);
         });
     }
