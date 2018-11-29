@@ -258,7 +258,7 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
 
     /**
      * @param boards an array list of SudokuBoardManagers
-     * @return an randomly selected Sudoku board
+     * @return an randomly selected SudokuBoard
      */
     private SudokuBoardManager chooseRandomBoard(ArrayList<SudokuBoardManager> boards) {
         int randomNumber = (int) (Math.random() * boards.size());
@@ -281,6 +281,7 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
     /**
      * @return if layout CellGroupFragment has correct groups
      */
+    // check if we actually need this method
     private boolean checkAllGroups() {
 //        int cellGroupFragments[] = new int[]{R.id.cellGroupFragment, R.id.cellGroupFragment2, R.id.cellGroupFragment3, R.id.cellGroupFragment4,
 //                R.id.cellGroupFragment5, R.id.cellGroupFragment6, R.id.cellGroupFragment7, R.id.cellGroupFragment8, R.id.cellGroupFragment9};
@@ -363,7 +364,7 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
 
             int row = ((clickedGroup-1)/3)*3 + (clickedCellId/3);
             int column = ((clickedGroup-1)%3)*3 + ((clickedCellId)%3);
-            KeypadDialog keypadDialog = new KeypadDialog(this, currentBoard, new KeypadDialog.PriorityListener() {
+            KeypadDialog keypadDialog = new KeypadDialog(this, new KeypadDialog.PriorityListener() {
                 @Override
                 public void refreshPriorityUI(String string) {
                     currentBoard.setValue(row, column, (int)Integer.parseInt(string));

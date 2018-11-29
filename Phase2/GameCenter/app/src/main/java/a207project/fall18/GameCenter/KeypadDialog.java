@@ -8,7 +8,7 @@ import android.view.View;
 
 public class KeypadDialog extends Dialog{
 
-    private SudokuBoardManager sudokuBoardManager;
+//    private SudokuBoardManager sudokuBoardManager;
     private final View keys[] = new View[12];
 //    private SudokuBoardManager sudokuBoardManager;
 //    private int targetRow;
@@ -27,13 +27,13 @@ public class KeypadDialog extends Dialog{
     }
 
     private PriorityListener listener;
+//
 
-
-    public KeypadDialog(Context context, SudokuBoardManager sudokuBoardManager, PriorityListener listener) {
+    public KeypadDialog(Context context, PriorityListener listener) {
         super(context);
 //        this.targetRow = row;
 //        this.targetCol = col;
-        this.sudokuBoardManager = sudokuBoardManager;
+//        this.sudokuBoardManager = sudokuBoardManager;
         this.listener = listener;
     }
 //    private final int used[];
