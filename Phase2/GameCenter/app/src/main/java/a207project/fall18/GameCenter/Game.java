@@ -49,9 +49,6 @@ import android.util.Log;
         return computer.GetMove(fieldValue);
     }
 
-    TTTScore GetScoreBoardClone() {
-        return scoreBoard.Clone();
-    }
 
     void SwitchAI(RandomPlayer computer) {
         RandomPlayer.game = this;

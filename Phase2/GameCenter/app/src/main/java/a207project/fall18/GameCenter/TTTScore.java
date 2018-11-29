@@ -32,8 +32,8 @@ class TTTScore {
             lines.put("C" + i, new LineStatus()); // columns
         }
 
-        lines.put("D1", new LineStatus()); // diagonal 1
-        lines.put("D2", new LineStatus()); // diagonal 2
+        lines.put("D1", new LineStatus()); // diagonal left
+        lines.put("D2", new LineStatus()); // diagonal right
     }
 
      boolean Update(int fieldIdx, int player) {

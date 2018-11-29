@@ -11,8 +11,6 @@ public class Ttt_complexityActivity extends AppCompatActivity {
     /**
      * The board manager.
      */
-    public Game game;
-    public TTTBoard board;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
