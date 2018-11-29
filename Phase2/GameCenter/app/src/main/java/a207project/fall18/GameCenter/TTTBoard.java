@@ -4,6 +4,9 @@ import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
 
+/**
+ * TicTacToe Board class
+ */
 public class TTTBoard {
 
     /**
@@ -18,7 +21,7 @@ public class TTTBoard {
 
     /**
      * The tic tac toe board.
-     * @param  dim
+     * @param  dim the dimension of the board
      */
     TTTBoard(int dim) {
         this.dim = dim;
@@ -31,11 +34,12 @@ public class TTTBoard {
     }
 
     /**
-     * Check The move or not.
-     * @para fieldIdx.
-     * @para player.
+     * Check move or not, if can move, change the tile as the player.
+     * @param fieldIdx  Index of the tile of tictactoe.
+     * @param player the player.
+     * @return whether to move.
      */
-    public boolean move(int fieldIdx, @Game.FieldValue int player) {
+    public boolean move(int fieldIdx,  int player) {
         int row = fieldIdx / dim;
         int col = fieldIdx % dim;
 
@@ -49,10 +53,18 @@ public class TTTBoard {
         return false;
     }
 
+    /**
+     * check the tile of board is full or not.
+     * @return whether the tile of board is full or not.
+     */
     boolean isFull() {
         return board_tile.isEmpty();
     }
 
+    /**
+     * get a random index of random tile which can be move.
+     * @return  a random index of random tile which can be move.
+     */
     int getRandomEmpty() {
         int num = new Random().nextInt(dim * dim);
         Integer i = ((TreeSet<Integer>)board_tile).ceiling(num);
@@ -63,6 +75,4 @@ public class TTTBoard {
 
         return i == null ? -1 : i;
     }
-
-
 }

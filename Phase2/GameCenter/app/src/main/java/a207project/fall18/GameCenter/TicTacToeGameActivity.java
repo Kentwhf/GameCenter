@@ -36,6 +36,7 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
     private static RandomPlayer computer = new RandomPlayer(ticTacToeBoardManager);
     @TicTacToeBoardManager.FieldValue private int player = TicTacToeBoardManager.X;
 
+
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +78,7 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
         Random random = new Random();
         if (random.nextBoolean()) MoveOpponent();
         setaddBackButtonListener();
+        setTitle("TicTacToe");
     }
 
     @Override
@@ -100,6 +102,9 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+    /**
+     * update when computer move and check finish the game or not.
+     */
     private void MoveOpponent() {
         @TicTacToeBoardManager.FieldValue int opponent = player * -1;
         int moveIdx = ticTacToeBoardManager.GetMove(opponent);
@@ -139,7 +144,7 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
     }
 
     /**
-     * Intermediate version
+     * Back to the Game selection activity.
      */
     private void setaddBackButtonListener() {
         Button Game = findViewById(R.id.Game);

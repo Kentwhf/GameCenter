@@ -14,6 +14,10 @@ import a207project.fall18.GameCenter.dao.SaveDao;
 
 public class ComplexityActivity extends AppCompatActivity {
 
+    private String game;
+
+    private ComplexityController controller;
+
     private int undoTime = 3;
 
     private SaveDao savingManager;
@@ -34,9 +38,23 @@ public class ComplexityActivity extends AppCompatActivity {
      * Switch to game
      */
     private void switchToGame() {
-        Intent tmp = new Intent(this, GameActivity.class);
-        MyApplication.getInstance().setBoardManager(boardManager);
+        Intent tmp = new Intent();
+
+//                new Intent(this, GameActivity.class);
+        MyApplication.getInstance().setBoardManager( boardManager);
 //        saveToFile(StartingActivity.TEMP_SAVE_FILENAME);
+        if (game == "SlidingTiles"){
+            tmp = new Intent(this, GameActivity.class);
+        }
+
+        else if (game == "TicTacToe"){
+            tmp = new Intent(this, TicTacToeGameActivity.class);
+        }
+        else{
+            tmp = new Intent(this, SudokuGameActivity.class);
+        }
+
+
         startActivity(tmp);
     }
 
@@ -46,6 +64,10 @@ public class ComplexityActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_complexity);
         setTitle("Select difficulty");
+
+        controller = new ComplexityController(undoTime);
+        game = MyApplication.getInstance().getGame();
+
         addEasyButtonListener();
         addIntermediateButtonListener();
         setupDifficultButton3Listener();
@@ -63,17 +85,9 @@ public class ComplexityActivity extends AppCompatActivity {
             TextView undoInputTextField = findViewById(R.id.undoInput);
             if (undoInputTextField != null){
                 undoTime = Integer.parseInt(undoInputTextField.getText().toString());
-//                boardManager.setCanUndoTime(time);
-
-//                Log.v("shabi", String.valueOf(boardManager.can_undo_time));
+                controller = new ComplexityController(undoTime);
 
             }
-
-//            else{undoTime = 3;}
-//            saveToFile(SAVE_FILENAME);
-//            saveToFile(TEMP_SAVE_FILENAME);
-//            savingManager.addAutosavemap(MyApplication.getInstance().getUser(), boardManager);
-//            MyApplication.getInstance().setBoardManager((BoardManager) boardManager.clone());
         });
     }
 
@@ -83,16 +97,7 @@ public class ComplexityActivity extends AppCompatActivity {
     private void addEasyButtonListener(){
         Button Button1  = findViewById(R.id.button1);
         Button1.setOnClickListener((v) -> {
-            Board.setNumRowsCols(3);
-            BoardManager = new BoardManager();
-            ().setCanUndoTime(undoTime);
-//            saveToFile(SAVE_FILENAME);
-//            saveToFile(TEMP_SAVE_FILENAME);
-            savingManager.autoSave(boardManager);
-            MyApplication.getInstance().setBoardManager(boardManager);
-
-//            Log.v("shabi", MyApplication.getInstance().boardManager.toString());
-
+           controller.Easy();
             switchToGame();
     });
     }
@@ -103,13 +108,7 @@ public class ComplexityActivity extends AppCompatActivity {
     private void addIntermediateButtonListener(){
         Button Button2  = findViewById(R.id.button2);
         Button2.setOnClickListener((v) -> {
-            Board.setNumRowsCols(4);
-            boardManager = new BoardManager();
-            boardManager.setCanUndoTime(undoTime);
-//            saveToFile(SAVE_FILENAME);
-//            saveToFile(TEMP_SAVE_FILENAME);
-            savingManager.autoSave(boardManager);
-            MyApplication.getInstance().setBoardManager( boardManager);
+           controller.Intermediate();
             switchToGame();
         });
     }
@@ -120,31 +119,10 @@ public class ComplexityActivity extends AppCompatActivity {
     private void setupDifficultButton3Listener(){
         Button Button3  = findViewById(R.id.button3);
         Button3.setOnClickListener((v) -> {
-            Board.setNumRowsCols(5);
-            boardManager = new BoardManager();
-            boardManager.setCanUndoTime(undoTime);
-//            saveToFile(SAVE_FILENAME);
-//            saveToFile(TEMP_SAVE_FILENAME);
-            savingManager.autoSave( boardManager);
-            MyApplication.getInstance().setBoardManager((BoardManager) boardManager);
+            controller.Difficult();
             switchToGame();
         });
     }
 
-    /**
-     * Save the board manager to fileName.
-     *
-     * @param fileName the name of the file
-     */
-    public void saveToFile(String fileName) {
-        try {
-            ObjectOutputStream outputStream = new ObjectOutputStream(
-                    this.openFileOutput(fileName, MODE_PRIVATE));
-            outputStream.writeObject(boardManager);
-            outputStream.close();
-        } catch (IOException e) {
-            Log.e("Exception", "File write failed: " + e.toString());
-        }
-    }
 }
 
