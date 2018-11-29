@@ -39,6 +39,7 @@ public class StartingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Board.setNumRowsCols(3);
         boardManager = new BoardManager();
 //        saveToFile(TEMP_SAVE_FILENAME);
         MyApplication.getInstance().setBoardManager(boardManager);
