@@ -1,6 +1,7 @@
 package a207project.fall18.GameCenter;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,21 +9,19 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 
 import java.util.Hashtable;
+import java.util.Random;
 
 import a207project.fall18.GameCenter.R;
-import a207project.fall18.GameCenter.dao.SaveDao;
 
 /**
  * The tic tac toe game activity.
  */
 public class TicTacToeGameActivity extends AppCompatActivity implements View.OnClickListener {
-
-    private SaveDao savingManager;
-
     private static Hashtable<Integer, Integer> boardImages = new Hashtable<>();
     /**
      * Dim of the board.
@@ -32,22 +31,19 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
      * The game with the num of the scale.
      */
     private static Game game = new Game(dim);
+    private static RandomPlayer computer = new RandomPlayer(game);
     @Game.FieldValue private int player = Game.X;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tictactoe_game);
-        savingManager = MyApplication.getInstance().getSavingManager();
 
         game = new Game(dim);
+        game.SwitchAI(computer);
         boardImages.put(Game.EMPTY, R.drawable.ttt_blank);
         boardImages.put(Game.X, R.drawable.ttt_x);
         boardImages.put(Game.O, R.drawable.ttt_o);
-
-        savingManager.autoSave(game);
-
-
 
         GridLayout grid = findViewById(R.id.board);
         grid.setOnClickListener(this);
@@ -75,6 +71,9 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
             ImageView field = (ImageView) grid.getChildAt(i);
             field.setOnClickListener(this);
         }
+        Random random = new Random();
+        if (random.nextBoolean()) MoveOpponent();
+        setaddBackButtonListener();
     }
 
     @Override
@@ -85,15 +84,32 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
         if (game.Move(fieldIdx, player)) {
             field.setImageResource(boardImages.get(player));
 
-//            if (game.won) {
-//                DeclareResult("win!");
-//            }
+            if (game.won) {
+                DeclareResult("You Win!!");
+            }
+            else {
+                MoveOpponent();
+            }
         }
 
-//        if (!game.won && game.getBoard().isFull()) {
-//            DeclareResult("It's a draw!");
-//        }
-        player = player * -1;
+        if (!game.won && game.getBoard().isFull()) {
+            DeclareResult("It's a draw!");
+        }
+    }
+
+    private void MoveOpponent() {
+        @Game.FieldValue int opponent = player * -1;
+        int moveIdx = game.GetMove(opponent);
+
+        if (moveIdx >= 0) {
+            game.Move(moveIdx, opponent);
+            ImageView opponentField = findViewById(moveIdx);
+            opponentField.setImageResource(boardImages.get(opponent));
+
+            if (game.won) {
+                DeclareResult("You Lose!!");
+            }
+        }
     }
 
     public void DeclareResult(CharSequence message) {
@@ -117,6 +133,17 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
 
     public void NewGame() {
         this.recreate();
+    }
+
+    /**
+     * Intermediate version
+     */
+    private void setaddBackButtonListener() {
+        Button Game = findViewById(R.id.Game);
+        Game.setOnClickListener((v) -> {
+            Intent i = new Intent(this, GameSelectionActivity.class);
+            startActivity(i);
+        });
     }
 
 }

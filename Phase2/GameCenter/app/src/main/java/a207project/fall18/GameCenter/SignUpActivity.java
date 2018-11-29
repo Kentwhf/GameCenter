@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.HashMap;
+
 import a207project.fall18.GameCenter.bean.User;
 import a207project.fall18.GameCenter.dao.UserDao;
 
@@ -37,18 +39,18 @@ public class SignUpActivity extends AppCompatActivity {
 
         RegisterButton = findViewById(R.id.Register);
         //COMMENT
-//        username = findViewById(R.id.Username);
-//        nickname = findViewById(R.id.Nickname);
-//        password = findViewById(R.id.NPassword);
-//        verifypassword = findViewById(R.id.ConfirmPassword);
-//
-//        userAccountManager = new UserDao(this);
+        username = findViewById(R.id.Username);
+        nickname = findViewById(R.id.Nickname);
+        password = findViewById(R.id.NPassword);
+        verifypassword = findViewById(R.id.ConfirmPassword);
+
+        userAccountManager = new UserDao(this);
 
         RegisterButton.setOnClickListener(this::onClick);
 
-//        if (userAccountManager == null){
-//            userAccountManager = new UserAccountManager(new HashMap<>());
-//        }
+        if (userAccountManager == null){
+            userAccountManager = new UserAccountManager(new HashMap<>());
+        }
 //        loadFromFile();
 
 

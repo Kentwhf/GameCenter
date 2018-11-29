@@ -157,8 +157,8 @@ public class GameActivity extends AppCompatActivity implements Observer, Seriali
         }
 
         // uncomment
-//        TextView scores = findViewById(R.id.Score);
-//        scores.setText("Scores : " + board.getCurrentscore());
+        TextView scores = findViewById(R.id.Score);
+        scores.setText("Scores : " + board.getCurrentscore());
         savingManager.autoSave(boardManager);
 //        saveToFile(SAVE_FILENAME);
     }

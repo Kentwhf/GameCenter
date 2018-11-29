@@ -3,12 +3,10 @@ package a207project.fall18.GameCenter;
 import android.support.annotation.IntDef;
 import android.util.Log;
 
-import java.io.Serializable;
-
 /**
  * The tic tac toe game.
  */
-public class Game extends BoardManager implements Serializable {
+ class Game {
 
     static final int X = -1;
     static final int O = 1;
@@ -19,26 +17,44 @@ public class Game extends BoardManager implements Serializable {
     }
 
     private TTTBoard board;
+    private TTTScore scoreBoard;
     boolean won = false;
+    private RandomPlayer computer;
 
 
     Game(int dim) {
         this.board = new TTTBoard(dim);
+        this.scoreBoard = new TTTScore(dim);
     }
 
-
-    public TTTBoard getTTTBoard() {
+    public TTTBoard getBoard() {
         return board;
     }
 
     boolean Move(int fieldIdx, @FieldValue int player) {
 
         if (board.move(fieldIdx, player)) {
+            won = scoreBoard.Update(fieldIdx, player);
             Log.d("field", "idx: " + fieldIdx + " val: " + player);
+            Log.d("field", "score: " + scoreBoard.GetScore());
 
             return true;
         }
 
         return false;
+    }
+
+    int GetMove(@FieldValue int fieldValue)
+    {
+        return computer.GetMove(fieldValue);
+    }
+
+    TTTScore GetScoreBoardClone() {
+        return scoreBoard.Clone();
+    }
+
+    void SwitchAI(RandomPlayer computer) {
+        RandomPlayer.game = this;
+        this.computer = computer;
     }
 }

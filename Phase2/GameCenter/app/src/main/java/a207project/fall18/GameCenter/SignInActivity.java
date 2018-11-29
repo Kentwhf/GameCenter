@@ -10,6 +10,8 @@ import android.widget.EditText;
 
 import android.widget.Toast;
 
+import java.util.HashMap;
+
 import a207project.fall18.GameCenter.bean.User;
 import a207project.fall18.GameCenter.dao.UserDao;
 
@@ -36,39 +38,39 @@ public class SignInActivity extends AppCompatActivity {
 //        setupSignInButtonListener();
 //        setupSignUpButtonListener();
 
-        // UNCOMMENT
-//        signin = findViewById(R.id.SignInBT);
-//        signup = findViewById(R.id.SignUpBT);
-//
-//        username = findViewById(R.id.UserInputBT);
-//        password = findViewById(R.id.PasswordBT);
-//
-//        Log.v("shabi", username.getText().toString());
-//        Log.v("shabi", password.getText().toString());
-//
-//        signin.setOnClickListener(this::onClick);
-//        signup.setOnClickListener(this::onClick);
+
+        signin = findViewById(R.id.SignInBT);
+        signup = findViewById(R.id.SignUpBT);
+
+        username = findViewById(R.id.UserInputBT);
+        password = findViewById(R.id.PasswordBT);
+
+        Log.v("shabi", username.getText().toString());
+        Log.v("shabi", password.getText().toString());
+
+        signin.setOnClickListener(this::onClick);
+        signup.setOnClickListener(this::onClick);
 
 
-//        userAccountManager = new UserDao(this);
+        userAccountManager = new UserDao(this);
 
-//        if (userAccountManager == null){
-//            userAccountManager = new UserAccountManager(new HashMap<>());
-//        }
+        if (userAccountManager == null){
+            userAccountManager = new UserAccountManager(new HashMap<>());
+        }
 //        loadFromFile();
     }
 
-    //UNCOMMENT
-//    private void onClick(View v){
-//        switch (v.getId()){
-//            case R.id.SignInBT:
-//                Signin();
-//                break;
-//            case R.id.SignUpBT:
-//                Signup();
-//                break;
-//        }
-//    }
+//    UNCOMMENT
+    private void onClick(View v){
+        switch (v.getId()){
+            case R.id.SignInBT:
+                Signin();
+                break;
+            case R.id.SignUpBT:
+                Signup();
+                break;
+        }
+    }
 
 
     private void Signin(){
