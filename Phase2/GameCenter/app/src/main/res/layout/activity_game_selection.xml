@@ -54,6 +54,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="118dp"
                 android:background="@drawable/tictactoe_logo" />
+
+            <Button
+                android:id="@+id/Game3"
+                android:layout_width="match_parent"
+                android:layout_height="114dp"
+                android:text="Game3"
+                tools:layout_editor_absoluteX="124dp"
+                tools:layout_editor_absoluteY="258dp" />
         </LinearLayout>
     </ScrollView>
 
