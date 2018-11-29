@@ -4,15 +4,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.List;
 
 import a207project.fall18.GameCenter.dao.SaveDao;
@@ -83,7 +77,7 @@ public class StartingActivity extends AppCompatActivity {
 
             if (historicalFile != null){
 //                saveToFile(TEMP_SAVE_FILENAME);
-                boardManager = (SlidingTileBoardManager) historicalFile.get(0);
+                boardManager = (SlidingTilesBoardManager) historicalFile.get(0);
                 MyApplication.getInstance().setBoardManager( boardManager);// testing
                 makeToastLoadedText();
                 switchToGame();
@@ -128,15 +122,15 @@ public class StartingActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 //        loadFromFile(TEMP_SAVE_FILENAME);
-        boardManager = (SlidingTileBoardManager)MyApplication.getInstance().getBoardManager();
+        boardManager = (SlidingTilesBoardManager)MyApplication.getInstance().getBoardManager();
 
     }
 
     /**
-     * Switch to the GameActivity view to play the game.
+     * Switch to the SlidingTilesGameActivity view to play the game.
      */
     private void switchToGame() {
-        Intent tmp = new Intent(this, GameActivity.class);
+        Intent tmp = new Intent(this, SlidingTilesGameActivity.class);
 //        saveToFile(StartingActivity.TEMP_SAVE_FILENAME);
         MyApplication.getInstance().setBoardManager( boardManager);
         startActivity(tmp);

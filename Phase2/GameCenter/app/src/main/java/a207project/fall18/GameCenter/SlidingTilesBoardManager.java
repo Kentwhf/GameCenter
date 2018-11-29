@@ -56,7 +56,7 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
     /**
      * Return the current board.
      */
-    SlidingTilesBoard getBoard() {
+    public SlidingTilesBoard getBoard() {
         return board;
     }
 
@@ -132,9 +132,9 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
         int col = position % SlidingTilesBoard.NUM_COLS;
         int blankId = board.numTiles();
         Tile above = row == 0 ? null : board.getTile(row - 1, col);
-        Tile below = row == Board.NUM_ROWS - 1 ? null : board.getTile(row + 1, col);
+        Tile below = row == SlidingTilesBoard.NUM_ROWS - 1 ? null : board.getTile(row + 1, col);
         Tile left = col == 0 ? null : board.getTile(row, col - 1);
-        Tile right = col == Board.NUM_COLS - 1 ? null : board.getTile(row, col + 1);
+        Tile right = col == SlidingTilesBoard.NUM_COLS - 1 ? null : board.getTile(row, col + 1);
         if (isValidTap(position)) {
             if (above != null && above.getId() == blankId) {
                 board.swapTiles(row, col, row - 1, col);

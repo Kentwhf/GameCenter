@@ -60,7 +60,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="114dp"
                 android:background="@drawable/soduku"
-                android:text="Game3"
                 tools:layout_editor_absoluteX="124dp"
                 tools:layout_editor_absoluteY="258dp" />
         </LinearLayout>

@@ -7,9 +7,6 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
@@ -17,8 +14,6 @@ import android.widget.ImageView;
 
 import java.util.Hashtable;
 import java.util.Random;
-
-import a207project.fall18.GameCenter.R;
 
 /**
  * The tic tac toe game activity.
@@ -33,7 +28,7 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
      * The game with the num of the scale.
      */
     private static TicTacToeBoardManager ticTacToeBoardManager = new TicTacToeBoardManager(dim);
-    private static RandomPlayer computer = new RandomPlayer(ticTacToeBoardManager);
+    private static SlidingTilesRandomPlayer computer = new SlidingTilesRandomPlayer(ticTacToeBoardManager);
     @TicTacToeBoardManager.FieldValue private int player = TicTacToeBoardManager.X;
 
 

@@ -1,39 +1,26 @@
 package a207project.fall18.GameCenter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.util.Pair;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Observable;
 import java.util.Observer;
 
 import a207project.fall18.GameCenter.dao.SaveDao;
 
-
-import static a207project.fall18.GameCenter.StartingActivity.SAVE_FILENAME;
-
 /**
  * The game activity.
  */
-public class GameActivity extends AppCompatActivity implements Observer, Serializable {
+public class SlidingTilesGameActivity extends AppCompatActivity implements Observer, Serializable {
 
     private SaveDao savingManager;
 
@@ -56,7 +43,7 @@ public class GameActivity extends AppCompatActivity implements Observer, Seriali
 //    public static final int RIGHT = 4;
 
     // Grid View and calculated column height and width based on device size
-    private GestureDetectGridView gridView;
+    private SlidingTilesGestureDetectGridView gridView;
     private static int columnWidth, columnHeight;
 
     /**
@@ -66,7 +53,7 @@ public class GameActivity extends AppCompatActivity implements Observer, Seriali
     // Display
     public void display() {
         updateTileButtons();
-        gridView.setAdapter(new CustomAdapter(tileButtons, columnWidth, columnHeight));
+        gridView.setAdapter(new SlidingTilesCustomAdapter(tileButtons, columnWidth, columnHeight));
     }
 
     @Override
@@ -75,7 +62,7 @@ public class GameActivity extends AppCompatActivity implements Observer, Seriali
         boardManager = (SlidingTilesBoardManager) MyApplication.getInstance().getBoardManager();
 //        loadFromFile(StartingActivity.TEMP_SAVE_FILENAME);
         createTileButtons(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_sliding_tiles_main);
         addUndoButtonListener();
 
         savingManager = MyApplication.getInstance().getSavingManager();
@@ -120,7 +107,7 @@ public class GameActivity extends AppCompatActivity implements Observer, Seriali
                 display();
             }
             else{
-                Toast.makeText(GameActivity.this,"No More Undo chance！",Toast.LENGTH_SHORT).show();
+                Toast.makeText(SlidingTilesGameActivity.this,"No More Undo chance！",Toast.LENGTH_SHORT).show();
             }
         });
     }

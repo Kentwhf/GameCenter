@@ -28,7 +28,7 @@ import static java.security.AccessController.getContext;
  */
 
 public class SudokuGameActivity extends AppCompatActivity implements CellGroupFragment.OnFragmentInteractionListener, Observer {
-    private final String TAG = "GameActivity";
+    private final String TAG = "SlidingTilesGameActivity";
 //    private TextView clickedCell;
 //    private int clickedGroup;
 //    private int clickedCellId;

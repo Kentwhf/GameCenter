@@ -7,7 +7,7 @@ import java.util.TreeSet;
 /**
  * TicTacToe Board class
  */
-public class TTTBoard {
+public class TicTacToeBoard extends Board{
 
     /**
      * The int dim.
@@ -23,7 +23,7 @@ public class TTTBoard {
      * The tic tac toe board.
      * @param  dim the dimension of the board
      */
-    TTTBoard(int dim) {
+    TicTacToeBoard(int dim) {
         this.dim = dim;
         this.board = new int[dim][dim];
 

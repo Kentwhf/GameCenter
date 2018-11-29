@@ -26,13 +26,13 @@ import android.util.Log;
     }
 
     /**
-     * A TTTBoard.
+     * A TicTacToeBoard.
      */
-    private TTTBoard board;
+    private TicTacToeBoard board;
     /**
      * A TTTScore board.
      */
-    private TTTScore scoreBoard;
+    private TicTacToeScore scoreBoard;
     /**
      * set won = false
      */
@@ -40,18 +40,24 @@ import android.util.Log;
     /**
      * set a random computer player.
      */
-    private RandomPlayer computer;
+    private SlidingTilesRandomPlayer computer;
 
 
     TicTacToeBoardManager(int dim) {
-        this.board = new TTTBoard(dim);
-        this.scoreBoard = new TTTScore(dim);
+        this.board = new TicTacToeBoard(dim);
+        this.scoreBoard = new TicTacToeScore(dim);
     }
 
-    public TTTBoard getBoard() {
+    public TicTacToeBoard getBoard() {
         return board;
     }
 
+    /**
+     * Update win or not, If not win, check move.
+     * @param fieldIdx Index of the Tile.
+     * @param player The Player.
+     * @return Move or not.
+     */
     boolean Move(int fieldIdx, @FieldValue int player) {
 
         if (board.move(fieldIdx, player)) {
@@ -65,14 +71,22 @@ import android.util.Log;
         return false;
     }
 
+    /**
+     * Get an available move.
+     * @param fieldValue Index of the Tile.
+     * @return the index of move.
+     */
     int GetMove(@FieldValue int fieldValue)
     {
         return computer.GetMove(fieldValue);
     }
 
 
-    void SwitchAI(RandomPlayer computer) {
-//        RandomPlayer.game  = this;
+    /**
+     * Switch computer move.
+     * @param computer computer player.
+     */
+    void SwitchAI(SlidingTilesRandomPlayer computer) {
         this.computer = computer;
         this.computer.setTicTacToeBoardManager(this);
     }

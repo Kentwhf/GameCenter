@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * TicTacToe score class
  */
-class TTTScore {
+class TicTacToeScore {
     /**
      * int X = -1
      */
@@ -42,7 +42,7 @@ class TTTScore {
      * TTT score which is scored by row, col, left diagonal, right diagonal.
      * @param dim dim of board.
      */
-    TTTScore(int dim) {
+    TicTacToeScore(int dim) {
         this.dim = dim;
         lines = new Hashtable<>();
 

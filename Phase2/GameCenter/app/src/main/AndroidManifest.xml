@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GameActivity" />
+        <activity android:name=".SlidingTilesGameActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".StartingActivity" />
         <activity android:name=".GameSelectionActivity" />

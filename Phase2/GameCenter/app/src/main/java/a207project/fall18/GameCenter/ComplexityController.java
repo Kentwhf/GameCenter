@@ -7,7 +7,7 @@ import a207project.fall18.GameCenter.dao.SaveDao;
 public class ComplexityController {
     private String game;
     private SaveDao savingManager;
-    private BoardManager boardManager;
+    private SlidingTilesBoardManager boardManager;
     private int undoTime;
 
     public ComplexityController(int undoTime){
@@ -20,10 +20,12 @@ public class ComplexityController {
 
 
 
+    // 简化三个难度的code啊！！！完全redundant, code smell
+    // 我建议 board.manager 写个 toString， 这里可以写个method调用，然后对应新建一个
     public void Easy(){
         if (game.equals("SlidingTiles")){
-            Board.setNumRowsCols(3);
-            boardManager = new BoardManager();
+            SlidingTilesBoard.setNumRowsCols(3);
+            boardManager = new SlidingTilesBoardManager();
             boardManager.setCanUndoTime(undoTime);
             savingManager.autoSave(boardManager);
             MyApplication.getInstance().setBoardManager(boardManager);
@@ -44,8 +46,8 @@ public class ComplexityController {
 
     public void Intermediate(){
         if (game.equals("SlidingTiles")){
-            Board.setNumRowsCols(4);
-            boardManager = new BoardManager();
+            SlidingTilesBoard.setNumRowsCols(4);
+            boardManager = new SlidingTilesBoardManager();
             boardManager.setCanUndoTime(undoTime);
             savingManager.autoSave(boardManager);
             MyApplication.getInstance().setBoardManager( boardManager);
@@ -61,8 +63,8 @@ public class ComplexityController {
 
     public void Difficult(){
         if (game.equals("SlidingTiles")){
-            Board.setNumRowsCols(5);
-            boardManager = new BoardManager();
+            SlidingTilesBoard.setNumRowsCols(5);
+            boardManager = new SlidingTilesBoardManager();
             boardManager.setCanUndoTime(undoTime);
             savingManager.autoSave( boardManager);
             MyApplication.getInstance().setBoardManager((BoardManager) boardManager);

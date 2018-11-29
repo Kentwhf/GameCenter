@@ -90,7 +90,7 @@ public class Tile implements Comparable<Tile>, Serializable {
                 background = R.drawable.tile_8;
                 break;
             case 9:
-                if (Board.NUM_COLS == 3){
+                if (SlidingTilesBoard.NUM_COLS == 3){
                     background = R.drawable.tile_25;
                 }
                 else{
@@ -116,7 +116,7 @@ public class Tile implements Comparable<Tile>, Serializable {
                 background = R.drawable.tile_15;
                 break;
             case 16:
-                if (Board.NUM_COLS == 4){
+                if (SlidingTilesBoard.NUM_COLS == 4){
                     background = R.drawable.tile_25;
                 }
                 else{

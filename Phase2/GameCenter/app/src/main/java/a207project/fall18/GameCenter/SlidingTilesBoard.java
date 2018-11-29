@@ -13,7 +13,7 @@ import java.util.Stack;
 /**
  * The sliding tiles board.
  */
-public class SlidingTilesBoard extends Observable implements Serializable, Iterable<Tile> {
+public class SlidingTilesBoard extends Board implements Serializable, Iterable<Tile> {
 
     private int currentscore = 100 ;
 

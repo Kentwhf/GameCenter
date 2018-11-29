@@ -3,12 +3,8 @@ package a207project.fall18.GameCenter;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
-
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 
 import a207project.fall18.GameCenter.dao.SaveDao;
 
@@ -40,12 +36,12 @@ public class ComplexityActivity extends AppCompatActivity {
     private void switchToGame() {
         Intent tmp ;
 
-//                new Intent(this, GameActivity.class);
+//                new Intent(this, SlidingTilesGameActivity.class);
         MyApplication.getInstance().setBoardManager( controller.getBoardManager());
 //        saveToFile(StartingActivity.TEMP_SAVE_FILENAME);
         switch (game) {
             case "SlidingTiles":
-                tmp = new Intent(this, GameActivity.class);
+                tmp = new Intent(this, SlidingTilesGameActivity.class);
                 break;
             case "TicTacToe":
                 tmp = new Intent(this, TicTacToeGameActivity.class);

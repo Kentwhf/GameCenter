@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="a207project.fall18.GameCenter.GameActivity">
+    tools:context="a207project.fall18.GameCenter.SlidingTilesGameActivity">
 
-    <a207project.fall18.GameCenter.GestureDetectGridView
+    <a207project.fall18.GameCenter.SlidingTilesGestureDetectGridView
         android:id="@+id/grid"
         android:layout_width="match_parent"
         android:layout_height="453dp"
@@ -17,7 +17,7 @@
         android:layout_marginTop="0dp"
         android:layout_marginBottom="58dp">
 
-    </a207project.fall18.GameCenter.GestureDetectGridView>
+    </a207project.fall18.GameCenter.SlidingTilesGestureDetectGridView>
 
     <Button
         android:id="@+id/undo"
