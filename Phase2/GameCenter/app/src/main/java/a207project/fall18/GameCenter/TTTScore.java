@@ -86,16 +86,6 @@ class TTTScore {
         return score;
     }
 
-     TTTScore Clone() {
-        TTTScore clone = new TTTScore(dim);
-
-        for (Map.Entry<String, LineStatus> entry : lines.entrySet()) {
-            clone.lines.put(entry.getKey(), entry.getValue());
-        }
-
-        return clone;
-    }
-
     private static int IntMax() {
         return 2000000000;
     }
