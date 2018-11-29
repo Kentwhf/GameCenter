@@ -35,7 +35,7 @@ public class ComplexityActivity extends AppCompatActivity {
      */
     private void switchToGame() {
         Intent tmp = new Intent(this, GameActivity.class);
-        MyApplication.getInstance().setBoardManager( boardManager);
+        MyApplication.getInstance().setBoardManager(boardManager);
 //        saveToFile(StartingActivity.TEMP_SAVE_FILENAME);
         startActivity(tmp);
     }
@@ -84,8 +84,8 @@ public class ComplexityActivity extends AppCompatActivity {
         Button Button1  = findViewById(R.id.button1);
         Button1.setOnClickListener((v) -> {
             Board.setNumRowsCols(3);
-            boardManager = new BoardManager();
-            boardManager.setCanUndoTime(undoTime);
+            BoardManager = new BoardManager();
+            ().setCanUndoTime(undoTime);
 //            saveToFile(SAVE_FILENAME);
 //            saveToFile(TEMP_SAVE_FILENAME);
             savingManager.autoSave(boardManager);

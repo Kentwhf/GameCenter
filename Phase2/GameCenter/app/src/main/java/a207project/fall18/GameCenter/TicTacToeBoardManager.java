@@ -6,7 +6,7 @@ import android.util.Log;
 /**
  * The tic tac toe game.
  */
- class Game {
+ class TicTacToeBoardManager extends BoardManager {
 
     static final int X = -1;
     static final int O = 1;
@@ -22,7 +22,7 @@ import android.util.Log;
     private RandomPlayer computer;
 
 
-    Game(int dim) {
+    TicTacToeBoardManager(int dim) {
         this.board = new TTTBoard(dim);
         this.scoreBoard = new TTTScore(dim);
     }
@@ -54,7 +54,8 @@ import android.util.Log;
     }
 
     void SwitchAI(RandomPlayer computer) {
-        RandomPlayer.game = this;
+//        RandomPlayer.game  = this;
         this.computer = computer;
+        this.computer.setTicTacToeBoardManager(this);
     }
 }

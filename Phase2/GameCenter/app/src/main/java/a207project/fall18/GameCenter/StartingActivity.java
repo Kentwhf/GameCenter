@@ -34,12 +34,12 @@ public class StartingActivity extends AppCompatActivity {
     /**
      * The board manager.
      */
-    private BoardManager boardManager;
+    private SlidingTileBoardManager boardManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        boardManager = new BoardManager();
+        boardManager = new SlidingTileBoardManager();
 //        saveToFile(TEMP_SAVE_FILENAME);
         MyApplication.getInstance().setBoardManager(boardManager);
 
@@ -83,7 +83,7 @@ public class StartingActivity extends AppCompatActivity {
 
             if (historicalFile != null){
 //                saveToFile(TEMP_SAVE_FILENAME);
-                boardManager = historicalFile.get(0);
+                boardManager = (SlidingTileBoardManager) historicalFile.get(0);
                 MyApplication.getInstance().setBoardManager( boardManager);// testing
                 makeToastLoadedText();
                 switchToGame();
@@ -128,7 +128,8 @@ public class StartingActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 //        loadFromFile(TEMP_SAVE_FILENAME);
-        boardManager = MyApplication.getInstance().getBoardManager();
+        boardManager = (SlidingTileBoardManager)MyApplication.getInstance().getBoardManager();
+
     }
 
     /**

@@ -2,6 +2,8 @@ package a207project.fall18.GameCenter;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,20 +32,21 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
     /**
      * The game with the num of the scale.
      */
-    private static Game game = new Game(dim);
-    private static RandomPlayer computer = new RandomPlayer(game);
-    @Game.FieldValue private int player = Game.X;
+    private static TicTacToeBoardManager ticTacToeBoardManager = new TicTacToeBoardManager(dim);
+    private static RandomPlayer computer = new RandomPlayer(ticTacToeBoardManager);
+    @TicTacToeBoardManager.FieldValue private int player = TicTacToeBoardManager.X;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tictactoe_game);
 
-        game = new Game(dim);
-        game.SwitchAI(computer);
-        boardImages.put(Game.EMPTY, R.drawable.ttt_blank);
-        boardImages.put(Game.X, R.drawable.ttt_x);
-        boardImages.put(Game.O, R.drawable.ttt_o);
+        ticTacToeBoardManager = new TicTacToeBoardManager(dim);
+        ticTacToeBoardManager.SwitchAI(computer);
+        boardImages.put(TicTacToeBoardManager.EMPTY, R.drawable.ttt_blank);
+        boardImages.put(TicTacToeBoardManager.X, R.drawable.ttt_x);
+        boardImages.put(TicTacToeBoardManager.O, R.drawable.ttt_o);
 
         GridLayout grid = findViewById(R.id.board);
         grid.setOnClickListener(this);
@@ -61,7 +64,7 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
                 field.setLayoutParams(params);
 
                 field.setScaleType(ImageView.ScaleType.FIT_XY);
-                field.setImageResource(boardImages.get(Game.EMPTY));
+                field.setImageResource(boardImages.get(TicTacToeBoardManager.EMPTY));
                 field.setId(row * dim + col);
                 grid.addView(field);
             }
@@ -81,10 +84,10 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
         ImageView field = (ImageView) v;
         int fieldIdx = field.getId();
 
-        if (game.Move(fieldIdx, player)) {
+        if (ticTacToeBoardManager.Move(fieldIdx, player)) {
             field.setImageResource(boardImages.get(player));
 
-            if (game.won) {
+            if (ticTacToeBoardManager.won) {
                 DeclareResult("You Win!!");
             }
             else {
@@ -92,21 +95,21 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
             }
         }
 
-        if (!game.won && game.getBoard().isFull()) {
+        if (!ticTacToeBoardManager.won && ticTacToeBoardManager.getBoard().isFull()) {
             DeclareResult("It's a draw!");
         }
     }
 
     private void MoveOpponent() {
-        @Game.FieldValue int opponent = player * -1;
-        int moveIdx = game.GetMove(opponent);
+        @TicTacToeBoardManager.FieldValue int opponent = player * -1;
+        int moveIdx = ticTacToeBoardManager.GetMove(opponent);
 
         if (moveIdx >= 0) {
-            game.Move(moveIdx, opponent);
+            ticTacToeBoardManager.Move(moveIdx, opponent);
             ImageView opponentField = findViewById(moveIdx);
             opponentField.setImageResource(boardImages.get(opponent));
 
-            if (game.won) {
+            if (ticTacToeBoardManager.won) {
                 DeclareResult("You Lose!!");
             }
         }

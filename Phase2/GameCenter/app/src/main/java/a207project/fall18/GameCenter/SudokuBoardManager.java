@@ -8,7 +8,7 @@ import java.util.Observable;
  * A SudokuBoard Manager
  */
 
-class SudokuBoard extends Observable {
+class SudokuBoardManager extends BoardManager{
 
     private int[][] gameCells = new int[9][9];
 
