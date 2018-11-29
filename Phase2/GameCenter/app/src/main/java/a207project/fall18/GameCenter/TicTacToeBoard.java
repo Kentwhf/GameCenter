@@ -28,24 +28,24 @@ public class TicTacToeBoard extends Board{
         this.board = new int[size][size];
 
         board_tile = new TreeSet<>();
-        for (int i = 0; i < Math.pow(size, 2); i++) {
+        for (int i = 0; i < size * size; i++) {
             board_tile.add(i);
         }
     }
 
     /**
      * Check move or not, if can move, change the tile as the player.
-     * @param fieldIdx  Index of the tile of tictactoe.
+     * @param tileID  Index of the tile of tictactoe.
      * @param player the player.
      * @return whether to move.
      */
-    public boolean move(int fieldIdx,  int player) {
-        int row = fieldIdx / size;
-        int col = fieldIdx % size;
+    public boolean move(int tileID,  int player) {
+        int row = tileID / size;
+        int col = tileID % size;
 
         if (board[row][col] == 0) {
             board[row][col] = player;
-            board_tile.remove(fieldIdx);
+            board_tile.remove(tileID);
 
             return true;
         }
@@ -67,12 +67,15 @@ public class TicTacToeBoard extends Board{
      */
     int getRandomEmpty() {
         int num = new Random().nextInt(size * size);
-        Integer i = ((TreeSet<Integer>)board_tile).ceiling(num);
+        Integer i = ((TreeSet<Integer>)board_tile).floor(num);
 
         if (i == null) {
-            i = ((TreeSet<Integer>)board_tile).floor(num);
+            i = ((TreeSet<Integer>)board_tile).ceiling(num);
+        }
+        if (i == null) {
+            return -1;
         }
 
-        return i == null ? -1 : i;
+        return i;
     }
 }

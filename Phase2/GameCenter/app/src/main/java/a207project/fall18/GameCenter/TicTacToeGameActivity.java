@@ -29,7 +29,7 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
      */
     private static TicTacToeBoardManager ticTacToeBoardManager = new TicTacToeBoardManager(size);
     private static TicTacToeRandomPlayer computer = new TicTacToeRandomPlayer(ticTacToeBoardManager);
-    @TicTacToeBoardManager.FieldValue private int player = TicTacToeBoardManager.X;
+    private int player = TicTacToeBoardManager.X;
 
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -80,9 +80,9 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View v) {
         ImageView field = (ImageView) v;
-        int fieldIdx = field.getId();
+        int tileId = field.getId();
 
-        if (ticTacToeBoardManager.Move(fieldIdx, player)) {
+        if (ticTacToeBoardManager.Move(tileId, player)) {
             field.setImageResource(boardImages.get(player));
 
             if (ticTacToeBoardManager.won) {
@@ -102,12 +102,12 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
      * update when computer move and check finish the game or not.
      */
     private void MoveOpponent() {
-        @TicTacToeBoardManager.FieldValue int opponent = player * -1;
-        int moveIdx = ticTacToeBoardManager.GetMove(opponent);
+        int opponent = player * -1;
+        int moveId = ticTacToeBoardManager.GetMove(opponent);
 
-        if (moveIdx >= 0) {
-            ticTacToeBoardManager.Move(moveIdx, opponent);
-            ImageView opponentField = findViewById(moveIdx);
+        if (moveId >= 0) {
+            ticTacToeBoardManager.Move(moveId, opponent);
+            ImageView opponentField = findViewById(moveId);
             opponentField.setImageResource(boardImages.get(opponent));
 
             if (ticTacToeBoardManager.won) {
