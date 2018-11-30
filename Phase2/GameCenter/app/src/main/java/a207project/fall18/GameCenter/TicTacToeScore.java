@@ -7,7 +7,7 @@ import java.util.Hashtable;
 /**
  * TicTacToe score class, Cite from Github.
  */
-class TicTacToeScore {
+public class TicTacToeScore {
     /**
      * int Empty = 0
      */
@@ -30,7 +30,7 @@ class TicTacToeScore {
      * TTT score which is scored by row, col, left diagonal, right diagonal.
      * @param size dim of tiles.
      */
-    TicTacToeScore(int size) {
+    public TicTacToeScore(int size) {
         this.size = size;
         lines = new Hashtable<>();
 
@@ -79,5 +79,6 @@ class TicTacToeScore {
 
         return won;
     }
+
 
 }

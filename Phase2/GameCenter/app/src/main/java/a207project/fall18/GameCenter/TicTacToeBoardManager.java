@@ -51,11 +51,15 @@ public class TicTacToeBoardManager extends BoardManager {
         this.TicTacToeScoreboard = new TicTacToeScore(size);
     }
 
+    public TicTacToeScore TicTacToeScoreBoard(){
+        return this.TicTacToeScoreboard;
+    }
+
     /**
      * Get a TicTacToeBoard.
      * @return A TicTacToeBoard.
      */
-    TicTacToeBoard getTicTacToeBoard() {
+    public TicTacToeBoard getTicTacToeBoard() {
         return this.TicTacToeBoard;
     }
 
@@ -65,12 +69,10 @@ public class TicTacToeBoardManager extends BoardManager {
      * @param player The Player.
      * @return Move or not.
      */
-    boolean Move(int tileID, int player) {
+    public boolean Move(int tileID, int player) {
 
         if (TicTacToeBoard.move(tileID, player)) {
             won = TicTacToeScoreboard.Update(tileID, player);
-//            Log.d("field", "idx: " + tileID + " val: " + player);
-//            Log.d("field", "score: " + TicTacToeScoreboard.GetScore());
 
             return true;
         }
@@ -83,9 +85,10 @@ public class TicTacToeBoardManager extends BoardManager {
      * @param player the player.
      * @return the index of move.
      */
-    int GetMove(int player)
+    public int getMove(int player)
     {
-        return computer.GetMove(player);
+        return computer.getMove(player);
+
     }
 
 
@@ -93,7 +96,7 @@ public class TicTacToeBoardManager extends BoardManager {
      * Switch computer move.
      * @param computer computer player.
      */
-    void SwitchAI(TicTacToeRandomPlayer computer) {
+    public void SwitchAI(TicTacToeRandomPlayer computer) {
         this.computer = computer;
         this.computer.setTicTacToeBoardManager(this);
     }
