@@ -50,8 +50,6 @@ public class SudokuGameActivity extends AppCompatActivity implements TileGroupFr
         updateTiles();
 
         TimerTextView timerTextView =  (TimerTextView) findViewById(R.id.timer);
-//        timerTextView.setEndTime(System.currentTimeMillis() + 60 * 1000);
-//        long temp = System.currentTimeMillis();
         timerTextView.setStartTime(System.currentTimeMillis());
         timerTextView.startTimer();
 
