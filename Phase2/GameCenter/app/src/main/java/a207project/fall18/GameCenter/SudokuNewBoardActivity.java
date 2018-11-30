@@ -16,7 +16,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 //import me.kirkhorn.knut.android_sudoku.fragments.CellGroupFragment;
-//import me.kirkhorn.knut.android_sudoku.model.SudokuBoard;
+//import me.kirkhorn.knut.android_sudoku.model.a207project.fall18.GameCenter.SudokuBoard;
 
 /**
  *
@@ -25,7 +25,7 @@ import java.io.IOException;
 //public class SudokuNewBoardActivity extends AppCompatActivity implements CellGroupFragment.OnFragmentInteractionListener {
 //    private final String TAG = "NewSudokuBoardActivity";
 //    private TextView clickedCell;
-////    private SudokuBoard newSudokuBoard;
+////    private a207project.fall18.GameCenter.SudokuBoard newSudokuBoard;
 //    private int clickedGroup;
 //    private int clickedCellId;
 //
@@ -41,7 +41,7 @@ import java.io.IOException;
 //            thisCellGroupFragment.setGroupId(i);
 //        }
 //
-////        newSudokuBoard = new SudokuBoard();
+////        newSudokuBoard = new a207project.fall18.GameCenter.SudokuBoard();
 //    }
 //
 ////    public void onGoBackButtonClicked(View view) {
@@ -64,7 +64,7 @@ import java.io.IOException;
 ////            fileName += "hard";
 ////        }
 ////        String content = newSudokuBoard.toString();
-////        System.out.println("new SudokuBoard: " + content);
+////        System.out.println("new a207project.fall18.GameCenter.SudokuBoard: " + content);
 ////        FileOutputStream fileOutputStream;
 ////        try {
 ////            fileOutputStream = openFileOutput(fileName, Context.MODE_APPEND);

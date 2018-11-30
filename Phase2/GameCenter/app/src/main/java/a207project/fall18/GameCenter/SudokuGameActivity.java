@@ -258,7 +258,7 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
 
     /**
      * @param boards an array list of SudokuBoardManagers
-     * @return an randomly selected SudokuBoard
+     * @return an randomly selected a207project.fall18.GameCenter.SudokuBoard
      */
     private SudokuBoardManager chooseRandomBoard(ArrayList<SudokuBoardManager> boards) {
         int randomNumber = (int) (Math.random() * boards.size());

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * A SudokuBoard Manager
+ * A a207project.fall18.GameCenter.SudokuBoard Manager
  */
 
 class SudokuBoardManager extends BoardManager{
@@ -12,7 +12,7 @@ class SudokuBoardManager extends BoardManager{
     private int[][] SudokuBoard = new int[9][9];
 
 
-//    public SudokuBoard(){};
+//    public a207project.fall18.GameCenter.SudokuBoard(){};
 
     /**
      * @param row row
@@ -46,9 +46,9 @@ class SudokuBoardManager extends BoardManager{
     }
 
 //    public boolean isBoardFull() {
-//        for (int i = 0; i < SudokuBoard.length; i++) {
-//            for (int j = 0; j < SudokuBoard[i].length; j++) {
-//                if (SudokuBoard[i][j] == 0) {
+//        for (int i = 0; i < a207project.fall18.GameCenter.SudokuBoard.length; i++) {
+//            for (int j = 0; j < a207project.fall18.GameCenter.SudokuBoard[i].length; j++) {
+//                if (a207project.fall18.GameCenter.SudokuBoard[i][j] == 0) {
 //                    return false;
 //                }
 //            }
@@ -78,10 +78,10 @@ class SudokuBoardManager extends BoardManager{
         }
 
 //        // Check vertical
-//        for (int i = 0; i < SudokuBoard.length; i++) {
+//        for (int i = 0; i < a207project.fall18.GameCenter.SudokuBoard.length; i++) {
 //            ArrayList<Integer> numbers = new ArrayList<>();
-//            for (int j = 0; j < SudokuBoard[i].length; j++) {
-//                int number = SudokuBoard[j][i];
+//            for (int j = 0; j < a207project.fall18.GameCenter.SudokuBoard[i].length; j++) {
+//                int number = a207project.fall18.GameCenter.SudokuBoard[j][i];
 //                if (numbers.contains(number)) {
 //                    return false;
 //                } else {
@@ -105,27 +105,27 @@ class SudokuBoardManager extends BoardManager{
         return SudokuBoard[row][column];
     }
 
-//    public SudokuBoard updateBoard(){
+//    public a207project.fall18.GameCenter.SudokuBoard updateBoard(){
 //        return this;
 //    }
 
 //    @Override
 //    public String toString() {
 //        StringBuilder temp = new StringBuilder();
-//        for (int i = 0; i < SudokuBoard.length; i++) {
-//            for (int j = 0; j < SudokuBoard[i].length; j++) {
+//        for (int i = 0; i < a207project.fall18.GameCenter.SudokuBoard.length; i++) {
+//            for (int j = 0; j < a207project.fall18.GameCenter.SudokuBoard[i].length; j++) {
 //                if (j == 0) {
 //                    temp.append("\n");
 //                }
 //
-//                int currentNumber = SudokuBoard[i][j];
+//                int currentNumber = a207project.fall18.GameCenter.SudokuBoard[i][j];
 //                if (currentNumber == 0) {
 //                    temp.append("-");
 //                } else {
 //                    temp.append(currentNumber);
 //                }
 //
-//                if (j != (SudokuBoard[i].length-1)) {
+//                if (j != (a207project.fall18.GameCenter.SudokuBoard[i].length-1)) {
 //                    temp.append(" ");
 //                }
 //            }
