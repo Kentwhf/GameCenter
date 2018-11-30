@@ -147,6 +147,7 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
         TextView scores = findViewById(R.id.Score);
         scores.setText("Scores : " + board.getCurrentScore());
         savingManager.autoSave(boardManager);
+        boardManager.setScore();
 //        saveToFile(SAVE_FILENAME);
     }
 

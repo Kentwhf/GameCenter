@@ -73,9 +73,8 @@ public class SlidingTilesStartingActivity extends AppCompatActivity {
         loadButton.setOnClickListener(v -> {
 
             List<BoardManager> historicalFile = savingManager.query("get slidingTilesBoardManager");
-            Log.v("shabi", historicalFile.get(0).toString());
 
-            if (historicalFile != null){
+            if (historicalFile.size() == 0){
 //                saveToFile(TEMP_SAVE_FILENAME);
                 slidingTilesBoardManager = (SlidingTilesBoardManager) historicalFile.get(0);
                 MyApplication.getInstance().setBoardManager(slidingTilesBoardManager);// testing
