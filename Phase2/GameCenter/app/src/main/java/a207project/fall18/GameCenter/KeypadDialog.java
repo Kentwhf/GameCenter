@@ -6,40 +6,25 @@ import android.os.Bundle;
 import android.view.View;
 
 
-/**
- * KeypadDialog class.
- */
 public class KeypadDialog extends Dialog{
 
-    /**
-     * Array of View.
-     */
     private final View keys[] = new View[12];
 
     /**
-     * Priority listener
+     *
      */
     public interface PriorityListener {
         /**
-         * Refresher
+         *
          */
         default void refreshPriorityUI(String string) {
 
         }
     }
 
-    /**
-     * A listener
-     */
     private PriorityListener listener;
+//
 
-
-    /**
-     * Constructs a KeypadDialog
-     *
-     * @param context context
-     * @param listener a listener
-     */
     public KeypadDialog(Context context, PriorityListener listener) {
         super(context);
         this.listener = listener;
@@ -53,9 +38,6 @@ public class KeypadDialog extends Dialog{
         setKeysListeners();
     }
 
-    /**
-     * Finds View
-     */
     private void findViews(){
         keys[0]=findViewById(R.id.keypad_1);
         keys[1]=findViewById(R.id.keypad_2);
@@ -73,19 +55,11 @@ public class KeypadDialog extends Dialog{
     }
 
 
-    /**
-     * Sets result.
-     *
-     * @param cell int of cell
-     */
     private void setResult(int cell){
         listener.refreshPriorityUI(String.valueOf(cell));
         dismiss();
     }
 
-    /**
-     * Sets up keys listener.
-     */
     private void setKeysListeners(){
         for (int i=0; i < keys.length; i++){
             int cell;

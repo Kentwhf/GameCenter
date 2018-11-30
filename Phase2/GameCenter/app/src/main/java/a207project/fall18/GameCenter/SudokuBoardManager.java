@@ -10,8 +10,9 @@ import a207project.fall18.GameCenter.bean.Score;
  */
 
 public class SudokuBoardManager extends BoardManager implements Serializable {
-    private Score score;
+    private Score score = new Score();
     private SudokuBoard sudokuBoard;
+    private int finalScore;
 
     public SudokuBoard getSudokuBoard() {
         return sudokuBoard;
@@ -21,7 +22,7 @@ public class SudokuBoardManager extends BoardManager implements Serializable {
         this.sudokuBoard = sudokuBoard;
     }
 
-
+    public void setFinalScore(int finalScore){this.finalScore = finalScore;}
 
     @Override
     public Score getScore() {
@@ -29,10 +30,9 @@ public class SudokuBoardManager extends BoardManager implements Serializable {
     }
 
 
-
-
     @Override
     public void setScore() {
+        this.score.setFinalScore(finalScore);
         this.score.setUserId(MyApplication.getInstance().getUser().getId());
         this.score.setGameType(MyApplication.getInstance().getGame());
         this.score.setNickname(MyApplication.getInstance().getUser().getNickname());
@@ -56,17 +56,6 @@ public class SudokuBoardManager extends BoardManager implements Serializable {
             }
         }
     }
-
-//    public boolean isBoardFull() {
-//        for (int i = 0; i < a207project.fall18.GameCenter.sudokuBoard.length; i++) {
-//            for (int j = 0; j < a207project.fall18.GameCenter.sudokuBoard.getSlidingTiles()[i].length; j++) {
-//                if (a207project.fall18.GameCenter.sudokuBoard.getSlidingTiles()[i][j] == 0) {
-//                    return false;
-//                }
-//            }
-//        }
-//        return true;
-//    }
 
     /**
      * @return return if the tiles is solved correctly
@@ -153,10 +142,12 @@ public class SudokuBoardManager extends BoardManager implements Serializable {
         for (int i: sudokuBoard.getSlidingTiles()[row]) {horizontals.add(i);}
         horizontals.remove((Integer) sudokuBoard.getSlidingTiles()[row][column]);
 
-        for (int i = 0; i < sudokuBoard.getSlidingTiles().length; i++) {verticals.add(sudokuBoard.getSlidingTiles()[i][column]);}
+        for (int i = 0; i < sudokuBoard.getSlidingTiles().length; i++) {verticals.add(
+                sudokuBoard.getSlidingTiles()[i][column]);}
         verticals.remove((Integer) sudokuBoard.getSlidingTiles()[row][column]);
 
-        return horizontals.contains(sudokuBoard.getSlidingTiles()[row][column]) || verticals.contains(sudokuBoard.getSlidingTiles()[row][column]) ||
+        return horizontals.contains(sudokuBoard.getSlidingTiles()[row][column]) ||
+                verticals.contains(sudokuBoard.getSlidingTiles()[row][column]) ||
                 group.contains(sudokuBoard.getSlidingTiles()[row][column]);
     }
 }

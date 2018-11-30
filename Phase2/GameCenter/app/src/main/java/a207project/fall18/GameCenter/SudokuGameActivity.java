@@ -29,6 +29,7 @@ public class SudokuGameActivity extends AppCompatActivity implements
     private TimerTextView timerTextView;
     private SudokuBoardManager startBoardManager;
     private SudokuBoardManager currentBoardManager;
+    static int difficulty;
     int cellGroupFragments[] = new int[]{R.id.cellGroupFragment, R.id.cellGroupFragment2,
             R.id.cellGroupFragment3, R.id.cellGroupFragment4, R.id.cellGroupFragment5,
             R.id.cellGroupFragment6, R.id.cellGroupFragment7, R.id.cellGroupFragment8,
@@ -40,29 +41,27 @@ public class SudokuGameActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_sudoku_game);
 
         savingManager = MyApplication.getInstance().getSavingManager();
-
-        int difficulty = getIntent().getIntExtra("difficulty", 0);
         ArrayList<SudokuBoardManager> boards = readGameBoards(difficulty);
 
-        // Controller
         if (MyApplication.getInstance().getBoardManager() == null) {
-
             startBoardManager = chooseRandomBoard(boards);
-
             MyApplication.getInstance().setBoardManager(startBoardManager);
-
             currentBoardManager = new SudokuBoardManager();
             currentBoardManager.setSudokuBoard(new SudokuBoard());
             currentBoardManager.copyValues(startBoardManager.getBoard());
-        }
-        else{
+        } else {
             startBoardManager = (SudokuBoardManager) MyApplication.getInstance().getBoardManager();
             currentBoardManager = (SudokuBoardManager) savingManager.query
                     ("get slidingTilesBoardManager").get(0);
+
+
         }
+
+
 
         currentBoardManager.getBoard().addObserver(this);
         updateTiles();
+
 
         this.timerTextView = findViewById(R.id.timer);
         timerTextView.setStartTime(System.currentTimeMillis());
@@ -106,7 +105,6 @@ public class SudokuGameActivity extends AppCompatActivity implements
 
     }
 
-
 //    @Override
 //    public void onResume(){
 //        super.onResume();
@@ -124,12 +122,12 @@ public class SudokuGameActivity extends AppCompatActivity implements
      */
     private ArrayList<SudokuBoardManager> readGameBoards(int difficulty) {
         ArrayList<SudokuBoardManager> boards = new ArrayList<>();
-        int fileId;
-        if (difficulty == 1) {
+        int fileId = 3;
+        if (difficulty == 4) {
             fileId = R.raw.normal;
-        } else if (difficulty == 0) {
+        } else if (difficulty == 3) {
             fileId = R.raw.easy;
-        } else {
+        } else if (difficulty == 5) {
             fileId = R.raw.hard;
         }
         filereader(fileId, boards);
@@ -210,18 +208,23 @@ public class SudokuGameActivity extends AppCompatActivity implements
         return true;
     }
 
-    // Remove the button.
-    // Change it to real time interface. Checking if puzzle's been solve . Potentially observable
     public void onCheckBoardButtonClicked(View view) {
-//        currentBoardManager.isBoardCorrect();
         if(checkAllGroups() && currentBoardManager.isBoardCorrect()) {
             Toast.makeText(this, getString(R.string.board_correct),
                     Toast.LENGTH_SHORT).show();
             timerTextView.stopTimer();
             String duration = timerTextView.getDurationBreakdown
                     (System.currentTimeMillis() - timerTextView.getStartTime());
+            String[] temp = duration.split(":");
+            int time = Integer.parseInt(temp[0]) + Integer.parseInt(temp[1]) + Integer.parseInt(temp[2]);
+            currentBoardManager.setFinalScore((int) 10000/time);
+            currentBoardManager.setScore();
+            MyApplication.getInstance().getScoreDao().uploadScore(currentBoardManager.getScore());
+
+
             timerTextView.setText(duration);
-            // Pass value to the model
+            Intent intent = new Intent(this, ScoreboardActivity.class);
+            startActivity(intent);
         } else {
             Toast.makeText(this, getString(R.string.board_incorrect),
                     Toast.LENGTH_SHORT).show();

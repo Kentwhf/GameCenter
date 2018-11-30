@@ -33,7 +33,6 @@ public class SlidingTilesStartingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SlidingTilesBoard.setNumRowsCols(3);
         slidingTilesBoardManager = new SlidingTilesBoardManager();
 //        saveToFile(TEMP_SAVE_FILENAME);
         MyApplication.getInstance().setBoardManager(slidingTilesBoardManager);
