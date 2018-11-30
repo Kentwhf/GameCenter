@@ -128,7 +128,6 @@ public class SlidingTilesStartingActivity extends AppCompatActivity {
      */
     private void switchToGame() {
         Intent tmp = new Intent(this, SlidingTilesGameActivity.class);
-//        saveToFile(SlidingTilesStartingActivity.TEMP_SAVE_FILENAME);
         MyApplication.getInstance().setBoardManager(slidingTilesBoardManager);
         startActivity(tmp);
     }
