@@ -1,9 +1,10 @@
 package a207project.fall18.GameCenter;
 
+
 /**
  * The tic tac toe game.
  */
- class TicTacToeBoardManager extends BoardManager {
+ public class TicTacToeBoardManager extends BoardManager {
 
     /**
      * int of X = -1
@@ -19,9 +20,9 @@ package a207project.fall18.GameCenter;
     static final int EMPTY = 0;
 
     /**
-     * A board.
+     * A TicTacToeBoard.
      */
-    private TicTacToeBoard board;
+    private TicTacToeBoard TicTacToeBoard;
     /**
      * A TTTScore ticTacToeBoard.
      */
@@ -41,16 +42,16 @@ package a207project.fall18.GameCenter;
      * @param size dim of the board.
      */
     TicTacToeBoardManager(int size) {
-        this.board = new TicTacToeBoard(size);
+        this.TicTacToeBoard = new TicTacToeBoard(size);
         this.TicTacToeScoreboard = new TicTacToeScore(size);
     }
 
     /**
-     * Get a board.
-     * @return A board.
+     * Get a TicTacToeBoard.
+     * @return A TicTacToeBoard.
      */
     TicTacToeBoard getSlidingTilesBoard() {
-        return board;
+        return TicTacToeBoard;
     }
 
     /**
@@ -61,7 +62,7 @@ package a207project.fall18.GameCenter;
      */
     boolean Move(int tileID, int player) {
 
-        if (board.move(tileID, player)) {
+        if (TicTacToeBoard.move(tileID, player)) {
             won = TicTacToeScoreboard.Update(tileID, player);
 //            Log.d("field", "idx: " + tileID + " val: " + player);
 //            Log.d("field", "score: " + TicTacToeScoreboard.GetScore());
@@ -91,6 +92,4 @@ package a207project.fall18.GameCenter;
         this.computer = computer;
         this.computer.setTicTacToeBoardManager(this);
     }
-
-
 }
