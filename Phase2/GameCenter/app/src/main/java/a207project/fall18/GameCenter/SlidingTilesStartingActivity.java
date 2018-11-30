@@ -74,7 +74,7 @@ public class SlidingTilesStartingActivity extends AppCompatActivity {
 
             List<BoardManager> historicalFile = savingManager.query("get slidingTilesBoardManager");
 
-            if (historicalFile.size() == 0){
+            if (historicalFile.size() != 0){
 //                saveToFile(TEMP_SAVE_FILENAME);
                 slidingTilesBoardManager = (SlidingTilesBoardManager) historicalFile.get(0);
                 MyApplication.getInstance().setBoardManager(slidingTilesBoardManager);// testing

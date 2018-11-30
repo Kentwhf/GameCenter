@@ -17,12 +17,16 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import a207project.fall18.GameCenter.KeypadDialog;
+import a207project.fall18.GameCenter.dao.SaveDao;
 
 /**
  * Sodoku game activity
  */
 
 public class SudokuGameActivity extends AppCompatActivity implements TileGroupFragment.OnFragmentInteractionListener, Observer {
+
+    private SaveDao savingManager;
+
     private final String TAG = "SlidingTilesGameActivity";
 //    private TextView clickedCell;
 //    private int clickedGroup;
@@ -39,14 +43,29 @@ public class SudokuGameActivity extends AppCompatActivity implements TileGroupFr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sudoku_game);
 
+        savingManager = MyApplication.getInstance().getSavingManager();
+
         int difficulty = getIntent().getIntExtra("difficulty", 0);
         ArrayList<SudokuBoardManager> boards = readGameBoards(difficulty);
 
-        startBoardManager = chooseRandomBoard(boards);
-        currentBoardManager = new SudokuBoardManager();
-        currentBoardManager.setSudokuBoard(new SudokuBoard());
+
+        if(MyApplication.getInstance().getBoardManager() == null) {
+
+            startBoardManager = chooseRandomBoard(boards);
+
+            MyApplication.getInstance().setBoardManager(startBoardManager);
+
+            currentBoardManager = new SudokuBoardManager();
+            currentBoardManager.setSudokuBoard(new SudokuBoard());
+            currentBoardManager.copyValues(startBoardManager.getBoard());
+        }
+        else{
+            startBoardManager = (SudokuBoardManager) MyApplication.getInstance().getBoardManager();
+            currentBoardManager = (SudokuBoardManager) savingManager.query("get slidingTilesBoardManager").get(0);
+
+        }
+
         currentBoardManager.getBoard().addObserver(this);
-        currentBoardManager.copyValues(startBoardManager.getBoard());
         updateTiles();
 
         TimerTextView timerTextView =  (TimerTextView) findViewById(R.id.timer);
@@ -373,6 +392,8 @@ public class SudokuGameActivity extends AppCompatActivity implements TileGroupFr
                 @Override
                 public void refreshPriorityUI(String string) {
                     currentBoardManager.getBoard().setTile(row, column, (int)Integer.parseInt(string));
+
+                    savingManager.autoSave(currentBoardManager);
 
                 }
             } );

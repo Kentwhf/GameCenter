@@ -1,5 +1,6 @@
 package a207project.fall18.GameCenter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -7,7 +8,7 @@ import java.util.Arrays;
  * A a207project.fall18.GameCenter.sudokuBoard Manager
  */
 
-class SudokuBoardManager extends BoardManager{
+class SudokuBoardManager extends BoardManager implements Serializable {
 
     public void setSudokuBoard(SudokuBoard sudokuBoard) {
         this.sudokuBoard = sudokuBoard;
