@@ -11,11 +11,24 @@ import static java.lang.Character.isDigit;
 import static org.junit.Assert.*;
 
 public class TicTacToeBoardTest extends Board {
+    /**
+     * TicTacToeBoard which size = 3
+     */
     private TicTacToeBoard tictactoeboard3;
+    /**
+     * TicTacToeBoard which size = 4
+     */
     private TicTacToeBoard tictactoeboard4;
+    /**
+     * TicTacToeBoard which size = 5
+     */
     private TicTacToeBoard tictactoeboard5;
 
 
+    /**
+     * Set up the testing original.
+     * @throws Exception Expected Exception
+     */
     @Before
     public void setUp() throws Exception {
         tictactoeboard3 = new TicTacToeBoard(3);
@@ -23,6 +36,10 @@ public class TicTacToeBoardTest extends Board {
         tictactoeboard5 = new TicTacToeBoard(5);
     }
 
+    /**
+     * Tear down after testing
+     * @throws Exception Expected Expection
+     */
     @After
     public void tearDown() throws Exception {
         tictactoeboard3 = null;
@@ -30,6 +47,9 @@ public class TicTacToeBoardTest extends Board {
         tictactoeboard5 = null;
     }
 
+    /**
+     * Test move.
+     */
     @Test
     public void moveTest(){
         assertEquals(true, tictactoeboard3.move(3, 1));
@@ -41,6 +61,9 @@ public class TicTacToeBoardTest extends Board {
     }
 
 
+    /**
+     * Test isFull.
+     */
     @Test
     public void isFullTest() {
         assertEquals(false, tictactoeboard3.isFull());
@@ -48,6 +71,9 @@ public class TicTacToeBoardTest extends Board {
         assertEquals(false, tictactoeboard5.isFull());
     }
 
+    /**
+     * Test getRandomEmpty.
+     */
     @Test
     public void getRandomEmptyTest() {
         Integer result1 = tictactoeboard3.getRandomEmpty();
@@ -57,6 +83,10 @@ public class TicTacToeBoardTest extends Board {
         Integer result3 = tictactoeboard5.getRandomEmpty();
         assertEquals(true, result3 instanceof Integer);
     }
+
+    /**
+     * Test getSize
+     */
     @Test
     public void getSizeTest() {
         assertEquals(3, tictactoeboard3.getSize());

@@ -14,22 +14,35 @@ import a207project.fall18.GameCenter.TicTacToeScore;
 import static org.junit.Assert.*;
 
 public class TicTacToeBoardManagerTest {
+    /**
+     * TicTacToeBoardManager which size = 3
+     */
     private TicTacToeBoardManager tictactoeboardmanager1;
+    /**
+     * TicTacToeBoardManager which size = 4
+     */
     private TicTacToeBoardManager tictactoeboardmanager2;
+    /**
+     * TicTacToeBoardManager which size = 5
+     */
     private TicTacToeBoardManager tictactoeboardmanager3;
-    private TicTacToeBoard ticTacToeBoard1;
-    private TicTacToeScore ticTacToeScore1;
 
 
+    /**
+     * Set up the testing original.
+     * @throws Exception Expected Exception
+     */
     @Before
     public void setUp() throws Exception {
         tictactoeboardmanager1 = new TicTacToeBoardManager(3);
-        ticTacToeBoard1 = new TicTacToeBoard(3);
-        ticTacToeBoard1 = tictactoeboardmanager1.getTicTacToeBoard();
         tictactoeboardmanager2 = new TicTacToeBoardManager(4);
         tictactoeboardmanager3 = new TicTacToeBoardManager(5);
     }
 
+    /**
+     * Tear down after testing
+     * @throws Exception Expected Expection
+     */
     @After
     public void tearDown() throws Exception {
         tictactoeboardmanager1 = null;
@@ -37,6 +50,9 @@ public class TicTacToeBoardManagerTest {
         tictactoeboardmanager3 = null;
     }
 
+    /**
+     * Text getTicTacToeBoard.
+     */
     @Test
     public void getTicTacToeBoardTest() {
         TicTacToeBoard tictactoeboard1 = new TicTacToeBoard(3);
@@ -50,26 +66,24 @@ public class TicTacToeBoardManagerTest {
                 tictactoeboardmanager3.getTicTacToeBoard().getSize());
     }
 
+    /**
+     * Text Move.
+     */
     @Test
     public void MoveTest() {
         boolean result1 = tictactoeboardmanager1.Move(1,1);
         boolean result2 = tictactoeboardmanager1.Move(4,-1);
-//        boolean result3 = tictactoeboardmanager2.Move(6,1);
-//        boolean result4 = tictactoeboardmanager2.Move(3,-1);
-//        boolean result5 = tictactoeboardmanager3.Move(7,1);
-//        boolean result6 = tictactoeboardmanager3.Move(2,-1);
-
         assertEquals(true, result1);
         assertEquals(true, result2);
-//        assertEquals(true, result3);
-//        assertEquals(true, result4);
-//        assertEquals(true, result5);
-//        assertEquals(true, result6);
+
 
 
 
     }
 
+    /**
+     * Text GetMove.
+     */
     @Test
     public void getMoveTest() {
         int result1 = tictactoeboardmanager1.getMove(1);
@@ -78,6 +92,9 @@ public class TicTacToeBoardManagerTest {
         assertEquals(1, result2);
     }
 
+    /**
+     * Text SwitchAITest.
+     */
     @Test
     public void switchAITest() {
     }

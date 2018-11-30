@@ -9,21 +9,22 @@ import a207project.fall18.GameCenter.bean.Score;
  * A a207project.fall18.GameCenter.sudokuBoard Manager
  */
 
-class SudokuBoardManager extends BoardManager implements Serializable {
+public class SudokuBoardManager extends BoardManager implements Serializable {
+    private Score score;
+    private SudokuBoard sudokuBoard;
+
+    public SudokuBoard getSudokuBoard() {
+        return sudokuBoard;
+    }
 
     public void setSudokuBoard(SudokuBoard sudokuBoard) {
         this.sudokuBoard = sudokuBoard;
     }
 
-    private SudokuBoard sudokuBoard;
-
     @Override
     public Score getScore() {
         return score;
     }
-
-    private Score score;
-
 
     @Override
     public void setScore() {
