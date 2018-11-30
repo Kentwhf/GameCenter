@@ -8,8 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.HashMap;
-
 import a207project.fall18.GameCenter.bean.User;
 import a207project.fall18.GameCenter.dao.UserDao;
 
@@ -33,7 +31,7 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_user);
+        setContentView(R.layout.activity_sign_up);
         setTitle("Sign up!");
 
 

@@ -2,12 +2,11 @@ package a207project.fall18.GameCenter;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
@@ -16,47 +15,41 @@ import android.widget.ImageView;
 import java.util.Hashtable;
 import java.util.Random;
 
-import a207project.fall18.GameCenter.R;
-
 /**
  * The tic tac toe game activity.
  */
 public class TicTacToeGameActivity extends AppCompatActivity implements View.OnClickListener {
     private static Hashtable<Integer, Integer> boardImages = new Hashtable<>();
     /**
-     * Dim of the board.
+     * Dim of the tiles.
      */
-    public static int dim = 3;
+    public static int size = 3;
     /**
      * The game with the num of the scale.
      */
-    private static Game game = new Game(dim);
-    /**
-     * set a ai player which will random move.
-     */
-    private static RandomPlayer computer = new RandomPlayer(game);
-    /**
-     * set the player.
-     */
-    private int player = Game.X;
+    private static TicTacToeBoardManager ticTacToeBoardManager = new TicTacToeBoardManager(size);
+    private static TicTacToeRandomPlayer computer = new TicTacToeRandomPlayer(ticTacToeBoardManager);
+    private int player = TicTacToeBoardManager.X;
 
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tictactoe_game);
 
-        game = new Game(dim);
-        game.SwitchAI(computer);
-        boardImages.put(Game.EMPTY, R.drawable.ttt_blank);
-        boardImages.put(Game.X, R.drawable.ttt_x);
-        boardImages.put(Game.O, R.drawable.ttt_o);
+        ticTacToeBoardManager = new TicTacToeBoardManager(size);
+        ticTacToeBoardManager.SwitchAI(computer);
+        boardImages.put(TicTacToeBoardManager.EMPTY, R.drawable.ttt_blank);
+        boardImages.put(TicTacToeBoardManager.X, R.drawable.ttt_x);
+        boardImages.put(TicTacToeBoardManager.O, R.drawable.ttt_o);
 
         GridLayout grid = findViewById(R.id.board);
         grid.setOnClickListener(this);
-        grid.setColumnCount(dim);
+        grid.setColumnCount(size);
 
-        for (int row = 0; row < dim; row++) {
-            for (int col = 0; col < dim; col++) {
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
                 ImageView field = new ImageView(this);
 
                 GridLayout.LayoutParams params = new GridLayout.LayoutParams(
@@ -67,8 +60,9 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
                 field.setLayoutParams(params);
 
                 field.setScaleType(ImageView.ScaleType.FIT_XY);
-                field.setImageResource(boardImages.get(Game.EMPTY));
-                field.setId(row * dim + col);
+                //noinspection ConstantConditions
+                field.setImageResource(boardImages.get(TicTacToeBoardManager.EMPTY));
+                field.setId(row * size + col);
                 grid.addView(field);
             }
         }
@@ -86,20 +80,24 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View v) {
         ImageView field = (ImageView) v;
-        int fieldIdx = field.getId();
+        int tileId = field.getId();
 
-        if (game.Move(fieldIdx, player)) {
+        if (ticTacToeBoardManager.Move(tileId, player)) {
             field.setImageResource(boardImages.get(player));
 
-            if (game.won) {
+            if (ticTacToeBoardManager.won) {
+                ticTacToeBoardManager.setScore();
+                MyApplication.getInstance().getScoreDao().uploadScore(ticTacToeBoardManager.getScore());
                 DeclareResult("You Win!!");
+                Intent intent = new Intent(this, ScoreboardActivity.class);
+                startActivity(intent);
             }
             else {
                 MoveOpponent();
             }
         }
 
-        if (!game.won && game.getBoard().isFull()) {
+        if (!ticTacToeBoardManager.won && ticTacToeBoardManager.getTicTacToeBoard().isFull()) {
             DeclareResult("It's a draw!");
         }
     }
@@ -109,19 +107,23 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
      */
     private void MoveOpponent() {
         int opponent = player * -1;
-        int moveIdx = game.GetMove(opponent);
+        int moveId = ticTacToeBoardManager.getMove(opponent);
 
-        if (moveIdx >= 0) {
-            game.Move(moveIdx, opponent);
-            ImageView opponentField = findViewById(moveIdx);
+        if (moveId >= 0) {
+            ticTacToeBoardManager.Move(moveId, opponent);
+            ImageView opponentField = findViewById(moveId);
             opponentField.setImageResource(boardImages.get(opponent));
 
-            if (game.won) {
+            if (ticTacToeBoardManager.won) {
                 DeclareResult("You Lose!!");
             }
         }
     }
 
+
+    /**
+     * @param message A CharSequence message popping out to tell whether win or not
+     */
     public void DeclareResult(CharSequence message) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage(message);

@@ -53,6 +53,9 @@ public class SudokuGameDifficultyActivity extends AppCompatActivity {
     }
 
     public void onStartGameButtonClicked(View view) {
+
+        MyApplication.getInstance().setBoardManager(null);
+
         if (newBoard) {
             Intent intent = new Intent();
             intent.putExtra("boardSaved", true);

@@ -1,12 +1,9 @@
 package a207project.fall18.GameCenter;
 
-import android.app.Application;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
-
-import a207project.fall18.GameCenter.bean.Score;
 
 public class
 GameSelectionActivity extends AppCompatActivity {
@@ -32,7 +29,7 @@ GameSelectionActivity extends AppCompatActivity {
             MyApplication.getInstance().setGame("SlidingTiles");
             MyApplication.getInstance().initSavingManager();
 
-            Intent i = new Intent(this, StartingActivity.class);
+            Intent i = new Intent(this, SlidingTilesStartingActivity.class);
             startActivity(i);
         });
     }
@@ -69,7 +66,8 @@ GameSelectionActivity extends AppCompatActivity {
         Game3.setOnClickListener((v) -> {
             MyApplication.getInstance().setGame("Sudoku");
             MyApplication.getInstance().initSavingManager();
-            Intent i = new Intent(this, SudokuMainActivity.class);
+            MyApplication.getInstance().setBoardManager(null);
+            Intent i = new Intent(this, SudokuInitialActivity.class);
             startActivity(i);
         });
     }

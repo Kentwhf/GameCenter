@@ -55,8 +55,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.886"
-        app:srcCompat="@color/colorPrimaryDark"
-        tools:srcCompat="@color/colorPrimaryDark" />
+        app:srcCompat="@color/SignInBackground"
+        tools:srcCompat="@color/SignInBackground" />
 
     <EditText
         android:id="@+id/UserInputBT"

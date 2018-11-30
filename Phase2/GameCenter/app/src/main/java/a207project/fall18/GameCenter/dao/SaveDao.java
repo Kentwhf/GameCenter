@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -90,11 +91,13 @@ public class SaveDao extends Dao<BoardManager> {
         if (!find()){
 
             insert(boardManager);
+
         }
         else{
 
 
             update(boardManager);
+
         }
     }
 

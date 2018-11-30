@@ -139,7 +139,7 @@ public class SignInActivity extends AppCompatActivity {
 //    private void setupSignInButtonListener(){
 //        Button SignInButton = findViewById(R.id.SignIn);
 //        Intent i = new Intent(this,GameSelectionActivity.class);
-//        Intent session = new Intent(this,GameActivity.class);
+//        Intent session = new Intent(this,SlidingTilesGameActivity.class);
 //        SignInButton.setOnClickListener((v) -> {
 //            if (successfulSignIn(findViewById(R.id.UserInput), findViewById(R.id.Password))) {
 //                session.putExtra("currentUser", this.currentUser.getUsername());
