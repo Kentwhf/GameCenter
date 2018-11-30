@@ -13,7 +13,7 @@ package a207project.fall18.GameCenter;
         this.ticTacToeBoardManager = ticTacToeBoardManager;
     }
 
-    public int GetMove(int player) {
-        return ticTacToeBoardManager.getSlidingTilesBoard().getRandomEmpty();
+    public int getMove(int player) {
+        return ticTacToeBoardManager.getTicTacToeBoard().getRandomEmpty();
     }
 }

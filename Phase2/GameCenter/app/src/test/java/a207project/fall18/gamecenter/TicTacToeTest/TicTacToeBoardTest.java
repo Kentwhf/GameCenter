@@ -1,4 +1,4 @@
-package a207project.fall18.gamecenter;
+package a207project.fall18.gamecenter.TicTacToeTest;
 
 import org.junit.After;
 import org.junit.Before;
