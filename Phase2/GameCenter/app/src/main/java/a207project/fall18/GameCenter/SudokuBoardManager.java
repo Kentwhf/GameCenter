@@ -3,11 +3,15 @@ package a207project.fall18.GameCenter;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import a207project.fall18.GameCenter.bean.Score;
+
 /**
  * A a207project.fall18.GameCenter.sudokuBoard Manager
  */
 
 class SudokuBoardManager extends BoardManager implements Serializable {
+
+    private Score score;
 
     public void setSudokuBoard(SudokuBoard sudokuBoard) {
         this.sudokuBoard = sudokuBoard;
@@ -18,6 +22,13 @@ class SudokuBoardManager extends BoardManager implements Serializable {
 
 //    public a207project.fall18.GameCenter.sudokuBoard(){};
 
+
+    @Override
+    public void setScore() {
+        this.score.setUserId(MyApplication.getInstance().getUser().getId());
+        this.score.setGameType(MyApplication.getInstance().getGame());
+        this.score.setNickname(MyApplication.getInstance().getUser().getNickname());
+    }
 
     /**
      * @return returnr a Sudoku Bard

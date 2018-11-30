@@ -66,6 +66,7 @@ GameSelectionActivity extends AppCompatActivity {
         Game3.setOnClickListener((v) -> {
             MyApplication.getInstance().setGame("Sudoku");
             MyApplication.getInstance().initSavingManager();
+            MyApplication.getInstance().setBoardManager(null);
             Intent i = new Intent(this, SudokuInitialActivity.class);
             startActivity(i);
         });

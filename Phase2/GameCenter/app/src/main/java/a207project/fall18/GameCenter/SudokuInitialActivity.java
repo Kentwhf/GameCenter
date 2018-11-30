@@ -98,9 +98,9 @@ public class SudokuInitialActivity extends AppCompatActivity {
         load.setOnClickListener((v) -> {
 
 
-            List<BoardManager> historicalFile = savingManager.query("get slidingTilesBoardManager");
+//            List<BoardManager> historicalFile = savingManager.query("get slidingTilesBoardManager");
 
-            if (historicalFile.size() != 0){
+            if ( !MyApplication.getInstance().getBoardManager().equals(null)){
 //                saveToFile(TEMP_SAVE_FILENAME);
 //                MyApplication.getInstance().setBoardManager( historicalFile.get(0));// testing
                 Intent intent = new Intent(this, SudokuGameActivity.class);
