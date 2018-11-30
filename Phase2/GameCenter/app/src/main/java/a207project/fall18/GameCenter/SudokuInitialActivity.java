@@ -4,9 +4,19 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+import java.util.List;
+
+import a207project.fall18.GameCenter.dao.SaveDao;
 
 
 public class SudokuInitialActivity extends AppCompatActivity {
+
+
+    private SaveDao savingManager;
+
     private boolean currentEnglish = true;
     private final String TAG = "SudokuInitialActivity";
 
@@ -14,6 +24,10 @@ public class SudokuInitialActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sudoku_initial);
+
+        savingManager = MyApplication.getInstance().getSavingManager();
+        addLoadGameButton();
+
 //        checkCurrentLocale();
     }
 
@@ -78,6 +92,28 @@ public class SudokuInitialActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SudokuGameDifficultyActivity.class);
         startActivity(intent);
     }
+
+    private void addLoadGameButton() {
+        Button load = findViewById(R.id.LoadGame);
+        load.setOnClickListener((v) -> {
+
+
+            List<BoardManager> historicalFile = savingManager.query("get slidingTilesBoardManager");
+
+            if (historicalFile != null){
+//                saveToFile(TEMP_SAVE_FILENAME);
+                MyApplication.getInstance().setBoardManager( historicalFile.get(0));// testing
+                Intent intent = new Intent(this, SudokuGameActivity.class);
+                startActivity(intent);
+
+            }
+            else{
+                Toast.makeText(SudokuInitialActivity.this,"No History！",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
 
 
 

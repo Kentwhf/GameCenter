@@ -16,11 +16,17 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+import a207project.fall18.GameCenter.dao.SaveDao;
+
 /**
  * Sodoku game activity
  */
 
 public class SudokuGameActivity extends AppCompatActivity implements CellGroupFragment.OnFragmentInteractionListener, Observer {
+
+
+    private SaveDao savingManager;
+
     private final String TAG = "SlidingTilesGameActivity";
 //    private TextView clickedCell;
 //    private int clickedGroup;
@@ -37,13 +43,24 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sudoku_game);
 
+        savingManager = MyApplication.getInstance().getSavingManager();
+
         int difficulty = getIntent().getIntExtra("difficulty", 0);
         ArrayList<SudokuBoardManager> boards = readGameBoards(difficulty);
 
-        startBoard = chooseRandomBoard(boards);
-        currentBoard = new SudokuBoardManager();
-        currentBoard.addObserver(this);
-        currentBoard.copyValues(startBoard.getSudokuBoard());
+        if(MyApplication.getInstance().getBoardManager() == null){
+            startBoard = chooseRandomBoard(boards);
+            currentBoard = new SudokuBoardManager();
+            currentBoard.addObserver(this);
+            currentBoard.copyValues(startBoard.getSudokuBoard());
+        }
+        else{
+            startBoard = (SudokuBoardManager) MyApplication.getInstance().getBoardManager();
+            currentBoard = new SudokuBoardManager();
+            currentBoard.addObserver(this);
+            currentBoard.copyValues(startBoard.getSudokuBoard());
+        }
+
         updateCells();
 
         TimerTextView timerTextView =  (TimerTextView) findViewById(R.id.timer);
@@ -118,6 +135,7 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
 
             }
         }
+
 
     }
 
@@ -368,6 +386,9 @@ public class SudokuGameActivity extends AppCompatActivity implements CellGroupFr
                 @Override
                 public void refreshPriorityUI(String string) {
                     currentBoard.setValue(row, column, (int)Integer.parseInt(string));
+
+                    savingManager.autoSave(startBoard);
+
 //                    clickedCell.setText(String.valueOf(string));
 //                    updateCells();
                 }

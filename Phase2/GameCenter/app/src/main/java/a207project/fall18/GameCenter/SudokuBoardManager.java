@@ -9,7 +9,7 @@ import java.util.Arrays;
 
 class SudokuBoardManager extends BoardManager{
 
-    private int[][] SudokuBoard = new int[9][9];
+    private static int[][] SudokuBoard = new int[9][9];
 
 
 //    public SudokuBoard(){};

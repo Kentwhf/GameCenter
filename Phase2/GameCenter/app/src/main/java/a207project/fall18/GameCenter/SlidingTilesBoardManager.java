@@ -45,7 +45,7 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
             tiles.add(new Tile(tileNum));
         }
 
-        Collections.shuffle(tiles);
+//        Collections.shuffle(tiles);
         this.slidingTilesBoard = new SlidingTilesBoard(tiles);
         score = new Score(MyApplication.getInstance().getUser(), "SlidingTiles");
     }
@@ -198,6 +198,11 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
 //    }
 
     public Score getScore(){return this.score;}
-    public void setScore(){this.score.setFinalScore(slidingTilesBoard.getCurrentscore());}
+    public void setScore(){
+        this.score.setFinalScore(slidingTilesBoard.getCurrentscore());
+        this.score.setUserId(MyApplication.getInstance().getUser().getId());
+        this.score.setGameType(MyApplication.getInstance().getGame());
+        this.score.setNickname(MyApplication.getInstance().getUser().getNickname());
+    }
 
 }

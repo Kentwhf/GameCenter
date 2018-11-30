@@ -23,7 +23,7 @@ public class SlidingTilesMovementController {
         if (slidingTilesBoardManager.isValidTap(position)) {
             slidingTilesBoardManager.touchMove(position);
             if (slidingTilesBoardManager.puzzleSolved()) {
-                MyApplication.getInstance().getScoreDao().insert(slidingTilesBoardManager.getScore());
+                MyApplication.getInstance().getScoreDao().uploadScore(slidingTilesBoardManager.getScore());
 
 //                MyApplication.getInstance().currentScore.setFinalScore(slidingTilesBoardManager.getSlidingTilesBoard().getCurrentscore());
 
