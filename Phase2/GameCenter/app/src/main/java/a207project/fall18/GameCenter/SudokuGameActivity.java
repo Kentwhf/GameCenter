@@ -18,14 +18,13 @@ import java.util.Observer;
 import a207project.fall18.GameCenter.dao.SaveDao;
 
 /**
- * Sodoku game activity
+ * Sodoku game activity. Cite from GitHub
  */
 public class SudokuGameActivity extends AppCompatActivity implements
         TileGroupFragment.OnFragmentInteractionListener, Observer {
 
     private SaveDao savingManager;
     private final String TAG = "SlidingTilesGameActivity";
-    // Score needs the timer
     private TimerTextView timerTextView;
     private SudokuBoardManager startBoardManager;
     private SudokuBoardManager currentBoardManager;
@@ -42,7 +41,6 @@ public class SudokuGameActivity extends AppCompatActivity implements
 
         savingManager = MyApplication.getInstance().getSavingManager();
         ArrayList<SudokuBoardManager> boards = readGameBoards(difficulty);
-
         if (MyApplication.getInstance().getBoardManager() == null) {
             startBoardManager = chooseRandomBoard(boards);
             MyApplication.getInstance().setBoardManager(startBoardManager);
@@ -53,16 +51,9 @@ public class SudokuGameActivity extends AppCompatActivity implements
             startBoardManager = (SudokuBoardManager) MyApplication.getInstance().getBoardManager();
             currentBoardManager = (SudokuBoardManager) savingManager.query
                     ("get slidingTilesBoardManager").get(0);
-
-
         }
-
-
-
         currentBoardManager.getBoard().addObserver(this);
         updateTiles();
-
-
         this.timerTextView = findViewById(R.id.timer);
         timerTextView.setStartTime(System.currentTimeMillis());
         timerTextView.startTimer();
@@ -75,10 +66,9 @@ public class SudokuGameActivity extends AppCompatActivity implements
         for (int i = 0; i < 9; i++) {
             TileGroupFragment thisTileGroupFragment = (TileGroupFragment)
                     getSupportFragmentManager().findFragmentById(cellGroupFragments[i]);
+            assert thisTileGroupFragment != null;
             thisTileGroupFragment.setGroupId(i+1);
         }
-
-        //Appear all values from the current tiles
         TileGroupFragment tempTileGroupFragment;
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
@@ -92,28 +82,17 @@ public class SudokuGameActivity extends AppCompatActivity implements
                 int groupColumn = j % 3;
                 int groupRow = i % 3;
                 int groupPosition = (groupRow * 3) + groupColumn;
-                int currentValue = currentBoardManager.getBoard().getTile(i,j); //Notice
-
+                int currentValue = currentBoardManager.getBoard().getTile(i,j);
                     if (currentValue != startBoardManager.getBoard().getTile(i,j)) {
+                        assert tempTileGroupFragment != null;
                         tempTileGroupFragment.markInput(groupPosition, currentValue,
                                 currentBoardManager.checkDupulicate(i, j));
                     } else {
+                        assert tempTileGroupFragment != null;
                         tempTileGroupFragment.setValue(groupPosition, currentValue);}
-
             }
         }
-
     }
-
-//    @Override
-//    public void onResume(){
-//        super.onResume();
-//        if (currentBoardManager.isBoardCorrect()) {
-//            timerTextView.stopTimer();
-//            String duration = timerTextView.getDurationBreakdown(System.currentTimeMillis() -
-//                    timerTextView.getStartTime());
-//        }
-//    }
 
     /**
      * @param difficulty an int that represents the difficulty of the game
@@ -147,7 +126,6 @@ public class SudokuGameActivity extends AppCompatActivity implements
             while (line != null) {
                 SudokuBoardManager boardmanager = new SudokuBoardManager();
                 boardmanager.setSudokuBoard(new SudokuBoard());
-                // read all lines in the tiles and set values in the tiles.\
                 for (int i = 0; i < 9; i++) {
                     String rowTiles[] = line.split(" ");
                     for (int j = 0; j < 9; j++) {
@@ -158,8 +136,7 @@ public class SudokuGameActivity extends AppCompatActivity implements
                         }
                     }
                     line = bufferedReader.readLine();
-                }
-                boards.add(boardmanager);
+                } boards.add(boardmanager);
                 line = bufferedReader.readLine();
             }
             bufferedReader.close();
@@ -195,7 +172,6 @@ public class SudokuGameActivity extends AppCompatActivity implements
     /**
      * @return if layout TileGroupFragment has correct groups
      */
-    // check if we actually need this method
     private boolean checkAllGroups() {
         for (int i = 0; i < 9; i++) {
             TileGroupFragment thisTileGroupFragment = (TileGroupFragment)

@@ -28,7 +28,6 @@ public class SlidingTile extends Tile implements Comparable<SlidingTile>, Serial
         return background;
     }
 
-
     /**
      * A SlidingTile with id and background. The background may not have a corresponding image.
      *
@@ -43,9 +42,9 @@ public class SlidingTile extends Tile implements Comparable<SlidingTile>, Serial
     /**
      * A tile with a background id; look up and set the id.
      *
-     * @param backgroundId
+     * @param backgroundId background id
      */
-    public SlidingTile(int backgroundId) {
+    SlidingTile(int backgroundId) {
         id = backgroundId + 1;
         // This looks so ugly.
         switch (backgroundId + 1) {
