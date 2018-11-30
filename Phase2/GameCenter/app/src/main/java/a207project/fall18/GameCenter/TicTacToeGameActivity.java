@@ -97,7 +97,7 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
             }
         }
 
-        if (!ticTacToeBoardManager.won && ticTacToeBoardManager.getSlidingTilesBoard().isFull()) {
+        if (!ticTacToeBoardManager.won && ticTacToeBoardManager.getTicTacToeBoard().isFull()) {
             DeclareResult("It's a draw!");
         }
     }
@@ -107,7 +107,7 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
      */
     private void MoveOpponent() {
         int opponent = player * -1;
-        int moveId = ticTacToeBoardManager.GetMove(opponent);
+        int moveId = ticTacToeBoardManager.getMove(opponent);
 
         if (moveId >= 0) {
             ticTacToeBoardManager.Move(moveId, opponent);

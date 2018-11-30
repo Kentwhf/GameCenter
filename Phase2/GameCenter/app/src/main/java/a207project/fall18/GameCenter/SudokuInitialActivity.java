@@ -115,59 +115,10 @@ public class SudokuInitialActivity extends AppCompatActivity {
 
     }
 
-
-
-
-//    public void onAddNewBoardButtonClicked(View view) {
-//        Intent intent = new Intent(this, SudokuNewBoardActivity.class);
-//        startActivity(intent);
-//    }
-
     public void onShowInstructionsButtonClicked(View view) {
         Intent intent = new Intent(this, SudokuInstructionsActivity.class);
         startActivity(intent);
     }
 
-//    public void onNorwegianFlagClick(View view) {
-//        if (currentEnglish) {
-//            Log.i(TAG, "Norwegian is now selected");
-//            SharedPreferences sharedPreferences = getDefaultSharedPreferences(this);
-//            SharedPreferences.Editor editor = sharedPreferences.edit();
-//            Resources resources = getBaseContext().getResources();
-//            Configuration configuration = new Configuration();
-//            editor.putString("app_language", "no");
-//            editor.apply();
-//            resources.updateConfiguration(configuration, resources.getDisplayMetrics());
-//
-//            //Restart activity to refresh locale
-//            finish();
-//            startActivity(getIntent());
-//            Toast.makeText(this, "Norsk er nå valgt", Toast.LENGTH_SHORT).show();
-//        } else {
-//            Log.i(TAG, "Norwegian is already selected");
-//            Toast.makeText(this, "Norsk er allerede valgt", Toast.LENGTH_SHORT).show();
-//        }
-//    }
-//
-//    public void onBritishFlagClick(View view) {
-//        if (!currentEnglish) {
-//            Log.i(TAG, "English is now selected");
-//            SharedPreferences sharedPreferences = getDefaultSharedPreferences(this);
-//            SharedPreferences.Editor editor = sharedPreferences.edit();
-//            Resources resources = getBaseContext().getResources();
-//            Configuration configuration = new Configuration();
-//            editor.putString("app_language", "en");
-//            editor.apply();
-//            resources.updateConfiguration(configuration, resources.getDisplayMetrics());
-//
-//            //Restart activity to refresh locale
-//            finish();
-//            startActivity(getIntent());
-//            Toast.makeText(this, "English is now selected", Toast.LENGTH_SHORT).show();
-//        } else {
-//            Log.i(TAG, "English is already selected");
-//            Toast.makeText(this, "English is already selected", Toast.LENGTH_SHORT).show();
-//        }
-//    }
 }
 

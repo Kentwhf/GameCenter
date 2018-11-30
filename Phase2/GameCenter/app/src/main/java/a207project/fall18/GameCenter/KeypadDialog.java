@@ -8,18 +8,14 @@ import android.view.View;
 
 public class KeypadDialog extends Dialog{
 
-//    private SudokuBoardManager sudokuBoardManager;
     private final View keys[] = new View[12];
-//    private SudokuBoardManager sudokuBoardManager;
-//    private int targetRow;
-//    private int targetCol;
 
     /**
      *
      */
     public interface PriorityListener {
         /**
-         * 回调函数，用于在Dialog的监听事件触发后刷新Activity的UI显示
+         *
          */
         default void refreshPriorityUI(String string) {
 
@@ -31,34 +27,14 @@ public class KeypadDialog extends Dialog{
 
     public KeypadDialog(Context context, PriorityListener listener) {
         super(context);
-//        this.targetRow = row;
-//        this.targetCol = col;
-//        this.sudokuBoardManager = sudokuBoardManager;
         this.listener = listener;
     }
-//    private final int used[];
-//    private ShuduView shuduview;
-//    private Design game;
-//
-//
-//    public KeyDialog(Context context, int[] used, ShuduView shuduview, Design game){
-//        super(context);
-//        this.used =used;
-//        this.shuduview = shuduview;
-//        this.game=game;
-//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-//        setTitle("请选择:");
         setContentView(R.layout.keypad);
         findViews();
-//        for(int i=0;i<used.length;i++){
-//            if(used[i]!=0){
-//                keys[used[i]-1].setVisibility(View.INVISIBLE);
-//            }
-//        }
         setKeysListeners();
     }
 
@@ -81,11 +57,6 @@ public class KeypadDialog extends Dialog{
 
     private void setResult(int cell){
         listener.refreshPriorityUI(String.valueOf(cell));
-//        sudokuBoardManager.setTile(targetRow, targetCol, cell);
-//        Intent intent = new Intent();
-//        intent.putExtra("chosenNumber", cell);
-//        intent.putExtra("isUnsure", checkBoxChecked);
-
         dismiss();
     }
 
@@ -97,23 +68,7 @@ public class KeypadDialog extends Dialog{
             } else cell = 0;
             keys[i].setOnClickListener(v -> setResult(cell));
         }
-//
         // Go back to Sudoku tiles
         keys[11].setOnClickListener(v -> dismiss());
-//
-//        // Hint
-//        keys[10].setOnClickListener(v -> {
-//            shuduview.setSelectedTile(game.shudushow[shuduview.selectedX][shuduview.selectedY]);
-////                game.setTile(shuduview.selectedX,shuduview.selectedY,
-////                        game.shudushow[shuduview.selectedX][shuduview.selectedY]);
-////                game.caculateAllusedTiles();
-////                shuduview.invalidate();
-//            dismiss();
-//        });
     }
-
-//    public SudokuBoardManager getNewSudokuBoardManager(){
-//        return this.sudokuBoardManager;
-//    }
-
 }

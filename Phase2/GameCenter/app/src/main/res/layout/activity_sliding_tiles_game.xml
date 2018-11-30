@@ -26,28 +26,10 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="33dp"
-        android:layout_marginLeft="33dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginLeft="59dp"
         android:layout_marginBottom="5dp"
         android:text="Undo" />
-
-    <Button
-        android:id="@+id/pay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/undo"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="126dp"
-        android:layout_marginLeft="126dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginRight="44dp"
-        android:layout_marginBottom="6dp"
-        android:layout_toEndOf="@+id/undo"
-        android:layout_toRightOf="@+id/undo"
-        android:text="VIP" />
 
     <TextView
         android:id="@+id/Score"
@@ -56,7 +38,7 @@
         android:layout_alignTop="@+id/undo"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="147dp"
-        android:layout_marginRight="147dp" />
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="79dp"
+        android:layout_marginRight="79dp" />
 </RelativeLayout>

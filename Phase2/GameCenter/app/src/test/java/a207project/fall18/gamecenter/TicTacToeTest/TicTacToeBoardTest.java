@@ -1,4 +1,4 @@
-package a207project.fall18.gamecenter;
+package a207project.fall18.gamecenter.TicTacToeTest;
 
 import org.junit.After;
 import org.junit.Before;
@@ -11,11 +11,24 @@ import static java.lang.Character.isDigit;
 import static org.junit.Assert.*;
 
 public class TicTacToeBoardTest extends Board {
+    /**
+     * TicTacToeBoard which size = 3
+     */
     private TicTacToeBoard tictactoeboard3;
+    /**
+     * TicTacToeBoard which size = 4
+     */
     private TicTacToeBoard tictactoeboard4;
+    /**
+     * TicTacToeBoard which size = 5
+     */
     private TicTacToeBoard tictactoeboard5;
 
 
+    /**
+     * Set up the testing original.
+     * @throws Exception Expected Exception
+     */
     @Before
     public void setUp() throws Exception {
         tictactoeboard3 = new TicTacToeBoard(3);
@@ -23,6 +36,10 @@ public class TicTacToeBoardTest extends Board {
         tictactoeboard5 = new TicTacToeBoard(5);
     }
 
+    /**
+     * Tear down after testing
+     * @throws Exception Expected Expection
+     */
     @After
     public void tearDown() throws Exception {
         tictactoeboard3 = null;
@@ -30,33 +47,50 @@ public class TicTacToeBoardTest extends Board {
         tictactoeboard5 = null;
     }
 
+    /**
+     * Test move.
+     */
     @Test
-    public void move(){
+    public void moveTest(){
         assertEquals(true, tictactoeboard3.move(3, 1));
         assertEquals(true, tictactoeboard3.move(4, -1));
         assertEquals(true, tictactoeboard4.move(5, 1));
         assertEquals(true, tictactoeboard4.move(2, -1));
         assertEquals(true , tictactoeboard5.move(1, 1));
         assertEquals(true, tictactoeboard5.move(6, -1));
-
-
     }
 
 
+    /**
+     * Test isFull.
+     */
     @Test
-    public void isFull() {
+    public void isFullTest() {
         assertEquals(false, tictactoeboard3.isFull());
         assertEquals(false, tictactoeboard4.isFull());
         assertEquals(false, tictactoeboard5.isFull());
     }
 
+    /**
+     * Test getRandomEmpty.
+     */
     @Test
-    public void getRandomEmpty() {
+    public void getRandomEmptyTest() {
         Integer result1 = tictactoeboard3.getRandomEmpty();
         assertEquals(true, result1 instanceof Integer);
         Integer result2 = tictactoeboard4.getRandomEmpty();
         assertEquals(true, result2 instanceof Integer);
         Integer result3 = tictactoeboard5.getRandomEmpty();
         assertEquals(true, result3 instanceof Integer);
+    }
+
+    /**
+     * Test getSize
+     */
+    @Test
+    public void getSizeTest() {
+        assertEquals(3, tictactoeboard3.getSize());
+        assertEquals(4, tictactoeboard3.getSize());
+        assertEquals(5, tictactoeboard3.getSize());
     }
 }
