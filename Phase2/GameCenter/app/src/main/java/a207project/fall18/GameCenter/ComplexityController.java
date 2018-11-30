@@ -1,7 +1,5 @@
 package a207project.fall18.GameCenter;
 
-import android.content.Intent;
-
 import a207project.fall18.GameCenter.dao.SaveDao;
 
 public class ComplexityController {
@@ -19,25 +17,23 @@ public class ComplexityController {
         return boardManager;
     }
 
-//    public BoardManager getBoardManager(){return this.boardManager;}
-
-    public void ConfirmUndoTime(int undoTime){
+    public void SetUndoTime(int undoTime){
         this.undoTime = undoTime;
     }
 
     public void Easy(){
-        boardManager = getBoardManager(game, 3);
+        boardManager = setBoardManager(game, 3);
     }
 
     public void Intermediate() {
-       boardManager = getBoardManager(game, 4);
+       boardManager = setBoardManager(game, 4);
     }
 
     public void Difficult(){
-        boardManager = getBoardManager(game, 5);
+        boardManager = setBoardManager(game, 5);
     }
 
-    public BoardManager getBoardManager(String game, int complexity){
+    private BoardManager setBoardManager(String game, int complexity){
         switch (game) {
             case "SlidingTiles":
                 SlidingTilesBoard.setNumRowsCols(complexity);
@@ -46,6 +42,7 @@ public class ComplexityController {
                 break;
             case "TicTacToe":
                 boardManager = new TicTacToeBoardManager(complexity);
+                TicTacToeGameActivity.size = complexity;
                 break;
             default:
                 boardManager = new SudokuBoardManager();

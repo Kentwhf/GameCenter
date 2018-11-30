@@ -3,7 +3,6 @@ package a207project.fall18.GameCenter;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -56,6 +55,7 @@ public class ComplexityActivity extends AppCompatActivity {
 
         controller = new ComplexityController();
         game = MyApplication.getInstance().getGame();
+        controller.SetUndoTime(undoTime);
 
         addEasyButtonListener();
         addIntermediateButtonListener();
@@ -64,7 +64,6 @@ public class ComplexityActivity extends AppCompatActivity {
         savingManager = MyApplication.getInstance().getSavingManager();
     }
 
-    // 使得只有是slidingtiles游戏时才出现set up undo button
     /**
      * Button for selecting number of undo moves
      */
@@ -75,8 +74,7 @@ public class ComplexityActivity extends AppCompatActivity {
             if (undoInputTextField != null){
                 undoTime = Integer.parseInt(undoInputTextField.getText().toString());
                 controller = new ComplexityController();
-                controller.ConfirmUndoTime(undoTime);
-
+                controller.SetUndoTime(undoTime);
             }
         });
     }
