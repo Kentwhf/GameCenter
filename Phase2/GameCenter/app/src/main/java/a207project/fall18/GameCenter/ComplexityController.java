@@ -39,17 +39,22 @@ public class ComplexityController {
                 SlidingTilesBoard.setNumRowsCols(complexity);
                 boardManager = new SlidingTilesBoardManager();
                 ((SlidingTilesBoardManager) boardManager).setCanUndoTime(undoTime);
+                savingManager.autoSave(boardManager);
+                MyApplication.getInstance().setBoardManager(boardManager);
                 break;
             case "TicTacToe":
                 boardManager = new TicTacToeBoardManager(complexity);
                 TicTacToeGameActivity.size = complexity;
+                savingManager.autoSave(boardManager);
+                MyApplication.getInstance().setBoardManager(boardManager);
                 break;
             default:
+
                 boardManager = new SudokuBoardManager();
+                SudokuGameActivity.difficulty = complexity;
                 break;
         }
-        savingManager.autoSave(boardManager);
-        MyApplication.getInstance().setBoardManager(boardManager);
+
         return boardManager;
     }
 }

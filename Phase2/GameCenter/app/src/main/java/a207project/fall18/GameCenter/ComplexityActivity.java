@@ -40,6 +40,7 @@ public class ComplexityActivity extends AppCompatActivity {
                 tmp = new Intent(this, TicTacToeGameActivity.class);
                 break;
             default:
+                MyApplication.getInstance().setBoardManager(null);
                 tmp = new Intent(this, SudokuGameActivity.class);
                 break;
         }

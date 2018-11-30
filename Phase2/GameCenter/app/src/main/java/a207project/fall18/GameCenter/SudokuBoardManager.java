@@ -27,6 +27,10 @@ class SudokuBoardManager extends BoardManager implements Serializable {
 
     @Override
     public void setScore() {
+//        this.score.setFinalScore(board.getCurrentScore());
+        this.score.setUserId(MyApplication.getInstance().getUser().getId());
+        this.score.setGameType(MyApplication.getInstance().getGame());
+        this.score.setNickname(MyApplication.getInstance().getUser().getNickname());
 
     }
 
@@ -49,17 +53,6 @@ class SudokuBoardManager extends BoardManager implements Serializable {
         }
     }
 
-//    public boolean isBoardFull() {
-//        for (int i = 0; i < a207project.fall18.GameCenter.sudokuBoard.length; i++) {
-//            for (int j = 0; j < a207project.fall18.GameCenter.sudokuBoard.getSlidingTiles()[i].length; j++) {
-//                if (a207project.fall18.GameCenter.sudokuBoard.getSlidingTiles()[i][j] == 0) {
-//                    return false;
-//                }
-//            }
-//        }
-//        return true;
-//    }
-
     /**
      * @return return if the tiles is solved correctly
      */
@@ -80,55 +73,8 @@ class SudokuBoardManager extends BoardManager implements Serializable {
                 }
             }
         }
-
-//        // Check vertical
-//        for (int i = 0; i < a207project.fall18.GameCenter.sudokuBoard.length; i++) {
-//            ArrayList<Integer> numbers = new ArrayList<>();
-//            for (int j = 0; j < a207project.fall18.GameCenter.sudokuBoard.getSlidingTiles()[i].length; j++) {
-//                int number = a207project.fall18.GameCenter.sudokuBoard.getSlidingTiles()[j][i];
-//                if (numbers.contains(number)) {
-//                    return false;
-//                } else {
-//                    numbers.add(number);
-//                }
-//            }
-//        }
-
-        // Check each group is in TileGroupFragment class for easier code
-        // returns true if horizontal and vertical lines are correct
         return true;
     }
-
-
-
-
-//    public a207project.fall18.GameCenter.sudokuBoard updateBoard(){
-//        return this;
-//    }
-
-//    @Override
-//    public String toString() {
-//        StringBuilder temp = new StringBuilder();
-//        for (int i = 0; i < a207project.fall18.GameCenter.sudokuBoard.length; i++) {
-//            for (int j = 0; j < a207project.fall18.GameCenter.sudokuBoard.getSlidingTiles()[i].length; j++) {
-//                if (j == 0) {
-//                    temp.append("\n");
-//                }
-//
-//                int currentNumber = a207project.fall18.GameCenter.sudokuBoard.getSlidingTiles()[i][j];
-//                if (currentNumber == 0) {
-//                    temp.append("-");
-//                } else {
-//                    temp.append(currentNumber);
-//                }
-//
-//                if (j != (a207project.fall18.GameCenter.sudokuBoard.getSlidingTiles()[i].length-1)) {
-//                    temp.append(" ");
-//                }
-//            }
-//        }
-//        return temp.toString();
-//    }
 
 
     /**
@@ -145,10 +91,12 @@ class SudokuBoardManager extends BoardManager implements Serializable {
         for (int i: sudokuBoard.getSlidingTiles()[row]) {horizontals.add(i);}
         horizontals.remove((Integer) sudokuBoard.getSlidingTiles()[row][column]);
 
-        for (int i = 0; i < sudokuBoard.getSlidingTiles().length; i++) {verticals.add(sudokuBoard.getSlidingTiles()[i][column]);}
+        for (int i = 0; i < sudokuBoard.getSlidingTiles().length; i++) {verticals.add(
+                sudokuBoard.getSlidingTiles()[i][column]);}
         verticals.remove((Integer) sudokuBoard.getSlidingTiles()[row][column]);
 
-        return horizontals.contains(sudokuBoard.getSlidingTiles()[row][column]) || verticals.contains(sudokuBoard.getSlidingTiles()[row][column]) ||
+        return horizontals.contains(sudokuBoard.getSlidingTiles()[row][column]) ||
+                verticals.contains(sudokuBoard.getSlidingTiles()[row][column]) ||
                 group.contains(sudokuBoard.getSlidingTiles()[row][column]);
     }
 }

@@ -29,6 +29,7 @@ public class SudokuGameActivity extends AppCompatActivity implements
     private TimerTextView timerTextView;
     private SudokuBoardManager startBoardManager;
     private SudokuBoardManager currentBoardManager;
+    static int difficulty;
     int cellGroupFragments[] = new int[]{R.id.cellGroupFragment, R.id.cellGroupFragment2,
             R.id.cellGroupFragment3, R.id.cellGroupFragment4, R.id.cellGroupFragment5,
             R.id.cellGroupFragment6, R.id.cellGroupFragment7, R.id.cellGroupFragment8,
@@ -41,28 +42,39 @@ public class SudokuGameActivity extends AppCompatActivity implements
 
         savingManager = MyApplication.getInstance().getSavingManager();
 
-        int difficulty = getIntent().getIntExtra("difficulty", 0);
+//        difficulty = getIntent().getIntExtra("difficulty", 3);
         ArrayList<SudokuBoardManager> boards = readGameBoards(difficulty);
 
         // Controller
         if (MyApplication.getInstance().getBoardManager() == null) {
 
+
             startBoardManager = chooseRandomBoard(boards);
+
 
             MyApplication.getInstance().setBoardManager(startBoardManager);
 
             currentBoardManager = new SudokuBoardManager();
+
             currentBoardManager.setSudokuBoard(new SudokuBoard());
+
+
+//            currentBoardManager.setSudokuBoard(startBoardManager.getBoard());
+
             currentBoardManager.copyValues(startBoardManager.getBoard());
-        }
-        else{
+        } else {
             startBoardManager = (SudokuBoardManager) MyApplication.getInstance().getBoardManager();
             currentBoardManager = (SudokuBoardManager) savingManager.query
                     ("get slidingTilesBoardManager").get(0);
+
+
         }
+
+
 
         currentBoardManager.getBoard().addObserver(this);
         updateTiles();
+
 
         this.timerTextView = findViewById(R.id.timer);
         timerTextView.setStartTime(System.currentTimeMillis());
@@ -106,7 +118,6 @@ public class SudokuGameActivity extends AppCompatActivity implements
 
     }
 
-
 //    @Override
 //    public void onResume(){
 //        super.onResume();
@@ -124,12 +135,12 @@ public class SudokuGameActivity extends AppCompatActivity implements
      */
     private ArrayList<SudokuBoardManager> readGameBoards(int difficulty) {
         ArrayList<SudokuBoardManager> boards = new ArrayList<>();
-        int fileId;
-        if (difficulty == 1) {
+        int fileId = 3;
+        if (difficulty == 4) {
             fileId = R.raw.normal;
-        } else if (difficulty == 0) {
+        } else if (difficulty == 3) {
             fileId = R.raw.easy;
-        } else {
+        } else if (difficulty == 5) {
             fileId = R.raw.hard;
         }
         filereader(fileId, boards);

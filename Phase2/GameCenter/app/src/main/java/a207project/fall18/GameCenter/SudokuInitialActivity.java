@@ -16,7 +16,6 @@ public class SudokuInitialActivity extends AppCompatActivity {
 
 
     private SaveDao savingManager;
-
     private boolean currentEnglish = true;
     private final String TAG = "SudokuInitialActivity";
 
@@ -27,98 +26,28 @@ public class SudokuInitialActivity extends AppCompatActivity {
 
         savingManager = MyApplication.getInstance().getSavingManager();
         addLoadGameButton();
-
-//        checkCurrentLocale();
     }
 
-//    private void checkCurrentLocale() {
-//        Log.i(TAG, "Checking current locale");
-//        SharedPreferences sharedPreferences = getDefaultSharedPreferences(this);
-//        String currentLanguage = sharedPreferences.getString("app_language", null);
-//        Configuration configuration = new Configuration();
-//        Resources resources = getBaseContext().getResources();
-//        Locale locale = getResources().getConfiguration().locale;
-//
-//        if (currentLanguage == null) {
-//            Log.i(TAG, "There is no shared Preferences... Creating...");
-//            SharedPreferences.Editor editor = sharedPreferences.edit();
-//
-//            if (locale.getLanguage().equals("no") || locale.getLanguage().equals("nb") || locale.getLanguage().equals("nn")) {
-//                //Norwegian is selected
-//                Log.i(TAG, "Norwegian is selected");
-//                editor.putString("app_language", "no");
-//                editor.apply();
-//                configuration.locale = new Locale("no", "NO");
-//                currentEnglish = false;
-//            } else {
-//                //English is selected
-//                Log.i(TAG, "English is selected");
-//                editor.putString("app_language", "en");
-//                editor.apply();
-//                configuration.locale = new Locale("en", "US");
-//                currentEnglish = true;
-//            }
-//        } else {
-//            if (currentLanguage.equals("no")) {
-//                Log.i(TAG, "Norwegian is selected");
-//                configuration.locale = new Locale("no", "NO");
-//                currentEnglish = false;
-//
-//            } else {
-//                //currentLanguage == "en"
-//                Log.i(TAG, "English is selected");
-//                configuration.locale = new Locale("en", "US");
-//                currentEnglish = true;
-//            }
-//        }
-//        resources.updateConfiguration(configuration, resources.getDisplayMetrics());
-//        refreshViewLanguages();
-//    }
-
-//    private void refreshViewLanguages() {
-//        Log.i(TAG, "Refreshing View Languages");
-//        Button buttonStartNewGame = findViewById(R.id.buttonStartNewGame);
-//        buttonStartNewGame.setText(R.string.new_game);
-//        Button buttonAddNewBoard = findViewById(R.id.buttonAddNewBoard);
-//        buttonAddNewBoard.setText(R.string.add_new_board);
-//        Button buttonShowInstructions = findViewById(R.id.buttonShowInstructions);
-//        buttonShowInstructions.setText(R.string.show_instructions);
-//
-//        TextView textViewChooseLanguage = findViewById(R.id.textViewChooseLanguage);
-//        textViewChooseLanguage.setText(R.string.choose_language);
-//    }
-
     public void onStartNewGameButtonClicked(View view) {
-        Intent intent = new Intent(this, SudokuGameDifficultyActivity.class);
+        Intent intent = new Intent(this, ComplexityActivity.class);
         startActivity(intent);
     }
 
     private void addLoadGameButton() {
         Button load = findViewById(R.id.LoadGame);
         load.setOnClickListener((v) -> {
-
-
-            List<BoardManager> historicalFile = savingManager.query("get slidingTilesBoardManager");
-
-            if (historicalFile.size() != 0){
-//                saveToFile(TEMP_SAVE_FILENAME);
-//                MyApplication.getInstance().setBoardManager( historicalFile.get(0));// testing
+            if (MyApplication.getInstance().getBoardManager() != null){
                 Intent intent = new Intent(this, SudokuGameActivity.class);
-//                intent.putExtra("old game", historicalFile.get(0));
                 startActivity(intent);
-
-            }
-            else{
-                Toast.makeText(SudokuInitialActivity.this,"No History！",Toast.LENGTH_SHORT).show();
+            }else {Toast.makeText(SudokuInitialActivity.this,"No History！",
+                        Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 
     public void onShowInstructionsButtonClicked(View view) {
         Intent intent = new Intent(this, SudokuInstructionsActivity.class);
         startActivity(intent);
     }
-
 }
 

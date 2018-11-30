@@ -34,7 +34,6 @@
         <activity android:name=".SudokuInstructionsActivity" />
         <activity android:name=".SudokuInitialActivity" />
         <activity android:name=".SudokuNewBoardActivity"/>
-        <activity android:name="a207project.fall18.GameCenter.TicTacToeComplexityActivity"></activity>
 
     </application>
 

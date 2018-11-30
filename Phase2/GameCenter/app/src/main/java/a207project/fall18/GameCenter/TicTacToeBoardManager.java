@@ -103,5 +103,9 @@ public class TicTacToeBoardManager extends BoardManager {
 
     @Override
     public void setScore() {
+//        this.score.setFinalScore(board.getCurrentScore());
+        this.score.setUserId(MyApplication.getInstance().getUser().getId());
+        this.score.setGameType(MyApplication.getInstance().getGame());
+        this.score.setNickname(MyApplication.getInstance().getUser().getNickname());
     }
 }
