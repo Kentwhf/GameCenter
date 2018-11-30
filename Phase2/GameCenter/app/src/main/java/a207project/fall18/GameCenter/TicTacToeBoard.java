@@ -14,18 +14,18 @@ public class TicTacToeBoard extends Board{
      */
     public int size;
     /**
-     * The board which is consisted by col and row.
+     * The tiles which is consisted by col and row.
      */
-    public int[][] board;
+    public Integer[][] tiles;
     public Set<Integer> board_tile;
 
     /**
-     * The tic tac toe board.
-     * @param  size the dimension of the board
+     * The tic tac toe tiles.
+     * @param  size the dimension of the tiles
      */
     public TicTacToeBoard(int size) {
         this.size = size;
-        this.board = new int[size][size];
+        this.tiles = new Integer[size][size];
 
         board_tile = new TreeSet<>();
         for (int i = 0; i < size * size; i++) {
@@ -43,8 +43,8 @@ public class TicTacToeBoard extends Board{
         int row = tileID / size;
         int col = tileID % size;
 
-        if (board[row][col] == 0) {
-            board[row][col] = player;
+        if (tiles[row][col] == 0) {
+            tiles[row][col] = player;
             board_tile.remove(tileID);
 
             return true;
@@ -54,8 +54,8 @@ public class TicTacToeBoard extends Board{
     }
 
     /**
-     * check the tile of board is full or not.
-     * @return whether the tile of board is full or not.
+     * check the tile of tiles is full or not.
+     * @return whether the tile of tiles is full or not.
      */
     public boolean isFull() {
         return board_tile.isEmpty();

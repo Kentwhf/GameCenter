@@ -19,8 +19,11 @@ class SudokuBoardManager extends BoardManager implements Serializable {
 
     private SudokuBoard sudokuBoard;
 
+    @Override
+    public Score getScore() {
+        return score;
+    }
 
-//    public a207project.fall18.GameCenter.sudokuBoard(){};
 
 
     @Override
@@ -61,7 +64,7 @@ class SudokuBoardManager extends BoardManager implements Serializable {
 //    }
 
     /**
-     * @return return if the board is solved correctly
+     * @return return if the tiles is solved correctly
      */
     // Can be rafactored
     public boolean isBoardCorrect() {

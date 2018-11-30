@@ -42,8 +42,8 @@ import a207project.fall18.GameCenter.bean.Score;
 
 
     /**
-     * TicTacToe board manager.
-     * @param size dim of the board.
+     * TicTacToe tiles manager.
+     * @param size dim of the tiles.
      */
     TicTacToeBoardManager(int size) {
         this.TicTacToeBoard = new TicTacToeBoard(size);
@@ -99,8 +99,5 @@ import a207project.fall18.GameCenter.bean.Score;
 
     @Override
     public void setScore() {
-        this.score.setUserId(MyApplication.getInstance().getUser().getId());
-        this.score.setGameType(MyApplication.getInstance().getGame());
-        this.score.setNickname(MyApplication.getInstance().getUser().getNickname());
     }
 }

@@ -25,7 +25,7 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
     private SaveDao savingManager;
 
     /**
-     * The board manager.
+     * The tiles manager.
      */
     private SlidingTilesBoardManager boardManager;
 
@@ -169,7 +169,7 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
     }
 
 //    /**
-//     * Load the board manager from fileName.
+//     * Load the tiles manager from fileName.
 //     *
 //     * @param fileName the name of the file
 //     */
@@ -192,7 +192,7 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
 //    }
 //
 //    /**
-//     * Save the board manager to fileName.
+//     * Save the tiles manager to fileName.
 //     *
 //     * @param fileName the name of the file
 //     */

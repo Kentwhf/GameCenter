@@ -7,15 +7,15 @@ import java.util.Arrays;
 
 public class SudokuBoard extends Board implements Serializable {
     /**
-     * The tiles on the board in row-major order.
+     * The tiles on the tiles in row-major order.
      */
-    private int[][] tiles = new int[9][9];
+    private Integer[][] tiles = new Integer[9][9];
 
     public void setTiles(int[][] tiles) {
-        this.tiles = new int[9][9];
+        this.tiles = new Integer[9][9];
     }
 
-    public int[][] getSlidingTiles() {
+    public Integer[][] getSlidingTiles() {
         return tiles;
     }
 

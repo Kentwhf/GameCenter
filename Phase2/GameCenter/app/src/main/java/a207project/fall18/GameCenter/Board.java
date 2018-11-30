@@ -6,15 +6,19 @@ import java.util.Observable;
 public class Board extends Observable implements Serializable {
 
 
-    private SlidingTile[][] slidingTiles;
+    private Object[][] tiles;
 
-    public void setSlidingTiles(SlidingTile[][] slidingTiles) {
-        this.slidingTiles = slidingTiles;
+
+    public Object[][] getTiles() {
+        return tiles;
     }
 
-    public SlidingTile[][] getSlidingTiles() {
-        return slidingTiles;
+    public void setTiles(Object[][] tiles) {
+        this.tiles = tiles;
     }
+
+
+
 
 
 
