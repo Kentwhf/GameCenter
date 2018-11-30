@@ -4,51 +4,44 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * A a207project.fall18.GameCenter.SudokuBoard Manager
+ * A a207project.fall18.GameCenter.sudokuBoard Manager
  */
 
 class SudokuBoardManager extends BoardManager{
 
-    private int[][] SudokuBoard = new int[9][9];
-
-
-//    public a207project.fall18.GameCenter.SudokuBoard(){};
-
-    /**
-     * @param row row
-     * @param column column
-     * @param value value being set
-     */
-    public void setValue(int row, int column, int value) {
-        SudokuBoard[row][column] = value;
-        setChanged();
-        notifyObservers();
+    public void setSudokuBoard(SudokuBoard sudokuBoard) {
+        this.sudokuBoard = sudokuBoard;
     }
+
+    private SudokuBoard sudokuBoard;
+
+
+//    public a207project.fall18.GameCenter.sudokuBoard(){};
 
 
     /**
      * @return returnr a Sudoku Bard
      */
-    public int[][] getSudokuBoard() {
-        return SudokuBoard;
+    public SudokuBoard getBoard() {
+        return sudokuBoard;
     }
 
 
     /**
-     * @param newGameCells Copy a Sudoku Bard
+     * @param newBoard Copy a Sudoku Board
      */
-    public void copyValues(int[][] newGameCells) {
-        for (int i = 0; i < newGameCells.length; i++) {
-            for (int j = 0; j < newGameCells[i].length; j++) {
-                SudokuBoard[i][j] = newGameCells[i][j];
+    public void copyValues(SudokuBoard newBoard) {
+        for (int i = 0; i < newBoard.getTiles().length; i++) {
+            for (int j = 0; j < newBoard.getTiles()[i].length; j++) {
+                sudokuBoard.getTiles()[i][j] = newBoard.getTiles()[i][j];
             }
         }
     }
 
 //    public boolean isBoardFull() {
-//        for (int i = 0; i < a207project.fall18.GameCenter.SudokuBoard.length; i++) {
-//            for (int j = 0; j < a207project.fall18.GameCenter.SudokuBoard[i].length; j++) {
-//                if (a207project.fall18.GameCenter.SudokuBoard[i][j] == 0) {
+//        for (int i = 0; i < a207project.fall18.GameCenter.sudokuBoard.length; i++) {
+//            for (int j = 0; j < a207project.fall18.GameCenter.sudokuBoard.getTiles()[i].length; j++) {
+//                if (a207project.fall18.GameCenter.sudokuBoard.getTiles()[i][j] == 0) {
 //                    return false;
 //                }
 //            }
@@ -62,12 +55,12 @@ class SudokuBoardManager extends BoardManager{
     // Can be rafactored
     public boolean isBoardCorrect() {
         // Check horizontal and vertical
-        for (int i = 0; i < SudokuBoard.length; i++) {
+        for (int i = 0; i < sudokuBoard.getTiles().length; i++) {
             ArrayList<Integer> horizontals = new ArrayList<>();
             ArrayList<Integer> verticals = new ArrayList<>();
-            for (int j = 0; j < SudokuBoard[i].length; j++) {
-                int number1 = SudokuBoard[i][j];
-                int number2 = SudokuBoard[j][i];
+            for (int j = 0; j < sudokuBoard.getTiles()[i].length; j++) {
+                int number1 = sudokuBoard.getTiles()[i][j];
+                int number2 = sudokuBoard.getTiles()[j][i];
                 if ((horizontals.contains(number1) && (verticals.contains(number2)))) {
                     return false;
                 } else {
@@ -78,10 +71,10 @@ class SudokuBoardManager extends BoardManager{
         }
 
 //        // Check vertical
-//        for (int i = 0; i < a207project.fall18.GameCenter.SudokuBoard.length; i++) {
+//        for (int i = 0; i < a207project.fall18.GameCenter.sudokuBoard.length; i++) {
 //            ArrayList<Integer> numbers = new ArrayList<>();
-//            for (int j = 0; j < a207project.fall18.GameCenter.SudokuBoard[i].length; j++) {
-//                int number = a207project.fall18.GameCenter.SudokuBoard[j][i];
+//            for (int j = 0; j < a207project.fall18.GameCenter.sudokuBoard.getTiles()[i].length; j++) {
+//                int number = a207project.fall18.GameCenter.sudokuBoard.getTiles()[j][i];
 //                if (numbers.contains(number)) {
 //                    return false;
 //                } else {
@@ -90,42 +83,35 @@ class SudokuBoardManager extends BoardManager{
 //            }
 //        }
 
-        // Check each group is in CellGroupFragment class for easier code
+        // Check each group is in TileGroupFragment class for easier code
         // returns true if horizontal and vertical lines are correct
         return true;
     }
 
 
-    /**
-     * @param row row
-     * @param column column
-     * @return get the value at a given and a given column in the Sudoku Board
-     */
-    public int getValue(int row, int column) {
-        return SudokuBoard[row][column];
-    }
 
-//    public a207project.fall18.GameCenter.SudokuBoard updateBoard(){
+
+//    public a207project.fall18.GameCenter.sudokuBoard updateBoard(){
 //        return this;
 //    }
 
 //    @Override
 //    public String toString() {
 //        StringBuilder temp = new StringBuilder();
-//        for (int i = 0; i < a207project.fall18.GameCenter.SudokuBoard.length; i++) {
-//            for (int j = 0; j < a207project.fall18.GameCenter.SudokuBoard[i].length; j++) {
+//        for (int i = 0; i < a207project.fall18.GameCenter.sudokuBoard.length; i++) {
+//            for (int j = 0; j < a207project.fall18.GameCenter.sudokuBoard.getTiles()[i].length; j++) {
 //                if (j == 0) {
 //                    temp.append("\n");
 //                }
 //
-//                int currentNumber = a207project.fall18.GameCenter.SudokuBoard[i][j];
+//                int currentNumber = a207project.fall18.GameCenter.sudokuBoard.getTiles()[i][j];
 //                if (currentNumber == 0) {
 //                    temp.append("-");
 //                } else {
 //                    temp.append(currentNumber);
 //                }
 //
-//                if (j != (a207project.fall18.GameCenter.SudokuBoard[i].length-1)) {
+//                if (j != (a207project.fall18.GameCenter.sudokuBoard.getTiles()[i].length-1)) {
 //                    temp.append(" ");
 //                }
 //            }
@@ -142,43 +128,18 @@ class SudokuBoardManager extends BoardManager{
     public boolean checkDupulicate(int row, int column){
         ArrayList<Integer> horizontals = new ArrayList<>();
         ArrayList<Integer> verticals = new ArrayList<>();
-        ArrayList<Integer> group = getTargetGroup(row,column);
-        group.remove((Integer) SudokuBoard[row][column]);
+        ArrayList<Integer> group = sudokuBoard.getTargetGroup(row,column);
+        group.remove((Integer) sudokuBoard.getTiles()[row][column]);
 
-        for (int i: SudokuBoard[row]) {horizontals.add(i);}
-        horizontals.remove((Integer) SudokuBoard[row][column]);
+        for (int i: sudokuBoard.getTiles()[row]) {horizontals.add(i);}
+        horizontals.remove((Integer) sudokuBoard.getTiles()[row][column]);
 
-        for (int i = 0; i < SudokuBoard.length; i++) {verticals.add(SudokuBoard[i][column]);}
-        verticals.remove((Integer) SudokuBoard[row][column]);
+        for (int i = 0; i < sudokuBoard.getTiles().length; i++) {verticals.add(sudokuBoard.getTiles()[i][column]);}
+        verticals.remove((Integer) sudokuBoard.getTiles()[row][column]);
 
-        return horizontals.contains(SudokuBoard[row][column]) || verticals.contains(SudokuBoard[row][column]) ||
-                group.contains(SudokuBoard[row][column]);
+        return horizontals.contains(sudokuBoard.getTiles()[row][column]) || verticals.contains(sudokuBoard.getTiles()[row][column]) ||
+                group.contains(sudokuBoard.getTiles()[row][column]);
     }
-
-
-    /**
-     * @param row row
-     * @param column column
-     * @return return an array list of integers that are in specific cell group. The cell gorup includes
-     * the cell at the given row and column
-     */
-    public ArrayList<Integer> getTargetGroup(int row, int column){
-
-        int temp1 = row;
-        int temp2 = column;
-
-//        int temp1 = row % 3;
-//        int temp2 = column % 3 ;
-
-        if (temp1 % 3 == 0){temp1++;};
-        if (temp1 % 3 == 2){temp1--;};
-        if (temp2 % 3 == 0){temp2++;};
-        if (temp2 % 3 == 2){temp2--;};
-
-
-        return new ArrayList<>(Arrays.asList(SudokuBoard[temp1][temp2], SudokuBoard[temp1][temp2-1], SudokuBoard[temp1][temp2+1],
-                        SudokuBoard[temp1+1][temp2], SudokuBoard[temp1+1][temp2-1], SudokuBoard[temp1+1][temp2+1],
-                        SudokuBoard[temp1-1][temp2], SudokuBoard[temp1-1][temp2-1], SudokuBoard[temp1-1][temp2+1]));
-    }
-
 }
+
+

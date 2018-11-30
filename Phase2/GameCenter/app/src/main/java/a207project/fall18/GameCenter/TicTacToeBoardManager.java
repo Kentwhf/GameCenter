@@ -1,7 +1,5 @@
 package a207project.fall18.GameCenter;
 
-import android.util.Log;
-
 /**
  * The tic tac toe game.
  */
@@ -21,9 +19,9 @@ import android.util.Log;
     static final int EMPTY = 0;
 
     /**
-     * A TicTacToeBoard.
+     * A board.
      */
-    private TicTacToeBoard TicTacToeBoard;
+    private TicTacToeBoard board;
     /**
      * A TTTScore ticTacToeBoard.
      */
@@ -43,16 +41,16 @@ import android.util.Log;
      * @param size dim of the board.
      */
     TicTacToeBoardManager(int size) {
-        this.TicTacToeBoard = new TicTacToeBoard(size);
+        this.board = new TicTacToeBoard(size);
         this.TicTacToeScoreboard = new TicTacToeScore(size);
     }
 
     /**
-     * Get a TicTacToeBoard.
-     * @return A TicTacToeBoard.
+     * Get a board.
+     * @return A board.
      */
     TicTacToeBoard getSlidingTilesBoard() {
-        return TicTacToeBoard;
+        return board;
     }
 
     /**
@@ -63,7 +61,7 @@ import android.util.Log;
      */
     boolean Move(int tileID, int player) {
 
-        if (TicTacToeBoard.move(tileID, player)) {
+        if (board.move(tileID, player)) {
             won = TicTacToeScoreboard.Update(tileID, player);
 //            Log.d("field", "idx: " + tileID + " val: " + player);
 //            Log.d("field", "score: " + TicTacToeScoreboard.GetScore());
@@ -93,4 +91,6 @@ import android.util.Log;
         this.computer = computer;
         this.computer.setTicTacToeBoardManager(this);
     }
+
+
 }
