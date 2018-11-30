@@ -44,6 +44,7 @@ class TicTacToeScore {
     }
 
     /**
+     *
      * Update the new board after move/click.
      * @param tileId Index of tile.
      * @param player the player.

@@ -1,11 +1,10 @@
 package a207project.fall18.GameCenter;
 
-import android.util.Log;
 
 /**
  * The tic tac toe game.
  */
- class TicTacToeBoardManager extends BoardManager {
+ public class TicTacToeBoardManager extends BoardManager {
 
     /**
      * int of X = -1

@@ -12,18 +12,18 @@ public class TicTacToeBoard extends Board{
     /**
      * The int dim.
      */
-    static int size;
+    public int size;
     /**
      * The board which is consisted by col and row.
      */
-    private int[][] board;
-    private Set<Integer> board_tile;
+    public int[][] board;
+    public Set<Integer> board_tile;
 
     /**
      * The tic tac toe board.
      * @param  size the dimension of the board
      */
-    TicTacToeBoard(int size) {
+    public TicTacToeBoard(int size) {
         this.size = size;
         this.board = new int[size][size];
 
@@ -57,7 +57,7 @@ public class TicTacToeBoard extends Board{
      * check the tile of board is full or not.
      * @return whether the tile of board is full or not.
      */
-    boolean isFull() {
+    public boolean isFull() {
         return board_tile.isEmpty();
     }
 
@@ -65,7 +65,7 @@ public class TicTacToeBoard extends Board{
      * get a random index of random tile which can be move.
      * @return  a random index of random tile which can be move.
      */
-    int getRandomEmpty() {
+    public int getRandomEmpty() {
         int num = new Random().nextInt(size * size);
         Integer i = ((TreeSet<Integer>)board_tile).floor(num);
 
