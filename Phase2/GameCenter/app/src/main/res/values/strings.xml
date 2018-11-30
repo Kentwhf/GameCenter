@@ -9,23 +9,6 @@
     <string name="title_activity_stone_henge_main">StoneHengeMainActivity</string>
     string-array>
 
-    <!--<string name="app_name">数独</string>-->
-    <!--<string name="setting_title">菜单</string>-->
-    <!--<string name="showtheanswers">显示答案</string>-->
-    <!--<string name="app_detail">数独是流传已久的数字游戏，要求填入每一行，每一列的元素不重复,-->
-    <!--每个小九宫格元素也不重复,填完所有格子即完成游戏,-->
-    <!--严格的数独游戏要求答案是唯一的,由于数独的求解是NP问题,换言之,-->
-    <!--判断随机生成的数度谜题有没有唯一解的方法就是,解解看呗QAQ,-->
-    <!--作者必须在随机生成数独谜题的情况下,保证解的唯一性,会导致计算量不是固定的,-->
-    <!--所以可能要花一些时间才能计算出一个唯一解的数独，计算时间取决于设备性能-->
-    <!--</string>-->
-    <!--<string name="newgame">新游戏</string>-->
-    <!--<string name="information">游戏说明</string>-->
-    <!--<string name="undo">撤销输入</string>-->
-    <!--<string name="gamereset">重置游戏</string>-->
-    <!--<string name="exit">退出</string>-->
-
-    <!--<string name="app_name">Android-Sudoku</string>-->
     <string name="sudoku">Sudoku</string>
     <string name="norwegian_description">A picture of a norwegian flag</string>
     <string name="british_description">A picture of a british flag</string>
@@ -39,9 +22,20 @@
     <string name="choose_language">Choose language:</string>
 
     <string name="instructions">Instructions</string>
-    <string name="instructions_1">1. In Sudoku it is intended to place all the remaining pieces on the board. The numbers range from 1 to 9 (in 9x9 Sudoku).</string>
-    <string name="instructions_2">2. The board is separated into several squares, and inside each of them it is only allowed to place one of each number.</string>
-    <string name="instructions_3">3. It is only allowed to place one of each number at each row, both horizontal and vertical.</string>
+    <string name="instructions_1">When you click the sudoku logo, it will direct go to a welcome page which includes start new
+game button, load game button. Clicking New game button will intend you to our sudoku complexity game
+page, clicking load games button if you have played our tictactoe game before, we will autosave your
+game state, clicking scoreboard button, you will go to the scoreboard page which will show your
+score and your rank of all players. You can get 3 levels of our game, which is easy, intermediate
+and difficult. The different between 3 level is based on the level of sudoku board which is on the
+Internet. The rule of how to win this game is to completer all row, col, and small square board, which
+is in any single row, col and board have different 1-9 numbers. The beginning score is always 100,
+one click will leads score minus 1. Higher score you get, higher rank you get. In game page, if you
+think yourself finished the board, you can click the check board button to check whether you win or
+not. If you think you get something wrong, you can change your number by directly clicking on its
+small tile, it will also pop a number select table and a replace button! If you want to undo the
+number, Just click it.
+</string>
     <string name="go_back_button">Go back</string>
 
     <string name="choose_difficulty">Choose difficulty:</string>
