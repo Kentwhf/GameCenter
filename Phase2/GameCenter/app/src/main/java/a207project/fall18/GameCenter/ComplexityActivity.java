@@ -26,20 +26,13 @@ public class ComplexityActivity extends AppCompatActivity {
      * A temporary save file.
      */
     public static final String TEMP_SAVE_FILENAME = "save_file_tmp.ser";
-    /**
-     * The tiles manager.
-     */
-//    private BoardManager boardManager;
 
     /**
      * Switch to game
      */
     private void switchToGame() {
         Intent tmp ;
-
-//                new Intent(this, SlidingTilesGameActivity.class);
         MyApplication.getInstance().setBoardManager( controller.getBoardManager());
-//        saveToFile(SlidingTilesStartingActivity.TEMP_SAVE_FILENAME);
         switch (game) {
             case "SlidingTiles":
                 tmp = new Intent(this, SlidingTilesGameActivity.class);
@@ -51,8 +44,6 @@ public class ComplexityActivity extends AppCompatActivity {
                 tmp = new Intent(this, SudokuGameActivity.class);
                 break;
         }
-
-
         startActivity(tmp);
     }
 
@@ -66,12 +57,10 @@ public class ComplexityActivity extends AppCompatActivity {
         controller = new ComplexityController();
         game = MyApplication.getInstance().getGame();
 
-
         addEasyButtonListener();
         addIntermediateButtonListener();
         setupDifficultButton3Listener();
         setupConfirmButtonListener();
-
         savingManager = MyApplication.getInstance().getSavingManager();
     }
 
@@ -81,11 +70,6 @@ public class ComplexityActivity extends AppCompatActivity {
      */
     private void setupConfirmButtonListener(){
         Button button4  = findViewById(R.id.comfirmButton);
-
-        if (game.equals("SlidingTiles")){
-            button4.setVisibility(View.INVISIBLE);
-        }
-
         button4.setOnClickListener((v) -> {
             TextView undoInputTextField = findViewById(R.id.undoInput);
             if (undoInputTextField != null){
