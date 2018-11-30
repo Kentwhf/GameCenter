@@ -74,9 +74,9 @@ public class ComplexityController {
         else if(game == "TicTacToe"){
             TicTacToeGameActivity.size = 5;
         }
-
-//        else{}
-
     }
+
+
+
 
 }
