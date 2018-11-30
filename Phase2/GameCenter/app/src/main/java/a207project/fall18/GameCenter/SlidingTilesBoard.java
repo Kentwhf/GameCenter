@@ -7,15 +7,14 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Observable;
 import java.util.Stack;
 
 /**
- * The sliding tiles board.
+ * The sliding slidingTiles tiles.
  */
-public class SlidingTilesBoard extends Board implements Serializable, Iterable<Tile> {
+public class SlidingTilesBoard extends Board implements Serializable, Iterable<SlidingTile> {
 
-    private int currentscore = 100 ;
+    private int currentScore = 100 ;
 
     public static Stack s = new Stack();
     /**
@@ -27,23 +26,23 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<T
      */
     static int NUM_COLS;
     /**
-     * The tiles on the board in row-major order.
+     * The slidingTiles on the tiles in row-major order.
      */
 
-    private Tile[][] tiles = new Tile[NUM_ROWS][NUM_COLS];
+    private SlidingTile[][] slidingTiles = new SlidingTile[NUM_ROWS][NUM_COLS];
 
     /**
-     * A new board of tiles in row-major order.
-     * Precondition: len(tiles) == NUM_ROWS * NUM_COLS
+     * A new tiles of slidingTiles in row-major order.
+     * Precondition: len(slidingTiles) == NUM_ROWS * NUM_COLS
      *
-     * @param tiles the tiles for the board
+     * @param slidingTiles the slidingTiles for the tiles
      */
-    SlidingTilesBoard(List<Tile> tiles) {
-        Iterator<Tile> iter = tiles.iterator();
+    SlidingTilesBoard(List<SlidingTile> slidingTiles) {
+        Iterator<SlidingTile> iter = slidingTiles.iterator();
         for (int row = 0; row != SlidingTilesBoard.NUM_ROWS; row++) {
             for (int col = 0; col != SlidingTilesBoard.
                     NUM_COLS; col++) {
-                this.tiles[row][col] = iter.next();
+                this.slidingTiles[row][col] = iter.next();
             }
         }
     }
@@ -54,9 +53,9 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<T
     }
 
     /**
-     * Return the number of tiles on the board.
+     * Return the number of slidingTiles on the tiles.
      *
-     * @return the number of tiles on the board
+     * @return the number of slidingTiles on the tiles
      */
     int numTiles() {
         return NUM_ROWS * NUM_COLS;
@@ -69,12 +68,12 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<T
      * @param col the tile column
      * @return the tile at (row, col)
      */
-    Tile getTile(int row, int col) {
-        return tiles[row][col];
+    SlidingTile getTile(int row, int col) {
+        return slidingTiles[row][col];
     }
 
     /**
-     * Swap the tiles at (row1, col1) and (row2, col2)
+     * Swap the slidingTiles at (row1, col1) and (row2, col2)
      *
      * @param row1 the first tile row
      * @param col1 the first tile col
@@ -83,9 +82,9 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<T
      */
     void swapTiles(int row1, int col1, int row2, int col2) {
 
-        Tile t1 = tiles[row1][col1];
-        tiles[row1][col1] = tiles[row2][col2];
-        tiles[row2][col2] = t1;
+        SlidingTile t1 = slidingTiles[row1][col1];
+        slidingTiles[row1][col1] = slidingTiles[row2][col2];
+        slidingTiles[row2][col2] = t1;
 
         setChanged();
         notifyObservers();
@@ -94,20 +93,20 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<T
     @Override
     public String toString() {
         return "Board{" +
-                "tiles=" + Arrays.toString(tiles) +
+                "slidingTiles=" + Arrays.toString(slidingTiles) +
                 '}';
     }
 
     @NonNull
     @Override
-    public Iterator<Tile> iterator() {
+    public Iterator<SlidingTile> iterator() {
         return new BoardIterator();
     }
 
     /**
      * The BoardIterator class
      */
-    private class BoardIterator implements Iterator<Tile> {
+    private class BoardIterator implements Iterator<SlidingTile> {
 
         /** The index of the tile. */
         int nextIndex = 0;
@@ -130,9 +129,9 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<T
          * Return the next tile at [row][col]
          * @return the next tile at [row][col]
          */
-        public Tile next() {
+        public SlidingTile next() {
             if (hasNext()){
-                Tile result = tiles[row][col];
+                SlidingTile result = slidingTiles[row][col];
                 nextIndex++;
                 return result;
             }
@@ -141,17 +140,17 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<T
     }
 
     public void scoring(){
-        if (this.currentscore >0 ){
-            this.currentscore -= 1;
+        if (this.currentScore >0 ){
+            this.currentScore -= 1;
         }
         setChanged();
         notifyObservers();
     }
 
-    public int getCurrentscore(){
-        return this.currentscore;
+    public int getCurrentScore(){
+        return this.currentScore;
     }
-    public void setCurrentscore(int score){this.currentscore = score;}
+    public void setCurrentScore(int score){this.currentScore = score;}
 
 
 }

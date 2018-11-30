@@ -23,9 +23,9 @@ public class SlidingTilesMovementController {
         if (slidingTilesBoardManager.isValidTap(position)) {
             slidingTilesBoardManager.touchMove(position);
             if (slidingTilesBoardManager.puzzleSolved()) {
-                MyApplication.getInstance().getScoreDao().insert(slidingTilesBoardManager.getScore());
+                MyApplication.getInstance().getScoreDao().uploadScore(slidingTilesBoardManager.getScore());
 
-//                MyApplication.getInstance().currentScore.setFinalScore(slidingTilesBoardManager.getBoard().getCurrentscore());
+//                MyApplication.getInstance().currentScore.setFinalScore(slidingTilesBoardManager.getBoard().getCurrentScore());
 
                 Toast.makeText(context, "YOU WIN!", Toast.LENGTH_SHORT).show();
             }

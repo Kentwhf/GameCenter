@@ -25,7 +25,7 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
     private SaveDao savingManager;
 
     /**
-     * The board manager.
+     * The tiles manager.
      */
     private SlidingTilesBoardManager boardManager;
 
@@ -145,8 +145,9 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
 
         // uncomment
         TextView scores = findViewById(R.id.Score);
-        scores.setText("Scores : " + board.getCurrentscore());
+        scores.setText("Scores : " + board.getCurrentScore());
         savingManager.autoSave(boardManager);
+        boardManager.setScore();
 //        saveToFile(SAVE_FILENAME);
     }
 
@@ -159,7 +160,7 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
 
         boardManager.setScore();
 
-//        MyApplication.getInstance().currentScore.setFinalScore(boardManager.getBoard().getCurrentscore());
+//        MyApplication.getInstance().currentScore.setFinalScore(boardManager.getBoard().getCurrentScore());
 //        boardManager.setScore(MyApplication.getInstance().currentScore);
 
 
@@ -168,7 +169,7 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
     }
 
 //    /**
-//     * Load the board manager from fileName.
+//     * Load the tiles manager from fileName.
 //     *
 //     * @param fileName the name of the file
 //     */
@@ -191,7 +192,7 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
 //    }
 //
 //    /**
-//     * Save the board manager to fileName.
+//     * Save the tiles manager to fileName.
 //     *
 //     * @param fileName the name of the file
 //     */

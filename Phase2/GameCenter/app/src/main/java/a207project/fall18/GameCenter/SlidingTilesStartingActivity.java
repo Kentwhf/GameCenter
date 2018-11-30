@@ -26,7 +26,7 @@ public class SlidingTilesStartingActivity extends AppCompatActivity {
      */
     public static final String TEMP_SAVE_FILENAME = "save_file_tmp.ser";
     /**
-     * The board manager.
+     * The tiles manager.
      */
     private SlidingTilesBoardManager slidingTilesBoardManager;
 
@@ -73,9 +73,8 @@ public class SlidingTilesStartingActivity extends AppCompatActivity {
         loadButton.setOnClickListener(v -> {
 
             List<BoardManager> historicalFile = savingManager.query("get slidingTilesBoardManager");
-            Log.v("shabi", historicalFile.get(0).toString());
 
-            if (historicalFile != null){
+            if (historicalFile.size() != 0){
 //                saveToFile(TEMP_SAVE_FILENAME);
                 slidingTilesBoardManager = (SlidingTilesBoardManager) historicalFile.get(0);
                 MyApplication.getInstance().setBoardManager(slidingTilesBoardManager);// testing
@@ -116,7 +115,7 @@ public class SlidingTilesStartingActivity extends AppCompatActivity {
         Toast.makeText(this, "Game Saved", Toast.LENGTH_SHORT).show();
     }
     /**
-     * Read the temporary board from disk.
+     * Read the temporary tiles from disk.
      */
     @Override
     protected void onResume() {
@@ -143,7 +142,7 @@ public class SlidingTilesStartingActivity extends AppCompatActivity {
 //    }
 
     /**
-     * Load the board manager from fileName.
+     * Load the tiles manager from fileName.
      *
      * @param fileName the name of the file
      */
@@ -166,7 +165,7 @@ public class SlidingTilesStartingActivity extends AppCompatActivity {
 //    }
 //
 //    /**
-//     * Save the board manager to fileName.
+//     * Save the tiles manager to fileName.
 //     *
 //     * @param fileName the name of the file
 //     */

@@ -26,7 +26,7 @@ public class ComplexityActivity extends AppCompatActivity {
      */
     public static final String TEMP_SAVE_FILENAME = "save_file_tmp.ser";
     /**
-     * The board manager.
+     * The tiles manager.
      */
 //    private BoardManager boardManager;
 

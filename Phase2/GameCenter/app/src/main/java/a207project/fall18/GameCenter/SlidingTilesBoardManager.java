@@ -9,14 +9,14 @@ import a207project.fall18.GameCenter.bean.Score;
 
 
 /**
- * Manage a board, including swapping tiles, checking for a win, and managing taps.
+ * Manage a tiles, including swapping tiles, checking for a win, and managing taps.
  */
 public class SlidingTilesBoardManager extends BoardManager implements Serializable {
 
     private Score score;
 
     /**
-     * The board being managed.
+     * The tiles being managed.
      */
     private SlidingTilesBoard board;
 
@@ -27,32 +27,32 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
     public int can_undo_time ;
 
     /**
-     * Manage a board that has been pre-populated.
+     * Manage a tiles that has been pre-populated.
      *
-     * @param board the board
+     * @param board the tiles
      */
     SlidingTilesBoardManager(SlidingTilesBoard board) {
         this.board = board;
     }
 
     /**
-     * Manage a new shuffled board.
+     * Manage a new shuffled tiles.
      */
     SlidingTilesBoardManager() {
-        List<Tile> tiles = new ArrayList<>();
+        List<SlidingTile> slidingTiles = new ArrayList<>();
         final int numTiles = SlidingTilesBoard.NUM_ROWS * SlidingTilesBoard.NUM_COLS;
         for (int tileNum = 0; tileNum != numTiles; tileNum++) {
-            tiles.add(new Tile(tileNum));
+            slidingTiles.add(new SlidingTile(tileNum));
         }
 
-        Collections.shuffle(tiles);
-        this.board = new SlidingTilesBoard(tiles);
+        Collections.shuffle(slidingTiles);
+        this.board = new SlidingTilesBoard(slidingTiles);
         score = new Score(MyApplication.getInstance().getUser(), "SlidingTiles");
     }
 
 
     /**
-     * Return the current board.
+     * Return the current tiles.
      */
     public SlidingTilesBoard getBoard() {
         return board;
@@ -94,7 +94,7 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
 
         int blankId = board.numTiles();
         // Are any of the 4 the blank tile?
-        Tile[] temp = tileArray(position);
+        SlidingTile[] temp = tileArray(position);
         return (temp[0] != null && temp[0].getId() == blankId)
                 || (temp[1] != null && temp[1].getId() == blankId)
                 || (temp[2] != null && temp[2].getId() == blankId)
@@ -102,7 +102,7 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
     }
 
     public boolean undo() {
-        if (undo_time < can_undo_time && board.getCurrentscore() < 100){
+        if (undo_time < can_undo_time && board.getCurrentScore() < 100){
             undoTimePlus();
             int col1 = s.get(s.size()-3);
             int row1 = s.get(s.size()-4);
@@ -113,15 +113,15 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
             s.remove(s.size()-1);
             s.remove(s.size()-1);
             s.remove(s.size()-1);
-            int newScore = board.getCurrentscore() + 1;
-            board.setCurrentscore(newScore);
+            int newScore = board.getCurrentScore() + 1;
+            board.setCurrentScore(newScore);
             return true;
         }
         return false;
     }
 
     /**
-     * Process a touch at position in the board, swapping tiles as appropriate.
+     * Process a touch at position in the tiles, swapping tiles as appropriate.
      *
      * @param position the position
      */
@@ -129,10 +129,10 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
         int row = position / SlidingTilesBoard.NUM_ROWS;
         int col = position % SlidingTilesBoard.NUM_COLS;
         int blankId = board.numTiles();
-        Tile above = row == 0 ? null : board.getTile(row - 1, col);
-        Tile below = row == SlidingTilesBoard.NUM_ROWS - 1 ? null : board.getTile(row + 1, col);
-        Tile left = col == 0 ? null : board.getTile(row, col - 1);
-        Tile right = col == SlidingTilesBoard.NUM_COLS - 1 ? null : board.getTile(row, col + 1);
+        SlidingTile above = row == 0 ? null : board.getTile(row - 1, col);
+        SlidingTile below = row == SlidingTilesBoard.NUM_ROWS - 1 ? null : board.getTile(row + 1, col);
+        SlidingTile left = col == 0 ? null : board.getTile(row, col - 1);
+        SlidingTile right = col == SlidingTilesBoard.NUM_COLS - 1 ? null : board.getTile(row, col + 1);
         if (isValidTap(position)) {
             if (above != null && above.getId() == blankId) {
                 board.swapTiles(row, col, row - 1, col);
@@ -169,22 +169,22 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
      * Return an array of the four surrounding tiles.
      *
      * @param position the position
-     * @return Tile[]
+     * @return SlidingTile[]
      */
-    private Tile[] tileArray(int position) {
+    private SlidingTile[] tileArray(int position) {
 
         int row = position / SlidingTilesBoard.NUM_COLS;
         int col = position % SlidingTilesBoard.NUM_COLS;
-        Tile above = row == 0 ? null : board.getTile(row - 1, col);
-        Tile below = row == SlidingTilesBoard.NUM_ROWS - 1 ? null : board.getTile(row + 1, col);
-        Tile left = col == 0 ? null : board.getTile(row, col - 1);
-        Tile right = col == SlidingTilesBoard.NUM_COLS - 1 ? null : board.getTile(row, col + 1);
-        return new Tile[]{above, below, left, right};
+        SlidingTile above = row == 0 ? null : board.getTile(row - 1, col);
+        SlidingTile below = row == SlidingTilesBoard.NUM_ROWS - 1 ? null : board.getTile(row + 1, col);
+        SlidingTile left = col == 0 ? null : board.getTile(row, col - 1);
+        SlidingTile right = col == SlidingTilesBoard.NUM_COLS - 1 ? null : board.getTile(row, col + 1);
+        return new SlidingTile[]{above, below, left, right};
     }
 
 //    @Override
 //    public String toString(){
-//        return board.toString();
+//        return tiles.toString();
 //    }
 
 
@@ -198,6 +198,12 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
 //    }
 
     public Score getScore(){return this.score;}
-    public void setScore(){this.score.setFinalScore(board.getCurrentscore());}
+
+    public void setScore(){
+        this.score.setFinalScore(board.getCurrentScore());
+        this.score.setUserId(MyApplication.getInstance().getUser().getId());
+        this.score.setGameType(MyApplication.getInstance().getGame());
+        this.score.setNickname(MyApplication.getInstance().getUser().getNickname());
+    }
 
 }

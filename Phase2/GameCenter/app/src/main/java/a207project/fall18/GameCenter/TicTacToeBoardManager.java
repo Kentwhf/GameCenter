@@ -2,10 +2,14 @@ package a207project.fall18.GameCenter;
 
 import android.util.Log;
 
+import a207project.fall18.GameCenter.bean.Score;
+
 /**
  * The tic tac toe game.
  */
 public class TicTacToeBoardManager extends BoardManager {
+
+     private Score score;
 
     /**
      * int of X = -1
@@ -39,8 +43,8 @@ public class TicTacToeBoardManager extends BoardManager {
 
 
     /**
-     * TicTacToe board manager.
-     * @param size dim of the board.
+     * TicTacToe tiles manager.
+     * @param size dim of the tiles.
      */
     public TicTacToeBoardManager(int size) {
         this.TicTacToeBoard = new TicTacToeBoard(size);
@@ -57,7 +61,7 @@ public class TicTacToeBoardManager extends BoardManager {
 
     /**
      * Update win or not, If not win, check move.
-     * @param tileID Index of the Tile.
+     * @param tileID Index of the SlidingTile.
      * @param player The Player.
      * @return Move or not.
      */
@@ -92,5 +96,9 @@ public class TicTacToeBoardManager extends BoardManager {
     void SwitchAI(TicTacToeRandomPlayer computer) {
         this.computer = computer;
         this.computer.setTicTacToeBoardManager(this);
+    }
+
+    @Override
+    public void setScore() {
     }
 }

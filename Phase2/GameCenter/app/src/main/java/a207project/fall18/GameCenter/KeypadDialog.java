@@ -98,7 +98,7 @@ public class KeypadDialog extends Dialog{
             keys[i].setOnClickListener(v -> setResult(cell));
         }
 //
-        // Go back to Sudoku board
+        // Go back to Sudoku tiles
         keys[11].setOnClickListener(v -> dismiss());
 //
 //        // Hint
