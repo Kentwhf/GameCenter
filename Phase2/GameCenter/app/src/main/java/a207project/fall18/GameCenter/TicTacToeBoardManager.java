@@ -1,8 +1,5 @@
 package a207project.fall18.GameCenter;
 
-import android.support.annotation.IntDef;
-import android.util.Log;
-
 /**
  * The tic tac toe game.
  */
@@ -21,14 +18,10 @@ import android.util.Log;
      */
     static final int EMPTY = 0;
 
-    @IntDef({X, O, EMPTY})
-    @interface FieldValue {
-    }
-
     /**
-     * A TicTacToeBoard.
+     * A board.
      */
-    private TicTacToeBoard ticTacToeBoard;
+    private TicTacToeBoard board;
     /**
      * A TTTScore ticTacToeBoard.
      */
@@ -43,27 +36,35 @@ import android.util.Log;
     private TicTacToeRandomPlayer computer;
 
 
-    TicTacToeBoardManager(int dim) {
-        this.ticTacToeBoard = new TicTacToeBoard(dim);
-        this.TicTacToeScoreboard = new TicTacToeScore(dim);
+    /**
+     * TicTacToe board manager.
+     * @param size dim of the board.
+     */
+    TicTacToeBoardManager(int size) {
+        this.board = new TicTacToeBoard(size);
+        this.TicTacToeScoreboard = new TicTacToeScore(size);
     }
 
-    public TicTacToeBoard getSlidingTilesBoard() {
-        return ticTacToeBoard;
+    /**
+     * Get a board.
+     * @return A board.
+     */
+    TicTacToeBoard getSlidingTilesBoard() {
+        return board;
     }
 
     /**
      * Update win or not, If not win, check move.
-     * @param fieldIdx Index of the Tile.
+     * @param tileID Index of the Tile.
      * @param player The Player.
      * @return Move or not.
      */
-    boolean Move(int fieldIdx, @FieldValue int player) {
+    boolean Move(int tileID, int player) {
 
-        if (ticTacToeBoard.move(fieldIdx, player)) {
-            won = TicTacToeScoreboard.Update(fieldIdx, player);
-            Log.d("field", "idx: " + fieldIdx + " val: " + player);
-            Log.d("field", "score: " + TicTacToeScoreboard.GetScore());
+        if (board.move(tileID, player)) {
+            won = TicTacToeScoreboard.Update(tileID, player);
+//            Log.d("field", "idx: " + tileID + " val: " + player);
+//            Log.d("field", "score: " + TicTacToeScoreboard.GetScore());
 
             return true;
         }
@@ -73,12 +74,12 @@ import android.util.Log;
 
     /**
      * Get an available move.
-     * @param fieldValue Index of the Tile.
+     * @param player the player.
      * @return the index of move.
      */
-    int GetMove(@FieldValue int fieldValue)
+    int GetMove(int player)
     {
-        return computer.GetMove(fieldValue);
+        return computer.GetMove(player);
     }
 
 
@@ -90,4 +91,6 @@ import android.util.Log;
         this.computer = computer;
         this.computer.setTicTacToeBoardManager(this);
     }
+
+
 }

@@ -16,6 +16,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
+import a207project.fall18.GameCenter.KeypadDialog;
 
 /**
  * Sodoku game activity
@@ -44,7 +45,7 @@ public class SudokuGameActivity extends AppCompatActivity implements TileGroupFr
         startBoardManager = chooseRandomBoard(boards);
         currentBoardManager = new SudokuBoardManager();
         currentBoardManager.setSudokuBoard(new SudokuBoard());
-        currentBoardManager.addObserver(this);
+        currentBoardManager.getBoard().addObserver(this);
         currentBoardManager.copyValues(startBoardManager.getBoard());
         updateTiles();
 
@@ -238,8 +239,7 @@ public class SudokuGameActivity extends AppCompatActivity implements TileGroupFr
             String line = bufferedReader.readLine();
             while (line != null) {
                 SudokuBoardManager boardmanager = new SudokuBoardManager();
-                SudokuBoard temp = new SudokuBoard();
-                boardmanager.setSudokuBoard(temp);
+                boardmanager.setSudokuBoard(new SudokuBoard());
                 // read all lines in the board and set values in the board.\
 
                 for (int i = 0; i < 9; i++) {
@@ -375,8 +375,7 @@ public class SudokuGameActivity extends AppCompatActivity implements TileGroupFr
                 @Override
                 public void refreshPriorityUI(String string) {
                     currentBoardManager.getBoard().setTile(row, column, (int)Integer.parseInt(string));
-//                    clickedCell.setText(String.valueOf(string));
-//                    updateCells();
+
                 }
             } );
             keypadDialog.show();
