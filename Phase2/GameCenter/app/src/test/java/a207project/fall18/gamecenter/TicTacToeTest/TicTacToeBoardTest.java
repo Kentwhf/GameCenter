@@ -58,6 +58,7 @@ public class TicTacToeBoardTest extends Board {
         assertEquals(true, tictactoeboard4.move(2, -1));
         assertEquals(true , tictactoeboard5.move(1, 1));
         assertEquals(true, tictactoeboard5.move(6, -1));
+        assertEquals( false, tictactoeboard3.move( 3,1 ));
     }
 
 
@@ -84,13 +85,4 @@ public class TicTacToeBoardTest extends Board {
         assertEquals(true, result3 instanceof Integer);
     }
 
-    /**
-     * Test getSize
-     */
-    @Test
-    public void getSizeTest() {
-        assertEquals(3, tictactoeboard3.getSize());
-        assertEquals(4, tictactoeboard3.getSize());
-        assertEquals(5, tictactoeboard3.getSize());
-    }
 }

@@ -34,15 +34,7 @@ public class SudokuBoardManagerTest {
         sudokuboardmanager3 = null;
     }
 
-    @Test
-    public void setSudokuBoardTest() {
-        SudokuBoard sudokuboard1 = new SudokuBoard();
-        assertEquals(sudokuboard1,sudokuboardmanager1.getBoard());
-        SudokuBoard sudokuboard2 = new SudokuBoard();
-        assertEquals(sudokuboard2,sudokuboardmanager2.getBoard());
-        SudokuBoard sudokuboard3 = new SudokuBoard();
-        assertEquals(sudokuboard3,sudokuboardmanager3.getBoard());
-    }
+
 
 //    @Test
 //    public void getScoreTest() {
