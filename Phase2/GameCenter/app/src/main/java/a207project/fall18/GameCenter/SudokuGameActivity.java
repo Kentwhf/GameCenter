@@ -63,7 +63,7 @@ public class SudokuGameActivity extends AppCompatActivity implements TileGroupFr
 //            thisCellGroupFragment.setGroupId(i+1);
 //        }
 //
-//        //Appear all values from the current board
+//        //Appear all values from the current tiles
 //        TileGroupFragment tempCellGroupFragment;
 //        for (int i = 0; i < 9; i++) {
 //            for (int j = 0; j < 9; j++) {
@@ -86,7 +86,7 @@ public class SudokuGameActivity extends AppCompatActivity implements TileGroupFr
     }
 
     /**
-     * Updates the Sudoku board
+     * Updates the Sudoku tiles
      */
     private void updateTiles(){
 //        int cellGroupFragments[] = new int[]{R.id.cellGroupFragment, R.id.cellGroupFragment2,
@@ -98,7 +98,7 @@ public class SudokuGameActivity extends AppCompatActivity implements TileGroupFr
             thisTileGroupFragment.setGroupId(i+1);
     }
 
-        //Appear all values from the current board
+        //Appear all values from the current tiles
         TileGroupFragment tempTileGroupFragment;
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
@@ -138,7 +138,7 @@ public class SudokuGameActivity extends AppCompatActivity implements TileGroupFr
      * @param difficulty an int that represents the difficulty of the game
      * @return an array list of SudokuBoardManagers with the same difficulty
      */
-    //Generalize a random board to start with
+    //Generalize a random tiles to start with
     private ArrayList<SudokuBoardManager> readGameBoards(int difficulty) {
         ArrayList<SudokuBoardManager> boards = new ArrayList<>();
         int fileId;
@@ -155,21 +155,21 @@ public class SudokuGameActivity extends AppCompatActivity implements TileGroupFr
 //        try {
 //            String line = bufferedReader.readLine();
 //            while (line != null) {
-//                SudokuBoardManager board = new SudokuBoardManager();
-//                // read all lines in the board and set values in the board.\
+//                SudokuBoardManager tiles = new SudokuBoardManager();
+//                // read all lines in the tiles and set values in the tiles.\
 //
 //                for (int i = 0; i < 9; i++) {
 //                    String rowCells[] = line.split(" ");
 //                    for (int j = 0; j < 9; j++) {
 //                        if (rowCells[j].equals("-")) {
-//                            board.setTile(i, j, 0);
+//                            tiles.setTile(i, j, 0);
 //                        } else {
-//                            board.setTile(i, j, Integer.parseInt(rowCells[j]));
+//                            tiles.setTile(i, j, Integer.parseInt(rowCells[j]));
 //                        }
 //                    }
 //                    line = bufferedReader.readLine();
 //                }
-//                boards.add(board);
+//                boards.add(tiles);
 //                line = bufferedReader.readLine();
 //            }
 //            bufferedReader.close();
@@ -196,15 +196,15 @@ public class SudokuGameActivity extends AppCompatActivity implements TileGroupFr
 //            internalBufferedReader.readLine();
 //            String line = internalBufferedReader.readLine();
 //            while (line != null) {
-//                SudokuBoardManager board = new SudokuBoardManager();
-//                // read all lines in the board
+//                SudokuBoardManager tiles = new SudokuBoardManager();
+//                // read all lines in the tiles
 //                for (int i = 0; i < 9; i++) {
 //                    String rowCells[] = line.split(" ");
 //                    for (int j = 0; j < 9; j++) {
 //                        if (rowCells[j].equals("-")) {
-//                            board.setTile(i, j, 0);
+//                            tiles.setTile(i, j, 0);
 //                        } else {
-//                            board.setTile(i, j, Integer.parseInt(rowCells[j]));
+//                            tiles.setTile(i, j, Integer.parseInt(rowCells[j]));
 //                        }
 //                    }
 //                    line = internalBufferedReader.readLine();
@@ -212,7 +212,7 @@ public class SudokuGameActivity extends AppCompatActivity implements TileGroupFr
 //                        break;
 //                    }
 //                }
-//                boards.add(board);
+//                boards.add(tiles);
 //                line = internalBufferedReader.readLine();
 //            }
 //            internalBufferedReader.close();
@@ -238,7 +238,7 @@ public class SudokuGameActivity extends AppCompatActivity implements TileGroupFr
             while (line != null) {
                 SudokuBoardManager boardmanager = new SudokuBoardManager();
                 boardmanager.setSudokuBoard(new SudokuBoard());
-                // read all lines in the board and set values in the board.\
+                // read all lines in the tiles and set values in the tiles.\
 
                 for (int i = 0; i < 9; i++) {
                     String rowCells[] = line.split(" ");

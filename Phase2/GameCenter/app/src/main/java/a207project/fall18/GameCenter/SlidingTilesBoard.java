@@ -10,7 +10,7 @@ import java.util.NoSuchElementException;
 import java.util.Stack;
 
 /**
- * The sliding slidingTiles board.
+ * The sliding slidingTiles tiles.
  */
 public class SlidingTilesBoard extends Board implements Serializable, Iterable<SlidingTile> {
 
@@ -26,16 +26,16 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<S
      */
     static int NUM_COLS;
     /**
-     * The slidingTiles on the board in row-major order.
+     * The slidingTiles on the tiles in row-major order.
      */
 
     private SlidingTile[][] slidingTiles = new SlidingTile[NUM_ROWS][NUM_COLS];
 
     /**
-     * A new board of slidingTiles in row-major order.
+     * A new tiles of slidingTiles in row-major order.
      * Precondition: len(slidingTiles) == NUM_ROWS * NUM_COLS
      *
-     * @param slidingTiles the slidingTiles for the board
+     * @param slidingTiles the slidingTiles for the tiles
      */
     SlidingTilesBoard(List<SlidingTile> slidingTiles) {
         Iterator<SlidingTile> iter = slidingTiles.iterator();
@@ -53,9 +53,9 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<S
     }
 
     /**
-     * Return the number of slidingTiles on the board.
+     * Return the number of slidingTiles on the tiles.
      *
-     * @return the number of slidingTiles on the board
+     * @return the number of slidingTiles on the tiles
      */
     int numTiles() {
         return NUM_ROWS * NUM_COLS;

@@ -9,14 +9,14 @@ import a207project.fall18.GameCenter.bean.Score;
 
 
 /**
- * Manage a board, including swapping tiles, checking for a win, and managing taps.
+ * Manage a tiles, including swapping tiles, checking for a win, and managing taps.
  */
 public class SlidingTilesBoardManager extends BoardManager implements Serializable {
 
     private Score score;
 
     /**
-     * The board being managed.
+     * The tiles being managed.
      */
     private SlidingTilesBoard board;
 
@@ -27,16 +27,16 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
     public int can_undo_time ;
 
     /**
-     * Manage a board that has been pre-populated.
+     * Manage a tiles that has been pre-populated.
      *
-     * @param board the board
+     * @param board the tiles
      */
     SlidingTilesBoardManager(SlidingTilesBoard board) {
         this.board = board;
     }
 
     /**
-     * Manage a new shuffled board.
+     * Manage a new shuffled tiles.
      */
     SlidingTilesBoardManager() {
         List<SlidingTile> slidingTiles = new ArrayList<>();
@@ -52,7 +52,7 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
 
 
     /**
-     * Return the current board.
+     * Return the current tiles.
      */
     public SlidingTilesBoard getBoard() {
         return board;
@@ -121,7 +121,7 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
     }
 
     /**
-     * Process a touch at position in the board, swapping tiles as appropriate.
+     * Process a touch at position in the tiles, swapping tiles as appropriate.
      *
      * @param position the position
      */
@@ -184,7 +184,7 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
 
 //    @Override
 //    public String toString(){
-//        return board.toString();
+//        return tiles.toString();
 //    }
 
 

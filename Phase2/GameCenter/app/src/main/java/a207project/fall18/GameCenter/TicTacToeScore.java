@@ -28,7 +28,7 @@ class TicTacToeScore {
 
     /**
      * TTT score which is scored by row, col, left diagonal, right diagonal.
-     * @param size dim of board.
+     * @param size dim of tiles.
      */
     TicTacToeScore(int size) {
         this.size = size;
@@ -45,7 +45,7 @@ class TicTacToeScore {
 
     /**
      *
-     * Update the new board after move/click.
+     * Update the new tiles after move/click.
      * @param tileId Index of tile.
      * @param player the player.
      * @return win or not.

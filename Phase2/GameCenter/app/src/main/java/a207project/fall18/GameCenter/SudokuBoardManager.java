@@ -2,6 +2,8 @@ package a207project.fall18.GameCenter;
 
 import java.util.ArrayList;
 
+import a207project.fall18.GameCenter.bean.Score;
+
 /**
  * A a207project.fall18.GameCenter.sudokuBoard Manager
  */
@@ -14,9 +16,18 @@ class SudokuBoardManager extends BoardManager{
 
     private SudokuBoard sudokuBoard;
 
+    @Override
+    public Score getScore() {
+        return score;
+    }
 
-//    public a207project.fall18.GameCenter.sudokuBoard(){};
+    private Score score;
 
+
+    @Override
+    public void setScore() {
+
+    }
 
     /**
      * @return returnr a Sudoku Bard
@@ -49,7 +60,7 @@ class SudokuBoardManager extends BoardManager{
 //    }
 
     /**
-     * @return return if the board is solved correctly
+     * @return return if the tiles is solved correctly
      */
     // Can be rafactored
     public boolean isBoardCorrect() {

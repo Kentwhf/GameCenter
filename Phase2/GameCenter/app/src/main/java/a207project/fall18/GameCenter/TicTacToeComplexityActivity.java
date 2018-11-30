@@ -9,7 +9,7 @@ import android.widget.Button;
 public class TicTacToeComplexityActivity extends AppCompatActivity {
 
     /**
-     * The board manager.
+     * The tiles manager.
      */
 
     @Override

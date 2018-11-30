@@ -1,10 +1,14 @@
 package a207project.fall18.GameCenter;
 
 
+import a207project.fall18.GameCenter.bean.Score;
+
 /**
  * The tic tac toe game.
  */
  public class TicTacToeBoardManager extends BoardManager {
+
+     private Score score;
 
     /**
      * int of X = -1
@@ -38,8 +42,8 @@ package a207project.fall18.GameCenter;
 
 
     /**
-     * TicTacToe board manager.
-     * @param size dim of the board.
+     * TicTacToe tiles manager.
+     * @param size dim of the tiles.
      */
     TicTacToeBoardManager(int size) {
         this.TicTacToeBoard = new TicTacToeBoard(size);
@@ -91,5 +95,9 @@ package a207project.fall18.GameCenter;
     void SwitchAI(TicTacToeRandomPlayer computer) {
         this.computer = computer;
         this.computer.setTicTacToeBoardManager(this);
+    }
+
+    @Override
+    public void setScore() {
     }
 }

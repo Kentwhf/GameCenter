@@ -21,7 +21,7 @@ import java.util.Random;
 public class TicTacToeGameActivity extends AppCompatActivity implements View.OnClickListener {
     private static Hashtable<Integer, Integer> boardImages = new Hashtable<>();
     /**
-     * Dim of the board.
+     * Dim of the tiles.
      */
     public static int size = 3;
     /**
