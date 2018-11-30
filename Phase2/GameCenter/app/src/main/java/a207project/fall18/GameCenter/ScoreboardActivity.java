@@ -44,8 +44,6 @@ import a207project.fall18.GameCenter.dao.ScoreDao;
 
         scoreList = scoreDao.query(MyApplication.getInstance().getGame());
 
-        Log.v("shabi", scoreList.toString());
-
         scoreAdapter=new ScoreAdapter(this, scoreList);
         listView.setAdapter(scoreAdapter);
     }

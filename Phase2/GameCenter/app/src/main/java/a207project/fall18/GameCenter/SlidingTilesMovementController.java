@@ -25,7 +25,7 @@ public class SlidingTilesMovementController {
             if (slidingTilesBoardManager.puzzleSolved()) {
                 MyApplication.getInstance().getScoreDao().uploadScore(slidingTilesBoardManager.getScore());
 
-//                MyApplication.getInstance().currentScore.setFinalScore(slidingTilesBoardManager.getSlidingTilesBoard().getCurrentscore());
+//                MyApplication.getInstance().currentScore.setFinalScore(slidingTilesBoardManager.getBoard().getCurrentscore());
 
                 Toast.makeText(context, "YOU WIN!", Toast.LENGTH_SHORT).show();
             }

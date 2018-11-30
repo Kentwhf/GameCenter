@@ -54,7 +54,6 @@ public class ScoreDao extends Dao<Score>{
     @Override
     public List<Score> query(String game) {
 
-        Log.v("shabi", "scorequery");
 
         SQLiteDatabase db = sqLiteHelper.getReadableDatabase();
         Cursor cursor = db.query("Score",null,"gameType=?",new String[]{game},null,null,"finalScore DESC");
@@ -64,12 +63,7 @@ public class ScoreDao extends Dao<Score>{
 
         if ( cursor != null && cursor.getCount() >= 1) {
 
-            Log.v("shabi", "scoreif");
-
             while (cursor.moveToNext()) {
-
-                Log.v("shabi", "scorewhile");
-
                 int id = cursor.getInt(cursor.getColumnIndex("id"));
                 String nickname = cursor.getString(2);
                 String gametype = cursor.getString(3);

@@ -22,7 +22,7 @@
 
             <fragment
                 android:id="@+id/cellGroupFragment"
-                android:name="a207project.fall18.GameCenter.CellGroupFragment"
+                android:name="a207project.fall18.GameCenter.TileGroupFragment"
                 android:layout_width="92dp"
                 android:layout_height="106dp"
                 android:tag="0"
@@ -30,7 +30,7 @@
 
             <fragment
                 android:id="@+id/cellGroupFragment2"
-                android:name="a207project.fall18.GameCenter.CellGroupFragment"
+                android:name="a207project.fall18.GameCenter.TileGroupFragment"
                 android:layout_width="92dp"
                 android:layout_height="106dp"
                 android:tag="1"
@@ -38,7 +38,7 @@
 
             <fragment
                 android:id="@+id/cellGroupFragment3"
-                android:name="a207project.fall18.GameCenter.CellGroupFragment"
+                android:name="a207project.fall18.GameCenter.TileGroupFragment"
                 android:layout_width="92dp"
                 android:layout_height="106dp"
                 android:tag="2"
@@ -52,7 +52,7 @@
 
             <fragment
                 android:id="@+id/cellGroupFragment4"
-                android:name="a207project.fall18.GameCenter.CellGroupFragment"
+                android:name="a207project.fall18.GameCenter.TileGroupFragment"
                 android:layout_width="92dp"
                 android:layout_height="106dp"
                 android:tag="3"
@@ -60,7 +60,7 @@
 
             <fragment
                 android:id="@+id/cellGroupFragment5"
-                android:name="a207project.fall18.GameCenter.CellGroupFragment"
+                android:name="a207project.fall18.GameCenter.TileGroupFragment"
                 android:layout_width="92dp"
                 android:layout_height="106dp"
                 android:tag="4"
@@ -68,7 +68,7 @@
 
             <fragment
                 android:id="@+id/cellGroupFragment6"
-                android:name="a207project.fall18.GameCenter.CellGroupFragment"
+                android:name="a207project.fall18.GameCenter.TileGroupFragment"
                 android:layout_width="92dp"
                 android:layout_height="106dp"
                 android:tag="5"
@@ -81,7 +81,7 @@
 
             <fragment
                 android:id="@+id/cellGroupFragment7"
-                android:name="a207project.fall18.GameCenter.CellGroupFragment"
+                android:name="a207project.fall18.GameCenter.TileGroupFragment"
                 android:layout_width="92dp"
                 android:layout_height="106dp"
                 android:tag="6"
@@ -89,7 +89,7 @@
 
             <fragment
                 android:id="@+id/cellGroupFragment8"
-                android:name="a207project.fall18.GameCenter.CellGroupFragment"
+                android:name="a207project.fall18.GameCenter.TileGroupFragment"
                 android:layout_width="92dp"
                 android:layout_height="106dp"
                 android:tag="7"
@@ -97,7 +97,7 @@
 
             <fragment
                 android:id="@+id/cellGroupFragment9"
-                android:name="a207project.fall18.GameCenter.CellGroupFragment"
+                android:name="a207project.fall18.GameCenter.TileGroupFragment"
                 android:layout_width="92dp"
                 android:layout_height="106dp"
                 android:tag="8"

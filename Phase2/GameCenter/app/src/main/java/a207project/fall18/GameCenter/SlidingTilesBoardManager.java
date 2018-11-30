@@ -9,16 +9,16 @@ import a207project.fall18.GameCenter.bean.Score;
 
 
 /**
- * Manage a slidingTilesBoard, including swapping tiles, checking for a win, and managing taps.
+ * Manage a board, including swapping tiles, checking for a win, and managing taps.
  */
 public class SlidingTilesBoardManager extends BoardManager implements Serializable {
 
     private Score score;
 
     /**
-     * The slidingTilesBoard being managed.
+     * The board being managed.
      */
-    private SlidingTilesBoard slidingTilesBoard;
+    private SlidingTilesBoard board;
 
     public static ArrayList<Integer> s = new ArrayList<>();
 
@@ -27,16 +27,16 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
     public int can_undo_time ;
 
     /**
-     * Manage a slidingTilesBoard that has been pre-populated.
+     * Manage a board that has been pre-populated.
      *
-     * @param slidingTilesBoard the slidingTilesBoard
+     * @param board the board
      */
-    SlidingTilesBoardManager(SlidingTilesBoard slidingTilesBoard) {
-        this.slidingTilesBoard = slidingTilesBoard;
+    SlidingTilesBoardManager(SlidingTilesBoard board) {
+        this.board = board;
     }
 
     /**
-     * Manage a new shuffled slidingTilesBoard.
+     * Manage a new shuffled board.
      */
     SlidingTilesBoardManager() {
         List<Tile> tiles = new ArrayList<>();
@@ -45,17 +45,17 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
             tiles.add(new Tile(tileNum));
         }
 
-//        Collections.shuffle(tiles);
-        this.slidingTilesBoard = new SlidingTilesBoard(tiles);
+        Collections.shuffle(tiles);
+        this.board = new SlidingTilesBoard(tiles);
         score = new Score(MyApplication.getInstance().getUser(), "SlidingTiles");
     }
 
 
     /**
-     * Return the current slidingTilesBoard.
+     * Return the current board.
      */
-    public SlidingTilesBoard getSlidingTilesBoard() {
-        return slidingTilesBoard;
+    public SlidingTilesBoard getBoard() {
+        return board;
     }
 
     /**
@@ -66,7 +66,7 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
     boolean puzzleSolved() {
         for (int i = 0; i < SlidingTilesBoard.NUM_ROWS; i++) {
             for (int j = 0; j < SlidingTilesBoard.NUM_COLS; j++) {
-                if (slidingTilesBoard.getTile(i, j).getId() != i * SlidingTilesBoard.NUM_COLS + j + 1) {
+                if (board.getTile(i, j).getId() != i * SlidingTilesBoard.NUM_COLS + j + 1) {
                     return false;
                 }
             }
@@ -92,7 +92,7 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
      */
     boolean isValidTap(int position) {
 
-        int blankId = slidingTilesBoard.numTiles();
+        int blankId = board.numTiles();
         // Are any of the 4 the blank tile?
         Tile[] temp = tileArray(position);
         return (temp[0] != null && temp[0].getId() == blankId)
@@ -102,40 +102,40 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
     }
 
     public boolean undo() {
-        if (undo_time < can_undo_time && slidingTilesBoard.getCurrentscore() < 100){
+        if (undo_time < can_undo_time && board.getCurrentscore() < 100){
             undoTimePlus();
             int col1 = s.get(s.size()-3);
             int row1 = s.get(s.size()-4);
             int col2 = s.get(s.size()-1);
             int row2 = s.get(s.size()-2);
-            slidingTilesBoard.swapTiles(row1, col1, row2, col2);
+            board.swapTiles(row1, col1, row2, col2);
             s.remove(s.size()-1);
             s.remove(s.size()-1);
             s.remove(s.size()-1);
             s.remove(s.size()-1);
-            int newScore = slidingTilesBoard.getCurrentscore() + 1;
-            slidingTilesBoard.setCurrentscore(newScore);
+            int newScore = board.getCurrentscore() + 1;
+            board.setCurrentscore(newScore);
             return true;
         }
         return false;
     }
 
     /**
-     * Process a touch at position in the slidingTilesBoard, swapping tiles as appropriate.
+     * Process a touch at position in the board, swapping tiles as appropriate.
      *
      * @param position the position
      */
     void touchMove(int position) {
         int row = position / SlidingTilesBoard.NUM_ROWS;
         int col = position % SlidingTilesBoard.NUM_COLS;
-        int blankId = slidingTilesBoard.numTiles();
-        Tile above = row == 0 ? null : slidingTilesBoard.getTile(row - 1, col);
-        Tile below = row == SlidingTilesBoard.NUM_ROWS - 1 ? null : slidingTilesBoard.getTile(row + 1, col);
-        Tile left = col == 0 ? null : slidingTilesBoard.getTile(row, col - 1);
-        Tile right = col == SlidingTilesBoard.NUM_COLS - 1 ? null : slidingTilesBoard.getTile(row, col + 1);
+        int blankId = board.numTiles();
+        Tile above = row == 0 ? null : board.getTile(row - 1, col);
+        Tile below = row == SlidingTilesBoard.NUM_ROWS - 1 ? null : board.getTile(row + 1, col);
+        Tile left = col == 0 ? null : board.getTile(row, col - 1);
+        Tile right = col == SlidingTilesBoard.NUM_COLS - 1 ? null : board.getTile(row, col + 1);
         if (isValidTap(position)) {
             if (above != null && above.getId() == blankId) {
-                slidingTilesBoard.swapTiles(row, col, row - 1, col);
+                board.swapTiles(row, col, row - 1, col);
                 s.add(row-1);
                 s.add(col);
                 s.add(row);
@@ -145,21 +145,21 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
                 s.add(col);
                 s.add(row);
                 s.add(col);
-                slidingTilesBoard.swapTiles(row, col, row + 1, col);
+                board.swapTiles(row, col, row + 1, col);
             } else if (left != null && left.getId() == blankId) {
                 s.add(row);
                 s.add(col-1);
                 s.add(row);
                 s.add(col);
-                slidingTilesBoard.swapTiles(row, col, row, col - 1);
+                board.swapTiles(row, col, row, col - 1);
             } else if (right != null && right.getId() == blankId) {
                 s.add(row);
                 s.add(col+1);
                 s.add(row);
                 s.add(col);
-                slidingTilesBoard.swapTiles(row, col, row, col + 1);
+                board.swapTiles(row, col, row, col + 1);
             }
-            slidingTilesBoard.scoring();
+            board.scoring();
         }
     }
 
@@ -175,16 +175,16 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
 
         int row = position / SlidingTilesBoard.NUM_COLS;
         int col = position % SlidingTilesBoard.NUM_COLS;
-        Tile above = row == 0 ? null : slidingTilesBoard.getTile(row - 1, col);
-        Tile below = row == SlidingTilesBoard.NUM_ROWS - 1 ? null : slidingTilesBoard.getTile(row + 1, col);
-        Tile left = col == 0 ? null : slidingTilesBoard.getTile(row, col - 1);
-        Tile right = col == SlidingTilesBoard.NUM_COLS - 1 ? null : slidingTilesBoard.getTile(row, col + 1);
+        Tile above = row == 0 ? null : board.getTile(row - 1, col);
+        Tile below = row == SlidingTilesBoard.NUM_ROWS - 1 ? null : board.getTile(row + 1, col);
+        Tile left = col == 0 ? null : board.getTile(row, col - 1);
+        Tile right = col == SlidingTilesBoard.NUM_COLS - 1 ? null : board.getTile(row, col + 1);
         return new Tile[]{above, below, left, right};
     }
 
 //    @Override
 //    public String toString(){
-//        return slidingTilesBoard.toString();
+//        return board.toString();
 //    }
 
 
@@ -199,7 +199,7 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
 
     public Score getScore(){return this.score;}
     public void setScore(){
-        this.score.setFinalScore(slidingTilesBoard.getCurrentscore());
+        this.score.setFinalScore(board.getCurrentscore());
         this.score.setUserId(MyApplication.getInstance().getUser().getId());
         this.score.setGameType(MyApplication.getInstance().getGame());
         this.score.setNickname(MyApplication.getInstance().getUser().getNickname());
