@@ -12,9 +12,10 @@ import java.util.List;
 import a207project.fall18.GameCenter.BoardManager;
 import a207project.fall18.GameCenter.bean.Score;
 
+/**
+ * Score database class
+ */
 public class ScoreDao extends Dao<Score>{
-
-
 
     public ScoreDao(Context context){
         super(context);
@@ -59,7 +60,6 @@ public class ScoreDao extends Dao<Score>{
         Cursor cursor = db.query("Score",null,"gameType=?",new String[]{game},null,null,"finalScore DESC");
         List<Score> scoreList = new ArrayList<Score>();
 
-//        Log.v("shabi", String.valueOf(cursor.moveToFirst()));
 
         if ( cursor != null && cursor.getCount() >= 1) {
 
@@ -83,8 +83,11 @@ public class ScoreDao extends Dao<Score>{
         return scoreList;
     }
 
+    /**
+     * @param score game score
+     * @return if it finds a loaded game score
+     */
     private boolean find(Score score) {
-//        boolean result = false;
         SQLiteDatabase db = sqLiteHelper.getReadableDatabase();
         Cursor cs = db.query("Score", null, "userId=? and gameType=?", new String[]{String.valueOf(score.getUserId()), score.getGameType()}, null, null, null);
         boolean result = cs.moveToNext();
@@ -94,6 +97,9 @@ public class ScoreDao extends Dao<Score>{
     }
 
 
+    /**
+     * @param score game score
+     */
     public void uploadScore(Score score){
 
         if (!find(score)){
@@ -110,7 +116,6 @@ public class ScoreDao extends Dao<Score>{
             }
             if (score.getFinalScore() >= benchMark){
                 update(score);
-
             }
             cs.close();
             db.close();

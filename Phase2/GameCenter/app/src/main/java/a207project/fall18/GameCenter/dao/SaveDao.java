@@ -17,6 +17,9 @@ import java.util.List;
 
 import a207project.fall18.GameCenter.BoardManager;
 
+/**
+ * Saving manager class
+ */
 public class SaveDao extends Dao<BoardManager> {
 
     private String gameType;
@@ -76,8 +79,10 @@ public class SaveDao extends Dao<BoardManager> {
 
     }
 
+    /**
+     * @return if it finds the loaded game
+     */
     private boolean find(){
-//        boolean result = false;
         SQLiteDatabase db = sqLiteHelper.getReadableDatabase();
         Cursor cs = db.query("SaveFile", null, "username=? and gameType=?", new String[]{username, gameType}, null, null, null);
         boolean result = cs.moveToNext();
@@ -89,24 +94,19 @@ public class SaveDao extends Dao<BoardManager> {
     public void autoSave(BoardManager boardManager){
 
         if (!find()){
-
             insert(boardManager);
-
         }
         else{
-
-
             update(boardManager);
-
         }
     }
 
 
-
-
-
+    /**
+     * @param s a serializable item
+     * @return the s in bytes
+     */
     private static byte[] getSerializedObject(Serializable s) {
-
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         ObjectOutputStream oos = null;
         try {
@@ -127,6 +127,10 @@ public class SaveDao extends Dao<BoardManager> {
     }
 
 
+    /**
+     * @param in array of byes
+     * @return a deserializable item
+     */
     private static Object readSerializedObject(byte[] in) {
         Object result = null;
         ByteArrayInputStream bais = new ByteArrayInputStream(in);

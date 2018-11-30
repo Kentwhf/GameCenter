@@ -11,11 +11,29 @@ import java.util.List;
 
 import a207project.fall18.GameCenter.bean.Score;
 
+/**
+ * A ScoreAdapter class.
+ */
 public class ScoreAdapter extends BaseAdapter {
+    /**
+     * List of scores
+     */
     List<Score> ScoreList;
+    /**
+     * Inflater
+     */
+    /**
+     * Inflater
+     */
     LayoutInflater inflater;
     private String TAG="ScoreAdminAdapter";
 
+    /**
+     * Constructs a ScoreAdapter
+     *
+     * @param context context
+     * @param ScoreList list of scores
+     */
     public ScoreAdapter(Context context, List<Score> ScoreList){
         this.ScoreList = ScoreList;
         inflater = LayoutInflater.from(context);

@@ -13,26 +13,52 @@ public class ComplexityController {
         savingManager = MyApplication.getInstance().getSavingManager();
     }
 
+    /**
+     * Returns the board manager
+     *
+     * @return boardManager
+     */
     public BoardManager getBoardManager() {
         return boardManager;
     }
 
+    /**
+     * Sets the undo times of game
+     *
+     * @param undoTime undo chances
+     */
     public void SetUndoTime(int undoTime){
         this.undoTime = undoTime;
     }
 
+    /**
+     * Easy game
+     */
     public void Easy(){
         boardManager = setBoardManager(game, 3);
     }
 
+    /**
+     * Intermediate game
+     */
     public void Intermediate() {
        boardManager = setBoardManager(game, 4);
     }
 
+    /**
+     * Hard game
+     */
     public void Difficult(){
         boardManager = setBoardManager(game, 5);
     }
 
+    /**
+     * Sets the boardManager for game.
+     *
+     * @param game game played
+     * @param complexity of game
+     * @return boardManager
+     */
     private BoardManager setBoardManager(String game, int complexity){
         switch (game) {
             case "SlidingTiles":
