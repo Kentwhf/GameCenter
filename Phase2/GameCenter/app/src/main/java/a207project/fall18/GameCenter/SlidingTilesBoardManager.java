@@ -31,7 +31,7 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
      *
      * @param board the tiles
      */
-    SlidingTilesBoardManager(SlidingTilesBoard board) {
+    public SlidingTilesBoardManager(SlidingTilesBoard board) {
         this.board = board;
     }
 
@@ -63,7 +63,7 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
      *
      * @return whether the tiles are in row-major order
      */
-    boolean puzzleSolved() {
+    public boolean puzzleSolved() {
         for (int i = 0; i < SlidingTilesBoard.NUM_ROWS; i++) {
             for (int j = 0; j < SlidingTilesBoard.NUM_COLS; j++) {
                 if (board.getTile(i, j).getId() != i * SlidingTilesBoard.NUM_COLS + j + 1) {
@@ -90,7 +90,7 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
      * @param position the tile to check
      * @return whether the tile at position is surrounded by a blank tile
      */
-    boolean isValidTap(int position) {
+    public boolean isValidTap(int position) {
 
         int blankId = board.numTiles();
         // Are any of the 4 the blank tile?
