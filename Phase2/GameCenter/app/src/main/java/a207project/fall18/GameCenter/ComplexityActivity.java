@@ -3,6 +3,7 @@ package a207project.fall18.GameCenter;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -62,8 +63,9 @@ public class ComplexityActivity extends AppCompatActivity {
         setContentView(R.layout.activity_complexity);
         setTitle("Select difficulty");
 
-        controller = new ComplexityController(undoTime);
+        controller = new ComplexityController();
         game = MyApplication.getInstance().getGame();
+
 
         addEasyButtonListener();
         addIntermediateButtonListener();
@@ -78,12 +80,18 @@ public class ComplexityActivity extends AppCompatActivity {
      * Button for selecting number of undo moves
      */
     private void setupConfirmButtonListener(){
-        Button Button3  = findViewById(R.id.comfirmButton);
-        Button3.setOnClickListener((v) -> {
+        Button button4  = findViewById(R.id.comfirmButton);
+
+        if (game.equals("SlidingTiles")){
+            button4.setVisibility(View.INVISIBLE);
+        }
+
+        button4.setOnClickListener((v) -> {
             TextView undoInputTextField = findViewById(R.id.undoInput);
             if (undoInputTextField != null){
                 undoTime = Integer.parseInt(undoInputTextField.getText().toString());
-                controller = new ComplexityController(undoTime);
+                controller = new ComplexityController();
+                controller.ConfirmUndoTime(undoTime);
 
             }
         });
@@ -93,8 +101,8 @@ public class ComplexityActivity extends AppCompatActivity {
      * Easy version
      */
     private void addEasyButtonListener(){
-        Button Button1  = findViewById(R.id.button1);
-        Button1.setOnClickListener((v) -> {
+        Button button1  = findViewById(R.id.button1);
+        button1.setOnClickListener((v) -> {
            controller.Easy();
             switchToGame();
     });
@@ -104,8 +112,8 @@ public class ComplexityActivity extends AppCompatActivity {
      * Intermediate version
      */
     private void addIntermediateButtonListener(){
-        Button Button2  = findViewById(R.id.button2);
-        Button2.setOnClickListener((v) -> {
+        Button button2  = findViewById(R.id.button2);
+        button2.setOnClickListener((v) -> {
            controller.Intermediate();
             switchToGame();
         });
@@ -115,8 +123,8 @@ public class ComplexityActivity extends AppCompatActivity {
      * Hard version
      */
     private void setupDifficultButton3Listener(){
-        Button Button3  = findViewById(R.id.button3);
-        Button3.setOnClickListener((v) -> {
+        Button button3  = findViewById(R.id.button3);
+        button3.setOnClickListener((v) -> {
             controller.Difficult();
             switchToGame();
         });

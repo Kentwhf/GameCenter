@@ -10,18 +10,20 @@ public class ComplexityController {
     private SlidingTilesBoardManager boardManager;
     private int undoTime;
 
-    public ComplexityController(int undoTime){
+    public ComplexityController(){
         game = MyApplication.getInstance().gameType;
         savingManager = MyApplication.getInstance().getSavingManager();
-        this.undoTime = undoTime;
     }
 
     public BoardManager getBoardManager(){return this.boardManager;}
 
+    public void ConfirmUndoTime(int undoTime){
+        this.undoTime = undoTime;
 
+    }
 
     // 简化三个难度的code. Redundant, code smell
-    // 可以 tiles.manager 写个 toString， 这里可以写个method调用，然后新建对应的manager. 然后在三个难度里call一次就好了
+    // 可以 board.manager 写个 toString， 这里可以写个method调用，然后新建对应的manager. 然后在三个难度里call一次就好了
     // 可以考虑新建static fields 3,4,5.
     public void Easy(){
         if (game.equals("SlidingTiles")){
@@ -30,7 +32,6 @@ public class ComplexityController {
             boardManager.setCanUndoTime(undoTime);
             savingManager.autoSave(boardManager);
             MyApplication.getInstance().setBoardManager(boardManager);
-
         }
 
         else if(game.equals("TicTacToe")){

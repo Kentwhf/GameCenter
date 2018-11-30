@@ -47,8 +47,8 @@ public class SlidingTilesStartingActivity extends AppCompatActivity {
     }
 
     private void addScoreboardButtonListener() {
-        Button Scoreboard = findViewById(R.id.Scoreboard);
-        Scoreboard.setOnClickListener((v) -> {
+        Button scoreboard = findViewById(R.id.Scoreboard);
+        scoreboard.setOnClickListener((v) -> {
             Intent i = new Intent(this, ScoreboardActivity.class);
             startActivity(i);
         });
