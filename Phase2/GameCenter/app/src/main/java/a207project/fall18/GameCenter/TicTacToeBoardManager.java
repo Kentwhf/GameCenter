@@ -56,7 +56,7 @@ package a207project.fall18.GameCenter;
 
     /**
      * Update win or not, If not win, check move.
-     * @param tileID Index of the Tile.
+     * @param tileID Index of the SlidingTile.
      * @param player The Player.
      * @return Move or not.
      */
