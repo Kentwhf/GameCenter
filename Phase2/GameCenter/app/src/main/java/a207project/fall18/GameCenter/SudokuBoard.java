@@ -15,7 +15,7 @@ public class SudokuBoard extends Board implements Serializable {
         this.tiles = new int[9][9];
     }
 
-    public int[][] getTiles() {
+    public int[][] getSlidingTiles() {
         return tiles;
     }
 
