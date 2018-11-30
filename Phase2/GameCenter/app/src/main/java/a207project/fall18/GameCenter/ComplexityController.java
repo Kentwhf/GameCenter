@@ -21,8 +21,7 @@ public class ComplexityController {
 
 
     // 简化三个难度的code. Redundant, code smell
-    // 可以 board.manager 写个 toString， 这里可以写个method调用，然后新建对应的manager. 然后在三个难度里call一次就好了
-    // 可以考虑新建static fields 3,4,5.
+    // 可以 board.manager 写个 toString， 这里可以写个method调用，然后新建对应的manager
     public void Easy(){
         if (game.equals("SlidingTiles")){
             SlidingTilesBoard.setNumRowsCols(3);
@@ -34,7 +33,7 @@ public class ComplexityController {
         }
 
         else if(game.equals("TicTacToe")){
-            TicTacToeGameActivity.size = 3;
+            TicTacToeGameActivity.dim = 3;
 //            Intent i = new Intent(ComplexityActivity, TicTacToeGameActivity.class);
 //            startActivity(i);
         }
@@ -55,7 +54,7 @@ public class ComplexityController {
         }
 
         else if(game.equals("TicTacToe")){
-            TicTacToeGameActivity.size = 4;
+            TicTacToeGameActivity.dim = 4;
         }
 //
 //        else{}
@@ -72,7 +71,7 @@ public class ComplexityController {
         }
 
         else if(game == "TicTacToe"){
-            TicTacToeGameActivity.size = 5;
+            TicTacToeGameActivity.dim = 5;
         }
 
 //        else{}

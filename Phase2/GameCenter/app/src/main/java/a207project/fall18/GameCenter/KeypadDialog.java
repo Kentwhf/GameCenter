@@ -81,7 +81,7 @@ public class KeypadDialog extends Dialog{
 
     private void setResult(int cell){
         listener.refreshPriorityUI(String.valueOf(cell));
-//        sudokuBoardManager.setTile(targetRow, targetCol, cell);
+//        sudokuBoardManager.setValue(targetRow, targetCol, cell);
 //        Intent intent = new Intent();
 //        intent.putExtra("chosenNumber", cell);
 //        intent.putExtra("isUnsure", checkBoxChecked);

@@ -28,7 +28,7 @@ public class TicTacToeComplexityActivity extends AppCompatActivity {
     private void addEasyButtonListener() {
         Button Button1 = findViewById(R.id.button1);
         Button1.setOnClickListener((v) -> {
-            TicTacToeGameActivity.size = 3;
+            TicTacToeGameActivity.dim = 3;
             Intent i = new Intent(this, TicTacToeGameActivity.class);
             startActivity(i);
         });
@@ -40,7 +40,7 @@ public class TicTacToeComplexityActivity extends AppCompatActivity {
     private void addIntermediateButtonListener() {
         Button Button2 = findViewById(R.id.button2);
         Button2.setOnClickListener((v) -> {
-            TicTacToeGameActivity.size = 4;
+            TicTacToeGameActivity.dim = 4;
             Intent i = new Intent(this, TicTacToeGameActivity.class);
             startActivity(i);
         });
@@ -52,7 +52,7 @@ public class TicTacToeComplexityActivity extends AppCompatActivity {
     private void setupDifficultButton3Listener() {
         Button Button3 = findViewById(R.id.button3);
         Button3.setOnClickListener((v) -> {
-            TicTacToeGameActivity.size = 5;
+            TicTacToeGameActivity.dim = 5;
             Intent i = new Intent(this, TicTacToeGameActivity.class);
             startActivity(i);
         });

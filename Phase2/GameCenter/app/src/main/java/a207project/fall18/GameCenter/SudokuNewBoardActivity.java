@@ -15,17 +15,17 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-//import me.kirkhorn.knut.android_sudoku.fragments.TileGroupFragment;
-//import me.kirkhorn.knut.android_sudoku.model.a207project.fall18.GameCenter.SudokuBoard;
+//import me.kirkhorn.knut.android_sudoku.fragments.CellGroupFragment;
+//import me.kirkhorn.knut.android_sudoku.model.SudokuBoard;
 
 /**
  *
  */
 
-//public class SudokuNewBoardActivity extends AppCompatActivity implements TileGroupFragment.OnFragmentInteractionListener {
+//public class SudokuNewBoardActivity extends AppCompatActivity implements CellGroupFragment.OnFragmentInteractionListener {
 //    private final String TAG = "NewSudokuBoardActivity";
 //    private TextView clickedCell;
-////    private a207project.fall18.GameCenter.SudokuBoard newSudokuBoard;
+////    private SudokuBoard newSudokuBoard;
 //    private int clickedGroup;
 //    private int clickedCellId;
 //
@@ -37,11 +37,11 @@ import java.io.IOException;
 //        int cellGroupFragments[] = new int[]{R.id.cellGroupFragment, R.id.cellGroupFragment2, R.id.cellGroupFragment3, R.id.cellGroupFragment4,
 //                R.id.cellGroupFragment5, R.id.cellGroupFragment6, R.id.cellGroupFragment7, R.id.cellGroupFragment8, R.id.cellGroupFragment9};
 //        for (int i = 1; i < 10; i++) {
-//            TileGroupFragment thisCellGroupFragment = (TileGroupFragment) getSupportFragmentManager().findFragmentById(cellGroupFragments[i-1]);
+//            CellGroupFragment thisCellGroupFragment = (CellGroupFragment) getSupportFragmentManager().findFragmentById(cellGroupFragments[i-1]);
 //            thisCellGroupFragment.setGroupId(i);
 //        }
 //
-////        newSudokuBoard = new a207project.fall18.GameCenter.SudokuBoard();
+////        newSudokuBoard = new SudokuBoard();
 //    }
 //
 ////    public void onGoBackButtonClicked(View view) {
@@ -64,7 +64,7 @@ import java.io.IOException;
 ////            fileName += "hard";
 ////        }
 ////        String content = newSudokuBoard.toString();
-////        System.out.println("new a207project.fall18.GameCenter.SudokuBoard: " + content);
+////        System.out.println("new SudokuBoard: " + content);
 ////        FileOutputStream fileOutputStream;
 ////        try {
 ////            fileOutputStream = openFileOutput(fileName, Context.MODE_APPEND);
@@ -85,10 +85,10 @@ import java.io.IOException;
 ////
 ////            if (data.getBooleanExtra("removePiece", false)) {
 ////                clickedCell.setText("");
-////                newSudokuBoard.setTile(row, column, 0);
+////                newSudokuBoard.setValue(row, column, 0);
 ////            } else {
 ////                int number = data.getIntExtra("chosenNumber", 1);
-////                newSudokuBoard.setTile(row, column, number);
+////                newSudokuBoard.setValue(row, column, number);
 ////                clickedCell.setText(String.valueOf(number));
 ////                clickedCell.setTextColor(Color.BLACK);
 ////                clickedCell.setTypeface(null, Typeface.BOLD);

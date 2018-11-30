@@ -73,7 +73,7 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
         gridView = findViewById(R.id.grid);
         gridView.setNumColumns(SlidingTilesBoard.NUM_COLS);
         gridView.setSlidingTilesBoardManager(boardManager);
-        boardManager.getBoard().addObserver(this);
+        boardManager.getSlidingTilesBoard().addObserver(this);
         // Observer sets up desired dimensions as well as calls our display function
         gridView.getViewTreeObserver().addOnGlobalLayoutListener(
                 new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -103,7 +103,7 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
                 gridView = findViewById(R.id.grid);
                 gridView.setNumColumns(SlidingTilesBoard.NUM_COLS);
                 gridView.setSlidingTilesBoardManager(boardManager);
-                boardManager.getBoard().addObserver(this);
+                boardManager.getSlidingTilesBoard().addObserver(this);
                 display();
             }
             else{
@@ -119,7 +119,7 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
      * @param context the context
      */
     private void createTileButtons(Context context) {
-        SlidingTilesBoard board = boardManager.getBoard();
+        SlidingTilesBoard board = boardManager.getSlidingTilesBoard();
         tileButtons = new ArrayList<>();
         for (int row = 0; row != SlidingTilesBoard.NUM_ROWS; row++) {
             for (int col = 0; col != SlidingTilesBoard.NUM_COLS; col++) {
@@ -134,7 +134,7 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
      * Update the backgrounds on the buttons to match the tiles.
      */
     private void updateTileButtons() {
-        SlidingTilesBoard board = boardManager.getBoard();
+        SlidingTilesBoard board = boardManager.getSlidingTilesBoard();
         int nextPos = 0;
         for (Button b : tileButtons) {
             int row = nextPos / SlidingTilesBoard.NUM_ROWS;
@@ -159,7 +159,7 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
 
         boardManager.setScore();
 
-//        MyApplication.getInstance().currentScore.setFinalScore(boardManager.getBoard().getCurrentscore());
+//        MyApplication.getInstance().currentScore.setFinalScore(boardManager.getSlidingTilesBoard().getCurrentscore());
 //        boardManager.setScore(MyApplication.getInstance().currentScore);
 
 

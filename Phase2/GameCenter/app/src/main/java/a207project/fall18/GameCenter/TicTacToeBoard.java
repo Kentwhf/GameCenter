@@ -12,7 +12,7 @@ public class TicTacToeBoard extends Board{
     /**
      * The int dim.
      */
-    static int size;
+    static int dim;
     /**
      * The board which is consisted by col and row.
      */
@@ -21,31 +21,31 @@ public class TicTacToeBoard extends Board{
 
     /**
      * The tic tac toe board.
-     * @param  size the dimension of the board
+     * @param  dim the dimension of the board
      */
-    TicTacToeBoard(int size) {
-        this.size = size;
-        this.board = new int[size][size];
+    TicTacToeBoard(int dim) {
+        this.dim = dim;
+        this.board = new int[dim][dim];
 
         board_tile = new TreeSet<>();
-        for (int i = 0; i < size * size; i++) {
+        for (int i = 0; i < Math.pow(dim, 2); i++) {
             board_tile.add(i);
         }
     }
 
     /**
      * Check move or not, if can move, change the tile as the player.
-     * @param tileID  Index of the tile of tictactoe.
+     * @param fieldIdx  Index of the tile of tictactoe.
      * @param player the player.
      * @return whether to move.
      */
-    public boolean move(int tileID,  int player) {
-        int row = tileID / size;
-        int col = tileID % size;
+    public boolean move(int fieldIdx,  int player) {
+        int row = fieldIdx / dim;
+        int col = fieldIdx % dim;
 
         if (board[row][col] == 0) {
             board[row][col] = player;
-            board_tile.remove(tileID);
+            board_tile.remove(fieldIdx);
 
             return true;
         }
@@ -66,16 +66,13 @@ public class TicTacToeBoard extends Board{
      * @return  a random index of random tile which can be move.
      */
     int getRandomEmpty() {
-        int num = new Random().nextInt(size * size);
-        Integer i = ((TreeSet<Integer>)board_tile).floor(num);
+        int num = new Random().nextInt(dim * dim);
+        Integer i = ((TreeSet<Integer>)board_tile).ceiling(num);
 
         if (i == null) {
-            i = ((TreeSet<Integer>)board_tile).ceiling(num);
-        }
-        if (i == null) {
-            return -1;
+            i = ((TreeSet<Integer>)board_tile).floor(num);
         }
 
-        return i;
+        return i == null ? -1 : i;
     }
 }
