@@ -9,25 +9,25 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import a207project.fall18.GameCenter.Board;
-import a207project.fall18.GameCenter.BoardManager;
-import a207project.fall18.GameCenter.MovementController;
+import a207project.fall18.GameCenter.SlidingTile;
+import a207project.fall18.GameCenter.SlidingTilesBoard;
+import a207project.fall18.GameCenter.SlidingTilesBoardManager;
+import a207project.fall18.GameCenter.SlidingTilesMovementController;
 import a207project.fall18.GameCenter.Tile;
-import a207project.fall18.GameCenter.bean.Score;
 
 import static org.junit.Assert.assertEquals;
 
 import static org.junit.Assert.assertFalse;
 
-public class MovementControllerTest {
+public class SlidingTilesMovementControllerTest {
 
 //    private Board board;
 
-    private MovementController controller;
+    private SlidingTilesMovementController controller;
 
-    private BoardManager boardManager;
+    private SlidingTilesBoardManager boardManager;
 
-    private List<Tile> lst;
+    private List<SlidingTile> lst;
 
     private int numOfInversion;
 
@@ -37,17 +37,17 @@ public class MovementControllerTest {
 
     @Before
     public void setUp() throws Exception {
-        Board.setNumRowsCols(4);
+        SlidingTilesBoard.setNumRowsCols(4);
         lst = new ArrayList<>();
         for (int i = 1; i < 13; i++) {
-            lst.add(new Tile(i, i));
+            lst.add(new SlidingTile(i, i));
         }
-        lst.add(new Tile(14, 14));
-        lst.add(new Tile(13, 13));
-        lst.add(new Tile(16, 16));
-        lst.add(new Tile(15, 15));
-        boardManager = new BoardManager(lst);
-        controller = new MovementController();
+        lst.add(new SlidingTile(14, 14));
+        lst.add(new SlidingTile(13, 13));
+        lst.add(new SlidingTile(16, 16));
+        lst.add(new SlidingTile(15, 15));
+        boardManager = new SlidingTilesBoardManager(lst);
+        controller = new SlidingTilesMovementController();
         controller.setBoardManager(boardManager);
         numOfInversion = 1;
         blankOnOddRowFromBottom = true;
@@ -61,8 +61,8 @@ public class MovementControllerTest {
 //                        (numOfInversion % 2 == 0)))) {
 //            outputSolvable = true;
 //        } else {outputSolvable = false;}
-        outputSolvable = (((Board.getNumRows() % 2 != 0) && (numOfInversion % 2 == 0)) ||
-                ((Board.getNumRows() % 2 == 0) && ((blankOnOddRowFromBottom) ==
+        outputSolvable = (((SlidingTilesBoard.getNumRows() % 2 != 0) && (numOfInversion % 2 == 0)) ||
+                ((SlidingTilesBoard.getNumRows() % 2 == 0) && ((blankOnOddRowFromBottom) ==
                         (numOfInversion % 2 == 0))));
         assertFalse(outputSolvable);
 

@@ -9,25 +9,27 @@ import java.util.List;
 
 import a207project.fall18.GameCenter.Board;
 import a207project.fall18.GameCenter.BoardManager;
+import a207project.fall18.GameCenter.SlidingTile;
+import a207project.fall18.GameCenter.SlidingTilesBoard;
+import a207project.fall18.GameCenter.SlidingTilesBoardManager;
 import a207project.fall18.GameCenter.Tile;
-import a207project.fall18.GameCenter.bean.Score;
 
 import static org.junit.Assert.*;
 
-public class BoardManagerTest {
+public class SlidingTilesBoardManagerTest {
 
 //    private List<Tile> lst;
 
-    private BoardManager boardManager;
+    private SlidingTilesBoardManager boardManager;
 
     @Before
     public void setUp() throws Exception {
-        Board.setNumRowsCols(3);
-        List<Tile> lst = new ArrayList<>();
+        SlidingTilesBoard.setNumRowsCols(3);
+        List<SlidingTile> lst = new ArrayList<>();
         for (int i = 1; i < 10; i++) {
-            lst.add(new Tile(i, i));
+            lst.add(new SlidingTile(i, i));
         }
-        boardManager = new BoardManager(lst);
+        boardManager = new SlidingTilesBoardManager(lst);
     }
 
 
@@ -37,7 +39,7 @@ public class BoardManagerTest {
         int expectedId = 1;
         for (int row = 0; row != 3; row++) {
             for (int col = 0; col != 3; col++) {
-                if (output.getTile(row, col).getId() != expectedId) {fail("Wrong board!");}
+                if (((SlidingTilesBoard) output).getTile(row, col).getId() != expectedId) {fail("Wrong board!");}
                 expectedId++;
             }
 
@@ -104,9 +106,8 @@ public class BoardManagerTest {
 
     @Test
     public void setScore() {
-        int expected = 100;
+        int expected = 0;
         int output;
-        boardManager.setScore();
         output = boardManager.getScore().getFinalScore();
         assertEquals(expected, output);
     }
