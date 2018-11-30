@@ -49,6 +49,7 @@ public class TicTacToeBoardManager extends BoardManager {
     public TicTacToeBoardManager(int size) {
         this.TicTacToeBoard = new TicTacToeBoard(size);
         this.TicTacToeScoreboard = new TicTacToeScore(size);
+        score = new Score(MyApplication.getInstance().getUser(), "TicTacToe");
     }
 
     public TicTacToeScore TicTacToeScoreBoard(){
@@ -101,11 +102,14 @@ public class TicTacToeBoardManager extends BoardManager {
         this.computer.setTicTacToeBoardManager(this);
     }
 
+    public Score getScore(){return this.score;}
+
     @Override
     public void setScore() {
-//        this.score.setFinalScore(board.getCurrentScore());
+        this.score.setFinalScore(1);
         this.score.setUserId(MyApplication.getInstance().getUser().getId());
         this.score.setGameType(MyApplication.getInstance().getGame());
         this.score.setNickname(MyApplication.getInstance().getUser().getNickname());
+
     }
 }

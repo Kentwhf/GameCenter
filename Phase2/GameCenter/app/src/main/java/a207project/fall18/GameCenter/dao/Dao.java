@@ -21,4 +21,5 @@ public abstract class Dao<T>{
 
     abstract public List<T> query(String s);
 
+
 }

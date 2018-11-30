@@ -231,7 +231,17 @@ public class SudokuGameActivity extends AppCompatActivity implements
             timerTextView.stopTimer();
             String duration = timerTextView.getDurationBreakdown
                     (System.currentTimeMillis() - timerTextView.getStartTime());
+            String[] temp = duration.split(":");
+            int time = Integer.parseInt(temp[0]) + Integer.parseInt(temp[1]) + Integer.parseInt(temp[2]);
+            currentBoardManager.setFinalScore((int) 10000/time);
+            currentBoardManager.setScore();
+            MyApplication.getInstance().getScoreDao().uploadScore(currentBoardManager.getScore());
+
+
             timerTextView.setText(duration);
+            Intent intent = new Intent(this, ScoreboardActivity.class);
+            startActivity(intent);
+
             // Pass value to the model
         } else {
             Toast.makeText(this, getString(R.string.board_incorrect),

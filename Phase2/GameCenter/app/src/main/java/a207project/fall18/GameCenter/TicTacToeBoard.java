@@ -16,8 +16,8 @@ public class TicTacToeBoard extends Board{
     /**
      * The tiles which is consisted by col and row.
      */
-    private Integer[][] tiles;
-    private Set<Integer> board_tile;
+    public int[][] tiles;
+    public Set<Integer> board_tile;
 
     /**
      * The tic tac toe tiles.
@@ -25,7 +25,7 @@ public class TicTacToeBoard extends Board{
      */
     public TicTacToeBoard(int size) {
         this.size = size;
-        this.tiles = new Integer[size][size];
+        this.tiles = new int[size][size];
 
         board_tile = new TreeSet<>();
         for (int i = 0; i < size * size; i++) {
@@ -33,13 +33,6 @@ public class TicTacToeBoard extends Board{
         }
     }
 
-    /**
-     * Return the size of the board
-     * @return
-     */
-    public int getSize() {
-        return size;
-    }
     /**
      * Check move or not, if can move, change the tile as the player.
      * @param tileID  Index of the tile of tictactoe.
