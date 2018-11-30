@@ -17,10 +17,20 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<S
     private int currentScore = 100 ;
 
     public static Stack s = new Stack();
+
+    public static int getNumRows() {
+        return NUM_ROWS;
+    }
+
     /**
      * The number of rows.
      */
     static int NUM_ROWS;
+
+    public static int getNumCols() {
+        return NUM_COLS;
+    }
+
     /**
      * The number of cols.
      */
@@ -37,7 +47,7 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<S
      *
      * @param slidingTiles the slidingTiles for the tiles
      */
-    SlidingTilesBoard(List<SlidingTile> slidingTiles) {
+    public SlidingTilesBoard(List<SlidingTile> slidingTiles) {
         Iterator<SlidingTile> iter = slidingTiles.iterator();
         for (int row = 0; row != SlidingTilesBoard.NUM_ROWS; row++) {
             for (int col = 0; col != SlidingTilesBoard.
@@ -68,7 +78,7 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<S
      * @param col the tile column
      * @return the tile at (row, col)
      */
-    SlidingTile getTile(int row, int col) {
+    public SlidingTile getTile(int row, int col) {
         return slidingTiles[row][col];
     }
 
@@ -80,7 +90,7 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<S
      * @param row2 the second tile row
      * @param col2 the second tile col
      */
-    void swapTiles(int row1, int col1, int row2, int col2) {
+    public void swapTiles(int row1, int col1, int row2, int col2) {
 
         SlidingTile t1 = slidingTiles[row1][col1];
         slidingTiles[row1][col1] = slidingTiles[row2][col2];
