@@ -16,7 +16,9 @@ import a207project.fall18.GameCenter.bean.Score;
  */
 public class BoardManager implements Serializable {
 
-    private Score score;
+    private Score score = new Score();
+
+//    private List<Tile> tilesList;
 
     /**
      * The board being managed.
@@ -27,15 +29,22 @@ public class BoardManager implements Serializable {
 
     public int undo_time = 0;
 
-    public int can_undo_time ;
+    public int can_undo_time;
 
     /**
      * Manage a board that has been pre-populated.
      *
-     * @param board the board
+     * @param tiles the board in 2D List
      */
-    BoardManager(Board board) {
-        this.board = board;
+    public BoardManager(List<Tile> tiles) {
+//        Board.setNumRowsCols(4);
+////        List<Tile> tiles = new ArrayList<>();
+//        final int numTiles = Board.NUM_ROWS * Board.NUM_COLS;
+//        for (int tileNum = 0; tileNum != numTiles; tileNum++) {
+//            tiles.add(new Tile(tileNum));
+//        }
+        this.board = new Board(tiles);
+//        this.board = board;
     }
 
     /**
@@ -65,14 +74,20 @@ public class BoardManager implements Serializable {
 //            Collections.shuffle(tiles);
 //        }
 
-
+        // IDK MAN..
+//        tilesList = tiles;
         this.board = new Board(tiles);
         score = new Score(MyApplication.getInstance().getUser(), "SlidingTiles");
         makeBoard(tiles);
     }
 
+//    public List<Tile> getTilesList() {return tilesList;}
+
     private void makeBoard(List<Tile> lst) {
         int blankIndex = findBlank(lst);
+
+        System.out.println(blankIndex);
+
         Random r = new Random();
         int bound = r.nextInt((500 - 450) + 1) + 450;
 
@@ -148,28 +163,28 @@ public class BoardManager implements Serializable {
 
 
 
-    int findNumInversion(List<Tile> lst) {
-
-        int numInversion = 0;
-
-//        for (Tile tile : lst) {
-//            int currentTileNum = tile.getId();
-//            for (int i = lst.indexOf(tile) + 1; i < lst.size(); i++) {
-//                if (lst.get(i).getId() < currentTileNum) {numInversion += 1;}
+//    int findNumInversion(List<Tile> lst) {
+//
+//        int numInversion = 0;
+//
+////        for (Tile tile : lst) {
+////            int currentTileNum = tile.getId();
+////            for (int i = lst.indexOf(tile) + 1; i < lst.size(); i++) {
+////                if (lst.get(i).getId() < currentTileNum) {numInversion += 1;}
+////            }
+////        }
+//
+//        for (int i = 0; i < lst.size(); i++) {
+//            int currentTileNum = lst.get(i).getId();
+//            if (currentTileNum != Board.NUM_ROWS * Board.NUM_COLS) {
+//                for (int x = i + 1; x < lst.size(); x++) {
+//                    if (lst.get(x).getId() < currentTileNum) {numInversion += 1;}
+//                }
 //            }
 //        }
-
-        for (int i = 0; i < lst.size(); i++) {
-            int currentTileNum = lst.get(i).getId();
-            if (currentTileNum != Board.NUM_ROWS * Board.NUM_COLS) {
-                for (int x = i + 1; x < lst.size(); x++) {
-                    if (lst.get(x).getId() < currentTileNum) {numInversion += 1;}
-                }
-            }
-        }
-
-        return numInversion;
-    }
+//
+//        return numInversion;
+//    }
 
 //    public static void main(String[] args) {
 //        List<Tile> tiles = new ArrayList<>();
@@ -191,21 +206,21 @@ public class BoardManager implements Serializable {
 //
 //    }
 
-    boolean blankOnOddRowFromBottom(List<Tile> lst) {
-        for (int i = 0; i < lst.size(); i++) {
-            if (lst.get(i).getId() == Board.NUM_ROWS * Board.NUM_COLS) {
-//                if (Board.NUM_ROWS == 3) {
-//                    if ((i <= 2) || (6 <= i)) {return true;}
-//                } else if (Board.NUM_ROWS == 4) {
-//                    if (((4 <= i) && (i <= 7)) || (i >= 12)) {return true;}
-//                } else {
-//                    if ((i <= 4) || ((10 <= i) && (i <= 14)) || (i >= 24)) {return true;}
-//                }
-                if (((4 <= i) && (i <= 7)) || (i >= 12)) {return true;}
-            }
-        }
-        return false;
-    }
+//    boolean blankOnOddRowFromBottom(List<Tile> lst) {
+//        for (int i = 0; i < lst.size(); i++) {
+//            if (lst.get(i).getId() == Board.NUM_ROWS * Board.NUM_COLS) {
+////                if (Board.NUM_ROWS == 3) {
+////                    if ((i <= 2) || (6 <= i)) {return true;}
+////                } else if (Board.NUM_ROWS == 4) {
+////                    if (((4 <= i) && (i <= 7)) || (i >= 12)) {return true;}
+////                } else {
+////                    if ((i <= 4) || ((10 <= i) && (i <= 14)) || (i >= 24)) {return true;}
+////                }
+//                if (((4 <= i) && (i <= 7)) || (i >= 12)) {return true;}
+//            }
+//        }
+//        return false;
+//    }
 
     private int findBlank(List<Tile> lst) {
         int id = 0;
@@ -227,7 +242,7 @@ public class BoardManager implements Serializable {
      *
      * @return whether the tiles are in row-major order
      */
-    boolean puzzleSolved() {
+    public boolean puzzleSolved() {
         for (int i = 0; i < Board.NUM_ROWS; i++) {
             for (int j = 0; j < Board.NUM_COLS; j++) {
                 if (board.getTile(i, j).getId() != i * Board.NUM_COLS + j + 1) {
@@ -254,7 +269,9 @@ public class BoardManager implements Serializable {
      * @param position the tile to check
      * @return whether the tile at position is surrounded by a blank tile
      */
-    boolean isValidTap(int position) {
+    public boolean isValidTap(int position) {
+
+        System.out.println(position);
 
         int blankId = board.numTiles();
         // Are any of the 4 the blank tile?
@@ -289,7 +306,7 @@ public class BoardManager implements Serializable {
      *
      * @param position the position
      */
-    void touchMove(int position) {
+    public void touchMove(int position) {
         int row = position / Board.NUM_ROWS;
         int col = position % Board.NUM_COLS;
         int blankId = board.numTiles();
@@ -362,6 +379,8 @@ public class BoardManager implements Serializable {
 //    }
 
     public Score getScore(){return this.score;}
+
     public void setScore(){this.score.setFinalScore(board.getCurrentscore());}
+
 
 }

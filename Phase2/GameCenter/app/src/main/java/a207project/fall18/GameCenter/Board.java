@@ -41,12 +41,13 @@ public class Board extends Observable implements Serializable, Iterable<Tile> {
     Board(List<Tile> tiles) {
         Iterator<Tile> iter = tiles.iterator();
         for (int row = 0; row != Board.NUM_ROWS; row++) {
-            for (int col = 0; col != Board.
-                    NUM_COLS; col++) {
+            for (int col = 0; col != Board.NUM_COLS; col++) {
                 this.tiles[row][col] = iter.next();
             }
         }
     }
+
+    public static int getNumRows() {return NUM_ROWS;}
 
     public static void setNumRowsCols(int num) {
         NUM_ROWS = num;
@@ -69,7 +70,7 @@ public class Board extends Observable implements Serializable, Iterable<Tile> {
      * @param col the tile column
      * @return the tile at (row, col)
      */
-    Tile getTile(int row, int col) {
+    public Tile getTile(int row, int col) {
         return tiles[row][col];
     }
 
@@ -151,6 +152,7 @@ public class Board extends Observable implements Serializable, Iterable<Tile> {
     public int getCurrentscore(){
         return this.currentscore;
     }
+
     public void setCurrentscore(int score){this.currentscore = score;}
 
 
