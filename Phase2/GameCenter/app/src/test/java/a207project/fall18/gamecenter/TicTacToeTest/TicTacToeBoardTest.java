@@ -31,32 +31,36 @@ public class TicTacToeBoardTest extends Board {
     }
 
     @Test
-    public void move(){
+    public void moveTest(){
         assertEquals(true, tictactoeboard3.move(3, 1));
         assertEquals(true, tictactoeboard3.move(4, -1));
         assertEquals(true, tictactoeboard4.move(5, 1));
         assertEquals(true, tictactoeboard4.move(2, -1));
         assertEquals(true , tictactoeboard5.move(1, 1));
         assertEquals(true, tictactoeboard5.move(6, -1));
-
-
     }
 
 
     @Test
-    public void isFull() {
+    public void isFullTest() {
         assertEquals(false, tictactoeboard3.isFull());
         assertEquals(false, tictactoeboard4.isFull());
         assertEquals(false, tictactoeboard5.isFull());
     }
 
     @Test
-    public void getRandomEmpty() {
+    public void getRandomEmptyTest() {
         Integer result1 = tictactoeboard3.getRandomEmpty();
         assertEquals(true, result1 instanceof Integer);
         Integer result2 = tictactoeboard4.getRandomEmpty();
         assertEquals(true, result2 instanceof Integer);
         Integer result3 = tictactoeboard5.getRandomEmpty();
         assertEquals(true, result3 instanceof Integer);
+    }
+    @Test
+    public void getSizeTest() {
+        assertEquals(3, tictactoeboard3.getSize());
+        assertEquals(4, tictactoeboard3.getSize());
+        assertEquals(5, tictactoeboard3.getSize());
     }
 }
