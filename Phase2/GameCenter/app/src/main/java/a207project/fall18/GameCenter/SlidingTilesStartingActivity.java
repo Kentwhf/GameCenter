@@ -3,6 +3,7 @@ package a207project.fall18.GameCenter;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -17,6 +18,14 @@ public class SlidingTilesStartingActivity extends AppCompatActivity {
 
     private SaveDao savingManager;
     /**
+     * The main save file.
+     */
+    public static final String SAVE_FILENAME = "save_file.ser";
+    /**
+     * A temporary save file.
+     */
+    public static final String TEMP_SAVE_FILENAME = "save_file_tmp.ser";
+    /**
      * The tiles manager.
      */
     private SlidingTilesBoardManager slidingTilesBoardManager;
@@ -26,7 +35,9 @@ public class SlidingTilesStartingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         SlidingTilesBoard.setNumRowsCols(3);
         slidingTilesBoardManager = new SlidingTilesBoardManager();
+//        saveToFile(TEMP_SAVE_FILENAME);
         MyApplication.getInstance().setBoardManager(slidingTilesBoardManager);
+
         savingManager = MyApplication.getInstance().getSavingManager();
 
         setContentView(R.layout.activity_sliding_tiles_starting_);
@@ -36,9 +47,6 @@ public class SlidingTilesStartingActivity extends AppCompatActivity {
         addScoreboardButtonListener();
     }
 
-    /**
-     * Activate the Scoreboard button.
-     */
     private void addScoreboardButtonListener() {
         Button scoreboard = findViewById(R.id.Scoreboard);
         scoreboard.setOnClickListener((v) -> {
@@ -68,6 +76,7 @@ public class SlidingTilesStartingActivity extends AppCompatActivity {
             List<BoardManager> historicalFile = savingManager.query("get slidingTilesBoardManager");
 
             if (historicalFile.size() != 0){
+//                saveToFile(TEMP_SAVE_FILENAME);
                 slidingTilesBoardManager = (SlidingTilesBoardManager) historicalFile.get(0);
                 MyApplication.getInstance().setBoardManager(slidingTilesBoardManager);// testing
                 makeToastLoadedText();
@@ -92,8 +101,6 @@ public class SlidingTilesStartingActivity extends AppCompatActivity {
     private void addSaveButtonListener() {
         Button saveButton = findViewById(R.id.SaveButton);
         saveButton.setOnClickListener(v -> {
-//            saveToFile(SAVE_FILENAME);
-//            saveToFile(TEMP_SAVE_FILENAME);
             savingManager.autoSave(slidingTilesBoardManager);
             MyApplication.getInstance().setBoardManager(slidingTilesBoardManager);
             makeToastSavedText();
@@ -121,6 +128,7 @@ public class SlidingTilesStartingActivity extends AppCompatActivity {
      */
     private void switchToGame() {
         Intent tmp = new Intent(this, SlidingTilesGameActivity.class);
+//        saveToFile(SlidingTilesStartingActivity.TEMP_SAVE_FILENAME);
         MyApplication.getInstance().setBoardManager(slidingTilesBoardManager);
         startActivity(tmp);
     }

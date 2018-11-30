@@ -29,6 +29,15 @@ public class SlidingTile extends Tile implements Comparable<SlidingTile>, Serial
     }
 
     /**
+     * Return the tile id.
+     *
+     * @return the tile id
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
      * A SlidingTile with id and background. The background may not have a corresponding image.
      *
      * @param id         the id
@@ -42,9 +51,9 @@ public class SlidingTile extends Tile implements Comparable<SlidingTile>, Serial
     /**
      * A tile with a background id; look up and set the id.
      *
-     * @param backgroundId background id
+     * @param backgroundId
      */
-    SlidingTile(int backgroundId) {
+    public SlidingTile(int backgroundId) {
         id = backgroundId + 1;
         // This looks so ugly.
         switch (backgroundId + 1) {
@@ -134,7 +143,6 @@ public class SlidingTile extends Tile implements Comparable<SlidingTile>, Serial
                 background = R.drawable.tile_25;
         }
     }
-
     @Override
     public int compareTo(@NonNull SlidingTile o) {
         return o.id - this.id;

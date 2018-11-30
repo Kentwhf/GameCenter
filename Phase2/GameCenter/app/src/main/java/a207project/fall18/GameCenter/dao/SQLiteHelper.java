@@ -21,13 +21,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-//        saveDataToList(db, oldVersion, newVersion);
-//        dropTable(db, oldVersion, newVersion);
         onCreate(db);
-
-
-//        db.execSQL("create table if not exists SaveFile(id integer primary key autoincrement, username varchar(20), gameType varchar(20), auto blob)");
-
     }
 }

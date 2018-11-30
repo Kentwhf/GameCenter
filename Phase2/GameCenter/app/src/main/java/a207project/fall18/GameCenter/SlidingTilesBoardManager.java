@@ -21,20 +21,14 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
      */
     private SlidingTilesBoard board;
 
-    /**
-     * An ArrayList of moves
-     */
     public static ArrayList<Integer> s = new ArrayList<>();
 
-    /**
-     * Default undo times
-     */
     public int undo_time = 0;
 
-    /**
-     * Can undo times
-     */
     public int can_undo_time ;
+
+
+    public SlidingTilesBoardManager(SlidingTilesBoard board) {this.board = board;}
 
     /**
      * Manage a board that has been pre-populated.
@@ -42,10 +36,8 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
      * @param tiles the board in 2D List
      */
     public SlidingTilesBoardManager(List<SlidingTile> tiles) {
-
         this.board = new SlidingTilesBoard(tiles);
     }
-
 
     /**
      * Manage a new shuffled board.
@@ -56,14 +48,12 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
         for (int tileNum = 0; tileNum != numTiles; tileNum++) {
             tiles.add(new SlidingTile(tileNum));
         }
+
         this.board = new SlidingTilesBoard(tiles);
         score = new Score(MyApplication.getInstance().getUser(), "SlidingTiles");
         makeBoard(tiles);
     }
 
-    /**
-     * @param lst a List of SlidingTile
-     */
     private void makeBoard(List<SlidingTile> lst) {
         int blankIndex = findBlank(lst);
 
@@ -102,15 +92,9 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
                     break;
             }
         }
-
     }
 
 
-    /**
-     * @param row given row
-     * @param col given col
-     * @return String of a random direction
-     */
     private String pickRandomTile(int row, int col) {
         List<String> listOfTiles = new ArrayList<>();
         if (row != 0) {
@@ -126,19 +110,15 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
         return listOfTiles.get(0);
     }
 
-
-    /**
-     * @param lst list of SlidingTile
-     * @return id of the blank tile
-     */
     private int findBlank(List<SlidingTile> lst) {
         int id = 0;
         for (int i = 0; i < lst.size(); i++) {
-            if (lst.get(i).getId() == SlidingTilesBoard.NUM_ROWS *
-                    SlidingTilesBoard.NUM_COLS) {id = i;}
+            if (lst.get(i).getId() == SlidingTilesBoard.NUM_ROWS * SlidingTilesBoard.NUM_COLS) {id = i;}
         }
         return id;
     }
+
+
 
     /**
      * Return the current tiles.
@@ -163,18 +143,14 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
         return true;
     }
 
-    /**
-     * Increaae undo time by 1
-     */
     public void undoTimePlus(){
         this.undo_time += 1;
     }
 
-    /**
-     * @param time times of undos
-     */
     public void setCanUndoTime(int time) {
+
         this.can_undo_time = time;
+
     }
 
     /**
@@ -186,6 +162,7 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
     public boolean isValidTap(int position) {
 
         int blankId = board.numTiles();
+        // Are any of the 4 the blank tile?
         SlidingTile[] temp = tileArray(position);
         return (temp[0] != null && temp[0].getId() == blankId)
                 || (temp[1] != null && temp[1].getId() == blankId)
@@ -193,9 +170,6 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
                 || (temp[3] != null && temp[3].getId() == blankId);
     }
 
-    /**
-     * @return undo the move
-     */
     public boolean undo() {
         if (undo_time < can_undo_time && board.getCurrentScore() < 100){
             undoTimePlus();
@@ -258,6 +232,7 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
         }
     }
 
+
     /**
      * Return an array of the four surrounding tiles.
      *
@@ -275,19 +250,13 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
         return new SlidingTile[]{above, below, left, right};
     }
 
-
-    /**
-     * @return the score
-     */
     public Score getScore(){return this.score;}
 
-    /**
-     * Set Score
-     */
     public void setScore(){
         this.score.setFinalScore(board.getCurrentScore());
         this.score.setUserId(MyApplication.getInstance().getUser().getId());
         this.score.setGameType(MyApplication.getInstance().getGame());
         this.score.setNickname(MyApplication.getInstance().getUser().getNickname());
     }
+
 }

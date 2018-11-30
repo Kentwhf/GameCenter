@@ -55,7 +55,10 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
         createTileButtons(this);
         setContentView(R.layout.activity_sliding_tiles_game);
         addUndoButtonListener();
+
         savingManager = MyApplication.getInstance().getSavingManager();
+
+
 
         // Add View to activity
         gridView = findViewById(R.id.grid);
@@ -81,9 +84,6 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
                 });
     }
 
-    /**
-     * Add undo button
-     */
     private void addUndoButtonListener() {
         Button undoButton = findViewById(R.id.undo);
         undoButton.setOnClickListener((v) -> {

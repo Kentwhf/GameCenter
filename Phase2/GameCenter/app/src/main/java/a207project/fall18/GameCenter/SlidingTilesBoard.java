@@ -14,19 +14,10 @@ import java.util.Stack;
  */
 public class SlidingTilesBoard extends Board implements Serializable, Iterable<SlidingTile> {
 
-    /**
-     * Player;s current score
-     */
     private int currentScore = 100 ;
 
-    /**
-     * A stack
-     */
     public static Stack s = new Stack();
 
-    /**
-     * @return The int of rows.
-     */
     public static int getNumRows() {
         return NUM_ROWS;
     }
@@ -36,9 +27,6 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<S
      */
     static int NUM_ROWS;
 
-    /**
-     * @return The int of columns.
-     */
     public static int getNumCols() {
         return NUM_COLS;
     }
@@ -59,7 +47,7 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<S
      *
      * @param slidingTiles the slidingTiles for the tiles
      */
-    SlidingTilesBoard(List<SlidingTile> slidingTiles) {
+    public SlidingTilesBoard(List<SlidingTile> slidingTiles) {
         Iterator<SlidingTile> iter = slidingTiles.iterator();
         for (int row = 0; row != SlidingTilesBoard.NUM_ROWS; row++) {
             for (int col = 0; col != SlidingTilesBoard.
@@ -69,9 +57,6 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<S
         }
     }
 
-    /**
-     * @param num length of the board
-     */
     public static void setNumRowsCols(int num) {
         NUM_ROWS = num;
         NUM_COLS = num;
@@ -105,7 +90,7 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<S
      * @param row2 the second tile row
      * @param col2 the second tile col
      */
-    void swapTiles(int row1, int col1, int row2, int col2) {
+    public void swapTiles(int row1, int col1, int row2, int col2) {
 
         SlidingTile t1 = slidingTiles[row1][col1];
         slidingTiles[row1][col1] = slidingTiles[row2][col2];
@@ -115,7 +100,6 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<S
         notifyObservers();
     }
 
-    @NonNull
     @Override
     public String toString() {
         return "Board{" +
@@ -165,7 +149,7 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<S
         }
     }
 
-    void scoring(){
+    public void scoring(){
         if (this.currentScore >0 ){
             this.currentScore -= 1;
         }
@@ -173,10 +157,10 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<S
         notifyObservers();
     }
 
-    int getCurrentScore(){
+    public int getCurrentScore(){
         return this.currentScore;
     }
-    void setCurrentScore(int score){this.currentScore = score;}
+    public void setCurrentScore(int score){this.currentScore = score;}
 
 
 }
