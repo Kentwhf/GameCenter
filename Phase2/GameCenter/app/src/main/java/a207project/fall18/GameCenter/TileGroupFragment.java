@@ -16,12 +16,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 
-public class CellGroupFragment extends Fragment {
+public class TileGroupFragment extends Fragment {
     private int groupId;
     private OnFragmentInteractionListener mListener;
     private View view;
 
-    public CellGroupFragment() {
+    public TileGroupFragment() {
         // Required empty public constructor
     }
 
