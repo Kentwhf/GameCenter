@@ -5,7 +5,7 @@ import android.util.Log;
 /**
  * The tic tac toe game.
  */
- class TicTacToeBoardManager extends BoardManager {
+public class TicTacToeBoardManager extends BoardManager {
 
     /**
      * int of X = -1
@@ -42,7 +42,7 @@ import android.util.Log;
      * TicTacToe board manager.
      * @param size dim of the board.
      */
-    TicTacToeBoardManager(int size) {
+    public TicTacToeBoardManager(int size) {
         this.TicTacToeBoard = new TicTacToeBoard(size);
         this.TicTacToeScoreboard = new TicTacToeScore(size);
     }
@@ -51,8 +51,8 @@ import android.util.Log;
      * Get a TicTacToeBoard.
      * @return A TicTacToeBoard.
      */
-    TicTacToeBoard getSlidingTilesBoard() {
-        return TicTacToeBoard;
+    TicTacToeBoard getTicTacToeBoard() {
+        return this.TicTacToeBoard;
     }
 
     /**

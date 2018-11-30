@@ -93,7 +93,7 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
             }
         }
 
-        if (!ticTacToeBoardManager.won && ticTacToeBoardManager.getSlidingTilesBoard().isFull()) {
+        if (!ticTacToeBoardManager.won && ticTacToeBoardManager.getTicTacToeBoard().isFull()) {
             DeclareResult("It's a draw!");
         }
     }

@@ -12,7 +12,7 @@ public class TicTacToeBoard extends Board{
     /**
      * The int dim.
      */
-    static int size;
+    private int size;
     /**
      * The board which is consisted by col and row.
      */
@@ -23,8 +23,7 @@ public class TicTacToeBoard extends Board{
      * The tic tac toe board.
      * @param  size the dimension of the board
      */
-    TicTacToeBoard(int size) {
-        this.size = size;
+    public TicTacToeBoard(int size) {
         this.board = new int[size][size];
 
         board_tile = new TreeSet<>();
