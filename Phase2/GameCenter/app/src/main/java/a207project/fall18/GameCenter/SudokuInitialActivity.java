@@ -100,10 +100,11 @@ public class SudokuInitialActivity extends AppCompatActivity {
 
             List<BoardManager> historicalFile = savingManager.query("get slidingTilesBoardManager");
 
-            if (historicalFile != null){
+            if (historicalFile.size() != 0){
 //                saveToFile(TEMP_SAVE_FILENAME);
-                MyApplication.getInstance().setBoardManager( historicalFile.get(0));// testing
+//                MyApplication.getInstance().setBoardManager( historicalFile.get(0));// testing
                 Intent intent = new Intent(this, SudokuGameActivity.class);
+//                intent.putExtra("old game", historicalFile.get(0));
                 startActivity(intent);
 
             }

@@ -1,10 +1,11 @@
 package a207project.fall18.GameCenter;
 
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class SudokuBoard extends Board {
+public class SudokuBoard extends Board implements Serializable {
     /**
      * The tiles on the tiles in row-major order.
      */
