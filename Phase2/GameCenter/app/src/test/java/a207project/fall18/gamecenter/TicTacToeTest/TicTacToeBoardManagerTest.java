@@ -4,12 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Set;
-
-import a207project.fall18.GameCenter.BoardManager;
-import a207project.fall18.GameCenter.TicTacToeBoard;
 import a207project.fall18.GameCenter.TicTacToeBoardManager;
-import a207project.fall18.GameCenter.TicTacToeScore;
 
 import static org.junit.Assert.*;
 
@@ -50,21 +45,6 @@ public class TicTacToeBoardManagerTest {
         tictactoeboardmanager3 = null;
     }
 
-    /**
-     * Text getTicTacToeBoard.
-     */
-    @Test
-    public void getTicTacToeBoardTest() {
-        TicTacToeBoard tictactoeboard1 = new TicTacToeBoard(3);
-        assertEquals(tictactoeboard1.getSize(),
-                tictactoeboardmanager1.getTicTacToeBoard().getSize());
-        TicTacToeBoard tictactoeboard2 = new TicTacToeBoard(4);
-        assertEquals(tictactoeboard2.getSize(),
-                tictactoeboardmanager2.getTicTacToeBoard().getSize());
-        TicTacToeBoard tictactoeboard3 = new TicTacToeBoard(5);
-        assertEquals(tictactoeboard3.getSize(),
-                tictactoeboardmanager3.getTicTacToeBoard().getSize());
-    }
 
     /**
      * Text Move.

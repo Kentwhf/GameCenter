@@ -8,14 +8,29 @@ import android.widget.TextView;
 
 import a207project.fall18.GameCenter.dao.SaveDao;
 
+/**
+ * ComplexityActivity class.
+ */
 public class ComplexityActivity extends AppCompatActivity {
 
+    /**
+     * A game
+     */
     private String game;
 
+    /**
+     * Controller that interacts with this activity
+     */
     private ComplexityController controller;
 
+    /**
+     * Number of undos
+     */
     private int undoTime = 3;
 
+    /**
+     * Manager that manages saves
+     */
     private SaveDao savingManager;
     /**
      * The main save file.
