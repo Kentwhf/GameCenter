@@ -11,6 +11,7 @@ import a207project.fall18.GameCenter.Board;
 import a207project.fall18.GameCenter.SlidingTile;
 import a207project.fall18.GameCenter.SlidingTilesBoard;
 import a207project.fall18.GameCenter.SlidingTilesBoardManager;
+import a207project.fall18.GameCenter.Tile;
 
 import static org.junit.Assert.*;
 
@@ -39,7 +40,7 @@ public class SlidingTilesBoardTest extends Board {
     public void setUp() throws Exception {
         List<SlidingTile> tiles = makeTiles();
         SlidingTilesBoard board = new SlidingTilesBoard(tiles);
-        boardmanager = new SlidingTilesBoardManager(tiles);
+        boardmanager = new SlidingTilesBoardManager(board);
     }
 
     @After

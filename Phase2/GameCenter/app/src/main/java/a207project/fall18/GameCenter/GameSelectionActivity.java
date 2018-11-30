@@ -5,10 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 
-/**
- * GameSelectionActivity class.
- */
-public class GameSelectionActivity extends AppCompatActivity {
+public class
+GameSelectionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
