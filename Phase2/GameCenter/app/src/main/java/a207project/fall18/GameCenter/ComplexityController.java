@@ -34,7 +34,7 @@ public class ComplexityController {
         }
 
         else if(game.equals("TicTacToe")){
-            TicTacToeGameActivity.dim = 3;
+            TicTacToeGameActivity.size = 3;
 //            Intent i = new Intent(ComplexityActivity, TicTacToeGameActivity.class);
 //            startActivity(i);
         }
@@ -55,7 +55,7 @@ public class ComplexityController {
         }
 
         else if(game.equals("TicTacToe")){
-            TicTacToeGameActivity.dim = 4;
+            TicTacToeGameActivity.size = 4;
         }
 //
 //        else{}
@@ -72,7 +72,7 @@ public class ComplexityController {
         }
 
         else if(game == "TicTacToe"){
-            TicTacToeGameActivity.dim = 5;
+            TicTacToeGameActivity.size = 5;
         }
 
 //        else{}
