@@ -29,7 +29,6 @@
         <activity android:name=".ScoreboardActivity" />
         <activity android:name=".TicTacToeGameActivity" />
 
-        <activity android:name=".SudokuChooseNumberActivity" />
         <activity android:name=".SudokuGameActivity" />
         <activity android:name=".SudokuGameDifficultyActivity" />
         <activity android:name=".SudokuInstructionsActivity" />

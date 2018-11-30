@@ -1,5 +1,6 @@
 package a207project.fall18.GameCenter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -33,15 +34,6 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
      * The buttons to display.
      */
     private ArrayList<Button> tileButtons;
-
-    /**
-     * Constants for swiping directions. Should be an enum, probably.
-     */
-//    public static final int UP = 1;
-//    public static final int DOWN = 2;
-//    public static final int LEFT = 3;
-//    public static final int RIGHT = 4;
-
     // Grid View and calculated column height and width based on device size
     private SlidingTilesGestureDetectGridView gridView;
     private static int columnWidth, columnHeight;
@@ -60,7 +52,6 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         boardManager = (SlidingTilesBoardManager) MyApplication.getInstance().getBoardManager();
-//        loadFromFile(SlidingTilesStartingActivity.TEMP_SAVE_FILENAME);
         createTileButtons(this);
         setContentView(R.layout.activity_sliding_tiles_game);
         addUndoButtonListener();
@@ -95,10 +86,8 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
 
     private void addUndoButtonListener() {
         Button undoButton = findViewById(R.id.undo);
-//        undoButton.setOnClickListener((View.OnClickListener) SlidingTileBoardManager.undo());
         undoButton.setOnClickListener((v) -> {
             if (this.boardManager.undo()) {
-//                this.boardManager.undo();
                 updateTileButtons();
                 gridView = findViewById(R.id.grid);
                 gridView.setNumColumns(SlidingTilesBoard.NUM_COLS);
@@ -111,7 +100,6 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
             }
         });
     }
-
 
     /**
      * Create the buttons for displaying the tiles.
@@ -133,6 +121,7 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
     /**
      * Update the backgrounds on the buttons to match the tiles.
      */
+    @SuppressLint("SetTextI18n")
     private void updateTileButtons() {
         SlidingTilesBoard board = boardManager.getBoard();
         int nextPos = 0;
@@ -142,13 +131,10 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
             b.setBackgroundResource(board.getTile(row, col).getBackground());
             nextPos++;
         }
-
-        // uncomment
         TextView scores = findViewById(R.id.Score);
         scores.setText("Scores : " + board.getCurrentScore());
         savingManager.autoSave(boardManager);
         boardManager.setScore();
-//        saveToFile(SAVE_FILENAME);
     }
 
     /**
@@ -157,57 +143,8 @@ public class SlidingTilesGameActivity extends AppCompatActivity implements Obser
     @Override
     protected void onPause() {
         super.onPause();
-
         boardManager.setScore();
-
-//        MyApplication.getInstance().currentScore.setFinalScore(boardManager.getBoard().getCurrentScore());
-//        boardManager.setScore(MyApplication.getInstance().currentScore);
-
-
-//        MyApplication.getInstance().setSlidingTileBoardManager( boardManager);
-//        saveToFile(SlidingTilesStartingActivity.TEMP_SAVE_FILENAME);
     }
-
-//    /**
-//     * Load the tiles manager from fileName.
-//     *
-//     * @param fileName the name of the file
-//     */
-//    private void loadFromFile(String fileName) {
-//
-//        try {
-//            InputStream inputStream = this.openFileInput(fileName);
-//            if (inputStream != null) {
-//                ObjectInputStream input = new ObjectInputStream(inputStream);
-//                boardManager = (SlidingTileBoardManager) input.readObject();
-//                inputStream.close();
-//            }
-//        } catch (FileNotFoundException e) {
-//            Log.e("login activity", "File not found: " + e.toString());
-//        } catch (IOException e) {
-//            Log.e("login activity", "Can not read file: " + e.toString());
-//        } catch (ClassNotFoundException e) {
-//            Log.e("login activity", "File contained unexpected data type: " + e.toString());
-//        }
-//    }
-//
-//    /**
-//     * Save the tiles manager to fileName.
-//     *
-//     * @param fileName the name of the file
-//     */
-//    public void saveToFile(String fileName) {
-//        try {
-//            ObjectOutputStream outputStream = new ObjectOutputStream(
-//                    this.openFileOutput(fileName, MODE_PRIVATE));
-//            outputStream.writeObject(boardManager);
-//
-//            outputStream.close();
-//        } catch (IOException e) {
-//            Log.e("Exception", "File write failed: " + e.toString());
-//        }
-//    }
-
 
     @Override
     public void update(Observable o, Object arg) {

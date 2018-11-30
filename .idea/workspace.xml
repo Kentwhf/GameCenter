@@ -7,31 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20e3f09f-c39e-468e-a21c-55dfdfddcdb7" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/SudokuBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Phase2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Phase2.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phase2/GameCenter/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Phase2/GameCenter/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phase2/GameCenter/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Phase2/GameCenter/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phase2/GameCenter/.idea/runConfigurations.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Phase2/GameCenter/.idea/runConfigurations.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phase2/GameCenter/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Phase2/GameCenter/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/BoardManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/BoardManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/CellGroupFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/TileGroupFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/KeypadDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/KeypadDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/SlidingTilesBoardManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/SlidingTilesBoardManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/SlidingTilesGameActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/SlidingTilesGameActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/SlidingTilesMovementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/SlidingTilesMovementController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/SudokuBoardManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/SudokuBoardManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/SudokuGameActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/SudokuGameActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/SudokuNewBoardActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/SudokuNewBoardActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/TicTacToeBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/TicTacToeBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/TicTacToeScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/TicTacToeScore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/res/layout/activity_sudoku_game.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/res/layout/activity_sudoku_game.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/res/layout/activity_sudoku_new_board.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/res/layout/activity_sudoku_new_board.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/res/layout/fragment_cell_group.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/res/layout/fragment_cell_group.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Phase2/GameCenter/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -41,13 +18,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Team.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Phase2/Team.md">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name=".required.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.required.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="521">
-              <caret line="52" column="56" selection-start-line="52" selection-start-column="56" selection-end-line="52" selection-end-column="56" />
-            </state>
+            <state />
           </provider>
         </entry>
       </file>
@@ -56,84 +31,53 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/Phase2/Team.md" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="20" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="816" />
+    <option name="height" value="873" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="Phase2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="group_0680" type="b2602c69:ProjectViewProjectNode" />
+              <item name="group_0680" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="group_0680" type="b2602c69:ProjectViewProjectNode" />
+              <item name="group_0680" type="462c0819:PsiDirectoryNode" />
               <item name="Phase2" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Phase2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Phase2" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Phase2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Phase2" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-              <item name="codeStyles" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Phase2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Phase2" type="462c0819:PsiDirectoryNode" />
-              <item name="markus-hooks" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Phase2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Phase2" type="462c0819:PsiDirectoryNode" />
-              <item name="markus-hooks" type="462c0819:PsiDirectoryNode" />
-              <item name="pre-commit.d" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Phase2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Phase2" type="462c0819:PsiDirectoryNode" />
-              <item name="Phase2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Phase2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Phase2" type="462c0819:PsiDirectoryNode" />
+              <item name="group_0680" type="b2602c69:ProjectViewProjectNode" />
+              <item name="group_0680" type="462c0819:PsiDirectoryNode" />
               <item name="Phase2" type="462c0819:PsiDirectoryNode" />
               <item name="GameCenter" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Phase2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Phase2" type="462c0819:PsiDirectoryNode" />
+              <item name="group_0680" type="b2602c69:ProjectViewProjectNode" />
+              <item name="group_0680" type="462c0819:PsiDirectoryNode" />
               <item name="Phase2" type="462c0819:PsiDirectoryNode" />
               <item name="GameCenter" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Phase2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Phase2" type="462c0819:PsiDirectoryNode" />
+              <item name="group_0680" type="b2602c69:ProjectViewProjectNode" />
+              <item name="group_0680" type="462c0819:PsiDirectoryNode" />
               <item name="Phase2" type="462c0819:PsiDirectoryNode" />
               <item name="GameCenter" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Phase2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Phase2" type="462c0819:PsiDirectoryNode" />
+              <item name="group_0680" type="b2602c69:ProjectViewProjectNode" />
+              <item name="group_0680" type="462c0819:PsiDirectoryNode" />
               <item name="Phase2" type="462c0819:PsiDirectoryNode" />
               <item name="GameCenter" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
@@ -141,8 +85,8 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Phase2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Phase2" type="462c0819:PsiDirectoryNode" />
+              <item name="group_0680" type="b2602c69:ProjectViewProjectNode" />
+              <item name="group_0680" type="462c0819:PsiDirectoryNode" />
               <item name="Phase2" type="462c0819:PsiDirectoryNode" />
               <item name="GameCenter" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
@@ -151,8 +95,8 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Phase2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Phase2" type="462c0819:PsiDirectoryNode" />
+              <item name="group_0680" type="b2602c69:ProjectViewProjectNode" />
+              <item name="group_0680" type="462c0819:PsiDirectoryNode" />
               <item name="Phase2" type="462c0819:PsiDirectoryNode" />
               <item name="GameCenter" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
@@ -162,8 +106,8 @@
               <item name="a207project" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Phase2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Phase2" type="462c0819:PsiDirectoryNode" />
+              <item name="group_0680" type="b2602c69:ProjectViewProjectNode" />
+              <item name="group_0680" type="462c0819:PsiDirectoryNode" />
               <item name="Phase2" type="462c0819:PsiDirectoryNode" />
               <item name="GameCenter" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
@@ -172,29 +116,18 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="a207project" type="462c0819:PsiDirectoryNode" />
               <item name="fall18" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Phase2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Phase2" type="462c0819:PsiDirectoryNode" />
-              <item name="Phase2" type="462c0819:PsiDirectoryNode" />
-              <item name="GameCenter" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="a207project" type="462c0819:PsiDirectoryNode" />
-              <item name="fall18" type="462c0819:PsiDirectoryNode" />
-              <item name="GameCenter" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Phase1" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
   </component>
   <component name="RunDashboard">
@@ -270,7 +203,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1381" height="885" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="873" extended-state="0" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
@@ -282,7 +215,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23791821" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.42917547" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
@@ -297,19 +230,19 @@
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
-  <component name="UnknownFeatures">
-    <option featureType="com.intellij.fileTypeFactory" implementationName="*.md" />
-  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/MainActivity.java" />
-    <entry file="file://$PROJECT_DIR$/Phase2/Team.md">
+    <entry file="file://$PROJECT_DIR$/.required.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="52" column="56" selection-start-line="52" selection-start-column="56" selection-end-line="52" selection-end-column="56" />
-        </state>
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Phase2/GameCenter/app/src/main/java/a207project/fall18/GameCenter/MainActivity.java" />
+    <entry file="file://$PROJECT_DIR$/.required.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state />
       </provider>
     </entry>
   </component>
