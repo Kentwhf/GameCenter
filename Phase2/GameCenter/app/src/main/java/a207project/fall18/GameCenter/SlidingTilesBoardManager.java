@@ -21,14 +21,20 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
      */
     private SlidingTilesBoard board;
 
+    /**
+     * An ArrayList of moves
+     */
     public static ArrayList<Integer> s = new ArrayList<>();
 
+    /**
+     * Default undo times
+     */
     public int undo_time = 0;
 
+    /**
+     * Can undo times
+     */
     public int can_undo_time ;
-
-
-    public SlidingTilesBoardManager(SlidingTilesBoard board) {this.board = board;}
 
     /**
      * Manage a board that has been pre-populated.
@@ -36,15 +42,10 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
      * @param tiles the board in 2D List
      */
     public SlidingTilesBoardManager(List<SlidingTile> tiles) {
-//        Board.setNumRowsCols(4);
-////        List<Tile> tiles = new ArrayList<>();
-//        final int numTiles = Board.NUM_ROWS * Board.NUM_COLS;
-//        for (int tileNum = 0; tileNum != numTiles; tileNum++) {
-//            tiles.add(new Tile(tileNum));
-//        }
+
         this.board = new SlidingTilesBoard(tiles);
-//        this.board = board;
     }
+
 
     /**
      * Manage a new shuffled board.
@@ -55,33 +56,14 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
         for (int tileNum = 0; tileNum != numTiles; tileNum++) {
             tiles.add(new SlidingTile(tileNum));
         }
-
-        //        Collections.shuffle(tiles);
-//        System.out.println("wtf");
-//        while (!(((Board.NUM_ROWS % 2 != 0) && (findNumInversion(tiles) % 2 == 0)) ||
-//                ((Board.NUM_ROWS % 2 == 0) && ((blankOnOddRowFromBottom(tiles)) ==
-//                        (findNumInversion(tiles) % 2 == 0))))) {
-//            System.out.println("wtf2");
-//            Collections.shuffle(tiles);
-//        }
-
-
-
-//        if (!(((Board.NUM_ROWS % 2 != 0) && (findNumInversion(tiles) % 2 == 0)) ||
-//                ((Board.NUM_ROWS % 2 == 0) && ((blankOnOddRowFromBottom(tiles)) ==
-//                        (findNumInversion(tiles) % 2 == 0))))) {
-//            Collections.shuffle(tiles);
-//        }
-
-        // IDK MAN..
-//        tilesList = tiles;
         this.board = new SlidingTilesBoard(tiles);
         score = new Score(MyApplication.getInstance().getUser(), "SlidingTiles");
         makeBoard(tiles);
     }
 
-//    public List<Tile> getTilesList() {return tilesList;}
-
+    /**
+     * @param lst a List of SlidingTile
+     */
     private void makeBoard(List<SlidingTile> lst) {
         int blankIndex = findBlank(lst);
 
@@ -124,27 +106,11 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
     }
 
 
-//        Random r = new Random();
-//
-//        return r.nextInt((max - min) + 1) + min;
-
-    //max = (a > b) ? a : b;
-//        Tile above = row == 0 ? null : board.getTile(row - 1, col);
-//        Tile below = row == Board.NUM_ROWS - 1 ? null : board.getTile(row + 1, col);
-//        Tile left = col == 0 ? null : board.getTile(row, col - 1);
-//        Tile right = col == Board.NUM_COLS - 1 ? null : board.getTile(row, col + 1);
-
-//        if (Board.NUM_ROWS == 3) {
-//            int top = row == 0 ? null : blankIndex - 3;
-//            int below = row == Board.NUM_ROWS - 1 ? null :
-//        } else if (Board.NUM_ROWS == 4) {
-//
-//        } else {
-//
-//        }
-
-
-
+    /**
+     * @param row given row
+     * @param col given col
+     * @return String of a random direction
+     */
     private String pickRandomTile(int row, int col) {
         List<String> listOfTiles = new ArrayList<>();
         if (row != 0) {
@@ -161,75 +127,18 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
     }
 
 
-
-//    int findNumInversion(List<Tile> lst) {
-//
-//        int numInversion = 0;
-//
-////        for (Tile tile : lst) {
-////            int currentTileNum = tile.getId();
-////            for (int i = lst.indexOf(tile) + 1; i < lst.size(); i++) {
-////                if (lst.get(i).getId() < currentTileNum) {numInversion += 1;}
-////            }
-////        }
-//
-//        for (int i = 0; i < lst.size(); i++) {
-//            int currentTileNum = lst.get(i).getId();
-//            if (currentTileNum != Board.NUM_ROWS * Board.NUM_COLS) {
-//                for (int x = i + 1; x < lst.size(); x++) {
-//                    if (lst.get(x).getId() < currentTileNum) {numInversion += 1;}
-//                }
-//            }
-//        }
-//
-//        return numInversion;
-//    }
-
-//    public static void main(String[] args) {
-//        List<Tile> tiles = new ArrayList<>();
-//        final int numTiles = 3 * 3;
-//        for (int tileNum = 0; tileNum != numTiles; tileNum++) {
-//            tiles.add(new Tile(tileNum));
-//        }
-//
-//        for (int i = 9; i < 10; i++) {
-//            System.out.println(99);
-//        }
-//
-//        Collections.shuffle(tiles);
-//        for (Tile t : tiles) {
-//            System.out.println(t.getId());
-//        }
-//
-//        System.out.println(findNumInversion(tiles));
-//
-//    }
-
-//    boolean blankOnOddRowFromBottom(List<Tile> lst) {
-//        for (int i = 0; i < lst.size(); i++) {
-//            if (lst.get(i).getId() == Board.NUM_ROWS * Board.NUM_COLS) {
-////                if (Board.NUM_ROWS == 3) {
-////                    if ((i <= 2) || (6 <= i)) {return true;}
-////                } else if (Board.NUM_ROWS == 4) {
-////                    if (((4 <= i) && (i <= 7)) || (i >= 12)) {return true;}
-////                } else {
-////                    if ((i <= 4) || ((10 <= i) && (i <= 14)) || (i >= 24)) {return true;}
-////                }
-//                if (((4 <= i) && (i <= 7)) || (i >= 12)) {return true;}
-//            }
-//        }
-//        return false;
-//    }
-
+    /**
+     * @param lst list of SlidingTile
+     * @return id of the blank tile
+     */
     private int findBlank(List<SlidingTile> lst) {
         int id = 0;
         for (int i = 0; i < lst.size(); i++) {
-            if (lst.get(i).getId() == SlidingTilesBoard.NUM_ROWS * SlidingTilesBoard.NUM_COLS) {id = i;}
+            if (lst.get(i).getId() == SlidingTilesBoard.NUM_ROWS *
+                    SlidingTilesBoard.NUM_COLS) {id = i;}
         }
         return id;
     }
-
-
 
     /**
      * Return the current tiles.
@@ -254,14 +163,18 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
         return true;
     }
 
+    /**
+     * Increaae undo time by 1
+     */
     public void undoTimePlus(){
         this.undo_time += 1;
     }
 
+    /**
+     * @param time times of undos
+     */
     public void setCanUndoTime(int time) {
-
         this.can_undo_time = time;
-
     }
 
     /**
@@ -273,7 +186,6 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
     public boolean isValidTap(int position) {
 
         int blankId = board.numTiles();
-        // Are any of the 4 the blank tile?
         SlidingTile[] temp = tileArray(position);
         return (temp[0] != null && temp[0].getId() == blankId)
                 || (temp[1] != null && temp[1].getId() == blankId)
@@ -281,6 +193,9 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
                 || (temp[3] != null && temp[3].getId() == blankId);
     }
 
+    /**
+     * @return undo the move
+     */
     public boolean undo() {
         if (undo_time < can_undo_time && board.getCurrentScore() < 100){
             undoTimePlus();
@@ -343,8 +258,6 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
         }
     }
 
-
-
     /**
      * Return an array of the four surrounding tiles.
      *
@@ -362,28 +275,19 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
         return new SlidingTile[]{above, below, left, right};
     }
 
-//    @Override
-//    public String toString(){
-//        return tiles.toString();
-//    }
 
-
-//    protected Object clone()  {
-//        try {
-//            BoardManager cloneBoardManager = (BoardManager) super.clone();
-//            return cloneBoardManager;
-//        } catch (CloneNotSupportedException ignore){}
-//
-//        return null;
-//    }
-
+    /**
+     * @return the score
+     */
     public Score getScore(){return this.score;}
 
+    /**
+     * Set Score
+     */
     public void setScore(){
         this.score.setFinalScore(board.getCurrentScore());
         this.score.setUserId(MyApplication.getInstance().getUser().getId());
         this.score.setGameType(MyApplication.getInstance().getGame());
         this.score.setNickname(MyApplication.getInstance().getUser().getNickname());
     }
-
 }

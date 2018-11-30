@@ -7,6 +7,7 @@ import org.junit.Test;
 import a207project.fall18.GameCenter.Board;
 import a207project.fall18.GameCenter.TicTacToeBoard;
 
+import static java.lang.Character.isDigit;
 import static org.junit.Assert.*;
 
 public class TicTacToeBoardTest extends Board {
@@ -57,6 +58,7 @@ public class TicTacToeBoardTest extends Board {
         assertEquals(true, tictactoeboard4.move(2, -1));
         assertEquals(true , tictactoeboard5.move(1, 1));
         assertEquals(true, tictactoeboard5.move(6, -1));
+        assertEquals( false, tictactoeboard3.move( 3,1 ));
     }
 
 

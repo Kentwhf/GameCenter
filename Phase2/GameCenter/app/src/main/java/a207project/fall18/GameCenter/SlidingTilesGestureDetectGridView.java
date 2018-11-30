@@ -7,6 +7,7 @@ https://github.com/DaveNOTDavid/sample-puzzle/blob/master/app/src/main/java/com/
 This extension of GridView contains built in logic for handling swipes between buttons
  */
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
@@ -15,6 +16,9 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.GridView;
 
+/**
+ * SlidingTiles GestureDetect GridView
+ */
 public class SlidingTilesGestureDetectGridView extends GridView {
     public static final int SWIPE_MIN_DISTANCE = 100;
     public static final int SWIPE_MAX_OFF_PATH = 100;
@@ -24,7 +28,6 @@ public class SlidingTilesGestureDetectGridView extends GridView {
     private boolean mFlingConfirmed = false;
     private float mTouchX;
     private float mTouchY;
-    private SlidingTilesBoardManager slidingTilesBoardManager;
 
     public SlidingTilesGestureDetectGridView(Context context) {
         super(context);
@@ -48,6 +51,9 @@ public class SlidingTilesGestureDetectGridView extends GridView {
         init(context);
     }
 
+    /**
+     * Initialization of the context
+     */
     private void init(final Context context) {
         mController = new SlidingTilesMovementController();
         gDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
@@ -92,17 +98,19 @@ public class SlidingTilesGestureDetectGridView extends GridView {
                 return true;
             }
         }
-
         return super.onInterceptTouchEvent(ev);
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         return gDetector.onTouchEvent(ev);
     }
 
+    /**
+     * @param slidingTilesBoardManager a SlidingTiles board manager
+     */
     public void setSlidingTilesBoardManager(SlidingTilesBoardManager slidingTilesBoardManager) {
-        this.slidingTilesBoardManager = slidingTilesBoardManager;
         mController.setBoardManager(slidingTilesBoardManager);
     }
 }

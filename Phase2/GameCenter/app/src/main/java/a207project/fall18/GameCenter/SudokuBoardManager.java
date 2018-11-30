@@ -2,33 +2,48 @@ package a207project.fall18.GameCenter;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import a207project.fall18.GameCenter.bean.Score;
 
 /**
- * A a207project.fall18.GameCenter.sudokuBoard Manager
+ * A SudokuBoard Manager. Cite from GitHub
  */
 
 public class SudokuBoardManager extends BoardManager implements Serializable {
+
+    /**
+     * Sudoku Game score
+     */
     private Score score = new Score();
+
+    /**
+     * Sudoku Game board
+     */
     private SudokuBoard sudokuBoard;
+
+    /**
+     * Final score of the game Sudoku
+     */
     private int finalScore;
 
-    public SudokuBoard getSudokuBoard() {
-        return sudokuBoard;
-    }
-
-    public void setSudokuBoard(SudokuBoard sudokuBoard) {
+    /**
+     * @param sudokuBoard A SudokuBoard
+     */
+    void setSudokuBoard(SudokuBoard sudokuBoard) {
         this.sudokuBoard = sudokuBoard;
     }
 
-    public void setFinalScore(int finalScore){this.finalScore = finalScore;}
+
+    /**
+     * @param finalScore  an int of the game score
+     */
+    void setFinalScore(int finalScore){this.finalScore = finalScore;}
 
     @Override
     public Score getScore() {
         return score;
     }
-
 
     @Override
     public void setScore() {
@@ -49,7 +64,7 @@ public class SudokuBoardManager extends BoardManager implements Serializable {
     /**
      * @param newBoard Copy a Sudoku Board
      */
-    public void copyValues(SudokuBoard newBoard) {
+    void copyValues(SudokuBoard newBoard) {
         for (int i = 0; i < newBoard.getSlidingTiles().length; i++) {
             for (int j = 0; j < newBoard.getSlidingTiles()[i].length; j++) {
                 sudokuBoard.getSlidingTiles()[i][j] = newBoard.getSlidingTiles()[i][j];
@@ -60,9 +75,7 @@ public class SudokuBoardManager extends BoardManager implements Serializable {
     /**
      * @return return if the tiles is solved correctly
      */
-    // Can be rafactored
-    public boolean isBoardCorrect() {
-        // Check horizontal and vertical
+    boolean isBoardCorrect() {
         for (int i = 0; i < sudokuBoard.getSlidingTiles().length; i++) {
             ArrayList<Integer> horizontals = new ArrayList<>();
             ArrayList<Integer> verticals = new ArrayList<>();
@@ -76,70 +89,21 @@ public class SudokuBoardManager extends BoardManager implements Serializable {
                     verticals.add(number2);
                 }
             }
-        }
-
-//        // Check vertical
-//        for (int i = 0; i < a207project.fall18.GameCenter.sudokuBoard.length; i++) {
-//            ArrayList<Integer> numbers = new ArrayList<>();
-//            for (int j = 0; j < a207project.fall18.GameCenter.sudokuBoard.getSlidingTiles()[i].length; j++) {
-//                int number = a207project.fall18.GameCenter.sudokuBoard.getSlidingTiles()[j][i];
-//                if (numbers.contains(number)) {
-//                    return false;
-//                } else {
-//                    numbers.add(number);
-//                }
-//            }
-//        }
-
-        // Check each group is in TileGroupFragment class for easier code
-        // returns true if horizontal and vertical lines are correct
-        return true;
+        }return true;
     }
-
-
-
-
-//    public a207project.fall18.GameCenter.sudokuBoard updateBoard(){
-//        return this;
-//    }
-
-//    @Override
-//    public String toString() {
-//        StringBuilder temp = new StringBuilder();
-//        for (int i = 0; i < a207project.fall18.GameCenter.sudokuBoard.length; i++) {
-//            for (int j = 0; j < a207project.fall18.GameCenter.sudokuBoard.getSlidingTiles()[i].length; j++) {
-//                if (j == 0) {
-//                    temp.append("\n");
-//                }
-//
-//                int currentNumber = a207project.fall18.GameCenter.sudokuBoard.getSlidingTiles()[i][j];
-//                if (currentNumber == 0) {
-//                    temp.append("-");
-//                } else {
-//                    temp.append(currentNumber);
-//                }
-//
-//                if (j != (a207project.fall18.GameCenter.sudokuBoard.getSlidingTiles()[i].length-1)) {
-//                    temp.append(" ");
-//                }
-//            }
-//        }
-//        return temp.toString();
-//    }
-
 
     /**
      * @param row row
      * @param column column
      * @return return if there are duplicates of numbers
      */
-    public boolean checkDupulicate(int row, int column){
+    boolean checkDupulicate(int row, int column){
         ArrayList<Integer> horizontals = new ArrayList<>();
         ArrayList<Integer> verticals = new ArrayList<>();
         ArrayList<Integer> group = sudokuBoard.getTargetGroup(row,column);
         group.remove((Integer) sudokuBoard.getSlidingTiles()[row][column]);
 
-        for (int i: sudokuBoard.getSlidingTiles()[row]) {horizontals.add(i);}
+        horizontals.addAll(Arrays.asList(sudokuBoard.getSlidingTiles()[row]));
         horizontals.remove((Integer) sudokuBoard.getSlidingTiles()[row][column]);
 
         for (int i = 0; i < sudokuBoard.getSlidingTiles().length; i++) {verticals.add(
