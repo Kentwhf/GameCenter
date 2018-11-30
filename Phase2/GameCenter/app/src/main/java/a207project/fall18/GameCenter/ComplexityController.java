@@ -39,9 +39,9 @@ public class ComplexityController {
 //            startActivity(i);
         }
 //
-//        else{
-//
-//        }
+        else{
+
+        }
 
     }
 
@@ -58,7 +58,7 @@ public class ComplexityController {
             TicTacToeGameActivity.size = 4;
         }
 //
-//        else{}
+        else{}
 
     }
 
@@ -74,6 +74,8 @@ public class ComplexityController {
         else if(game == "TicTacToe"){
             TicTacToeGameActivity.size = 5;
         }
+
+        else{}
     }
 
 

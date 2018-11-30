@@ -48,6 +48,7 @@ import a207project.fall18.GameCenter.bean.Score;
     TicTacToeBoardManager(int size) {
         this.TicTacToeBoard = new TicTacToeBoard(size);
         this.TicTacToeScoreboard = new TicTacToeScore(size);
+        score = new Score(MyApplication.getInstance().getUser(), "TicTacToe");
     }
 
     /**
@@ -97,7 +98,14 @@ import a207project.fall18.GameCenter.bean.Score;
         this.computer.setTicTacToeBoardManager(this);
     }
 
+    public Score getScore(){return this.score;}
+
     @Override
     public void setScore() {
+        this.score.setFinalScore(1);
+        this.score.setUserId(MyApplication.getInstance().getUser().getId());
+        this.score.setGameType(MyApplication.getInstance().getGame());
+        this.score.setNickname(MyApplication.getInstance().getUser().getNickname());
+
     }
 }

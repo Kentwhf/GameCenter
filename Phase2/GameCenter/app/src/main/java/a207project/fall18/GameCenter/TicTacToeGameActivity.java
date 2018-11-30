@@ -86,7 +86,11 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
             field.setImageResource(boardImages.get(player));
 
             if (ticTacToeBoardManager.won) {
+                ticTacToeBoardManager.setScore();
+                MyApplication.getInstance().getScoreDao().uploadScore(ticTacToeBoardManager.getScore());
                 DeclareResult("You Win!!");
+                Intent intent = new Intent(this, ScoreboardActivity.class);
+                startActivity(intent);
             }
             else {
                 MoveOpponent();
