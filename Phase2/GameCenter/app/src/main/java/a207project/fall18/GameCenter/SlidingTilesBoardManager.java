@@ -46,6 +46,7 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
 //        this.board = board;
     }
 
+
     /**
      * Manage a new shuffled board.
      */
