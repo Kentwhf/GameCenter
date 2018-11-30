@@ -7,32 +7,35 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.util.List;
-
 import a207project.fall18.GameCenter.dao.SaveDao;
 
-
+/**
+ * Starting activity of Sudoku Game. Cite from GitHub.
+ */
 public class SudokuInitialActivity extends AppCompatActivity {
 
-
     private SaveDao savingManager;
-    private boolean currentEnglish = true;
-    private final String TAG = "SudokuInitialActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sudoku_initial);
 
-        savingManager = MyApplication.getInstance().getSavingManager();
+        this.savingManager = MyApplication.getInstance().getSavingManager();
         addLoadGameButton();
     }
 
+    /**
+     * @param view current view going to insruction page
+     */
     public void onStartNewGameButtonClicked(View view) {
         Intent intent = new Intent(this, ComplexityActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Load game
+     */
     private void addLoadGameButton() {
         Button load = findViewById(R.id.LoadGame);
         load.setOnClickListener((v) -> {
@@ -45,6 +48,9 @@ public class SudokuInitialActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * @param view current view going to instruction page
+     */
     public void onShowInstructionsButtonClicked(View view) {
         Intent intent = new Intent(this, SudokuInstructionsActivity.class);
         startActivity(intent);

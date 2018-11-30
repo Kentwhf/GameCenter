@@ -18,6 +18,9 @@ class TicTacToeScore {
     static final int BLOCKED = 100;
 
 
+    /**
+     *  Line Status
+     */
     private class LineStatus {
         int state;
         int count;
@@ -84,6 +87,5 @@ class TicTacToeScore {
 
         }
         return won;
-
     }
 }

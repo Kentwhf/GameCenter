@@ -13,11 +13,16 @@ public class TicTacToeBoard extends Board{
      * The int dim.
      */
     public int size;
+
     /**
      * The tiles which is consisted by col and row.
      */
     public int[][] tiles;
-    public Set<Integer> board_tile;
+
+    /**
+     * A set of all tile indice
+     */
+    private Set<Integer> board_tile;
 
     /**
      * The tic tac toe tiles.
@@ -49,7 +54,6 @@ public class TicTacToeBoard extends Board{
 
             return true;
         }
-
         return false;
     }
 
@@ -75,7 +79,6 @@ public class TicTacToeBoard extends Board{
         if (i == null) {
             return -1;
         }
-
         return i;
     }
 }

@@ -1,6 +1,5 @@
 package a207project.fall18.GameCenter;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -127,18 +126,8 @@ public class TicTacToeGameActivity extends AppCompatActivity implements View.OnC
     public void DeclareResult(CharSequence message) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage(message);
-        alertDialogBuilder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                NewGame();
-            }
-        });
-        alertDialogBuilder.setOnCancelListener(new DialogInterface.OnCancelListener() {
-            @Override
-            public void onCancel(DialogInterface dialog) {
-                NewGame();
-            }
-        });
+        alertDialogBuilder.setNeutralButton("OK", (dialog, which) -> NewGame());
+        alertDialogBuilder.setOnCancelListener(dialog -> NewGame());
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }

@@ -41,26 +41,13 @@ public class SudokuGameActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_sudoku_game);
 
         savingManager = MyApplication.getInstance().getSavingManager();
-
-//        difficulty = getIntent().getIntExtra("difficulty", 3);
         ArrayList<SudokuBoardManager> boards = readGameBoards(difficulty);
 
-        // Controller
         if (MyApplication.getInstance().getBoardManager() == null) {
-
-
             startBoardManager = chooseRandomBoard(boards);
-
-
             MyApplication.getInstance().setBoardManager(startBoardManager);
-
             currentBoardManager = new SudokuBoardManager();
-
             currentBoardManager.setSudokuBoard(new SudokuBoard());
-
-
-//            currentBoardManager.setSudokuBoard(startBoardManager.getBoard());
-
             currentBoardManager.copyValues(startBoardManager.getBoard());
         } else {
             startBoardManager = (SudokuBoardManager) MyApplication.getInstance().getBoardManager();
@@ -221,10 +208,7 @@ public class SudokuGameActivity extends AppCompatActivity implements
         return true;
     }
 
-    // Remove the button.
-    // Change it to real time interface. Checking if puzzle's been solve . Potentially observable
     public void onCheckBoardButtonClicked(View view) {
-//        currentBoardManager.isBoardCorrect();
         if(checkAllGroups() && currentBoardManager.isBoardCorrect()) {
             Toast.makeText(this, getString(R.string.board_correct),
                     Toast.LENGTH_SHORT).show();
@@ -241,8 +225,6 @@ public class SudokuGameActivity extends AppCompatActivity implements
             timerTextView.setText(duration);
             Intent intent = new Intent(this, ScoreboardActivity.class);
             startActivity(intent);
-
-            // Pass value to the model
         } else {
             Toast.makeText(this, getString(R.string.board_incorrect),
                     Toast.LENGTH_SHORT).show();

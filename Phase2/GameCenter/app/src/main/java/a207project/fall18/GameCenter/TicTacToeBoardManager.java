@@ -1,7 +1,5 @@
 package a207project.fall18.GameCenter;
 
-import android.util.Log;
-
 import a207project.fall18.GameCenter.bean.Score;
 
 /**
@@ -60,7 +58,7 @@ public class TicTacToeBoardManager extends BoardManager {
      * Get a TicTacToeBoard.
      * @return A TicTacToeBoard.
      */
-    public TicTacToeBoard getTicTacToeBoard() {
+    TicTacToeBoard getTicTacToeBoard() {
         return this.TicTacToeBoard;
     }
 
@@ -97,7 +95,7 @@ public class TicTacToeBoardManager extends BoardManager {
      * Switch computer move.
      * @param computer computer player.
      */
-    public void SwitchAI(TicTacToeRandomPlayer computer) {
+    void SwitchAI(TicTacToeRandomPlayer computer) {
         this.computer = computer;
         this.computer.setTicTacToeBoardManager(this);
     }

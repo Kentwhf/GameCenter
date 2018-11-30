@@ -9,10 +9,9 @@ import android.view.View;
 import java.util.Locale;
 
 /**
- * Created by Knut on 21.11.2017.
+ * Soduku GameInstruction. Cite from GitHub
  */
 
-// Need to change instruction
 public class SudokuInstructionsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
