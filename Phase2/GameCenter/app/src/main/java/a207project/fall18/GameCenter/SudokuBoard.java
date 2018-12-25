@@ -18,7 +18,7 @@ public class SudokuBoard extends Board implements Serializable {
         this.tiles = new Integer[9][9];
     }
 
-    Integer[][] getSlidingTiles() {
+    public Integer[][] getTiles() {
         return tiles;
     }
 
@@ -50,7 +50,6 @@ public class SudokuBoard extends Board implements Serializable {
      * the cell at the given row and column
      */
     ArrayList<Integer> getTargetGroup(int row, int column){
-
         int temp1 = row;
         int temp2 = column;
         if (temp1 % 3 == 0){temp1++;};

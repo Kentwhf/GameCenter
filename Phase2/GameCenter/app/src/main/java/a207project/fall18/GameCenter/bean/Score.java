@@ -1,5 +1,7 @@
 package a207project.fall18.GameCenter.bean;
 
+import android.support.annotation.NonNull;
+
 import java.io.Serializable;
 
 /**
@@ -140,6 +142,7 @@ public class Score implements Serializable {
         this.finalScore = finalScore;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return this.id+"/"+this.userId +"/"+this.gameType+"/"+this.finalScore;

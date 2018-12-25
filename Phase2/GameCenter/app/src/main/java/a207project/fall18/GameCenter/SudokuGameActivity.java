@@ -168,7 +168,6 @@ public class SudokuGameActivity extends AppCompatActivity implements
         return startBoardManager.getBoard().getTile(row, column) != 0;
     }
 
-
     /**
      * @return if layout TileGroupFragment has correct groups
      */
@@ -184,6 +183,9 @@ public class SudokuGameActivity extends AppCompatActivity implements
         return true;
     }
 
+    /**
+     * Click to see if board is correct
+     */
     public void onCheckBoardButtonClicked(View view) {
         if(checkAllGroups() && currentBoardManager.isBoardCorrect()) {
             Toast.makeText(this, getString(R.string.board_correct),
@@ -207,10 +209,16 @@ public class SudokuGameActivity extends AppCompatActivity implements
         }
     }
 
+    /**
+     * Click to go back to starting page
+     */
     public void onGoBackButtonClicked(View view) {
         finish();
     }
 
+    /**
+     * Click to see instructions
+     */
     public void onShowInstructionsButtonClicked(View view) {
         Intent intent = new Intent( this, SudokuInstructionsActivity.class);
         startActivity(intent);

@@ -3,7 +3,6 @@ package a207project.fall18.GameCenter;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -35,7 +34,6 @@ public class SlidingTilesStartingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         SlidingTilesBoard.setNumRowsCols(3);
         slidingTilesBoardManager = new SlidingTilesBoardManager();
-//        saveToFile(TEMP_SAVE_FILENAME);
         MyApplication.getInstance().setBoardManager(slidingTilesBoardManager);
 
         savingManager = MyApplication.getInstance().getSavingManager();

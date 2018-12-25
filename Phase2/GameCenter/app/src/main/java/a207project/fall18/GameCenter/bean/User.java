@@ -1,5 +1,7 @@
 package a207project.fall18.GameCenter.bean;
 
+import android.support.annotation.NonNull;
+
 /**
  * A User class.
  */
@@ -95,6 +97,7 @@ public class User {
         this.nickname = nickname;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return this.id+"/"+this.username+"/"+this.nickname+"/"+this.password;

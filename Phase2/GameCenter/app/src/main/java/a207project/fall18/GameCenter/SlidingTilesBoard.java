@@ -149,6 +149,9 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<S
         }
     }
 
+    /**
+     * Calculate the current score
+     */
     public void scoring(){
         if (this.currentScore >0 ){
             this.currentScore -= 1;
@@ -157,9 +160,16 @@ public class SlidingTilesBoard extends Board implements Serializable, Iterable<S
         notifyObservers();
     }
 
+    /**
+     * Get the current score
+     */
     public int getCurrentScore(){
         return this.currentScore;
     }
+
+    /**
+     * Set the current score
+     */
     public void setCurrentScore(int score){this.currentScore = score;}
 
 

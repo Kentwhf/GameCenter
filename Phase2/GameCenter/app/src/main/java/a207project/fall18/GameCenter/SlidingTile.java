@@ -143,6 +143,7 @@ public class SlidingTile extends Tile implements Comparable<SlidingTile>, Serial
                 background = R.drawable.tile_25;
         }
     }
+
     @Override
     public int compareTo(@NonNull SlidingTile o) {
         return o.id - this.id;

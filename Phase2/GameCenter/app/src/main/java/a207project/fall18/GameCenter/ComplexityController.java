@@ -80,7 +80,6 @@ public class ComplexityController {
                 SudokuGameActivity.difficulty = complexity;
                 break;
         }
-
         return boardManager;
     }
 }

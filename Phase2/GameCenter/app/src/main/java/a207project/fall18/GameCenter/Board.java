@@ -14,7 +14,6 @@ public class Board extends Observable implements Serializable {
      */
     private Object[][] tiles;
 
-
     /**
      * @return get the tiles array
      */

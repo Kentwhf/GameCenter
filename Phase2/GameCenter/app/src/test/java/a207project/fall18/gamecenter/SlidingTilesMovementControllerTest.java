@@ -92,5 +92,4 @@ public class SlidingTilesMovementControllerTest {
         boardManager = null;
         controller = null;
     }
-
 }

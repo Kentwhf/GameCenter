@@ -4,8 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -56,7 +54,7 @@ public class SaveDao extends Dao<BoardManager> {
         ContentValues value = new ContentValues();
         value.put("auto", boardMan);
         int result = db.update("SaveFile", value, "username=? and gameType=?", new String[]{username, gameType});
-        boolean R = (result > 0) ? true : false;
+        boolean R = result > 0;
         db.close();
         return R;
     }
@@ -91,8 +89,10 @@ public class SaveDao extends Dao<BoardManager> {
         return result;
     }
 
+    /**
+     * Autosave the current game
+     */
     public void autoSave(BoardManager boardManager){
-
         if (!find()){
             insert(boardManager);
         }

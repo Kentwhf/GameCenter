@@ -21,10 +21,9 @@ public class KeypadDialog extends Dialog{
      */
     public interface PriorityListener {
         /**
-         * Refresher
+         * A callback function
          */
         default void refreshPriorityUI(String string) {
-
         }
     }
 
@@ -71,7 +70,6 @@ public class KeypadDialog extends Dialog{
         keys[10].setVisibility(View.INVISIBLE);
         keys[11]=findViewById(R.id.keypad_12);
     }
-
 
     /**
      * Sets result.

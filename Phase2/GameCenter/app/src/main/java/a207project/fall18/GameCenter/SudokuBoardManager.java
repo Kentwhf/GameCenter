@@ -65,9 +65,9 @@ public class SudokuBoardManager extends BoardManager implements Serializable {
      * @param newBoard Copy a Sudoku Board
      */
     void copyValues(SudokuBoard newBoard) {
-        for (int i = 0; i < newBoard.getSlidingTiles().length; i++) {
-            for (int j = 0; j < newBoard.getSlidingTiles()[i].length; j++) {
-                sudokuBoard.getSlidingTiles()[i][j] = newBoard.getSlidingTiles()[i][j];
+        for (int i = 0; i < newBoard.getTiles().length; i++) {
+            for (int j = 0; j < newBoard.getTiles()[i].length; j++) {
+                sudokuBoard.getTiles()[i][j] = newBoard.getTiles()[i][j];
             }
         }
     }
@@ -76,12 +76,12 @@ public class SudokuBoardManager extends BoardManager implements Serializable {
      * @return return if the tiles is solved correctly
      */
     boolean isBoardCorrect() {
-        for (int i = 0; i < sudokuBoard.getSlidingTiles().length; i++) {
+        for (int i = 0; i < sudokuBoard.getTiles().length; i++) {
             ArrayList<Integer> horizontals = new ArrayList<>();
             ArrayList<Integer> verticals = new ArrayList<>();
-            for (int j = 0; j < sudokuBoard.getSlidingTiles()[i].length; j++) {
-                int number1 = sudokuBoard.getSlidingTiles()[i][j];
-                int number2 = sudokuBoard.getSlidingTiles()[j][i];
+            for (int j = 0; j < sudokuBoard.getTiles()[i].length; j++) {
+                int number1 = sudokuBoard.getTiles()[i][j];
+                int number2 = sudokuBoard.getTiles()[j][i];
                 if ((horizontals.contains(number1) && (verticals.contains(number2)))) {
                     return false;
                 } else {
@@ -101,18 +101,18 @@ public class SudokuBoardManager extends BoardManager implements Serializable {
         ArrayList<Integer> horizontals = new ArrayList<>();
         ArrayList<Integer> verticals = new ArrayList<>();
         ArrayList<Integer> group = sudokuBoard.getTargetGroup(row,column);
-        group.remove((Integer) sudokuBoard.getSlidingTiles()[row][column]);
+        group.remove((Integer) sudokuBoard.getTiles()[row][column]);
 
-        horizontals.addAll(Arrays.asList(sudokuBoard.getSlidingTiles()[row]));
-        horizontals.remove((Integer) sudokuBoard.getSlidingTiles()[row][column]);
+        horizontals.addAll(Arrays.asList(sudokuBoard.getTiles()[row]));
+        horizontals.remove((Integer) sudokuBoard.getTiles()[row][column]);
 
-        for (int i = 0; i < sudokuBoard.getSlidingTiles().length; i++) {verticals.add(
-                sudokuBoard.getSlidingTiles()[i][column]);}
-        verticals.remove((Integer) sudokuBoard.getSlidingTiles()[row][column]);
+        for (int i = 0; i < sudokuBoard.getTiles().length; i++) {verticals.add(
+                sudokuBoard.getTiles()[i][column]);}
+        verticals.remove((Integer) sudokuBoard.getTiles()[row][column]);
 
-        return horizontals.contains(sudokuBoard.getSlidingTiles()[row][column]) ||
-                verticals.contains(sudokuBoard.getSlidingTiles()[row][column]) ||
-                group.contains(sudokuBoard.getSlidingTiles()[row][column]);
+        return horizontals.contains(sudokuBoard.getTiles()[row][column]) ||
+                verticals.contains(sudokuBoard.getTiles()[row][column]) ||
+                group.contains(sudokuBoard.getTiles()[row][column]);
     }
 }
 

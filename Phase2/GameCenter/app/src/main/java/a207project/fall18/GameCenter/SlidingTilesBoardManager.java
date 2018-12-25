@@ -106,7 +106,7 @@ public class SlidingTilesBoardManager extends BoardManager implements Serializab
         } if (col != SlidingTilesBoard.NUM_COLS - 1) {
             listOfTiles.add("right");
         }
-        Collections.shuffle(listOfTiles);
+//        Collections.shuffle(listOfTiles);
         return listOfTiles.get(0);
     }
 

@@ -15,7 +15,6 @@ public abstract class BoardManager extends Observable implements Serializable {
      */
     private Board board;
 
-
     /**
      * game score
      */

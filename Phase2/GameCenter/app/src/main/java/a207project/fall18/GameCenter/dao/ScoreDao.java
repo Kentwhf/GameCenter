@@ -42,7 +42,6 @@ public class ScoreDao extends Dao<Score>{
 
     @Override
     public boolean update(Score score) {
-
         SQLiteDatabase db = sqLiteHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("finalScore", score.getFinalScore());
@@ -75,7 +74,6 @@ public class ScoreDao extends Dao<Score>{
                 score.setGameType(gametype);
                 score.setFinalScore(finalScore);
                 scoreList.add(score);
-
             }
         }
         cursor.close();

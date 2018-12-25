@@ -4,8 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
-
 import java.util.List;
 
 import a207project.fall18.GameCenter.bean.User;
@@ -38,7 +36,7 @@ public class UserDao extends Dao<User> {
     public boolean delete(int ID) {
         SQLiteDatabase db = sqLiteHelper.getWritableDatabase();
         int result = db.delete("User", "id=?", new String[]{String.valueOf(ID)});
-        boolean R = (result > 0) ? true : false;
+        boolean R = result > 0;
         db.close();
         return R;
     }
@@ -50,7 +48,7 @@ public class UserDao extends Dao<User> {
         value.put("password", user.getPassword());
         value.put("nickname", user.getNickname());
         int result = db.update("User", value, "username=?", new String[]{user.getUsername()});
-        boolean R = (result > 0) ? true : false;
+        boolean R = result > 0;
         db.close();
         return R;
     }
@@ -85,7 +83,6 @@ public class UserDao extends Dao<User> {
             db.close();
             return true;
         }
-
         return false;
     }
 
