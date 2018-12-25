@@ -2,8 +2,8 @@
 CSC207 Project about Game Center written in Android Studio. S/O to my partners.
 
 Welcome come to the Game Center. Here is the guide how to play the game.
-First, if you are our new user, you should sign up your personal account in our sql database. After
-sign up, remember your user account and password. The next simple thing is just log in to our game
+First, if you are our new user, you should sign up in our sqlite database. After
+sign up, remember your user account and password. The next simple thing is just to log in to our game
 center. There are 3 games up to now, which includes slidingtile, sudoku and tictactoe. The first two
 games are single player game, which is to solve a math board. The tictactoe is a game which is the
 player vs computer(with random strategy).
