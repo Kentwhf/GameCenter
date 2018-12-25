@@ -1,4 +1,6 @@
 # Our README file
+CSC207 Project about Game Center written in Android Studio. S/O to my partners.
+
 Welcome come to the Game Center. Here is the guide how to play the game.
 First, if you are our new user, you should sign up your personal account in our sql database. After
 sign up, remember your user account and password. The next simple thing is just log in to our game
